@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @firm.name %>
+</p>
+
+<p>
+  <strong>Cuit:</strong>
+  <%= @firm.cuit %>
+</p>
+
+<p>
+  <strong>Afip condition:</strong>
+  <%= @firm.afip_condition %>
+</p>
+
+<%= link_to 'Edit', edit_firm_path(@firm) %> |
+<%= link_to 'Back', firms_path %>

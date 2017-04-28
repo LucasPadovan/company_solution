@@ -1,0 +1,32 @@
+<%= form_with(model: firm, local: true) do |form| %>
+  <% if firm.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(firm.errors.count, "error") %> prohibited this firm from being saved:</h2>
+
+      <ul>
+      <% firm.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :firm_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cuit %>
+    <%= form.text_field :cuit, id: :firm_cuit %>
+  </div>
+
+  <div class="field">
+    <%= form.label :afip_condition %>
+    <%= form.text_field :afip_condition, id: :firm_afip_condition %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

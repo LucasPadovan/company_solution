@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Company Solution</title>
+    <title><%#= title %></title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <%#= render 'shared/menu' %>
+
+    <div class="container-large">
+      <% if @title %>
+        <div class="section-title">
+          <h1><%= @title %></h1>
+        </div>
+      <% end %>
+
+      <%= yield %>
+    </div>
+
+    <div id="modal" class="fade"></div>
+
+    <%#= render 'shared/notice' if flash.notice %>
+    <%#= render 'shared/alert' if flash.alert %>
+  </body>
+</html>
