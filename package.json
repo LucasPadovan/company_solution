@@ -1,5 +1,7 @@
 {
   "name": "company_solution",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "spectre.css": "^0.2.14"
+  }
 }
