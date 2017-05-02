@@ -13,38 +13,23 @@
   </head>
 
   <body>
-    <%#= render 'shared/menu' %>
+    <%= render 'shared/menu' %>
 
     <section class="section">
-      <section class="grid-header container grid-960">
-        <nav class="navbar">
-          <section class="navbar-section">
-            <a href="#" class="navbar-brand mr-10"><%= @title %></a>
-            <a href="#" class="btn btn-link">Docs</a>
-            <a href="https://github.com/picturepan2/spectre" class="btn btn-link">GitHub</a>
-          </section>
-          <section class="navbar-section">
-            <div class="input-group input-inline">
-              <input class="form-input" type="text" placeholder="search" />
-              <button class="btn btn-primary input-group-btn">Search</button>
-            </div>
-          </section>
-        </nav>
-      </section>
-    </section>
+      <div class="container grid-1280">
+        <% if @title %>
+          <div class="section-title">
+            <h1><%= @title %></h1>
+          </div>
+        <% end %>
 
-    <div class="container">
-      <!--<% if @title %>-->
-        <!--<div class="section-title">-->
-          <!--<h1><%= @title %></h1>-->
-        <!--</div>-->
-      <!--<% end %>-->
-      <div class="columns">
-        <div class="column col-12">
-          <%= yield %>
+        <div class="columns">
+          <div class="column col-12">
+            <%= yield %>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
 
     <div id="modal" class="fade"></div>
 

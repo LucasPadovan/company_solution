@@ -73,3 +73,29 @@
 //.ui-datepicker-trigger {
 //  display: none;
 //}
+@import "_variables";
+
+.section.section-header {
+  background-color: $grey-300;
+  padding: 3px 0;
+
+  .btn.btn-link {
+    font-weight: 700;
+  }
+  .btn.btn-link:hover {
+    border: 1px solid $light-blue-900;
+  }
+
+  .navbar {
+    .navbar-brand {
+      color: $red-600;
+      font-size: 3rem;
+      font-weight: 700;
+      transition: .2s all ease-in-out;
+
+      &:hover, &:active {
+        color: $red-900;
+      }
+    }
+  }
+}
