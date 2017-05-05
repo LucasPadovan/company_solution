@@ -1,0 +1,366 @@
+'es':
+  app_name: 'CompanyManager'
+  
+  attributes:
+    created_at: 'Creación'
+    updated_at: 'Actualización'
+    date: 'Fecha'
+    
+  activerecord:
+    models:
+      contact:
+        one: 'Contacto'
+        other: 'Contactos'
+      deliver:
+        one: 'Entrega'
+        other: 'Entregas'
+      firm:
+        one: 'Empresa'
+        other: 'Empresas'
+      interest:
+        one: 'Interes'
+        other: 'Intereses'
+      item:
+        one: 'Item'
+        other: 'Items'
+      monthly_movement:
+        one: 'Facturación mensual'
+        other: 'Facturaciones mensuales'
+      orders:
+        one: 'Pedido'
+        other: 'Pedidos'
+      product:
+        one: 'Producto'
+        other: 'Productos'
+      product_history:
+        one: 'Historial de precios'
+        other: 'Historiales de precios'
+      purchase_invoice:
+        one: 'Factura de compra'
+        other: 'Factuas de compras'
+      sale_history:
+        one: 'Historial de precios de ventas'
+        other: 'Historiales de precios de ventas'
+      sale_invoice:
+        one: 'Factura de venta'
+        other: 'Facturas de venta'
+      user:
+        one: 'Usuario'
+        other: 'Usuarios'
+
+    attributes:
+      contact:
+        name: 'Nombre del encargado'
+        area: 'Área'
+        details: 'Telefono/Email/Fax'
+      deliver:
+        receipt_id: 'Remito nº'
+        quantity: 'Cantidad'
+        delivered_at: 'Entegado el día'
+      firm:
+        name: 'Nombre'
+        afip_cond: 'Condición AFIP'
+        cuit: 'CUIT'
+      interest:
+        product_id: 'Producto'
+        firm_id: 'Empresa'
+        price: 'Precio'
+        sale_price: 'Precio de venta'
+      item:
+        completition: 'Entregado'
+        product_id: 'Producto'
+        firm_id: 'Empresa'
+        quantity: 'Cantidad'
+        unit_price: 'Precio unitario'
+      monthly_movement:
+        month: 'Mes'
+        year: 'Año'
+        status: 'Estado'
+        purchases_iva_total: 'IVA compras'
+        purchases_otros_conc_total: 'Otros conceptos compras'
+        purchases_subtotal: 'Subtotal compras'
+        purchases_total: 'Total compras'
+        sales_iva_total: 'IVA ventas'
+        sales_otros_conc_total: 'Otros conceptos ventas'
+        sales_subtotal: 'Subtotal ventas'
+        sales_total: 'Total ventas'
+      order:
+        cancelled: 'Cancelada'
+        completed: 'Completada'
+        details: 'Detalles'
+        deliver_in: 'Entregar dentro de'
+        external_code: 'Codigo externo'
+        firm_id: 'Empresa'
+        number: 'Número'
+        place: 'Entregar en'
+        received: 'Recibido'
+        requester: 'Pedido por'
+        requester_area: 'Área'
+        status: 'Estado'
+        user_id: 'Usuario'
+      price:
+        purchase_price: Precio de compra
+        sale_price: Precio de venta
+        firm_id: "Empresa"
+      product:
+        name: Nombre
+        rubro: Rubro
+        description: Descripción
+        type: Tipo
+      purchase_invoice:
+        invoice_type: 'Tipo'
+        destination_type: 'Venta/Consumo'
+        retencion: 'Retenciones'
+        other_concepts: 'Otros conceptos'
+        iva: 'IVA'
+        subtotal: 'Subtotal'
+        total: 'Total'
+        number: 'Número'
+        sales: 'Ventas'
+        use: 'Consumo'
+      sale_history:
+        price: Precio de venta
+        firm_id: "Empresa"
+      sale_invoice:
+       invoice_type: 'Tipo de factura'
+       number: 'Número'
+       iva: 'IVA'
+       subtotal: 'Subtotal'
+       total: 'Total'
+       retencion: 'Retenciones'
+       other_concepts: 'Otros conceptos'
+      user:
+        name: 'Nombre'
+        lastname: 'Apellido'
+        email: 'Correo'
+        password: 'Contraseña'
+        password_confirmation: 'Confirmación'
+        roles:
+          one: 'Perfil'
+          other: 'Perfiles'
+        remember_me: 'Recordarme'
+        
+  errors:
+    title: 'Error'
+    access_denied: 'No tiene permisos para acceder al contenido'
+        
+  label:
+    'yes': 'Si'
+    'no': 'No'
+    close: 'Cerrar'
+    delete: 'Eliminar'
+    edit: 'Editar'
+    list: 'Listado'
+    loading: 'Cargando...'
+    saving: 'Guardando...'
+    new: 'Nuevo'
+    search: 'Buscar'
+    searchinv: 'Buscando'
+    show: 'Ver'
+    back: 'Volver'
+    subtotal: 'Subtotal'
+    iva_tot: 'Total IVA'
+    other_conc_tot: 'Total otros conceptos'
+    total: 'Total'
+    
+  menu:
+    actions:
+      logout: 'Salir de la aplicación'
+    users: 'Usuarios'
+    firms: 'Empresas'
+    products: 'Productos'
+    monthly_movements: 'Facturación mensual'
+    
+  messages:
+    confirmation: '¿Está seguro?'
+    
+  view:
+    generic:
+      empty_index:
+        html: 'No hay ningún elemento por el momento'
+      empty_search:
+        title:
+          html: 'La búsqueda de <span class="label label-inverse">%{search}</span> no obtuvo ningún resultado.'
+    contacts:
+      index_title: 'Contactos'
+      show_title: 'Detalle de %{contact} de %{firm}'
+      new_title: 'Nuevo contacto de %{firm}'
+      edit_title: 'Editando %{contact} de %{firm}'
+      correctly_created: 'Contacto agregado correctamente.'
+      correctly_updated: 'Contacto actualizado correctamente.'
+      stale_object_error: 'El contacta no pudo ser actualizado, intente nuevamente.'
+      empty_index:
+        html: 'No se ha creado ningun contacto hasta el momento, si quiere puede hacerlo desde el botón <span class="label label-info">Nuevo contacto</span>'
+      add_contact: 'Agregar contacto'
+      edit_contact: 'Editar contacto'
+      contact: 'Contacto'
+      save_contact: 'Guardar contacto'
+    firms:
+      index_title: 'Empresas'
+      show_title: 'Información de %{firm}'
+      show:
+        contact_mediums: 'Medios de contacto:'
+        we_buy: 'Compramos'
+        we_sell: 'Vendemos'
+      new_title: 'Nueva empresa'
+      edit_title: 'Editando %{firm}'
+      correctly_created: 'Empresa agregada correctamente.'
+      correctly_updated: 'Empresa actualizada correctamente.'
+      stale_object_error: 'La empresa no pudo ser actualizada, intente nuevamente.'
+      empty_index:
+        html: 'No se ha creado ninguna empresa hasta el momento, si quiere puede hacerlo desde el botón <span class="label">Agregar empresa</span>'
+      add_firm: 'Agregar empresa'
+      edit_firm: 'Editar empresa'
+      save_firm: 'Guardar empresa'
+    interests:
+      new:
+        sale_firm_title: 'Vender otro producto'
+        sale_product_title: 'Vender "%{product}" a otra empresa'
+        sale_this_product: 'Vender este producto'
+        sale_to_this_firm: 'Vender a esta empresa'
+        purchase_product_title: 'Comprar "%{product}" a otra empresa'
+        purchase_firm_title: 'Comprar otro producto'
+        purchase_this_product: 'Comprar este producto'
+        purchase_to_this_firm: 'Comprar a esta empresa'
+      destroy:
+        tooltip: '¿Esta seguro que desea eliminar este producto de esta empresa?'
+    monthly_movements:
+      index_title: 'Facturación Mensual'
+      show_title: 'Movimientos de %{month} de %{year}'
+      new_title: 'Nueva facturación mensual'
+      edit_title: 'Edición de la facturación del mes %{month}'
+      correctly_created: 'Facturación mensual agregado correctamente.'
+      correctly_updated: 'Facturación mensual actualizado correctamente.'
+      stale_object_error: 'La facturación mensual no pudo ser actualizada, intente nuevamente.'
+      empty_index:
+        html: 'No se ha creado ninguna facturación mensual hasta el momento, si quiere puede hacerlo desde el botón <span class="label label-info">Nueva facturación mensual</span>'
+      new_monthly_movement: 'Nueva facturación mensual'
+      edit_monthly_movement:
+      save_monthly_movement: 'Guardar facturacion mensual'
+      status:
+        sent: 'Enviado'
+        finalized: 'Finalizado'
+      show:
+        purchases: 'Compras'
+        sales: 'Ventas'
+        generate_report: 'Generar reporte'
+    purchase_invoices:
+      index_title: 'Compras de %{month} de %{year}'
+      show_title: 'Detalle de factura de compra'
+      new_title: 'Nueva factura de compra de %{month} de %{year}'
+      edit_title: 'Editando la factura de compra del %{date} de %{firm}'
+      correctly_created: 'Factura de compra agregada correctamente.'
+      correctly_updated: 'Factura de compra actualizada correctamente.'
+      stale_object_error: 'La factura de compra no pudo ser actualizada, intente nuevamente.'
+      empty_index:
+        html: 'No se ha creado ninguna factura de compra hasta el momento, si quiere puede hacerlo desde el botón <span class="label label-info">Nueva factura de compra</span>'
+      index:
+        delete_confirm: 'Estás a punto de eliminar una factura, ¿estás seguro que deseas hacer esto?'
+        back_to_monthly_movement: "Volver a movimientos de %{month}"
+      add_purchase_invoice: 'Nueva factura de compra'
+      edit_purchase_invoice: 'Editar factura de compra'
+      save_purchase_invoice: 'Guardar factura de compra'
+    products:
+      index_title: 'Lista de productos'
+      show_title: 'Detalle de %{product}'
+      new_title: 'Nuevo producto'
+      edit_title: 'Editando %{product}'
+      correctly_created: 'Producto agregado correctamente.'
+      correctly_updated: 'Producto actualizado correctamente.'
+      stale_object_error: 'El producto no pudo ser actualizado, intente nuevamente.'
+      empty_index:
+        html: 'No se ha cargado ningun producto hasta el momento, si quiere puede hacerlo desde el botón <span class="label label-info">Nuevo producto</span>'
+      save: 'Guardar producto'
+      show:
+        created_by: 'Cargado por: '
+        purchase_prices: 'Precios de compra: '
+        sold_to: 'Vendido a: '
+      show_historic: 'Ver historial'
+    purchase_interests:
+      index_title: 'Historial de precios de %{product} para %{firm}'
+      show_title: '%{product}'
+      new_title_firm: 'Nuevo precio para %{product} para %{firm}'
+      new_title: 'Nuevo precio para %{product}'
+      edit_title: 'Editando el precio de %{product} para %{firm}'
+      correctly_created: 'Precio agregado correctamente.'
+      correctly_updated: 'Precio actualizado correctamente.'
+      stale_object_error: 'El producto no pudo ser actualizado, intente nuevamente.'
+      empty_index:
+        html: 'No se ha creado ningun precio hasta el momento, si quiere puede hacerlo desde el botón <span class="label label-info">Comprar a otra empresa</span>'
+      update_price: 'Actualizar precio'
+      add_new_price: 'Comprar a otra empresa'
+      save_price: 'Guardar precio'
+      responsible_user: "Usuario responsable"
+      show:
+        bought_to: 'Comprado a la empresa'
+        the_day: 'El día'
+    sale_interest:
+      index_title: 'Historial de precios de ventas de %{product}'
+      show_title: '%{product}'
+      new_title: 'Nuevo precio de venta para %{product}'
+      edit_title: 'Editando el precio de venta de %{product}'
+      correctly_created: 'Precio de venta agregado correctamente.'
+      correctly_updated: 'Precio de venta actualizado correctamente.'
+      stale_object_error: 'El precio de venta no pudo ser actualizado, intente nuevamente.'
+      empty_index:
+        html: 'No se ha creado ningun precio de venta hasta el momento, si quiere puede hacerlo desde el botón <span class="label label-info">Vender a otra empresa</span>'
+      update_price: 'Actualizar precio venta'
+      add_new_price: 'Vender a otra empresa'
+      save_price: 'Guardar precio'
+    sale_invoices:
+      index_title: 'Ventas de %{month} de %{year}'
+      show_title: 'Detalle de factura de venta'
+      new_title: 'Nueva Factura de Venta de %{month} de %{year}'
+      edit_title: 'Editando una factura de ventas de %{firm} '
+      correctly_created: 'Factura de venta agregada correctamente.'
+      correctly_updated: 'Factura de venta actualizada correctamente.'
+      stale_object_error: 'La factura de venta no pudo ser actualizada, intente nuevamente.'
+      empty_index:
+        html: 'No se ha creado ninguna factura de venta hasta el momento, si quiere puede hacerlo desde el botón <span class="label label-info">Nueva factura de venta</span>'
+      index:
+        search:
+          firm: 'Nombre de la empresa'
+          submit: 'Filtrar'
+        delete_confirm: 'Estás a punto de eliminar una factura, ¿estás seguro que deseas hacer esto?'
+        back_to_monthly_movements: 'Volver a movimientos de %{month}'
+        back_to_sales: 'Volver a ventas de %{@month}'
+      update_sale_invoice: 'Actualizar factura de venta'
+      add_sale_invoice: 'Agregar factura de venta'
+      save_sale_invoice: 'Guardar factura'
+    users:
+      index_title: 'Listado de usuarios'
+      show_title: 'Detalle de %{user}'
+      new_title: 'Nuevo usuario'
+      edit_title: 'Modificar %{user}'
+      correctly_created: 'Usuario agregado correctamente.'
+      correctly_updated: 'Usuario actualizado correctamente.'
+      stale_object_error: 'El usuario no pudo ser actualizado, intente nuevamente.'
+      empty_index:
+        html: 'No se ha creado ningún usuario hasta el momento, si quiere puede hacerlo desde el botón <span class="label label-info">Nuevo usuario</span>'
+      new: 'Nuevo usuario'
+      update_profile: 'Actualizar datos'
+      update_password: 'Actualizar contraseña'
+      profile_correctly_updated: 'Actualizaste tus datos correctamente.'
+      edit_profile: 'Editar perfil'
+      roles:
+        admin: 'Administrador'
+        regular: 'Normal'
+    orders:
+      index_title: "Listado de pedidos"
+      show_title: "Pedido nº %{order_number}"
+      new_title: "Nuevo pedido"
+      edit_title: "Editando el pedido %{order_number}"
+      save: "Guardar pedido"
+      show:
+        taken_for: "Tomado por:"
+    items:
+      add_item: "Agregar item"
+      index_title: "Detalle pedido"
+      new_title: "Nuevo item"
+      save_item: "Agregar item"
+    delivers:
+      add_deliver: "Agregar entrega"
+      index_title: "Entregas de %{product}"
+      new_title: "Nueva entrega"
+      save_deliver: "Agregar entrega"
+      view_index: "Ver historial"
