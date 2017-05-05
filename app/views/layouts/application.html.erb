@@ -15,14 +15,10 @@
   <body>
     <%= render 'shared/menu' %>
 
-    <section class="section">
-      <div class="container grid-1280">
-        <% if @title %>
-          <div class="section-title">
-            <h1><%= @title %></h1>
-          </div>
-        <% end %>
+    <%= render 'shared/titles' %>
 
+    <section class="section section-content">
+      <div class="container grid-1280">
         <div class="columns">
           <div class="column col-12">
             <%= yield %>

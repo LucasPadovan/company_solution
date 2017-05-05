@@ -11,22 +11,22 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :firm_name %>
+  <div class="form-group">
+    <%= form.label :name, class: 'from-label' %>
+    <%= form.text_field :name, id: :firm_name, class: 'form-input' %>
   </div>
 
-  <div class="field">
-    <%= form.label :cuit %>
-    <%= form.text_field :cuit, id: :firm_cuit %>
+  <div class="form-group">
+    <%= form.label :cuit, class: 'from-label' %>
+    <%= form.text_field :cuit, id: :firm_cuit, class: 'form-input' %>
   </div>
 
-  <div class="field">
-    <%= form.label :afip_condition %>
-    <%= form.text_field :afip_condition, id: :firm_afip_condition %>
+  <div class="form-group">
+    <%= form.label :afip_condition, class: 'from-label' %>
+    <%= form.text_field :afip_condition, id: :firm_afip_condition, class: 'form-input' %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Crear empresa', class: 'btn btn-primary' %>
   </div>
 <% end %>

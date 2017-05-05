@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <div class="container">
-  <table>
+  <table class="table table-striped table-hover">
     <thead>
       <tr>
         <th>Name</th>
@@ -17,9 +17,11 @@
           <td><%= firm.name %></td>
           <td><%= firm.cuit %></td>
           <td><%= firm.afip_condition %></td>
-          <td><%= link_to 'Show', firm %></td>
-          <td><%= link_to 'Edit', edit_firm_path(firm) %></td>
-          <td><%= link_to 'Destroy', firm, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td>
+            <%= link_to 'Show', firm %>
+            <%= link_to 'Edit', edit_firm_path(firm) %>
+            <%= link_to 'Destroy', firm, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </td>
         </tr>
       <% end %>
     </tbody>

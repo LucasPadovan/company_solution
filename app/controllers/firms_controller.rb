@@ -4,28 +4,46 @@ class FirmsController < ApplicationController
   # GET /firms
   # GET /firms.json
   def index
-    @title = 'Empresas'
     @firms = Firm.all
+    @information = {
+        title: 'Empresas'
+    }
   end
 
   # GET /firms/1
   # GET /firms/1.json
   def show
+    @information = {
+        title: 'Empresas',
+        subtitle: @firm.name
+    }
   end
 
   # GET /firms/new
   def new
     @firm = Firm.new
+    @information = {
+        title: 'Empresas',
+        subtitle: 'Crear nueva'
+    }
   end
 
   # GET /firms/1/edit
   def edit
+    @information = {
+        title: 'Empresas',
+        subtitle: "Editar #{@firm.name}"
+    }
   end
 
   # POST /firms
   # POST /firms.json
   def create
     @firm = Firm.new(firm_params)
+    @information = {
+        title: 'Empresas',
+        subtitle: 'Crear nueva'
+    }
 
     respond_to do |format|
       if @firm.save
@@ -41,6 +59,10 @@ class FirmsController < ApplicationController
   # PATCH/PUT /firms/1
   # PATCH/PUT /firms/1.json
   def update
+    @information = {
+        title: 'Empresas',
+        subtitle: "Editar #{@firm.name}"
+    }
     respond_to do |format|
       if @firm.update(firm_params)
         format.html { redirect_to @firm, notice: 'Firm was successfully updated.' }
@@ -56,6 +78,10 @@ class FirmsController < ApplicationController
   # DELETE /firms/1.json
   def destroy
     @firm.destroy
+    @information = {
+        title: 'Empresas',
+        subtitle: "Borrar #{@firm.name}"
+    }
     respond_to do |format|
       format.html { redirect_to firms_url, notice: 'Firm was successfully destroyed.' }
       format.json { head :no_content }

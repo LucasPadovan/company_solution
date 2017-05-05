@@ -76,26 +76,50 @@
 @import "_variables";
 
 .section.section-header {
-  background-color: $grey-300;
-  padding: 3px 0;
+  position: relative;
+  margin-right: 50px;
+  padding: 1px 30px;
+  border-radius: 0 15px 0 0;
+  color: #ffffff;
+  //font-family: FontAwesome;
+  text-shadow: 0 0 25px #ff002f;
+  background-image: linear-gradient(right , #85001a 0%, #a4001f 69%);
+  background-image: -moz-linear-gradient(right, #85001a 0%, #a4001f 69%);
+  background-image: -webkit-linear-gradient(right, #85001a 0%, #a4001f 69%);
+  box-shadow: -3px 3px 10px rgba(0, 0, 0, .5);
 
   .btn.btn-link {
+    color: white;
     font-weight: 700;
   }
   .btn.btn-link:hover {
-    border: 1px solid $light-blue-900;
+    border: 1px solid white;
+    color: $red-400;
   }
 
   .navbar {
     .navbar-brand {
-      color: $red-600;
+      color: white;
       font-size: 3rem;
       font-weight: 700;
       transition: .2s all ease-in-out;
 
       &:hover, &:active {
-        color: $red-900;
+        color: $red-100;
       }
     }
   }
+}
+
+.section.section-title {
+  border-radius: 0 0 0 15px;
+  color: #ffffff;
+  margin-left: 50px;
+  padding: 1px 30px;
+  //font-family: FontAwesome;
+  text-shadow: 0px 0px 25px #ff002f;
+  background-image: linear-gradient(right , #85001a 0%, #a4001f 69%);
+  background-image: -moz-linear-gradient(right , #85001a 0%, #a4001f 69%);
+  background-image: -webkit-linear-gradient(right , #85001a 0%, #a4001f 69%);
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, .5);
 }

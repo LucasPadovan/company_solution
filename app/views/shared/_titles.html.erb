@@ -1,0 +1,10 @@
+<% if @information %>
+  <div class="section section-title">
+    <h1>
+      <%= @information[:title] %>
+      <% if @information[:subtitle] %>
+        <small>- <%= @information[:subtitle] %></small>
+      <% end %>
+    </h1>
+  </div>
+<% end %>
