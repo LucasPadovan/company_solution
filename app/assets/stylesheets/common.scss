@@ -1,91 +1,29 @@
-//@import "mixins";
-//
-//footer.alert {
-//  position: fixed;
-//  bottom: 0em;
-//  left: 4em;
-//  right: 4em;
-//}
-//
-//form {
-//  .alert {
-//    margin: 0px 20px;
-//  }
-//}
-//
-//html, body {
-//  background-color: #eee;
-//}
-//
-//#loading_caption {
-//  position: fixed;
-//  top: 0%;
-//  left: 50%;
-//  width: 10em;
-//  margin: 0em 0em 0em -5em;
-//  padding: .25em 1em;
-//  text-align: center;
-//  line-height: 30px;
-//  z-index: 1100;
-//}
-//
-//.iconic {
-//  font-family: "IconicStroke";
-//  display: inline-block;
-//  font-size: 1.25em;
-//  text-decoration: none !important;
-//}
-//
-//.logged_in {
-//  .container > .content {
-//    background-color: #fff;
-//    padding-top: 20px;
-//    @include border-radius(0 0 6px 6px);
-//    @include box-shadow(0, 1px, 2px, rgba(0,0,0,.15));
-//  }
-//
-//  .form-inputs {
-//    padding: 6px 20px 18px;
-//  }
-//}
-//
-//.logged_in[data-action="index"] {
-//  .pagination, .page-entries {
-//    margin-right: 20px;
-//  }
-//
-//  .page-entries {
-//    font-size: .8em;
-//    margin-top: -18px;
-//  }
-//}
-//
-//.logged_in[data-action="index"], .logged_in[data-action="show"] {
-//  .form-actions {
-//    padding-left: 20px;
-//  }
-//
-//  .readonly-data {
-//    margin: 0px 20px;
-//  }
-//}
-//
-//.ui-datepicker-trigger {
-//  display: none;
-//}
+@import "_mixins";
 @import "_variables";
 
+@font-face {
+  font-family: 'PTSansBold';
+  src: url($ptSansBold);
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'PTSans';
+  src: url($ptSans);
+  font-weight: normal;
+  font-style: normal;
+}
+
 .section.section-header {
+  @include background-gradient($red-a800, $red-900, right);
+
   position: relative;
   margin-right: 50px;
   padding: 1px 30px;
   border-radius: 0 15px 0 0;
   color: #ffffff;
-  //font-family: FontAwesome;
+  font-family: PTSansBold;
   text-shadow: 0 0 25px #ff002f;
-  background-image: linear-gradient(right , #85001a 0%, #a4001f 69%);
-  background-image: -moz-linear-gradient(right, #85001a 0%, #a4001f 69%);
-  background-image: -webkit-linear-gradient(right, #85001a 0%, #a4001f 69%);
   box-shadow: -3px 3px 10px rgba(0, 0, 0, .5);
 
   .btn.btn-link {
@@ -101,6 +39,7 @@
     .navbar-brand {
       color: white;
       font-size: 3rem;
+      font-stretch: semi-expanded;
       font-weight: 700;
       transition: .2s all ease-in-out;
 
@@ -112,14 +51,13 @@
 }
 
 .section.section-title {
+  @include background-gradient($red-a800, $red-900, right);
+
   border-radius: 0 0 0 15px;
   color: #ffffff;
   margin-left: 50px;
   padding: 1px 30px;
-  //font-family: FontAwesome;
+  font-family: PTSansBold;
   text-shadow: 0px 0px 25px #ff002f;
-  background-image: linear-gradient(right , #85001a 0%, #a4001f 69%);
-  background-image: -moz-linear-gradient(right , #85001a 0%, #a4001f 69%);
-  background-image: -webkit-linear-gradient(right , #85001a 0%, #a4001f 69%);
   box-shadow: 3px 3px 10px rgba(0, 0, 0, .5);
 }
