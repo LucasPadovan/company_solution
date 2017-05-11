@@ -1,10 +1,15 @@
-<% if @information %>
-  <div class="section section-title">
-    <h1>
+<div class="section section-title">
+  <% if @information %>
+    <h1 class="section-title__header">
       <%= @information[:title] %>
       <% if @information[:subtitle] %>
         <small>- <%= @information[:subtitle] %></small>
       <% end %>
     </h1>
+  <% end %>
+
+  <div class="input-group input-inline section-title__search">
+    <input class="form-input" type="text" placeholder="Buscar" />
+    <button class="btn btn-primary input-group-btn">Buscar</button>
   </div>
-<% end %>
+</div>

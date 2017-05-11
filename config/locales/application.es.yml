@@ -1,5 +1,5 @@
 'es':
-  app_name: 'CompanyManager'
+  app_name: 'Macsel'
   
   attributes:
     created_at: 'Creación'
@@ -165,7 +165,9 @@
     
   menu:
     actions:
-      logout: 'Salir de la aplicación'
+      login: 'Ingresar'
+      logout: 'Salir'
+      register: 'Registrarse'
     users: 'Usuarios'
     firms: 'Empresas'
     products: 'Productos'
