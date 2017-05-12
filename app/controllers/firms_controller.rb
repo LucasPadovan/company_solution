@@ -24,7 +24,7 @@ class FirmsController < ApplicationController
     @firm = Firm.new
     @information = {
         title: 'Empresas',
-        subtitle: 'Crear nueva'
+        subtitle: 'Nueva empresa'
     }
   end
 
@@ -42,7 +42,7 @@ class FirmsController < ApplicationController
     @firm = Firm.new(firm_params)
     @information = {
         title: 'Empresas',
-        subtitle: 'Crear nueva'
+        subtitle: 'Nueva empresa'
     }
 
     respond_to do |format|
