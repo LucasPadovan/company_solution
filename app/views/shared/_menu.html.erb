@@ -1,14 +1,20 @@
 <section class="section section-header">
   <section class="grid-header container grid-960">
     <nav class="navbar">
-      <section class="navbar-section">
+      <section class="navbar-section navbar-section--primary">
         <a href="<%= root_path %>" class="navbar-brand mr-10"><%= t 'app_name' %></a>
         <a href="<%= firms_path %>" class="btn btn-link"><%= t 'menu.firms' %></a>
         <a href="<%= firms_path %>" class="btn btn-link"><%= t 'menu.monthly_movements' %></a>
         <a href="<%= firms_path %>" class="btn btn-link"><%= t 'menu.products' %></a>
         <a href="<%= firms_path %>" class="btn btn-link"><%= t 'menu.users' %></a>
+      </section>
+      <section class="navbar-section navbar-section--secondary">
         <a href="<%=  new_user_registration_path %>" class="btn btn-link"><%= t 'menu.actions.register' %></a>
-        <a href="<%=  new_user_session_path %>" class="btn btn-link"><%= t 'menu.actions.login' %></a>
+        <% if current_user %>
+          <%= link_to t('menu.actions.logout'), destroy_user_session_path, method: :delete, class: 'btn btn-link' %>
+        <% else%>
+          <%= link_to t('menu.actions.login'), new_user_session_path, class: 'btn btn-link' %>
+        <% end%>
       </section>
     </nav>
   </section>

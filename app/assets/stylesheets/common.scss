@@ -17,13 +17,14 @@
 .section.section-header {
   @include background-gradient($red-a800, $red-900, right);
 
+  border-radius: 0 15px 0 0;
+  box-shadow: -3px 3px 10px rgba(0, 0, 0, .5);
+  color: #ffffff;
+  display: flex;
+  font-family: PTSansBold;
   margin-right: 50px;
   padding: 1px 30px;
-  border-radius: 0 15px 0 0;
-  color: #ffffff;
-  font-family: PTSansBold;
   text-shadow: 0 0 25px #ff002f;
-  box-shadow: -3px 3px 10px rgba(0, 0, 0, .5);
 
   .btn.btn-link {
     color: white;
@@ -47,8 +48,11 @@
       }
     }
 
-    .navbar-section:last-child {
+    .navbar-section--primary {
       justify-content: flex-start;
+    }
+    .navbar-section--secondary {
+      justify-content: flex-end;
     }
   }
 }
@@ -66,11 +70,19 @@
   display: flex;
   justify-content: space-between;
 
-  .section-title__header {
+  .section-title__header{
     display: inline-flex;
+    margin-bottom: 5px;
   }
 
-  .section-title__search {
+  .section-title__header-subtitle {
+    display: inline-flex;
+    font-size: 30px;
+    line-height: 60px;
+    margin-bottom: 0;
+  }
+
+.section-title__search {
     margin-top: 17px;
   }
 }

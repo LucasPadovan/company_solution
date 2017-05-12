@@ -2,10 +2,12 @@
   <% if @information %>
     <h1 class="section-title__header">
       <%= @information[:title] %>
-      <% if @information[:subtitle] %>
-        <small>- <%= @information[:subtitle] %></small>
-      <% end %>
     </h1>
+    <% if @information[:subtitle] %>
+      <h2 class="section-title__header-subtitle">
+        <%= @information[:subtitle] %>
+      </h2>
+    <% end %>
   <% end %>
 
   <div class="input-group input-inline section-title__search">
