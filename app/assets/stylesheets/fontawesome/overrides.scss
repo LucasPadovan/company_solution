@@ -1,0 +1,12 @@
+@import "../variables";
+
+a.fa {
+  color: $grey-600;
+  transition: $transition-200;
+
+  &:hover,
+  &:active {
+    color: $grey-900;
+    text-decoration: none;
+  }
+}

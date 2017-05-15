@@ -7,7 +7,7 @@
         <th><%= t 'activerecord.attributes.firm.name' %></th>
         <th><%= t 'activerecord.attributes.firm.cuit' %></th>
         <th><%= t 'activerecord.attributes.firm.afip_cond' %></th>
-        <th colspan="3"></th>
+        <th></th>
       </tr>
     </thead>
 
@@ -18,9 +18,9 @@
           <td><%= firm.cuit %></td>
           <td><%= firm.afip_condition %></td>
           <td>
-            <%= link_to 'Show', firm %>
-            <%= link_to 'Edit', edit_firm_path(firm) %>
-            <%= link_to 'Destroy', firm, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <%= link_to '', firm, class: 'fa fa-2x fa-info-circle' %>
+            <%= link_to '', edit_firm_path(firm), class: 'fa fa-2x fa-pencil-square' %>
+            <%= link_to '', firm, method: :delete, data: { confirm: 'Are you sure?' }, class: 'fa fa-2x fa-trash' %>
           </td>
         </tr>
       <% end %>
@@ -29,5 +29,5 @@
 
   <br>
 
-  <%= link_to 'New Firm', new_firm_path, class: 'btn btn-primary' %>
+  <%= link_to t('view.firms.new_title'), new_firm_path, class: 'btn btn-primary' %>
 </div>

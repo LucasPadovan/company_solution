@@ -29,6 +29,7 @@
   .btn.btn-link {
     color: white;
     font-weight: 700;
+    transition: $transition-200;
   }
   .btn.btn-link:hover {
     border: 1px solid white;
@@ -41,7 +42,7 @@
       font-size: 3rem;
       font-stretch: semi-expanded;
       font-weight: 700;
-      transition: .2s all ease-in-out;
+      transition: $transition-200;
 
       &:hover, &:active {
         color: $red-100;
