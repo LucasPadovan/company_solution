@@ -103,10 +103,13 @@
         sale_price: Precio de venta
         firm_id: "Empresa"
       product:
-        name: Nombre
-        rubro: Rubro
-        description: Descripción
-        type: Tipo
+        area: 'Rubro'
+        current_stock: 'Stock actual'
+        description: 'Descripción'
+        initial_stock: 'Stock inicial'
+        name: 'Nombre'
+        type: 'Tipo'
+        unit: 'Unidad'
       purchase_invoice:
         invoice_type: 'Tipo'
         destination_type: 'Venta/Consumo'
