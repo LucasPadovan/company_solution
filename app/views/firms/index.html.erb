@@ -20,7 +20,7 @@
           <td>
             <%= link_to '', firm, class: 'fa fa-2x fa-info-circle' %>
             <%= link_to '', edit_firm_path(firm), class: 'fa fa-2x fa-pencil-square' %>
-            <%= link_to '', firm, method: :delete, data: { confirm: 'Are you sure?' }, class: 'fa fa-2x fa-trash' %>
+            <%= link_to '', firm, method: :delete, data: { confirm: t('messages.confirmation') }, class: 'fa fa-2x fa-trash' %>
           </td>
         </tr>
       <% end %>

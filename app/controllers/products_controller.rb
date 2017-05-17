@@ -1,49 +1,34 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :set_information
 
   # GET /products
   # GET /products.json
   def index
     @products = Product.all
-    @information = {
-        title: 'Productos'
-    }
   end
 
   # GET /products/1
   # GET /products/1.json
   def show
-    @information = {
-        title: 'Productos',
-        subtitle: @product.name
-    }
+    @information[:subtitle] = @product.name
   end
 
   # GET /products/new
   def new
     @product = Product.new
-    @information = {
-        title: 'Productos',
-        subtitle: 'Nuevo producto'
-    }
+    @information[:subtitle] = t('view.products.new_title')
   end
 
   # GET /products/1/edit
   def edit
-    @information = {
-        title: 'Productos',
-        subtitle: "Editar #{@product.name}}"
-    }
+    @information[:subtitle] = t('view.products.edit_title', product: @product.name)
   end
 
   # POST /products
   # POST /products.json
   def create
     @product = Product.new(product_params)
-    @information = {
-        title: 'Productos',
-        subtitle: 'Nuevo producto'
-    }
 
     respond_to do |format|
       if @product.save
@@ -59,11 +44,6 @@ class ProductsController < ApplicationController
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
   def update
-    @information = {
-        title: 'Productos',
-        subtitle: "Editar #{@product.name}}"
-    }
-
     respond_to do |format|
       if @product.update(product_params)
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
@@ -79,10 +59,6 @@ class ProductsController < ApplicationController
   # DELETE /products/1.json
   def destroy
     @product.destroy
-    @information = {
-        title: 'Productos',
-        subtitle: "Eliminar #{@product.name}}"
-    }
 
     respond_to do |format|
       format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
@@ -99,5 +75,9 @@ class ProductsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
       params.require(:product).permit(:name, :description, :area, :user_id, :type, :unit, :initial_stock, :current_stock)
+    end
+
+    def set_information
+      @information = { title: t('activerecord.models.product.other') }
     end
 end
