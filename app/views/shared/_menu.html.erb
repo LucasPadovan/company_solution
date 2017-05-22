@@ -2,17 +2,17 @@
   <section class="grid-header container grid-960">
     <nav class="navbar">
       <section class="navbar-section navbar-section--primary">
-        <a href="<%= root_path %>" class="navbar-brand mr-10"><%= t 'app_name' %></a>
-        <a href="<%= firms_path %>" class="btn btn-link"><%= t 'menu.firms' %></a>
-        <a href="<%= firms_path %>" class="btn btn-link"><%= t 'menu.monthly_movements' %></a>
-        <a href="<%= products_path %>" class="btn btn-link"><%= t 'menu.products' %></a>
-        <a href="<%= firms_path %>" class="btn btn-link"><%= t 'menu.users' %></a>
+        <%= link_to t('app_name'), root_path, class: 'navbar-brand mr-10' %>
+        <%= link_to t('menu.firms'), firms_path, class: 'btn btn-link' %>
+        <%= link_to t('menu.monthly_movements'), firms_path, class: 'btn btn-link' %>
+        <%= link_to t('menu.products'), products_path, class: 'btn btn-link' %>
+        <%= link_to t('menu.users'), firms_path, class: 'btn btn-link' %>
       </section>
       <section class="navbar-section navbar-section--secondary">
-        <a href="<%=  new_user_registration_path %>" class="btn btn-link"><%= t 'menu.actions.register' %></a>
         <% if current_user %>
           <%= link_to t('menu.actions.logout'), destroy_user_session_path, method: :delete, class: 'btn btn-link' %>
         <% else%>
+          <%= link_to t('menu.actions.register'), new_user_registration_path, class: 'btn btn-link' %>
           <%= link_to t('menu.actions.login'), new_user_session_path, class: 'btn btn-link' %>
         <% end%>
       </section>

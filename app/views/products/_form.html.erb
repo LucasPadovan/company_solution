@@ -11,47 +11,47 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :product_name %>
+  <div class="form-group">
+    <%= form.label :name, class: 'from-label' %>
+    <%= form.text_field :name, id: :product_name, class: 'form-input' %>
   </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description, id: :product_description %>
+  <div class="form-group">
+    <%= form.label :description, class: 'from-label' %>
+    <%= form.text_area :description, id: :product_description, class: 'form-input' %>
   </div>
 
-  <div class="field">
-    <%= form.label :area %>
-    <%= form.text_field :area, id: :product_area %>
+  <div class="form-group">
+    <%= form.label :area, class: 'from-label' %>
+    <%= form.text_field :area, id: :product_area, class: 'form-input' %>
   </div>
 
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id, id: :product_user_id %>
+  <div class="form-group">
+    <%= form.label :user_id, class: 'from-label' %>
+    <%= form.text_field :user_id, id: :product_user_id, class: 'form-input' %>
   </div>
 
-  <div class="field">
-    <%= form.label :type %>
-    <%= form.text_field :type, id: :product_type %>
+  <div class="form-group">
+    <%= form.label :type, class: 'from-label' %>
+    <%= form.text_field :type, id: :product_type, class: 'form-input' %>
   </div>
 
-  <div class="field">
-    <%= form.label :unit %>
-    <%= form.text_field :unit, id: :product_unit %>
+  <div class="form-group">
+    <%= form.label :unit, class: 'from-label' %>
+    <%= form.text_field :unit, id: :product_unit, class: 'form-input' %>
   </div>
 
-  <div class="field">
-    <%= form.label :initial_stock %>
-    <%= form.text_field :initial_stock, id: :product_initial_stock %>
+  <div class="form-group">
+    <%= form.label :initial_stock, class: 'from-label' %>
+    <%= form.text_field :initial_stock, id: :product_initial_stock, class: 'form-input' %>
   </div>
 
-  <div class="field">
-    <%= form.label :current_stock %>
-    <%= form.text_field :current_stock, id: :product_current_stock %>
+  <div class="form-group">
+    <%= form.label :current_stock, class: 'from-label' %>
+    <%= form.text_field :current_stock, id: :product_current_stock, class: 'form-input' %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit t('view.products.save'), class: 'btn btn-primary' %>
   </div>
 <% end %>

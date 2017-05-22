@@ -1,11 +1,11 @@
 'es':
   app_name: 'Macsel'
-  
+
   attributes:
     created_at: 'Creación'
     updated_at: 'Actualización'
     date: 'Fecha'
-    
+
   activerecord:
     models:
       contact:
@@ -142,11 +142,11 @@
           one: 'Perfil'
           other: 'Perfiles'
         remember_me: 'Recordarme'
-        
+
   errors:
     title: 'Error'
     access_denied: 'No tiene permisos para acceder al contenido'
-        
+
   label:
     'yes': 'Si'
     'no': 'No'
@@ -369,3 +369,9 @@
       new_title: "Nueva entrega"
       save_deliver: "Agregar entrega"
       view_index: "Ver historial"
+
+  titles:
+    firms: "Empresas"
+    products: "Productos"
+    registrations: "Registrar nuevo usuario"
+    sessions: "Ingresar al sitio"
