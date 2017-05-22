@@ -17,7 +17,7 @@
 
 <p>
   <strong>User:</strong>
-  <%= @product.user %>
+  <%= @user.full_name%>
 </p>
 
 <p>
@@ -26,18 +26,13 @@
 </p>
 
 <p>
-  <strong>Unit:</strong>
-  <%= @product.unit %>
-</p>
-
-<p>
   <strong>Initial stock:</strong>
-  <%= @product.initial_stock %>
+  <%= @product.initial_stock_with_unit %>
 </p>
 
 <p>
   <strong>Current stock:</strong>
-  <%= @product.current_stock %>
+  <%= @product.current_stock_with_unit %>
 </p>
 
 <%= link_to '', edit_product_path(@product), class: 'fa fa-2x fa-pencil-square' %> |
