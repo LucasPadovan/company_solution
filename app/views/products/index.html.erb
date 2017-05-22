@@ -8,7 +8,6 @@
         <th><%= Product.human_attribute_name :description %></th>
         <th><%= Product.human_attribute_name :area %></th>
         <th><%= Product.human_attribute_name :type %></th>
-        <th><%= Product.human_attribute_name :unit %></th>
         <th><%= Product.human_attribute_name :initial_stock %></th>
         <th><%= Product.human_attribute_name :current_stock %></th>
         <th></th>
@@ -22,9 +21,8 @@
           <td><%= product.description %></td>
           <td><%= product.area %></td>
           <td><%= product.type %></td>
-          <td><%= product.unit %></td>
-          <td><%= product.initial_stock %></td>
-          <td><%= product.current_stock %></td>
+          <td><%= product.initial_stock_with_unit %></td>
+          <td><%= product.current_stock_with_unit %></td>
           <td>
             <%= link_to '', product, class: 'fa fa-2x fa-info-circle' %>
             <%= link_to '', edit_product_path(product), class: 'fa fa-2x fa-pencil-square' %>
