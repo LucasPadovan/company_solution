@@ -1,0 +1,2 @@
+class ComposedProduct < Product
+end

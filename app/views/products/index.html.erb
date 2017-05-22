@@ -20,13 +20,13 @@
           <td><%= product.name %></td>
           <td><%= product.description %></td>
           <td><%= product.area %></td>
-          <td><%= product.type %></td>
+          <td><%= product.type_to_show %></td>
           <td><%= product.initial_stock_with_unit %></td>
           <td><%= product.current_stock_with_unit %></td>
           <td>
-            <%= link_to '', product, class: 'fa fa-2x fa-info-circle' %>
+            <%= link_to '', product_path(product), class: 'fa fa-2x fa-info-circle' %>
             <%= link_to '', edit_product_path(product), class: 'fa fa-2x fa-pencil-square' %>
-            <%= link_to '', product, method: :delete, data: { confirm: 'Are you sure?' }, class: 'fa fa-2x fa-trash' %>
+            <%= link_to '', product_path(product), method: :delete, data: { confirm: 'Are you sure?' }, class: 'fa fa-2x fa-trash' %>
           </td>
         </tr>
       <% end %>
