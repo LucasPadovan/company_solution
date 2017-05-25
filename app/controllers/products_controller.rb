@@ -18,11 +18,13 @@ class ProductsController < ApplicationController
   def new
     @product = Product.new
     @information[:subtitle] = t('view.products.new_title')
+    @information[:form_url] = new_product_path
   end
 
   # GET /products/1/edit
   def edit
     @information[:subtitle] = t('view.products.edit_title', product: @product.name)
+    @information[:form_url] = product_path
   end
 
   # POST /products

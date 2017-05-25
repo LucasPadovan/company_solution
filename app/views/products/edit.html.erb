@@ -1,4 +1,4 @@
 <%= render 'form', product: @product %>
 
-<%= link_to '', @product, class: 'fa fa-2x fa-info-circle' %> |
+<%= link_to '', product_path(@product), class: 'fa fa-2x fa-info-circle' %> |
 <%= link_to t('label.back'), products_path %>
