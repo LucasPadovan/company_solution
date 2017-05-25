@@ -1,0 +1,25 @@
+<table class="table table-striped table-hover mar-bottom-3">
+  <thead>
+    <tr>
+      <th><%= Recipe.human_attribute_name :name %></th>
+      <th><%= Recipe.human_attribute_name :description %></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @recipes.each do |recipe| %>
+      <tr>
+        <td><%= recipe.name %></td>
+        <td><%= recipe.description %></td>
+        <td>
+          <%= link_to '', recipe, class: 'fa fa-2x fa-info-circle'  %>
+          <%= link_to '', edit_recipe_path(recipe), class: 'fa fa-2x fa-pencil-square' %>
+          <%= link_to '', recipe, method: :delete, data: { confirm: t('messages.confirmation') }, class: 'fa fa-2x fa-trash' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('view.recipes.new_title'), new_recipe_path, class: 'btn btn-primary'  %>

@@ -1,0 +1,19 @@
+<%= render 'shared/basic_navigation', navigation: {
+  back: recipes_path, edit: edit_recipe_path(@recipe)
+} %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @recipe.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @recipe.description %>
+</p>
+
+<p>
+  <strong>Product:</strong>
+  <%= @recipe.product %>
+</p>
+
