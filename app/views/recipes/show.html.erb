@@ -3,17 +3,17 @@
 } %>
 
 <p>
-  <strong>Name:</strong>
+  <strong><%= Recipe.human_attribute_name :name %>:</strong>
   <%= @recipe.name %>
 </p>
 
 <p>
-  <strong>Description:</strong>
+  <strong><%= Recipe.human_attribute_name :description %>:</strong>
   <%= @recipe.description %>
 </p>
 
 <p>
-  <strong>Product:</strong>
+  <strong><%= Recipe.human_attribute_name :product %>:</strong>
   <%= @recipe.product %>
 </p>
 
