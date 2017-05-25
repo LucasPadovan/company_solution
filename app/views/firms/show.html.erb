@@ -1,19 +1,18 @@
-<p id="notice"><%= notice %></p>
+<%= render 'shared/basic_navigation', navigation: {
+    back: firms_path, edit: edit_firm_path(@firm)
+} %>
 
 <p>
-  <strong>Name:</strong>
+  <strong><%= Firm.human_attribute_name :name %>:</strong>
   <%= @firm.name %>
 </p>
 
 <p>
-  <strong>Cuit:</strong>
+  <strong><%= Firm.human_attribute_name :cuit %>:</strong>
   <%= @firm.cuit %>
 </p>
 
 <p>
-  <strong>Afip condition:</strong>
+  <strong><%= Firm.human_attribute_name :afip_cond %>:</strong>
   <%= @firm.afip_condition %>
 </p>
-
-<%= link_to '', edit_firm_path(@firm), class: 'fa fa-2x fa-pencil-square' %> |
-<%= link_to t('label.back'), firms_path %>

@@ -1,4 +1,6 @@
-<p id="notice"><%= notice %></p>
+<%= render 'shared/basic_navigation', navigation: {
+    back: products_path, edit: edit_product_path(@product)
+} %>
 
 <p>
   <strong><%= Product.human_attribute_name :name %>:</strong>
@@ -34,6 +36,3 @@
   <strong><%= Product.human_attribute_name :current_stock %>:</strong>
   <%= @product.current_stock_with_unit %>
 </p>
-
-<%= link_to '', edit_product_path(@product), class: 'fa fa-2x fa-pencil-square' %> |
-<%= link_to t('label.back'), products_path %>

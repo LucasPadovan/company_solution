@@ -1,3 +1,5 @@
-<%= render 'form', firm: @firm %>
+<%= render 'shared/basic_navigation', navigation: {
+    back: firms_path
+} %>
 
-<%= link_to t('label.back'), firms_path %>
+<%= render 'form', firm: @firm %>
