@@ -1,33 +1,27 @@
-<p id="notice"><%= notice %></p>
+<table class="table table-striped table-hover mar-bottom-3">
+  <thead>
+    <tr>
+      <th><%= t 'activerecord.attributes.firm.name' %></th>
+      <th><%= t 'activerecord.attributes.firm.cuit' %></th>
+      <th><%= t 'activerecord.attributes.firm.afip_cond' %></th>
+      <th></th>
+    </tr>
+  </thead>
 
-<div class="container">
-  <table class="table table-striped table-hover">
-    <thead>
+  <tbody>
+    <% @firms.each do |firm| %>
       <tr>
-        <th><%= t 'activerecord.attributes.firm.name' %></th>
-        <th><%= t 'activerecord.attributes.firm.cuit' %></th>
-        <th><%= t 'activerecord.attributes.firm.afip_cond' %></th>
-        <th></th>
+        <td><%= firm.name %></td>
+        <td><%= firm.cuit %></td>
+        <td><%= firm.afip_condition %></td>
+        <td>
+          <%= link_to '', firm, class: 'fa fa-2x fa-info-circle' %>
+          <%= link_to '', edit_firm_path(firm), class: 'fa fa-2x fa-pencil-square' %>
+          <%= link_to '', firm, method: :delete, data: { confirm: t('messages.confirmation') }, class: 'fa fa-2x fa-trash' %>
+        </td>
       </tr>
-    </thead>
+    <% end %>
+  </tbody>
+</table>
 
-    <tbody>
-      <% @firms.each do |firm| %>
-        <tr>
-          <td><%= firm.name %></td>
-          <td><%= firm.cuit %></td>
-          <td><%= firm.afip_condition %></td>
-          <td>
-            <%= link_to '', firm, class: 'fa fa-2x fa-info-circle' %>
-            <%= link_to '', edit_firm_path(firm), class: 'fa fa-2x fa-pencil-square' %>
-            <%= link_to '', firm, method: :delete, data: { confirm: t('messages.confirmation') }, class: 'fa fa-2x fa-trash' %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-
-  <br>
-
-  <%= link_to t('view.firms.new_title'), new_firm_path, class: 'btn btn-primary' %>
-</div>
+<%= link_to t('view.firms.new_title'), new_firm_path, class: 'btn btn-primary' %>

@@ -23,8 +23,17 @@
   display: flex;
   font-family: PTSansBold;
   margin-right: 50px;
-  padding: 1px 30px;
   text-shadow: 0 0 25px #ff002f;
+
+  &:after {
+    background-image: radial-gradient(circle at 100% 0, rgba(204,0,0,0) 14px, $red-a800 15px);
+    content: '';
+    height: 15px;
+    position: absolute;
+    right: 35px;
+    top: 28px;
+    width: 15px;
+  }
 
   .btn.btn-link {
     color: white;
@@ -70,6 +79,16 @@
   box-shadow: 3px 3px 10px rgba(0, 0, 0, .5);
   display: flex;
   justify-content: space-between;
+
+  &:before {
+    background-image: radial-gradient(circle at 0 100%, rgba(204,0,0,0) 14px, $red-900 15px);
+    content: '';
+    height: 15px;
+    position: absolute;
+    left: 35px;
+    top: 42px;
+    width: 15px;
+  }
 
   .section-title__header{
     display: inline-flex;

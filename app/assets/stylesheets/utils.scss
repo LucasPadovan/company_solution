@@ -1,71 +1,27 @@
-//.button-iconized {
-//  .button-icon{
-//    transition: all 0.3s ease-in-out;
-//    width: 40px;
-//    height: 40px;
-//    border-radius: 22px; /* one half of ( (border * 2) + height + padding ) */
-//    border: 2px solid white;
-//    background-image: linear-gradient(right , #85001a 0%, #FF002F 100%);
-//    background-image: -moz-linear-gradient(right , #85001a 0%, #FF002F 100%);
-//    background-image: -webkit-linear-gradient(right , #85001a 0%, #FF002F 100%);
-//    box-shadow: 0px 0px 30px rgba(100, 100, 100, .85);
-//    z-index: 3;
-//    position: fixed;
-//    .button-icon-text {
-//      text-shadow: 0px 0px 25px #ff002f;
-//      text-align: center;
-//      font-size: 3em;
-//      font-weight: bold;
-//      color: #ffffff;
-//      padding-top: 10px;
-//    }
-//  }
-//  .button-text{
-//    transition: all 0.3s ease-in-out;
-//    z-index: 2;
-//    position: relative;
-//    top: 6px;
-//    left: 35px;
-//    width: 0%;
-//    text-overflow: clip;
-//    white-space: nowrap;
-//    overflow: hidden;
-//  }
-//}
-//.button-iconized:hover{
-//  .button-icon{
-//    transition: all 0.3s ease-in-out;
-//    background-image: linear-gradient(right , #5a0011 0%, #a4001f 100%);
-//    background-image: -moz-linear-gradient(right , #5a0011 0%, #a4001f 100%);
-//    background-image: -webkit-linear-gradient(right , #5a0011 0%, #a4001f 100%);
-//    -webkit-transform: rotate(360deg);
-//    -moz-transform: rotate(360deg);
-//    -o-transform: rotate(360deg);
-//    -ms-transform: rotate(360deg);
-//    transform: rotate(360deg);
-//  }
-//  .button-text{
-//    transition: width 0.3s ease-in-out;
-//    width: 100%;
-//  }
-//}
-//
-//.align-center {
-//  text-align: center;
-//}
-//
-//.green {
-//  color: green;
-//}
-//
-//.red {
-//  color: #ff0000;
-//}
-//
-//.sales {
-//  color: #4169e1;
-//}
-//
-//.purchases {
-//  color: #ff4500 ;
-//}
+@import "_variables";
+
+// Margins and paddings
+$variations: all top right left bottom;
+@each $variation in $variations {
+  @for $i from 0 through 6 {
+    $value: $unit * $i;
+
+    .pad-#{$variation}-#{$i} {
+      @if $variation == all {
+        padding: $value;
+      }
+      @else {
+        padding-#{$variation}: $value;
+      }
+    }
+
+    .mar-#{$variation}-#{$i} {
+      @if $variation == all {
+        margin: $value;
+      }
+      @else {
+        margin-#{$variation}: $value;
+      }
+    }
+  }
+}
