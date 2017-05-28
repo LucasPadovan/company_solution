@@ -4,7 +4,7 @@
 
 <% attributes.reject(&:password_digest?).each do |attribute| -%>
 <p>
-  <strong><%= attribute.human_name %>:</strong>
+  <b><%%= <%= singular_table_name.camelize %>.human_attribute_name '<%= attribute.name %>' %>:</b>
   <%%= @<%= singular_table_name %>.<%= attribute.name %> %>
 </p>
 

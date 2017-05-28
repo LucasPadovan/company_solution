@@ -3,36 +3,36 @@
 } %>
 
 <p>
-  <strong><%= Product.human_attribute_name :name %>:</strong>
+  <b><%= Product.human_attribute_name :name %>:</b>
   <%= @product.name %>
 </p>
 
 <p>
-  <strong><%= Product.human_attribute_name :description %>:</strong>
+  <b><%= Product.human_attribute_name :description %>:</b>
   <%= @product.description %>
 </p>
 
 <p>
-  <strong><%= Product.human_attribute_name :area %>:</strong>
+  <b><%= Product.human_attribute_name :area %>:</b>
   <%= @product.area %>
 </p>
 
 <p>
-  <strong><%= t('activerecord.models.user.one') %>:</strong>
+  <b><%= t('activerecord.models.user.one') %>:</b>
   <%= @user.full_name%>
 </p>
 
 <p>
-  <strong><%= Product.human_attribute_name :type %>:</strong>
+  <b><%= Product.human_attribute_name :type %>:</b>
   <%= @product.type_to_show %>
 </p>
 
 <p>
-  <strong><%= Product.human_attribute_name :initial_stock %>:</strong>
+  <b><%= Product.human_attribute_name :initial_stock %>:</b>
   <%= @product.initial_stock_with_unit %>
 </p>
 
 <p>
-  <strong><%= Product.human_attribute_name :current_stock %>:</strong>
+  <b><%= Product.human_attribute_name :current_stock %>:</b>
   <%= @product.current_stock_with_unit %>
 </p>
