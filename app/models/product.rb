@@ -1,6 +1,8 @@
 class Product < ApplicationRecord
   belongs_to :user
 
+  has_many :recipes
+
   def initial_stock_with_unit
     initial_stock.to_s + unit
   end
@@ -11,6 +13,10 @@ class Product < ApplicationRecord
 
   def type_to_show
     type.present? ? Product.available_types[type.to_sym] : Product.available_types[:defaultType]
+  end
+
+  def is_composed
+    self.class == ComposedProduct
   end
 
   def self.available_types

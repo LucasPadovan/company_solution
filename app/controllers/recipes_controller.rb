@@ -1,34 +1,34 @@
 class RecipesController < ApplicationController
   before_action :set_recipe, only: [:show, :edit, :update, :destroy]
+  before_action :set_product
   before_action :set_information
-
-  # GET /recipes
-  def index
-    @recipes = Recipe.all
-  end
 
   # GET /recipes/1
   def show
-    @information[:subtitle] = @recipe.to_s
+    @information[:subtitle] = @recipe.name
   end
 
   # GET /recipes/new
   def new
-    @recipe = Recipe.new
-    @information[:subtitle] = t('view.recipes.new_title')
+    @recipe = @product.recipes.build
+    @information[:subtitle] = t('view.recipes.new_title', product: @product.name)
+    @information[:form_url] = product_recipes_path(@product)
   end
 
   # GET /recipes/1/edit
   def edit
-    @information[:subtitle] = t('view.recipes.edit_title', recipe: @recipe)
+    @information[:subtitle] = t('view.recipes.edit_title', product: @product.name)
+    @information[:form_url] = product_recipe_path(@product, @recipe)
   end
 
   # POST /recipes
   def create
-    @recipe = Recipe.new(recipe_params)
+    @recipe = @product.recipes.build(recipe_params)
+    @information[:subtitle] = t('view.recipes.new_title', product: @product.name)
+    @information[:form_url] = product_recipes_path(@product)
 
     if @recipe.save
-      redirect_to @recipe, notice: t('view.recipes.correctly_created')
+      redirect_to product_path(@product), notice: t('view.recipes.correctly_created')
     else
       render :new
     end
@@ -36,8 +36,11 @@ class RecipesController < ApplicationController
 
   # PATCH/PUT /recipes/1
   def update
+    @information[:subtitle] = t('view.recipes.edit_title', product: @product.name)
+    @information[:form_url] = product_recipe_path(@product, @recipe)
+
     if @recipe.update(recipe_params)
-      redirect_to @recipe, notice: t('view.recipes.correctly_updated')
+      redirect_to product_path(@product), notice: t('view.recipes.correctly_updated')
     else
       render :edit
     end
@@ -46,7 +49,7 @@ class RecipesController < ApplicationController
   # DELETE /recipes/1
   def destroy
     @recipe.destroy
-    redirect_to recipes_url, notice: t('view.recipes.correctly_destroyed')
+    redirect_to product_path(@product), notice: t('view.recipes.correctly_destroyed')
   end
 
   private
@@ -55,12 +58,16 @@ class RecipesController < ApplicationController
       @recipe = Recipe.find(params[:id])
     end
 
+    def set_product
+      @product = Product.find(params[:product_id])
+    end
+
     # Only allow a trusted parameter "white list" through.
     def recipe_params
       params.require(:recipe).permit(:name, :description, :product_id)
     end
 
     def set_information
-      @information = { title: t('activerecord.models.recipe.other') }
+      @information = { title: t('activerecord.models.product.other') }
     end
 end

@@ -1,5 +1,5 @@
 <%= render 'shared/basic_navigation', navigation: {
-  back: recipes_path, edit: edit_recipe_path(@recipe)
+  back: product_path(@recipe.product), edit: edit_product_recipe_path(@recipe.product, @recipe)
 } %>
 
 <p>
@@ -14,6 +14,6 @@
 
 <p>
   <b><%= Recipe.human_attribute_name :product %>:</b>
-  <%= @recipe.product %>
+  <%= @recipe.product.name %>
 </p>
 

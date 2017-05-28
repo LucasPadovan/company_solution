@@ -11,6 +11,7 @@ class ProductsController < ApplicationController
   # GET /products/1.json
   def show
     @user = @product.user
+    @recipes = @product.recipes
     @information[:subtitle] = @product.name
   end
 
@@ -18,13 +19,13 @@ class ProductsController < ApplicationController
   def new
     @product = Product.new
     @information[:subtitle] = t('view.products.new_title')
-    @information[:form_url] = new_product_path
+    @information[:form_url] = products_path
   end
 
   # GET /products/1/edit
   def edit
     @information[:subtitle] = t('view.products.edit_title', product: @product.name)
-    @information[:form_url] = product_path
+    @information[:form_url] = product_path(@product)
   end
 
   # POST /products

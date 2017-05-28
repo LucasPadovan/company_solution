@@ -1,5 +1,5 @@
 <%= render 'shared/basic_navigation', navigation: {
-    back: recipes_path, edit: @recipe
+    back: product_path(@recipe.product), edit: edit_product_recipe_path(@recipe.product, @recipe)
 } %>
 
 <%= render 'form', recipe: @recipe %>

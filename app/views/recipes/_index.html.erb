@@ -1,0 +1,27 @@
+<h3><%= t('activerecord.models.recipe.other') %></h3>
+
+<table class="table table-striped table-hover mar-bottom-3">
+  <thead>
+    <tr>
+      <th><%= Recipe.human_attribute_name :name %></th>
+      <th><%= Recipe.human_attribute_name :description %></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @recipes.each do |recipe| %>
+      <tr>
+        <td><%= recipe.name %></td>
+        <td><%= recipe.description %></td>
+        <td>
+          <%= link_to '', product_recipe_path(@product, recipe), class: 'fa fa-2x fa-info-circle'  %>
+          <%= link_to '', edit_product_recipe_path(@product, recipe), class: 'fa fa-2x fa-pencil-square' %>
+          <%= link_to '', product_recipe_path(@product, recipe), method: :delete, data: { confirm: t('messages.confirmation') }, class: 'fa fa-2x fa-trash' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('view.recipes.new_title_button'), new_product_recipe_path(@product), class: 'btn btn-primary'  %>

@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
-  resources :recipes
-  resources :products
   devise_for :users
+
+  resources :products do
+    resources :recipes, except: [:index]
+  end
 
   resources :firms
 

@@ -295,8 +295,9 @@
         bought_to: 'Comprado a la empresa'
         the_day: 'El día'
     recipes:
-      new_title: 'Nueva fórmula'
-      edit_title: 'Editar %{recipe}'
+      new_title_button: 'Nueva fórmula'
+      new_title: 'Nueva fórmula para %{product}'
+      edit_title: 'Editar fórmula para %{product}'
       correctly_created: 'Fórmula creada correctamente'
       correctly_updated: 'Fórmula actualizada correctamente'
       correctly_destroyed: 'Fórmula eliminada correctamente'

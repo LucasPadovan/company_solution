@@ -2,37 +2,45 @@
     back: products_path, edit: edit_product_path(@product)
 } %>
 
-<p>
-  <b><%= Product.human_attribute_name :name %>:</b>
-  <%= @product.name %>
-</p>
+<div class="columns">
+  <div class="column col-3">
+    <p>
+      <b><%= Product.human_attribute_name :name %>:</b>
+      <%= @product.name %>
+    </p>
 
-<p>
-  <b><%= Product.human_attribute_name :description %>:</b>
-  <%= @product.description %>
-</p>
+    <p>
+      <b><%= Product.human_attribute_name :description %>:</b>
+      <%= @product.description %>
+    </p>
 
-<p>
-  <b><%= Product.human_attribute_name :area %>:</b>
-  <%= @product.area %>
-</p>
+    <p>
+      <b><%= Product.human_attribute_name :area %>:</b>
+      <%= @product.area %>
+    </p>
 
-<p>
-  <b><%= t('activerecord.models.user.one') %>:</b>
-  <%= @user.full_name%>
-</p>
+    <p>
+      <b><%= t('activerecord.models.user.one') %>:</b>
+      <%= @user.full_name%>
+    </p>
 
-<p>
-  <b><%= Product.human_attribute_name :type %>:</b>
-  <%= @product.type_to_show %>
-</p>
+    <p>
+      <b><%= Product.human_attribute_name :type %>:</b>
+      <%= @product.type_to_show %>
+    </p>
 
-<p>
-  <b><%= Product.human_attribute_name :initial_stock %>:</b>
-  <%= @product.initial_stock_with_unit %>
-</p>
+    <p>
+      <b><%= Product.human_attribute_name :initial_stock %>:</b>
+      <%= @product.initial_stock_with_unit %>
+    </p>
 
-<p>
-  <b><%= Product.human_attribute_name :current_stock %>:</b>
-  <%= @product.current_stock_with_unit %>
-</p>
+    <p>
+      <b><%= Product.human_attribute_name :current_stock %>:</b>
+      <%= @product.current_stock_with_unit %>
+    </p>
+  </div>
+
+  <div class="column col-9">
+    <%= render 'recipes/index' if @product.is_composed %>
+  </div>
+</div>
