@@ -34,6 +34,7 @@ class <%= controller_class_name %>Controller < ApplicationController
     @<%= singular_table_name %> = <%= orm_class.build(class_name, "#{singular_table_name}_params") %>
 
     if @<%= orm_instance.save %>
+      flash[:type] = 'success'
       redirect_to @<%= singular_table_name %>, notice: t('view.<%= plural_table_name %>.correctly_created')
     else
       render :new
@@ -44,6 +45,7 @@ class <%= controller_class_name %>Controller < ApplicationController
   def update
     @information[:subtitle] = t('view.<%= plural_table_name %>.edit_title')
     if @<%= orm_instance.update("#{singular_table_name}_params") %>
+      flash[:type] = 'primary'
       redirect_to @<%= singular_table_name %>, notice: t('view.<%= plural_table_name %>.correctly_updated')
     else
       render :edit
@@ -53,6 +55,7 @@ class <%= controller_class_name %>Controller < ApplicationController
   # DELETE <%= route_url %>/1
   def destroy
     @<%= orm_instance.destroy %>
+    flash[:type] = 'error'
     redirect_to <%= index_helper %>_url, notice: t('view.<%= plural_table_name %>.correctly_destroyed')
   end
 

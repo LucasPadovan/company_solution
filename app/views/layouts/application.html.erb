@@ -18,14 +18,15 @@
 
     <section class="section section-content">
       <div class="container grid-1280">
+        <%= render 'shared/notices' if notice %>
+
         <div class="pad-top-3">
           <%= yield %>
         </div>
       </div>
     </section>
 
-    <div id="modal" class="fade"></div>
 
-    <%= render 'shared/notices' if notice %>
+    <div id="modal" class="fade"></div>
   </body>
 </html>

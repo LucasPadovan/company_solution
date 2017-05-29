@@ -31,6 +31,7 @@ class FirmsController < ApplicationController
 
     respond_to do |format|
       if @firm.save
+        flash[:type] = 'success'
         format.html { redirect_to @firm, notice: 'Firm was successfully created.' }
         format.json { render :show, status: :created, location: @firm }
       else
@@ -45,6 +46,7 @@ class FirmsController < ApplicationController
   def update
     respond_to do |format|
       if @firm.update(firm_params)
+        flash[:type] = 'primary'
         format.html { redirect_to @firm, notice: 'Firm was successfully updated.' }
         format.json { render :show, status: :ok, location: @firm }
       else
@@ -58,6 +60,7 @@ class FirmsController < ApplicationController
   # DELETE /firms/1.json
   def destroy
     @firm.destroy
+    flash[:type] = 'error'
     respond_to do |format|
       format.html { redirect_to firms_url, notice: 'Firm was successfully destroyed.' }
       format.json { head :no_content }

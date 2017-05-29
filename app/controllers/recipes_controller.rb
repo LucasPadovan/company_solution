@@ -28,6 +28,7 @@ class RecipesController < ApplicationController
     @information[:form_url] = product_recipes_path(@product)
 
     if @recipe.save
+      flash[:type] = 'success'
       redirect_to product_path(@product), notice: t('view.recipes.correctly_created')
     else
       render :new
@@ -40,6 +41,7 @@ class RecipesController < ApplicationController
     @information[:form_url] = product_recipe_path(@product, @recipe)
 
     if @recipe.update(recipe_params)
+      flash[:type] = 'primary'
       redirect_to product_path(@product), notice: t('view.recipes.correctly_updated')
     else
       render :edit
@@ -49,6 +51,7 @@ class RecipesController < ApplicationController
   # DELETE /recipes/1
   def destroy
     @recipe.destroy
+    flash[:type] = 'error'
     redirect_to product_path(@product), notice: t('view.recipes.correctly_destroyed')
   end
 
