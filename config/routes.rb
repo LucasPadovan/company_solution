@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :trades
   devise_for :users
 
   resources :products do

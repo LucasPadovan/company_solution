@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170525215448) do
+ActiveRecord::Schema.define(version: 20170530013849) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,17 @@ ActiveRecord::Schema.define(version: 20170525215448) do
     t.index ["product_id"], name: "index_recipes_on_product_id"
   end
 
+  create_table "trades", force: :cascade do |t|
+    t.bigint "product_id"
+    t.decimal "sold_by"
+    t.decimal "sold_to"
+    t.datetime "from"
+    t.datetime "to"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_trades_on_product_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -67,4 +78,5 @@ ActiveRecord::Schema.define(version: 20170525215448) do
 
   add_foreign_key "products", "users"
   add_foreign_key "recipes", "products"
+  add_foreign_key "trades", "products"
 end

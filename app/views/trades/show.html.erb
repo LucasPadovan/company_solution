@@ -1,0 +1,29 @@
+<%= render 'shared/basic_navigation', navigation: {
+  back: trades_path, edit: edit_trade_path(@trade)
+} %>
+
+<p>
+  <b><%= Trade.human_attribute_name 'product' %>:</b>
+  <%= @trade.product %>
+</p>
+
+<p>
+  <b><%= Trade.human_attribute_name 'sold_by' %>:</b>
+  <%= @trade.sold_by %>
+</p>
+
+<p>
+  <b><%= Trade.human_attribute_name 'sold_to' %>:</b>
+  <%= @trade.sold_to %>
+</p>
+
+<p>
+  <b><%= Trade.human_attribute_name 'from' %>:</b>
+  <%= @trade.from %>
+</p>
+
+<p>
+  <b><%= Trade.human_attribute_name 'to' %>:</b>
+  <%= @trade.to %>
+</p>
+
