@@ -1,0 +1,31 @@
+<table class="table table-striped table-hover mar-bottom-3">
+  <thead>
+    <tr>
+      <th><%= Trade.human_attribute_name :product_id %></th>
+      <th><%= Trade.human_attribute_name :sold_by %></th>
+      <th><%= Trade.human_attribute_name :sold_to %></th>
+      <th><%= Trade.human_attribute_name :from %></th>
+      <th><%= Trade.human_attribute_name :to %></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% trades.each do |trade| %>
+      <tr>
+        <td><%= trade.product %></td>
+        <td><%= trade.sold_by %></td>
+        <td><%= trade.sold_to %></td>
+        <td><%= trade.from %></td>
+        <td><%= trade.to %></td>
+        <td>
+          <%= link_to '', firm_trade_path(@firm, trade), class: 'fa fa-2x fa-info-circle'  %>
+          <%= link_to '', edit_firm_trade_path(@firm, trade), class: 'fa fa-2x fa-pencil-square' %>
+          <%= link_to '', firm_trade_path(@firm, trade), method: :delete, data: { confirm: t('messages.confirmation') }, class: 'fa fa-2x fa-trash' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('label.new'), new_firm_trade_path(@firm, trade_type: trade_type), class: 'btn btn-primary'  %>

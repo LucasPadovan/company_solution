@@ -2,6 +2,7 @@ class Product < ApplicationRecord
   belongs_to :user
 
   has_many :recipes
+  has_many :trades
 
   def initial_stock_with_unit
     initial_stock.to_s + unit

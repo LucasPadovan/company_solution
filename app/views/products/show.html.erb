@@ -25,7 +25,7 @@
     </p>
 
     <p>
-      <b><%= Product.human_attribute_name :type %>:</b>
+      <b>:</b>
       <%= @product.type_to_show %>
     </p>
 
@@ -42,5 +42,18 @@
 
   <div class="column col-9">
     <%= render 'recipes/index' if @product.is_composed %>
+  </div>
+
+  <div class="column col-12">
+    <section>
+      <h3><%= t('view.products.show.sold_by') %></h3>
+
+      <%= render 'products/trades/index', trades: @trades, trade_type: 'sells' %>
+    </section>
+    <section>
+      <h3><%= t('view.products.show.sold_to') %></h3>
+
+      <%= render 'products/trades/index', trades: @trades, trade_type: 'buys' %>
+    </section>
   </div>
 </div>

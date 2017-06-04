@@ -139,6 +139,12 @@
        total: 'Total'
        retencion: 'Retenciones'
        other_concepts: 'Otros conceptos'
+      trade:
+        product_id: 'Producto'
+        sold_by: 'Vendedor'
+        sold_to: 'Comrpador'
+        from: 'Desde'
+        to: 'Hasta'
       user:
         name: 'Nombre'
         lastname: 'Apellido'
@@ -162,6 +168,7 @@
     edit: 'Editar'
     list: 'Listado'
     loading: 'Cargando...'
+    save: 'Guardar'
     saving: 'Guardando...'
     new: 'Nuevo'
     search: 'Buscar'
@@ -210,8 +217,8 @@
       show_title: 'Información de %{firm}'
       show:
         contact_mediums: 'Medios de contacto:'
-        we_buy: 'Compramos'
-        we_sell: 'Vendemos'
+        buys: 'Compra'
+        sells: 'Vende'
       new_title: 'Nueva empresa'
       edit_title: 'Editando %{firm}'
       correctly_created: 'Empresa agregada correctamente.'
@@ -276,7 +283,8 @@
       show:
         created_by: 'Cargado por: '
         purchase_prices: 'Precios de compra: '
-        sold_to: 'Vendido a: '
+        sold_by: 'Vendedores'
+        sold_to: 'Compradores'
       show_historic: 'Ver historial'
     purchase_interests:
       index_title: 'Historial de precios de %{product} para %{firm}'
@@ -331,6 +339,15 @@
       update_sale_invoice: 'Actualizar factura de venta'
       add_sale_invoice: 'Agregar factura de venta'
       save_sale_invoice: 'Guardar factura'
+    trades:
+      edit_title: 'Editando intercambio'
+      correctly_created: 'Intercambio correctamente creado'
+      correctly_updated: 'Intercambio correctamente actualizado'
+      correctly_destroyed: 'Intercambio correctamente eliminado'
+      new_trade_sold_by_firm_title: '%{firm} vende'
+      new_trade_sold_to_firm_title: '%{firm} compra'
+      new_product_traded_by_title: 'Vendedor de %{product}'
+      new_product_traded_to_title: 'Comprador de %{product}'
     users:
       index_title: 'Listado de usuarios'
       show_title: 'Detalle de %{user}'

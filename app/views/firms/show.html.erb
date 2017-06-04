@@ -2,17 +2,34 @@
     back: firms_path, edit: edit_firm_path(@firm)
 } %>
 
-<p>
-  <b><%= Firm.human_attribute_name :name %>:</b>
-  <%= @firm.name %>
-</p>
+<div class="columns">
+  <div class="column col-3">
+    <p>
+      <b><%= Firm.human_attribute_name :name %>:</b>
+      <%= @firm.name %>
+    </p>
 
-<p>
-  <b><%= Firm.human_attribute_name :cuit %>:</b>
-  <%= @firm.cuit %>
-</p>
+    <p>
+      <b><%= Firm.human_attribute_name :cuit %>:</b>
+      <%= @firm.cuit %>
+    </p>
 
-<p>
-  <b><%= Firm.human_attribute_name :afip_cond %>:</b>
-  <%= @firm.afip_condition %>
-</p>
+    <p>
+      <b><%= Firm.human_attribute_name :afip_cond %>:</b>
+      <%= @firm.afip_condition %>
+    </p>
+  </div>
+
+  <div class="column col-9">
+    <section>
+      <h3><%= t('view.firms.show.sells') %></h3>
+
+      <%= render 'firms/trades/index', trades: @sells, trade_type: 'sells' %>
+    </section>
+    <section>
+      <h3><%= t('view.firms.show.buys') %></h3>
+
+      <%= render 'firms/trades/index', trades: @sells, trade_type: 'buys' %>
+    </section>
+  </div>
+</div>

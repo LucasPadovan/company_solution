@@ -1,4 +1,4 @@
-<%= form_with(model: trade, local: true) do |form| %>
+<%= form_with(url: @information[:form_url], model: trade, local: true) do |form| %>
   <% if trade.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(trade.errors.count, 'error') %> prohibited this trade from being saved:</h2>
@@ -11,20 +11,28 @@
     </div>
   <% end %>
 
-  <div class="form-group">
-    <%= form.label :product_id, class: 'from-label' %>
-    <%= form.text_field :product_id, id: :trade_product_id, class: 'form-input' %>
-  </div>
+  <% unless @trade.product_id %>
+    <div class="form-group">
+      <%= form.label :product_id, class: 'from-label' %>
+      <%= form.text_field :product_id, id: :trade_product_id, class: 'form-input' %>
+    </div>
+  <% end %>
 
-  <div class="form-group">
-    <%= form.label :sold_by, class: 'from-label' %>
-    <%= form.text_field :sold_by, id: :trade_sold_by, class: 'form-input' %>
-  </div>
+  <% unless @trade.sold_by || @trade.sold_to %>
+    <% unless params[:trade_type] == 'buys' %>
+      <div class="form-group">
+        <%= form.label :sold_by, class: 'from-label' %>
+        <%= form.text_field :sold_by, id: :trade_sold_by, class: 'form-input' %>
+      </div>
+    <% end %>
 
-  <div class="form-group">
-    <%= form.label :sold_to, class: 'from-label' %>
-    <%= form.text_field :sold_to, id: :trade_sold_to, class: 'form-input' %>
-  </div>
+    <% unless params[:trade_type] == 'sells' %>
+      <div class="form-group">
+        <%= form.label :sold_to, class: 'from-label' %>
+        <%= form.text_field :sold_to, id: :trade_sold_to, class: 'form-input' %>
+      </div>
+    <% end %>
+  <% end %>
 
   <div class="form-group">
     <%= form.label :from, class: 'from-label' %>
@@ -37,6 +45,6 @@
   </div>
 
   <div class="actions">
-    <%= form.submit t('view.trades.save'), class: 'btn btn-primary'  %>
+    <%= form.submit t('label.save'), class: 'btn btn-primary'  %>
   </div>
 <% end %>

@@ -12,6 +12,7 @@ class ProductsController < ApplicationController
   def show
     @user = @product.user
     @recipes = @product.recipes
+    @trades = @product.trades
     @information[:subtitle] = @product.name
   end
 

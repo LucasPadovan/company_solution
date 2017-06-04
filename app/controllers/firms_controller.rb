@@ -11,6 +11,8 @@ class FirmsController < ApplicationController
   # GET /firms/1.json
   def show
     @information[:subtitle] = @firm.name
+    @sells = Trade.where(sold_by: @firm.id)
+    @buys = Trade.where(sold_to: @firm.id)
   end
 
   # GET /firms/new
