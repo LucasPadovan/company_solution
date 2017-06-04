@@ -1,5 +1,5 @@
 <%= render 'shared/basic_navigation', navigation: {
-    back: trades_path, edit: @trade
+    back: @information[:back_url], edit: @trade
 } %>
 
 <%= render 'form', trade: @trade %>
