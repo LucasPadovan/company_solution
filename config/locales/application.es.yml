@@ -100,7 +100,7 @@
         requester: 'Pedido por'
         requester_area: 'Área'
         status: 'Estado'
-        user_id: 'Usuario'
+        user_id: 'Creado por'
       price:
         purchase_price: Precio de compra
         sale_price: Precio de venta
@@ -113,6 +113,7 @@
         name: 'Nombre'
         type: 'Tipo'
         unit: 'Unidad'
+        user_id: 'Creado por'
       purchase_invoice:
         invoice_type: 'Tipo'
         destination_type: 'Venta/Consumo'
@@ -142,7 +143,7 @@
       trade:
         product_id: 'Producto'
         sold_by: 'Vendedor'
-        sold_to: 'Comrpador'
+        sold_to: 'Comprador'
         from: 'Desde'
         to: 'Hasta'
       user:

@@ -20,12 +20,12 @@
     </p>
 
     <p>
-      <b><%= t('activerecord.models.user.one') %>:</b>
+      <b><%= Product.human_attribute_name :user_id %>:</b>
       <%= @user.full_name%>
     </p>
 
     <p>
-      <b>:</b>
+      <b><%= Product.human_attribute_name :type %>:</b>
       <%= @product.type_to_show %>
     </p>
 
@@ -44,12 +44,14 @@
     <%= render 'recipes/index' if @product.is_composed %>
   </div>
 
-  <div class="column col-12">
+  <div class="column col-6">
     <section>
       <h3><%= t('view.products.show.sold_by') %></h3>
 
       <%= render 'products/trades/index', trades: @trades, trade_type: 'sells' %>
     </section>
+  </div>
+  <div class="column col-6">
     <section>
       <h3><%= t('view.products.show.sold_to') %></h3>
 

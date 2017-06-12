@@ -2,8 +2,6 @@
   <thead>
     <tr>
       <th><%= Trade.human_attribute_name :product_id %></th>
-      <th><%= Trade.human_attribute_name :sold_by %></th>
-      <th><%= Trade.human_attribute_name :sold_to %></th>
       <th><%= Trade.human_attribute_name :from %></th>
       <th><%= Trade.human_attribute_name :to %></th>
       <th></th>
@@ -14,8 +12,6 @@
     <% trades.each do |trade| %>
       <tr>
         <td><%= trade.product %></td>
-        <td><%= trade.sold_by %></td>
-        <td><%= trade.sold_to %></td>
         <td><%= trade.from %></td>
         <td><%= trade.to %></td>
         <td>

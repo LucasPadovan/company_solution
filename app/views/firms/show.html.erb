@@ -3,7 +3,7 @@
 } %>
 
 <div class="columns">
-  <div class="column col-3">
+  <div class="column col-12">
     <p>
       <b><%= Firm.human_attribute_name :name %>:</b>
       <%= @firm.name %>
@@ -20,16 +20,19 @@
     </p>
   </div>
 
-  <div class="column col-9">
+  <div class="column col-6">
     <section>
       <h3><%= t('view.firms.show.sells') %></h3>
 
       <%= render 'firms/trades/index', trades: @sells, trade_type: 'sells' %>
     </section>
+  </div>
+
+  <div class="column col-6">
     <section>
       <h3><%= t('view.firms.show.buys') %></h3>
 
-      <%= render 'firms/trades/index', trades: @sells, trade_type: 'buys' %>
+      <%= render 'firms/trades/index', trades: @buys, trade_type: 'buys' %>
     </section>
   </div>
 </div>
