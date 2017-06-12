@@ -3,7 +3,7 @@
 } %>
 
 <div class="columns">
-  <div class="column col-12">
+  <div class="column col-3">
     <p>
       <b><%= Firm.human_attribute_name :name %>:</b>
       <%= @firm.name %>
@@ -18,6 +18,14 @@
       <b><%= Firm.human_attribute_name :afip_cond %>:</b>
       <%= @firm.afip_condition %>
     </p>
+  </div>
+
+  <div class="column col-9">
+    <section>
+      <h3><%= t('view.contacts.index_title') %></h3>
+
+      <%= render 'contacts/index' %>
+    </section>
   </div>
 
   <div class="column col-6">

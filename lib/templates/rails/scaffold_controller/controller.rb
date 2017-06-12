@@ -77,6 +77,5 @@ class <%= controller_class_name %>Controller < ApplicationController
     def set_information
       @information = { title: t('activerecord.models.<%= singular_table_name %>.other') }
     end
-
 end
 <% end -%>

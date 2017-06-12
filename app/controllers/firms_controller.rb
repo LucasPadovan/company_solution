@@ -13,6 +13,7 @@ class FirmsController < ApplicationController
     @information[:subtitle] = @firm.name
     @sells = Trade.where(sold_by: @firm.id)
     @buys = Trade.where(sold_to: @firm.id)
+    @contacts = @firm.contacts
   end
 
   # GET /firms/new

@@ -1,0 +1,32 @@
+<%= form_with(url: firm_contacts_path(@firm, contact), model: contact, local: true) do |form| %>
+  <% if contact.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(contact.errors.count, 'error') %> prohibited this contact from being saved:</h2>
+
+      <ul>
+      <% contact.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :name, class: 'from-label' %>
+    <%= form.text_field :name, id: :contact_name, class: 'form-input' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :area, class: 'from-label' %>
+    <%= form.text_field :area, id: :contact_area, class: 'form-input' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :details, class: 'from-label' %>
+    <%= form.text_area :details, id: :contact_details, class: 'form-input' %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit t('view.contacts.save'), class: 'btn btn-primary'  %>
+  </div>
+<% end %>

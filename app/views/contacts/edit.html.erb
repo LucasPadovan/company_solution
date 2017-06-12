@@ -1,0 +1,5 @@
+<%= render 'shared/basic_navigation', navigation: {
+    back: @firm, edit: firm_contact_path(@firm, @contact)
+} %>
+
+<%= render 'form', contact: @contact %>

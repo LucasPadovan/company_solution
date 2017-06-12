@@ -1,0 +1,46 @@
+<table class="table table-striped table-hover mar-bottom-3">
+  <thead>
+    <tr>
+      <th><%= Contact.human_attribute_name 'name' %></th>
+      <th><%= Contact.human_attribute_name 'area' %></th>
+      <th><%= Contact.human_attribute_name 'details' %></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @contacts.each do |contact| %>
+      <tr>
+        <td><%= contact.name %></td>
+        <td><%= contact.area %></td>
+        <td><%= contact.details %></td>
+        <td>
+          <%= link_to '', '#', class: 'fa fa-2x fa-info-circle', data: { modal_open: "contact-#{contact.id}" } %>
+          <%= link_to '', edit_firm_contact_path(@firm, contact), class: 'fa fa-2x fa-pencil-square' %>
+          <%= link_to '', firm_contact_path(@firm, contact), method: :delete, data: { confirm: t('messages.confirmation') }, class: 'fa fa-2x fa-trash' %>
+
+          <div class="modal" data-modal="contact-<%= contact.id %>">
+            <div class="modal-overlay"></div>
+            <div class="modal-container">
+              <div class="modal-header">
+                <button class="btn btn-clear float-right" data-modal-close="true"></button>
+                <div class="modal-title"><%= t('view.contacts.show_title', contact: contact.name, firm: @firm.name) %></div>
+              </div>
+              <div class="modal-body">
+                <div class="content">
+                  <%= render 'contacts/show', contact: contact %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('view.contacts.add_contact'), new_firm_contact_path(@firm), class: 'btn btn-primary'  %>
+
+<script>
+  JsModals.bindEvents()
+</script>

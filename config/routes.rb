@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   resources :firms do
     resources :trades, except: [:index, :show]
+    resources :contacts, except: [:index, :show]
   end
 
   root to: 'firms#index'
