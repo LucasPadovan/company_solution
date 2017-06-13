@@ -208,11 +208,11 @@
       edit_title: 'Editando %{contact} de %{firm}'
       correctly_created: 'Contacto agregado correctamente.'
       correctly_updated: 'Contacto actualizado correctamente.'
+      correctly_destroyed: 'Contacto eliminado correctamente'
       stale_object_error: 'El contacta no pudo ser actualizado, intente nuevamente.'
       add_contact: 'Agregar contacto'
       edit_contact: 'Editar contacto'
-      contact: 'Contacto'
-      save_contact: 'Guardar contacto'
+      save: 'Guardar contacto'
     firms:
       index_title: 'Empresas'
       show_title: 'Información de %{firm}'
