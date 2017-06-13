@@ -16,8 +16,8 @@
 //  transition: $time $property $function;
 //}
 
-@mixin background-gradient($color1, $color2, $direction) {
-  background-image: linear-gradient($direction , $color1 0%, $color2 69%);
-  background-image: -moz-linear-gradient($direction , $color1 0%, $color2 69%);
-  background-image: -webkit-linear-gradient($direction , $color1 0%, $color2 69%);
+@mixin background-gradient($color1, $percent1, $color2, $percent2, $direction) {
+  background-image: linear-gradient($direction , $color1 $percent1, $color2 $percent2);
+  background-image: -moz-linear-gradient($direction , $color1 $percent1, $color2 $percent2);
+  background-image: -webkit-linear-gradient($direction , $color1 $percent1, $color2 $percent2);
 }

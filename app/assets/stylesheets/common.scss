@@ -15,7 +15,7 @@
 }
 
 .section.section-header {
-  @include background-gradient($red-a800, $red-900, right);
+  @include background-gradient($red-a800, 0%, $red-900, 60%, right);
 
   border-radius: 0 15px 0 0;
   box-shadow: -3px 3px 10px rgba(0, 0, 0, .5);
@@ -68,7 +68,7 @@
 }
 
 .section.section-title {
-  @include background-gradient($red-a800, $red-900, right);
+  @include background-gradient($red-a800, 0%, $red-900, 69%, right);
 
   border-radius: 0 0 0 15px;
   color: #ffffff;
@@ -76,7 +76,7 @@
   padding: 1px 30px;
   font-family: PTSansBold;
   text-shadow: 0px 0px 25px #ff002f;
-  box-shadow: 3px 3px 10px rgba(0, 0, 0, .5);
+  box-shadow: -3px 6px 10px rgba(0, 0, 0, .3);
   display: flex;
   justify-content: space-between;
 
