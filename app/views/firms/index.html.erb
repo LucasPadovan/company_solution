@@ -4,6 +4,8 @@
       <th><%= t 'activerecord.attributes.firm.name' %></th>
       <th><%= t 'activerecord.attributes.firm.cuit' %></th>
       <th><%= t 'activerecord.attributes.firm.afip_cond' %></th>
+      <th><%= t 'activerecord.attributes.firm.address' %></th>
+      <th><%= t 'activerecord.attributes.firm.opens_at' %>/<%= t 'activerecord.attributes.firm.closes_at' %></th>
       <th></th>
     </tr>
   </thead>
@@ -14,6 +16,8 @@
         <td><%= firm.name %></td>
         <td><%= firm.cuit %></td>
         <td><%= firm.afip_condition %></td>
+        <td><%= firm.address %></td>
+        <td><%= firm.opens_at%> - <%= firm.closes_at %></td>
         <td>
           <%= link_to '', firm, class: 'fa fa-2x fa-info-circle' %>
           <%= link_to '', edit_firm_path(firm), class: 'fa fa-2x fa-pencil-square' %>

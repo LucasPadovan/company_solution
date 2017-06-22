@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170612024741) do
+ActiveRecord::Schema.define(version: 20170622041217) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,9 @@ ActiveRecord::Schema.define(version: 20170612024741) do
     t.string "afip_condition"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "address"
+    t.time "opens_at"
+    t.time "closes_at"
   end
 
   create_table "products", force: :cascade do |t|

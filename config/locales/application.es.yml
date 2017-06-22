@@ -61,9 +61,12 @@
         quantity: 'Cantidad'
         delivered_at: 'Entegado el día'
       firm:
-        name: 'Nombre'
+        address: 'Dirección'
         afip_cond: 'Condición AFIP'
         cuit: 'CUIT'
+        closes_at: 'Cierra'
+        name: 'Nombre'
+        opens_at: 'Abre'
       interest:
         product_id: 'Producto'
         firm_id: 'Empresa'

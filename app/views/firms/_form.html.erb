@@ -26,6 +26,21 @@
     <%= form.text_field :afip_condition, id: :firm_afip_condition, class: 'form-input' %>
   </div>
 
+  <div class="form-group">
+    <%= form.label :address, class: 'from-label' %>
+    <%= form.text_field :address, id: :firm_address, class: 'form-input' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :opens_at, class: 'from-label' %>
+    <%= form.time_field :opens_at, id: :firm_opens_at, class: 'form-input' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :closes_at, class: 'from-label' %>
+    <%= form.time_field :closes_at, id: :firm_closes_at, class: 'form-input' %>
+  </div>
+
   <div class="actions">
     <%= form.submit t('view.firms.save_firm'), class: 'btn btn-primary' %>
   </div>
