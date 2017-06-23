@@ -26,9 +26,9 @@
       monthly_movement:
         one: 'Facturación mensual'
         other: 'Facturaciones mensuales'
-      orders:
-        one: 'Pedido'
-        other: 'Pedidos'
+      order:
+        one: 'Orden'
+        other: 'Ordenes'
       product:
         one: 'Producto'
         other: 'Productos'
@@ -189,11 +189,12 @@
       login: 'Ingresar'
       logout: 'Salir'
       register: 'Registrarse'
-    users: 'Usuarios'
     firms: 'Empresas'
-    products: 'Productos'
     monthly_movements: 'Facturación mensual'
-    
+    products: 'Productos'
+    orders: 'Ordenes'
+    users: 'Usuarios'
+
   messages:
     confirmation: '¿Está seguro?'
     
@@ -369,11 +370,11 @@
         admin: 'Administrador'
         regular: 'Normal'
     orders:
-      index_title: "Listado de pedidos"
-      show_title: "Pedido nº %{order_number}"
-      new_title: "Nuevo pedido"
-      edit_title: "Editando el pedido %{order_number}"
-      save: "Guardar pedido"
+      index_title: "Listado de ordenes"
+      show_title: "Orden nº %{order_number}"
+      new_title: "Nueva orden"
+      edit_title: "Editando la orden %{order_number}"
+      save: "Guardar orden"
       show:
         taken_for: "Tomado por:"
     items:

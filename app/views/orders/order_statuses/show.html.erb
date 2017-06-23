@@ -1,0 +1,19 @@
+<%= render 'shared/basic_navigation', navigation: {
+  back: order_statuses_path, edit: edit_order_status_path(@order_status)
+} %>
+
+<p>
+  <b><%= OrderStatus.human_attribute_name 'status' %>:</b>
+  <%= @order_status.status %>
+</p>
+
+<p>
+  <b><%= OrderStatus.human_attribute_name 'order' %>:</b>
+  <%= @order_status.order %>
+</p>
+
+<p>
+  <b><%= OrderStatus.human_attribute_name 'detail' %>:</b>
+  <%= @order_status.detail %>
+</p>
+

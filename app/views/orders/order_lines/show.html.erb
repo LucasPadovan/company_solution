@@ -1,0 +1,49 @@
+<%= render 'shared/basic_navigation', navigation: {
+  back: order_lines_path, edit: edit_order_line_path(@order_line)
+} %>
+
+<p>
+  <b><%= OrderLine.human_attribute_name 'order' %>:</b>
+  <%= @order_line.order %>
+</p>
+
+<p>
+  <b><%= OrderLine.human_attribute_name 'amount' %>:</b>
+  <%= @order_line.amount %>
+</p>
+
+<p>
+  <b><%= OrderLine.human_attribute_name 'product' %>:</b>
+  <%= @order_line.product %>
+</p>
+
+<p>
+  <b><%= OrderLine.human_attribute_name 'unit_price' %>:</b>
+  <%= @order_line.unit_price %>
+</p>
+
+<p>
+  <b><%= OrderLine.human_attribute_name 'subtotal' %>:</b>
+  <%= @order_line.subtotal %>
+</p>
+
+<p>
+  <b><%= OrderLine.human_attribute_name 'tax_rate' %>:</b>
+  <%= @order_line.tax_rate %>
+</p>
+
+<p>
+  <b><%= OrderLine.human_attribute_name 'tax' %>:</b>
+  <%= @order_line.tax %>
+</p>
+
+<p>
+  <b><%= OrderLine.human_attribute_name 'remaining_amount' %>:</b>
+  <%= @order_line.remaining_amount %>
+</p>
+
+<p>
+  <b><%= OrderLine.human_attribute_name 'position' %>:</b>
+  <%= @order_line.position %>
+</p>
+

@@ -1,0 +1,39 @@
+<table class="table table-striped table-hover mar-bottom-3">
+  <thead>
+    <tr>
+      <th><%= OrderLine.human_attribute_name 'order' %></th>
+      <th><%= OrderLine.human_attribute_name 'amount' %></th>
+      <th><%= OrderLine.human_attribute_name 'product' %></th>
+      <th><%= OrderLine.human_attribute_name 'unit_price' %></th>
+      <th><%= OrderLine.human_attribute_name 'subtotal' %></th>
+      <th><%= OrderLine.human_attribute_name 'tax_rate' %></th>
+      <th><%= OrderLine.human_attribute_name 'tax' %></th>
+      <th><%= OrderLine.human_attribute_name 'remaining_amount' %></th>
+      <th><%= OrderLine.human_attribute_name 'position' %></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @order_lines.each do |order_line| %>
+      <tr>
+        <td><%= order_line.order %></td>
+        <td><%= order_line.amount %></td>
+        <td><%= order_line.product %></td>
+        <td><%= order_line.unit_price %></td>
+        <td><%= order_line.subtotal %></td>
+        <td><%= order_line.tax_rate %></td>
+        <td><%= order_line.tax %></td>
+        <td><%= order_line.remaining_amount %></td>
+        <td><%= order_line.position %></td>
+        <td>
+          <%= link_to '', order_line, class: 'fa fa-2x fa-info-circle'  %>
+          <%= link_to '', edit_order_line_path(order_line), class: 'fa fa-2x fa-pencil-square' %>
+          <%= link_to '', order_line, method: :delete, data: { confirm: t('messages.confirmation') }, class: 'fa fa-2x fa-trash' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('view.order_lines.new_title'), new_order_line_path, class: 'btn btn-primary'  %>

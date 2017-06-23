@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  order: one
+  amount: 1.5
+  product: one
+  unit_price: 1.5
+  subtotal: 1.5
+  tax_rate: 1.5
+  tax: 1.5
+  remaining_amount: 1.5
+  position: 
+
+two:
+  order: two
+  amount: 1.5
+  product: two
+  unit_price: 1.5
+  subtotal: 1.5
+  tax_rate: 1.5
+  tax: 1.5
+  remaining_amount: 1.5
+  position: 

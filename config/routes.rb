@@ -11,5 +11,10 @@ Rails.application.routes.draw do
     resources :contacts, except: [:index, :show]
   end
 
+  resources :orders do
+    resources :order_lines
+    resources :order_statuses
+  end
+
   root to: 'firms#index'
 end

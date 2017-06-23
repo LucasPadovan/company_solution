@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  number: 1
+  tracking_code: MyString
+  type: 
+  total: 1.5
+  subtotal: 1.5
+  taxes: 1.5
+  deliver_fee: 1.5
+  packaging_fee: 1.5
+  expected_deliver_from: 2017-06-22 21:10:31
+  expected_deliver_to: 2017-06-22 21:10:31
+  firm: 
+  user: one
+  contact_name: MyString
+  date: 2017-06-22 21:10:31
+
+two:
+  number: 1
+  tracking_code: MyString
+  type: 
+  total: 1.5
+  subtotal: 1.5
+  taxes: 1.5
+  deliver_fee: 1.5
+  packaging_fee: 1.5
+  expected_deliver_from: 2017-06-22 21:10:31
+  expected_deliver_to: 2017-06-22 21:10:31
+  firm: 
+  user: two
+  contact_name: MyString
+  date: 2017-06-22 21:10:31

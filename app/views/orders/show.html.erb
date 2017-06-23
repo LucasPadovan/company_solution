@@ -1,0 +1,85 @@
+<%= render 'shared/basic_navigation', navigation: {
+back: orders_path, edit: edit_order_path(@order)
+} %>
+
+
+<p>
+  <b><%= Order.human_attribute_name 'firm_id' %>:</b>
+  <%= @order.firm.id %>
+</p>
+
+<p>
+  <b><%= Order.human_attribute_name 'number' %>:</b>
+  <%= @order.number %>
+</p>
+
+<p>
+  <b><%= Order.human_attribute_name 'date' %>:</b>
+  <%= @order.date %>
+</p>
+
+<p>
+  <b><%= Order.human_attribute_name 'contact_name' %>:</b>
+  <%= @order.contact_name %>
+</p>
+
+<% if @order.taxes %>
+  <p>
+    <b><%= Order.human_attribute_name 'taxes' %>:</b>
+    <%= @order.taxes %>
+  </p>
+<% end %>
+
+<% if @order.taxes %>
+  <p>
+    <b><%= Order.human_attribute_name 'deliver_fee' %>:</b>
+    <%= @order.deliver_fee %>
+  </p>
+<% end %>
+
+<% if @order.taxes %>
+  <p>
+    <b><%= Order.human_attribute_name 'packaging_fee' %>:</b>
+    <%= @order.packaging_fee %>
+  </p>
+<% end %>
+
+<% if @order.taxes %>
+  <p>
+    <b><%= Order.human_attribute_name 'subtotal' %>:</b>
+    <%= @order.subtotal %>
+  </p>
+<% end %>
+
+<% if @order.taxes %>
+  <p>
+    <b><%= Order.human_attribute_name 'total' %>:</b>
+    <%= @order.total %>
+  </p>
+<% end %>
+
+<% if @order.taxes %>
+  <p>
+    <b><%= Order.human_attribute_name 'expected_deliver_from' %>:</b>
+    <%= @order.expected_deliver_from %>
+  </p>
+<% end %>
+
+<% if @order.taxes %>
+  <p>
+    <b><%= Order.human_attribute_name 'expected_deliver_to' %>:</b>
+    <%= @order.expected_deliver_to %>
+  </p>
+<% end %>
+
+<% if @order.taxes %>
+  <p>
+    <b><%= Order.human_attribute_name 'tracking_code' %>:</b>
+    <%= @order.tracking_code %>
+  </p>
+<% end %>
+
+<p>
+  <b><%= Order.human_attribute_name 'user_id' %>:</b>
+  <%= @order.user.full_name %>
+</p>

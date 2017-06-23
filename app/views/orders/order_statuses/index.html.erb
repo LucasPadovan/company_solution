@@ -1,0 +1,27 @@
+<table class="table table-striped table-hover mar-bottom-3">
+  <thead>
+    <tr>
+      <th><%= OrderStatus.human_attribute_name 'status' %></th>
+      <th><%= OrderStatus.human_attribute_name 'order' %></th>
+      <th><%= OrderStatus.human_attribute_name 'detail' %></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @order_statuses.each do |order_status| %>
+      <tr>
+        <td><%= order_status.status %></td>
+        <td><%= order_status.order %></td>
+        <td><%= order_status.detail %></td>
+        <td>
+          <%= link_to '', order_status, class: 'fa fa-2x fa-info-circle'  %>
+          <%= link_to '', edit_order_status_path(order_status), class: 'fa fa-2x fa-pencil-square' %>
+          <%= link_to '', order_status, method: :delete, data: { confirm: t('messages.confirmation') }, class: 'fa fa-2x fa-trash' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('view.order_statuses.new_title'), new_order_status_path, class: 'btn btn-primary'  %>

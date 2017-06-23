@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170622041217) do
+ActiveRecord::Schema.define(version: 20170623001733) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,56 @@ ActiveRecord::Schema.define(version: 20170622041217) do
     t.string "address"
     t.time "opens_at"
     t.time "closes_at"
+  end
+
+  create_table "order_lines", force: :cascade do |t|
+    t.bigint "order_id"
+    t.bigint "product_id"
+    t.float "amount"
+    t.float "unit_price"
+    t.float "subtotal"
+    t.float "tax_rate"
+    t.float "tax"
+    t.float "remaining_amount"
+    t.integer "position"
+    t.string "currency"
+    t.string "detail"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_order_lines_on_order_id"
+    t.index ["product_id"], name: "index_order_lines_on_product_id"
+  end
+
+  create_table "order_statuses", force: :cascade do |t|
+    t.bigint "order_id"
+    t.decimal "status"
+    t.string "detail"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_order_statuses_on_order_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "number"
+    t.string "tracking_code"
+    t.string "type"
+    t.string "currency"
+    t.string "contact_name"
+    t.string "detail"
+    t.float "total"
+    t.float "subtotal"
+    t.float "taxes"
+    t.float "deliver_fee"
+    t.float "packaging_fee"
+    t.datetime "expected_deliver_from"
+    t.datetime "expected_deliver_to"
+    t.datetime "date"
+    t.bigint "firm_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["firm_id"], name: "index_orders_on_firm_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -90,6 +140,10 @@ ActiveRecord::Schema.define(version: 20170622041217) do
   end
 
   add_foreign_key "contacts", "firms"
+  add_foreign_key "order_lines", "orders"
+  add_foreign_key "order_lines", "products"
+  add_foreign_key "order_statuses", "orders"
+  add_foreign_key "orders", "users"
   add_foreign_key "products", "users"
   add_foreign_key "recipes", "products"
   add_foreign_key "trades", "products"
