@@ -9,7 +9,7 @@ class OrdersController < ApplicationController
 
   # GET /orders/1
   def show
-    @information[:subtitle] = @order.to_s
+    @information[:subtitle] = t('view.orders.show_title', order_number: @order.number)
   end
 
   # GET /orders/new
@@ -18,11 +18,12 @@ class OrdersController < ApplicationController
     @information[:subtitle] = t('view.orders.new_title')
 
     @order.number = (Order.last.try(:number) || 0) + 1
+    @order.date = Date.today
   end
 
   # GET /orders/1/edit
   def edit
-    @information[:subtitle] = t('view.orders.edit_title')
+    @information[:subtitle] = t('view.orders.edit_title', order_number: @order.number)
   end
 
   # POST /orders
@@ -66,7 +67,24 @@ class OrdersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def order_params
-      params.require(:order).permit(:number, :tracking_code, :type, :total, :subtotal, :taxes, :deliver_fee, :packaging_fee, :expected_deliver_from, :expected_deliver_to, :firm_id, :user_id, :contact_name, :date)
+      params.require(:order).permit(
+          :firm_id,
+          :number,
+          :date,
+          :contact_name,
+          :taxes,
+          :deliver_fee,
+          :packaging_fee,
+          :subtotal,
+          :total,
+          :currency,
+          :expected_deliver_from,
+          :expected_deliver_to,
+          :tracking_code,
+          :detail,
+          :type,
+          :user_id
+      )
     end
 
     def set_information

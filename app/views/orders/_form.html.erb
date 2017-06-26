@@ -10,78 +10,86 @@
       </ul>
     </div>
   <% end %>
+  <div class="columns">
+    <div class="form-group column col-5">
+      <%= form.label :firm_id, class: 'from-label' %>
+      <%= form.select :firm_id, Firm.firms_for_select, {}, { id: :order_firm_id, class: 'form-select' } %>
+    </div>
 
-  <div class="form-group">
-    <%= form.label :firm_id, class: 'from-label' %>
-    <%= form.text_field :firm_id, id: :order_firm_id, class: 'form-input' %>
-  </div>
+    <div class="form-group column col-2">
+      <%= form.label :number, class: 'from-label' %>
+      <%= form.number_field :number, id: :order_number, class: 'form-input' %>
+    </div>
 
-  <div class="form-group">
-    <%= form.label :number, class: 'from-label' %>
-    <%= form.number_field :number, id: :order_number, class: 'form-input' %>
-  </div>
+    <div class="form-group column col-5">
+      <%= form.label :date, class: 'from-label' %>
+      <%= form.text_field :date, id: :order_date, class: 'form-input', type: :date %>
+    </div>
 
-  <div class="form-group">
-    <%= form.label :date, class: 'from-label' %>
-    <%= form.datetime_select :date, id: :order_date, class: 'form-input' %>
-  </div>
+    <div class="form-group column col-5">
+      <%= form.label :contact_name, class: 'from-label' %>
+      <%= form.text_field :contact_name, id: :order_contact_name, class: 'form-input' %>
+    </div>
 
-  <div class="form-group">
-    <%= form.label :contact_name, class: 'from-label' %>
-    <%= form.text_field :contact_name, id: :order_contact_name, class: 'form-input' %>
-  </div>
+    <div class="form-group column col-5">
+      <%= form.label :detail, class: 'from-label' %>
+      <%= form.text_field :detail, id: :order_detail, class: 'form-input' %>
+    </div>
 
-  <div class="form-group">
-    <%= form.label :taxes, class: 'from-label' %>
-    <%= form.text_field :taxes, id: :order_taxes, class: 'form-input' %>
-  </div>
+    <div class="column col-3">
+      <div class="form-group">
+        <%= form.label :currency, class: 'from-label' %>
+        <%= form.select :currency, Order.currencies_for_select, {}, { id: :order_currency, class: 'form-select' } %>
+      </div>
 
-  <div class="form-group">
-    <%= form.label :deliver_fee, class: 'from-label' %>
-    <%= form.text_field :deliver_fee, id: :order_deliver_fee, class: 'form-input' %>
-  </div>
+      <div class="form-group">
+        <%= form.label :deliver_fee, class: 'from-label' %>
+        <%= form.text_field :deliver_fee, id: :order_deliver_fee, class: 'form-input' %>
+      </div>
 
-  <div class="form-group">
-    <%= form.label :packaging_fee, class: 'from-label' %>
-    <%= form.text_field :packaging_fee, id: :order_packaging_fee, class: 'form-input' %>
-  </div>
+      <div class="form-group">
+        <%= form.label :packaging_fee, class: 'from-label' %>
+        <%= form.text_field :packaging_fee, id: :order_packaging_fee, class: 'form-input' %>
+      </div>
 
-  <div class="form-group">
-    <%= form.label :subtotal, class: 'from-label' %>
-    <%= form.text_field :subtotal, id: :order_subtotal, class: 'form-input' %>
-  </div>
+      <div class="form-group">
+        <%= form.label :expected_deliver_from, class: 'from-label' %>
+        <%= form.text_field :expected_deliver_from, id: :order_expected_deliver_from, class: 'form-input', type: :date  %>
+      </div>
 
-  <div class="form-group">
-    <%= form.label :total, class: 'from-label' %>
-    <%= form.text_field :total, id: :order_total, class: 'form-input' %>
-  </div>
+      <div class="form-group">
+        <%= form.label :expected_deliver_to, class: 'from-label' %>
+        <%= form.text_field :expected_deliver_to, id: :order_expected_deliver_to, class: 'form-input', type: :date  %>
+      </div>
 
-  <div class="form-group">
-    <%= form.label :currency, class: 'from-label' %>
-    <%= form.text_field :currency, id: :order_currency, class: 'form-input' %>
-  </div>
+      <div class="form-group">
+        <%= form.label :tracking_code, class: 'from-label' %>
+        <%= form.text_field :tracking_code, id: :order_tracking_code, class: 'form-input' %>
+      </div>
 
-  <div class="form-group">
-    <%= form.label :expected_deliver_from, class: 'from-label' %>
-    <%= form.datetime_select :expected_deliver_from, id: :order_expected_deliver_from, class: 'form-input' %>
-  </div>
+      <div class="actions">
+        <%= form.submit t('view.orders.save'), class: 'btn btn-primary'  %>
+      </div>
+    </div>
 
-  <div class="form-group">
-    <%= form.label :expected_deliver_to, class: 'from-label' %>
-    <%= form.datetime_select :expected_deliver_to, id: :order_expected_deliver_to, class: 'form-input' %>
-  </div>
+    <div class="column col-9">
+      <h2>Elementos</h2>
+      <div class="columns">
+        <div class="form-group column column-4">
+          <%= form.label :subtotal, class: 'from-label' %>
+          <%= form.text_field :subtotal, id: :order_subtotal, class: 'form-input' %>
+        </div>
 
-  <div class="form-group">
-    <%= form.label :tracking_code, class: 'from-label' %>
-    <%= form.text_field :tracking_code, id: :order_tracking_code, class: 'form-input' %>
-  </div>
+        <div class="form-group column column-4">
+          <%= form.label :taxes, class: 'from-label' %>
+          <%= form.text_field :taxes, id: :order_taxes, class: 'form-input' %>
+        </div>
 
-  <div class="form-group">
-    <%= form.label :detail, class: 'from-label' %>
-    <%= form.text_field :detail, id: :order_detail, class: 'form-input' %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit t('view.orders.save'), class: 'btn btn-primary'  %>
+        <div class="form-group column column-4">
+          <%= form.label :total, class: 'from-label' %>
+          <%= form.text_field :total, id: :order_total, class: 'form-input' %>
+        </div>
+      </div>
+    </div>
   </div>
 <% end %>

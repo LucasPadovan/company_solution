@@ -91,19 +91,21 @@
         sales_subtotal: 'Subtotal ventas'
         sales_total: 'Total ventas'
       order:
-        cancelled: 'Cancelada'
-        completed: 'Completada'
-        details: 'Detalles'
-        deliver_in: 'Entregar dentro de'
-        external_code: 'Codigo externo'
         firm_id: 'Empresa'
         number: 'Número'
-        place: 'Entregar en'
-        received: 'Recibido'
-        requester: 'Pedido por'
-        requester_area: 'Área'
-        status: 'Estado'
-        user_id: 'Creado por'
+        date: 'Fecha'
+        contact_name: 'Contacto'
+        taxes: 'Impuestos'
+        deliver_fee: 'Cargo de envío'
+        packaging_fee: 'Cargo de manipulación'
+        subtotal: 'Subtotal'
+        total: 'Total'
+        currency: 'Moneda'
+        expected_deliver_from: 'Entrega desde'
+        expected_deliver_to: 'Entrega hasta'
+        tracking_code: 'Codigo de seguimiento'
+        detail: 'Detalle'
+        user_id: 'Agregada por'
       price:
         purchase_price: Precio de compra
         sale_price: Precio de venta
@@ -371,12 +373,13 @@
         regular: 'Normal'
     orders:
       index_title: "Listado de ordenes"
-      show_title: "Orden nº %{order_number}"
+      show_title: "Nº %{order_number}"
       new_title: "Nueva orden"
       edit_title: "Editando la orden %{order_number}"
       save: "Guardar orden"
-      show:
-        taken_for: "Tomado por:"
+      correctly_created: 'Orden argregada correctamente'
+      correctly_updated:  'Orden actualizada correctamente'
+      correctly_destroyed: 'Orden eliminada correctamente'
     items:
       add_item: "Agregar item"
       index_title: "Detalle pedido"
