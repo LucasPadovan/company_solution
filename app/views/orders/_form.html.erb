@@ -74,6 +74,14 @@
 
     <div class="column col-9">
       <h2>Elementos</h2>
+
+
+      <%#= form.fields_for :order_lines do |builder| %>
+        <%#= render 'orders/order_lines/form', f: builder %>
+      <%# end %>
+      <%= link_to_add_fields 'Add Question', form, 'orders', :order_lines %>
+
+
       <div class="columns">
         <div class="form-group column column-4">
           <%= form.label :subtotal, class: 'from-label' %>
