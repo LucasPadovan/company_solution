@@ -1,0 +1,11 @@
+.table.table-classic {
+  border-collapse: collapse;
+
+  &table, th, td {
+    border: 1px solid;
+  }
+
+  td {
+    padding: 5px;
+  }
+}

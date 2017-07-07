@@ -1,54 +1,37 @@
-<div class="form-group">
-  <%= f.label :order_id, class: 'from-label' %>
-  <%= f.text_field :order_id, id: :order_line_order_id, class: 'form-input' %>
-</div>
+<tr>
+  <td>
+    <%= f.text_field :amount, id: :order_line_amount, class: 'form-input' %>
+  </td>
+  <td>
+    <!--disabled, autocompleted with info about the product on the date this was created-->
+    <span>units</span>
+  </td>
+  <td>
+    <%= f.text_field :product_id, id: :order_line_product_id, class: 'form-input' %>
+  </td>
+  <td>
+    <%= f.text_field :detail, id: :order_line_detail, class: 'form-input' %>
+  </td>
+  <td>
+    <%= f.text_field :unit_price, id: :order_line_unit_price, class: 'form-input' %>
+  </td>
+  <td>
+    <!--disabled, autocompleted with info about the product on the date this was created-->
+    <%= f.text_field :tax_rate, id: :order_line_tax_rate, class: 'form-input' %>
+  </td>
+  <td>
+    <%= f.text_field :tax, id: :order_line_tax, class: 'form-input' %>
+  </td>
+  <td>
+    <%= f.text_field :subtotal, id: :order_line_subtotal, class: 'form-input' %>
+  </td>
+  <td>
+    actions
+  </td>
+</tr>
 
-<div class="form-group">
-  <%= f.label :amount, class: 'from-label' %>
-  <%= f.text_field :amount, id: :order_line_amount, class: 'form-input' %>
-</div>
+<%= f.hidden_field :position, id: :order_line_position, class: 'form-input' %>
+<%= f.hidden_field :currency, id: :order_line_currency, class: 'form-input' %>
+<%= f.hidden_field :remaining_amount, id: :order_line_remaining_amount, class: 'form-input' %>
 
-<div class="form-group">
-  <%= f.label :product_id, class: 'from-label' %>
-  <%= f.text_field :product_id, id: :order_line_product_id, class: 'form-input' %>
-</div>
 
-<div class="form-group">
-  <%= f.label :unit_price, class: 'from-label' %>
-  <%= f.text_field :unit_price, id: :order_line_unit_price, class: 'form-input' %>
-</div>
-
-<div class="form-group">
-  <%= f.label :subtotal, class: 'from-label' %>
-  <%= f.text_field :subtotal, id: :order_line_subtotal, class: 'form-input' %>
-</div>
-
-<div class="form-group">
-  <%= f.label :tax_rate, class: 'from-label' %>
-  <%= f.text_field :tax_rate, id: :order_line_tax_rate, class: 'form-input' %>
-</div>
-
-<div class="form-group">
-  <%= f.label :tax, class: 'from-label' %>
-  <%= f.text_field :tax, id: :order_line_tax, class: 'form-input' %>
-</div>
-
-<div class="form-group">
-  <%= f.label :remaining_amount, class: 'from-label' %>
-  <%= f.text_field :remaining_amount, id: :order_line_remaining_amount, class: 'form-input' %>
-</div>
-
-<div class="form-group">
-  <%= f.label :position, class: 'from-label' %>
-  <%= f.text_field :position, id: :order_line_position, class: 'form-input' %>
-</div>
-
-<div class="form-group">
-  <%= f.label :currency, class: 'from-label' %>
-  <%= f.text_field :currency, id: :order_line_currency, class: 'form-input' %>
-</div>
-
-<div class="form-group">
-  <%= f.label :detail, class: 'from-label' %>
-  <%= f.text_field :detail, id: :order_line_detail, class: 'form-input' %>
-</div>

@@ -1,0 +1,14 @@
+<table class="table table-classic table-hover mar-bottom-3">
+  <thead>
+    <tr>
+      <% attributes.each do |attribute| %>
+        <th><%= model.human_attribute_name attribute %></th>
+      <% end %>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody class="js-<%= association %>-items">
+  </tbody>
+</table>
+
+<%= link_to_add_fields 'Add Item', form, folder, association %>

@@ -6,6 +6,6 @@ module ApplicationHelper
       render(folder + '/' + association.to_s + '/form', f: builder)
     end
 
-    link_to(name, '#', class: 'add_fields', data: {id: id, fields: fields.gsub("\n", '')})
+    link_to(name, '#', class: 'add_fields', data: {id: id, fields: fields.gsub("\n", ''), association: association})
   end
 end
