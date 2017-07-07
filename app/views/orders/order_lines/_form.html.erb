@@ -1,37 +1,37 @@
-<tr>
+<tr class="js-item-row">
   <td>
-    <%= f.text_field :amount, id: :order_line_amount, class: 'form-input' %>
+    <%= form.text_field :amount, id: :order_line_amount, class: 'form-input' %>
   </td>
   <td>
     <!--disabled, autocompleted with info about the product on the date this was created-->
     <span>units</span>
   </td>
   <td>
-    <%= f.text_field :product_id, id: :order_line_product_id, class: 'form-input' %>
+    <%= form.select :product_id, Product.products_for_select, {}, { id: :order_line_product_id, class: 'form-select' } %>
   </td>
   <td>
-    <%= f.text_field :detail, id: :order_line_detail, class: 'form-input' %>
+    <%= form.text_field :detail, id: :order_line_detail, class: 'form-input' %>
   </td>
   <td>
-    <%= f.text_field :unit_price, id: :order_line_unit_price, class: 'form-input' %>
+    <%= form.text_field :unit_price, id: :order_line_unit_price, class: 'form-input' %>
   </td>
   <td>
     <!--disabled, autocompleted with info about the product on the date this was created-->
-    <%= f.text_field :tax_rate, id: :order_line_tax_rate, class: 'form-input' %>
+    <%= form.text_field :tax_rate, id: :order_line_tax_rate, class: 'form-input' %>
   </td>
   <td>
-    <%= f.text_field :tax, id: :order_line_tax, class: 'form-input' %>
+    <%= form.text_field :tax, id: :order_line_tax, class: 'form-input' %>
   </td>
   <td>
-    <%= f.text_field :subtotal, id: :order_line_subtotal, class: 'form-input' %>
+    <%= form.text_field :subtotal, id: :order_line_subtotal, class: 'form-input' %>
   </td>
   <td>
-    actions
+    <button class="button js-remove-fieldset">X</button>
   </td>
 </tr>
 
-<%= f.hidden_field :position, id: :order_line_position, class: 'form-input' %>
-<%= f.hidden_field :currency, id: :order_line_currency, class: 'form-input' %>
-<%= f.hidden_field :remaining_amount, id: :order_line_remaining_amount, class: 'form-input' %>
+<%= form.hidden_field :position, id: :order_line_position, class: 'form-input' %>
+<%= form.hidden_field :currency, id: :order_line_currency, class: 'form-input' %>
+<%= form.hidden_field :remaining_amount, id: :order_line_remaining_amount, class: 'form-input' %>
 
 

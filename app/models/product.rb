@@ -31,4 +31,8 @@ class Product < ApplicationRecord
   def self.types_for_select
     [[available_types[:defaultType], nil], [available_types[:ComposedProduct], 'ComposedProduct'], [available_types[:MaterialProduct], 'MaterialProduct']]
   end
+
+  def self.products_for_select
+    Product.all.map{ |product| [product.name, product.id] }
+  end
 end

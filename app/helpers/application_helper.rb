@@ -1,11 +1,11 @@
 module ApplicationHelper
-  def link_to_add_fields(name, f, folder, association)
-    new_object = f.object.send(association).klass.new
+  def link_to_add_fields(name, form, folder, association)
+    new_object = form.object.send(association).klass.new
     id = new_object.object_id
-    fields = f.fields_for(association, new_object, child_index: id) do |builder|
-      render(folder + '/' + association.to_s + '/form', f: builder)
+    fields = form.fields_for(association, new_object, child_index: id) do |builder|
+      render(folder + '/' + association.to_s + '/form', form: builder)
     end
 
-    link_to(name, '#', class: 'add_fields', data: {id: id, fields: fields.gsub("\n", ''), association: association})
+    link_to(name, '#', class: 'js-add-fieldset', data: {id: id, fields: fields.gsub("\n", ''), association: association})
   end
 end
