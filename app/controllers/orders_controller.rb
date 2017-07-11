@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
   before_action :set_information
+  before_action :set_nested_attributes, only: [:create, :update]
 
   # GET /orders
   def index
@@ -83,11 +84,31 @@ class OrdersController < ApplicationController
           :tracking_code,
           :detail,
           :type,
-          :user_id
+          :user_id,
+
+          lines_attributes: [
+              :order_id,
+              :amount,
+              :product_id,
+              :unit_price,
+              :subtotal,
+              :tax_rate,
+              :tax,
+              :detail,
+              :currency,
+              :remaining_amount,
+              :position
+          ]
       )
     end
 
     def set_information
       @information = { title: t('activerecord.models.order.other') }
+    end
+
+    def set_nested_attributes
+      if params[:order][:lines_attributes]
+        order_params[:lines_attributes] = params[:order][:lines_attributes].values
+      end
     end
 end

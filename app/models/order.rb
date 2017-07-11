@@ -2,11 +2,11 @@ class Order < ApplicationRecord
   belongs_to :firm
   belongs_to :user
 
-  has_many :order_lines
+  has_many :lines, class_name: 'OrderLine'
 
-  accepts_nested_attributes_for :order_lines, allow_destroy: true
+  accepts_nested_attributes_for :lines, allow_destroy: true
 
-  attr_accessor :order_lines_attributes
+  attr_accessor :lines_attributes
 
   validates :contact_name, presence: :true
 

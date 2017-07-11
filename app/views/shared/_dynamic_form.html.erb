@@ -8,6 +8,9 @@
     </tr>
   </thead>
   <tbody class="js-<%= association %>-items">
+    <%= form.fields_for association do |builder| %>
+      <%= render association_folder_path(folder, association), form: builder %>
+    <% end %>
   </tbody>
 </table>
 

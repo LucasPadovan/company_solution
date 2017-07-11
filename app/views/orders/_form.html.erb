@@ -76,7 +76,7 @@
       <%= render 'shared/dynamic_form',
                  form: form,
                  folder: 'orders',
-                 association: :order_lines,
+                 association: :lines,
                  attributes: ['amount', 'unit', 'product', 'detail', 'unit_price', 'tax_rate', 'tax', 'subtotal'],
                  model: OrderLine
       %>
