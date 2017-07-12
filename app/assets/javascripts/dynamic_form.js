@@ -12,13 +12,13 @@ var DynamicForm = {
     $('form').on('click', '.js-add-fieldset', function (event) {
       event.preventDefault();
 
-      var regexp, time, target;
+      var regexp, sequence, target;
 
-      time = new Date().getTime();
+      sequence = document.getElementsByClassName('js-item-row').length;
       regexp = new RegExp($(this).data('id'), 'g');
       target = '.js-' + $(this).data('association') + '-items';
 
-      $(target).before($(this).data('fields').replace(regexp, time));
+      $(target).append($(this).data('fields').replace(regexp, sequence));
     })
   },
 

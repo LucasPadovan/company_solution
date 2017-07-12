@@ -1,7 +1,6 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
   before_action :set_information
-  before_action :set_nested_attributes, only: [:create, :update]
 
   # GET /orders
   def index
@@ -33,6 +32,7 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
 
     @order.user = current_user
+    # @order.lines.build order_params[:lines_attributes].values
 
     if @order.save
       flash[:type] = 'success'
@@ -45,6 +45,9 @@ class OrdersController < ApplicationController
   # PATCH/PUT /orders/1
   def update
     @information[:subtitle] = t('view.orders.edit_title')
+
+    # @order.lines.build order_params[:lines_attributes].values
+
     if @order.update(order_params)
       flash[:type] = 'primary'
       redirect_to @order, notice: t('view.orders.correctly_updated')
@@ -87,28 +90,21 @@ class OrdersController < ApplicationController
           :user_id,
 
           lines_attributes: [
-              :order_id,
               :amount,
               :product_id,
+              :detail,
               :unit_price,
-              :subtotal,
               :tax_rate,
               :tax,
-              :detail,
+              :subtotal,
+              :position,
               :currency,
-              :remaining_amount,
-              :position
-          ]
+              :remaining_amount
+           ]
       )
     end
 
     def set_information
       @information = { title: t('activerecord.models.order.other') }
-    end
-
-    def set_nested_attributes
-      if params[:order][:lines_attributes]
-        order_params[:lines_attributes] = params[:order][:lines_attributes].values
-      end
     end
 end
