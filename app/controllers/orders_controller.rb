@@ -31,6 +31,7 @@ class OrdersController < ApplicationController
     @information[:subtitle] = t('view.orders.new_title')
     @order = Order.new(order_params)
 
+    @order.date = Date.today
     @order.user = current_user
 
     if @order.save
@@ -43,7 +44,7 @@ class OrdersController < ApplicationController
 
   # PATCH/PUT /orders/1
   def update
-    @information[:subtitle] = t('view.orders.edit_title')
+    @information[:subtitle] = t('view.orders.edit_title', order_number: @order.number)
 
     if @order.update(order_params)
       flash[:type] = 'primary'

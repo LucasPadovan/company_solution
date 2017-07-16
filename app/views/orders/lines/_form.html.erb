@@ -7,7 +7,7 @@
     <span>units</span>
   </td>
   <td>
-    <%= form.select :product_id, Product.products_for_select, {}, { id: :line_product_id, class: 'form-select' } %>
+    <%= form.select :product_id, Product.products_for_select, { prompt: t('view.products.select_prompt') }, { id: :line_product_id, class: 'form-select' } %>
   </td>
   <td>
     <%= form.text_field :detail, id: :line_detail, class: 'form-input' %>

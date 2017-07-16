@@ -287,6 +287,7 @@
       correctly_updated: 'Producto actualizado correctamente.'
       stale_object_error: 'El producto no pudo ser actualizado, intente nuevamente.'
       save: 'Guardar producto'
+      select_prompt: 'Producto'
       show:
         created_by: 'Cargado por: '
         purchase_prices: 'Precios de compra: '
