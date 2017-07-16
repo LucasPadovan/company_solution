@@ -32,7 +32,6 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
 
     @order.user = current_user
-    # @order.lines.build order_params[:lines_attributes].values
 
     if @order.save
       flash[:type] = 'success'
@@ -45,8 +44,6 @@ class OrdersController < ApplicationController
   # PATCH/PUT /orders/1
   def update
     @information[:subtitle] = t('view.orders.edit_title')
-
-    # @order.lines.build order_params[:lines_attributes].values
 
     if @order.update(order_params)
       flash[:type] = 'primary'
@@ -90,6 +87,7 @@ class OrdersController < ApplicationController
           :user_id,
 
           lines_attributes: [
+              :id,
               :amount,
               :product_id,
               :detail,
@@ -99,7 +97,8 @@ class OrdersController < ApplicationController
               :subtotal,
               :position,
               :currency,
-              :remaining_amount
+              :remaining_amount,
+              :_destroy
            ]
       )
     end
