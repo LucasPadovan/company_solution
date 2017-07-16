@@ -1,4 +1,4 @@
-<tr class="js-item-row">
+<tr class="js-nested-item-row">
   <td>
     <%= form.text_field :amount, id: :line_amount, class: 'form-input' %>
   </td>
@@ -23,7 +23,7 @@
     <%= form.text_field :tax, id: :line_tax, class: 'form-input' %>
   </td>
   <td>
-    <%= form.text_field :subtotal, id: :line_subtotal, class: 'form-input' %>
+    <%= form.text_field :subtotal, id: :line_subtotal, class: 'form-input js-add-fieldset-input' %>
   </td>
   <td>
     <button class="button js-remove-fieldset">X</button>

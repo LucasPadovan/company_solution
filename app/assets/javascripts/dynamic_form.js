@@ -1,25 +1,41 @@
 var DynamicForm = {
-  handleAddFieldset: function() {
+  handleRemoveFieldset: function() {
     $('form').on('click', '.js-remove-fieldset', function (event) {
       event.preventDefault();
 
-      $(this).prev('input[type=hidden]').val('1');
-      $(this).closest('.js-item-row').hide();
+      DynamicForm._removeFieldset(this);
     });
   },
 
-  handleRemoveFieldset: function() {
-    $('form').on('click', '.js-add-fieldset', function (event) {
+  handleAddFieldset: function() {
+    var $form = $('form');
+
+    $form.on('click', '.js-add-fieldset', function (event) {
       event.preventDefault();
 
-      var regexp, sequence, target;
+      DynamicForm._addFieldset();
+    });
 
-      sequence = document.getElementsByClassName('js-item-row').length;
-      regexp = new RegExp($(this).data('id'), 'g');
-      target = '.js-' + $(this).data('association') + '-items';
+    // Should be just on the latest one.
+    $form.on('focus', '.js-add-fieldset-input', function() {
+      DynamicForm._addFieldset();
+    });
+  },
 
-      $(target).append($(this).data('fields').replace(regexp, sequence));
-    })
+  _addFieldset: function() {
+    var regexp, sequence, target,
+        $addFieldsetButton = $('.js-add-fieldset');
+
+    sequence = document.getElementsByClassName('js-nested-item-row').length;
+    regexp = new RegExp($addFieldsetButton.data('id'), 'g');
+    target = '.js-' + $addFieldsetButton.data('association') + '-items';
+
+    $(target).append($addFieldsetButton.data('fields').replace(regexp, sequence));
+  },
+
+  _removeFieldset: function(context) {
+    $(context).prev('input[type=hidden]').val('1');
+    $(context).closest('.js-nested-item-row').hide();
   },
 
   init: function() {
