@@ -16,9 +16,10 @@ var DynamicForm = {
       DynamicForm._addFieldset();
     });
 
-    // Should be just on the latest one.
     $form.on('focus', '.js-add-fieldset-input', function() {
-      DynamicForm._addFieldset();
+      if (this === $('.js-add-fieldset-input').last()[0]) {
+        DynamicForm._addFieldset();
+      }
     });
   },
 
