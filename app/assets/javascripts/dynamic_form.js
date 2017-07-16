@@ -34,8 +34,10 @@ var DynamicForm = {
   },
 
   _removeFieldset: function(context) {
-    $(context).prev('input[type=hidden]').val('1');
-    $(context).closest('.js-nested-item-row').hide();
+    var $fieldset = $(context).closest('.js-nested-item-row');
+
+    $fieldset.children('.js-nested-item-destroy').val('1');
+    $fieldset.hide();
   },
 
   init: function() {
