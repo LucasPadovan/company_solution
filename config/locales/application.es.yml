@@ -106,6 +106,17 @@
         tracking_code: 'Codigo de seguimiento'
         detail: 'Detalle'
         user_id: 'Agregada por'
+      order_line:
+        amount: 'Cantidad'
+        currency: 'Moneda'
+        detail: 'Detalle'
+        position: 'Posicion'
+        product_id: 'Producto'
+        remaining_amount: 'Restante'
+        subtotal: 'Subtotal'
+        tax: 'Impuestos'
+        tax_rate: 'Imp %'
+        unit_price: 'Precio unitario'
       price:
         purchase_price: Precio de compra
         sale_price: Precio de venta

@@ -45,4 +45,4 @@ var DynamicForm = {
     this.handleAddFieldset();
     this.handleRemoveFieldset();
   }
-}
+};

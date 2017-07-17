@@ -26,17 +26,17 @@
       <%= form.text_field :date, id: :order_date, class: 'form-input', type: :date %>
     </div>
 
-    <div class="form-group column col-5">
+    <div class="form-group column col-5 pad-top-0">
       <%= form.label :contact_name, class: 'from-label' %>
       <%= form.text_field :contact_name, id: :order_contact_name, class: 'form-input' %>
     </div>
 
-    <div class="form-group column col-5">
+    <div class="form-group column col-7 pad-top-0">
       <%= form.label :detail, class: 'from-label' %>
       <%= form.text_field :detail, id: :order_detail, class: 'form-input' %>
     </div>
 
-    <div class="column col-3">
+    <div class="column col-3 pad-top-0">
       <div class="form-group">
         <%= form.label :currency, class: 'from-label' %>
         <%= form.select :currency, Order.currencies_for_select, {}, { id: :order_currency, class: 'form-select' } %>
@@ -72,31 +72,32 @@
       </div>
     </div>
 
-    <div class="column col-9">
-      <%= render 'shared/dynamic_form',
-                 form: form,
-                 folder: 'orders',
-                 association: :lines,
-                 attributes: ['amount', 'unit', 'product', 'detail', 'unit_price', 'tax_rate', 'tax', 'subtotal'],
-                 model: OrderLine
-      %>
-
-
+    <div class="column col-9 pad-top-0">
       <div class="columns">
-        <div class="form-group column column-4">
+        <div class="form-group column col-4 pad-top-0">
           <%= form.label :subtotal, class: 'from-label' %>
           <%= form.text_field :subtotal, id: :order_subtotal, class: 'form-input' %>
         </div>
 
-        <div class="form-group column column-4">
+        <div class="form-group column col-4 pad-top-0">
           <%= form.label :taxes, class: 'from-label' %>
           <%= form.text_field :taxes, id: :order_taxes, class: 'form-input' %>
         </div>
 
-        <div class="form-group column column-4">
+        <div class="form-group column col-4 pad-top-0">
           <%= form.label :total, class: 'from-label' %>
           <%= form.text_field :total, id: :order_total, class: 'form-input' %>
         </div>
+      </div>
+
+      <div class="mar-top-2">
+        <%= render 'shared/dynamic_form',
+                   form: form,
+                   folder: 'orders',
+                   association: :lines,
+                   attributes: ['amount', 'unit', 'product_id', 'detail', 'unit_price', 'tax_rate', 'tax', 'subtotal'],
+                   model: OrderLine
+        %>
       </div>
     </div>
   </div>
