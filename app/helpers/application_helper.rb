@@ -6,7 +6,7 @@ module ApplicationHelper
       render association_folder_path(folder, association), form: builder
     end
 
-    link_to(name, '#', class: 'js-add-fieldset', data: {id: id, fields: fields.gsub("\n", ''), association: association})
+    link_to(name, '#', class: 'btn btn-primary btn-sm js-add-fieldset', data: {id: id, fields: fields.gsub("\n", ''), association: association})
   end
 
   def association_folder_path(folder, association)

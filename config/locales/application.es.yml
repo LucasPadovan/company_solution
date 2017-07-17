@@ -218,6 +218,7 @@
       empty_search:
         title:
           html: 'La búsqueda de <span class="label label-inverse">%{search}</span> no obtuvo ningún resultado.'
+      add_item: 'Agregar item'
     contacts:
       index_title: 'Contactos'
       show_title: 'Detalle de %{contact} de %{firm}'
