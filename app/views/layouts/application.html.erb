@@ -32,6 +32,8 @@
     <script>
       $(document).ready(function () {
         DynamicForm.init();
+
+        <%= yield :ready_js %>
       });
     </script>
   </body>

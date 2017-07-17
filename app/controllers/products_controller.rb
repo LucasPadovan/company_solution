@@ -14,6 +14,11 @@ class ProductsController < ApplicationController
     @recipes = @product.recipes
     @trades = @product.trades
     @information[:subtitle] = @product.name
+
+    respond_to do |format|
+      format.html { redirect_to product_path(@product) }
+      format.json { @product.to_json }
+    end
   end
 
   # GET /products/new
