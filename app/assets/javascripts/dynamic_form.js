@@ -34,11 +34,12 @@ var DynamicForm = {
   /*Replicate for several fields*/
   populateForm: function(dataset, target, fields) {
     var $row = $(target).closest('tr');
-    var unitSelector =  '.js-nested-item-unit';
-    var $unit = $row.find(unitSelector);
 
-    $unit.text(dataset['unit']);
+    for(var i = 0, field; field = fields[i]; i++) {
+      var unitSelector = '.js-nested-item-' + field;
 
+      $row.find(unitSelector).val(dataset[field]);
+    }
   },
 
   _addFieldset: function() {

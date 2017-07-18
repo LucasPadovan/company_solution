@@ -2,7 +2,7 @@
   <thead>
     <tr>
       <% attributes.each do |attribute| %>
-        <th><%= model.human_attribute_name attribute %></th>
+        <th><%= model.human_attribute_name(attribute) if attribute.present? %></th>
       <% end %>
       <th></th>
     </tr>

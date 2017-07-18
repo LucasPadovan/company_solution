@@ -97,7 +97,7 @@ class OrdersController < ApplicationController
               :tax,
               :subtotal,
               :position,
-              :currency,
+              :unit,
               :remaining_amount,
               :_destroy
            ]

@@ -3,8 +3,7 @@
     <%= form.text_field :amount, id: :line_amount, class: 'form-input' %>
   </td>
   <td>
-    <!--disabled, autocompleted with info about the product on the date this was created-->
-    <span class="js-nested-item-unit"></span>
+    <%= form.text_field :unit, id: :line_unit, class: 'form-input js-nested-item-unit' %>
   </td>
   <td>
     <%= form.select :product_id,
@@ -20,11 +19,11 @@
     <%= form.text_field :detail, id: :line_detail, class: 'form-input' %>
   </td>
   <td>
-    <%= form.text_field :unit_price, id: :line_unit_price, class: 'form-input' %>
+    <%= form.text_field :unit_price, id: :line_unit_price, class: 'form-input  js-nested-item-unit_price' %>
   </td>
   <td>
     <!--disabled, autocompleted with info about the product on the date this was created-->
-    <%= form.text_field :tax_rate, id: :line_tax_rate, class: 'form-input' %>
+    <%= form.text_field :tax_rate, id: :line_tax_rate, class: 'form-input  js-nested-item-tax_rate' %>
   </td>
   <td>
     <%= form.text_field :tax, id: :line_tax, class: 'form-input' %>
@@ -38,5 +37,4 @@
 
   <%= form.hidden_field :_destroy, class: 'js-nested-item-destroy' %>
   <%= form.hidden_field :position, id: :line_position, class: 'form-input' %>
-  <%= form.hidden_field :currency, id: :line_currency, class: 'form-input' %>
 </tr>

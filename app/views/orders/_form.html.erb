@@ -96,7 +96,7 @@
                    form: form,
                    folder: 'orders',
                    association: :lines,
-                   attributes: ['amount', 'unit', 'product_id', 'detail', 'unit_price', 'tax_rate', 'tax', 'subtotal'],
+                   attributes: ['amount', '', 'product_id', 'detail', 'unit_price', 'tax_rate', 'tax', 'subtotal'],
                    model: OrderLine
         %>
       </div>
@@ -105,5 +105,5 @@
 <% end %>
 
 <% content_for :ready_js do %>
-  DynamicForm.handleFetchableSelect('.js-fetchable-select', 'unit');
+  DynamicForm.handleFetchableSelect('.js-fetchable-select', ['unit', 'unit_price', 'tax_rate']);
 <% end %>

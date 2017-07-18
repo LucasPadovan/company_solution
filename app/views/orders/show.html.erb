@@ -100,14 +100,14 @@ back: orders_path, edit: edit_order_path(@order)
       <tbody>
       <% @order.lines.each do |line| %>
         <tr>
-          <td><%= line.amount %> <%= line.product.unit %></td>
+          <td><%= line.amount %> <%= line.unit %></td>
           <td><%= line.product.name %></td>
           <td><%= line.detail %></td>
           <td><%= line.unit_price %></td>
           <td><%= line.tax_rate %></td>
           <td><%= line.tax %></td>
           <td><%= line.subtotal %></td>
-          <td><%= line.remaining_amount %> <%= line.product.unit %></td>
+          <td><%= line.remaining_amount %> <%= line.unit %></td>
         </tr>
       <% end %>
       </tbody>
