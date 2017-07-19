@@ -1,6 +1,18 @@
+// All this doesn't work for more than one line FK
+
 var AutoTotals = {
   listenItemChanges: function() {
+    var lineFields = [
+        '.js-nested-item-amount',
+        '.js-nested-item-unit_price',
+        '.js-nested-item-tax_rate',
+        ];
 
+    $.each(lineFields, function(index, lineField) {
+      $(document).on('change', lineField, function() {
+        AutoTotals._setLineSubtotal();
+      });
+    });
   },
 
   listenFormChanges: function() {
@@ -8,13 +20,13 @@ var AutoTotals = {
         taxFields = '.js-nested-item-tax';
 
     $(document).on('change', subtotalFields, function() {
-      AutoTotals._setSubtotal();
-      AutoTotals._setTotal();
+      AutoTotals._setFormSubtotal();
+      AutoTotals._setFormTotal();
     });
 
     $(document).on('change', taxFields, function() {
-      AutoTotals._setTax();
-      AutoTotals._setTotal();
+      AutoTotals._setFormTax();
+      AutoTotals._setFormTotal();
     });
   },
 
@@ -23,21 +35,33 @@ var AutoTotals = {
   },
 
   /* DOM handling */
-  _setSubtotal: function() {
-    $('.js-form-subtotal').val(AutoTotals._calculateSubtotals().toFixed(2));
+  _setFormSubtotal: function() {
+    $('.js-form-subtotal').val(AutoTotals._calculateFormSubtotals().toFixed(2));
   },
 
-  _setTax: function() {
-    $('.js-form-tax').val(AutoTotals._calculateTaxes().toFixed(2));
+  _setFormTax: function() {
+    $('.js-form-tax').val(AutoTotals._calculateFormTaxes().toFixed(2));
   },
 
-  _setTotal: function() {
-    $('.js-form-total').val(AutoTotals._calculateTotal().toFixed(2));
+  _setFormTotal: function() {
+    $('.js-form-total').val(AutoTotals._calculateFormTotal().toFixed(2));
+  },
+
+  _setLineSubtotal: function() {
+    var lineValues = AutoTotals._calculateLineSubtotal();
+
+    $('.js-nested-item-tax').val(lineValues['tax'].toFixed(2));
+    $('.js-nested-item-subtotal').val(lineValues['subtotal'].toFixed(2));
+
+    // For some reason this set doesn't trigger onchange on listenFormChanges
+    AutoTotals._setFormTax();
+    AutoTotals._setFormSubtotal();
+    AutoTotals._setFormTotal();
   },
   /* DOM handling */
 
   /* Calculations */
-  _calculateSubtotals: function() {
+  _calculateFormSubtotals: function() {
     var $subtotalFields = $('.js-nested-item-subtotal'),
         subtotal = 0.0;
 
@@ -52,7 +76,7 @@ var AutoTotals = {
     return subtotal;
   },
 
-  _calculateTaxes: function() {
+  _calculateFormTaxes: function() {
     var $taxFields = $('.js-nested-item-tax'),
         tax = 0.0;
 
@@ -67,7 +91,7 @@ var AutoTotals = {
     return tax;
   },
 
-  _calculateTotal: function() {
+  _calculateFormTotal: function() {
     var total,
         subtotal = $('.js-form-subtotal').val() || 0,
         tax = $('.js-form-tax').val() || 0;
@@ -75,6 +99,24 @@ var AutoTotals = {
     total = parseFloat(subtotal) + parseFloat(tax);
 
     return total;
+  },
+
+  _calculateLineSubtotal: function() {
+    var amount = parseFloat($('.js-nested-item-amount').val()) || 0,
+        unitPrice = parseFloat($('.js-nested-item-unit_price').val()) || 0,
+        taxRate = parseFloat($('.js-nested-item-tax_rate').val()) || 0,
+        tax,
+        netValue,
+        subtotal;
+
+    netValue = amount * unitPrice;
+    tax = netValue * taxRate / 100;
+    subtotal = netValue + tax;
+
+    return {
+      tax: tax,
+      subtotal: subtotal
+    };
   },
   /* Calculations */
 
