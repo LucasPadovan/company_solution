@@ -3,14 +3,14 @@
 var AutoTotals = {
   listenItemChanges: function() {
     var lineFields = [
-        '.js-nested-item-amount',
-        '.js-nested-item-unit_price',
-        '.js-nested-item-tax_rate',
+          '.js-nested-item-amount',
+          '.js-nested-item-unit_price',
+          '.js-nested-item-tax_rate'
         ];
 
     $.each(lineFields, function(index, lineField) {
       $(document).on('change', lineField, function() {
-        AutoTotals._setLineSubtotal();
+        AutoTotals._setLineSubtotal(this);
       });
     });
   },
@@ -36,6 +36,8 @@ var AutoTotals = {
 
   /* DOM handling */
   _setFormSubtotal: function() {
+    //trigger this when removing lines
+
     $('.js-form-subtotal').val(AutoTotals._calculateFormSubtotals().toFixed(2));
   },
 
@@ -47,11 +49,11 @@ var AutoTotals = {
     $('.js-form-total').val(AutoTotals._calculateFormTotal().toFixed(2));
   },
 
-  _setLineSubtotal: function() {
-    var lineValues = AutoTotals._calculateLineSubtotal();
+  _setLineSubtotal: function(context) {
+    var lineValues = AutoTotals._calculateLineSubtotal(context);
 
-    $('.js-nested-item-tax').val(lineValues['tax'].toFixed(2));
-    $('.js-nested-item-subtotal').val(lineValues['subtotal'].toFixed(2));
+    $(context).parents('.js-nested-item-row').find('.js-nested-item-tax').val(lineValues['tax'].toFixed(2));
+    $(context).parents('.js-nested-item-row').find('.js-nested-item-subtotal').val(lineValues['subtotal'].toFixed(2));
 
     // For some reason this set doesn't trigger onchange on listenFormChanges
     AutoTotals._setFormTax();
@@ -101,10 +103,10 @@ var AutoTotals = {
     return total;
   },
 
-  _calculateLineSubtotal: function() {
-    var amount = parseFloat($('.js-nested-item-amount').val()) || 0,
-        unitPrice = parseFloat($('.js-nested-item-unit_price').val()) || 0,
-        taxRate = parseFloat($('.js-nested-item-tax_rate').val()) || 0,
+  _calculateLineSubtotal: function(context) {
+    var amount = parseFloat($(context).parents('.js-nested-item-row').find('.js-nested-item-amount').val()) || 0,
+        unitPrice = parseFloat($(context).parents('.js-nested-item-row').find('.js-nested-item-unit_price').val()) || 0,
+        taxRate = parseFloat($(context).parents('.js-nested-item-row').find('.js-nested-item-tax_rate').val()) || 0,
         tax,
         netValue,
         subtotal;
