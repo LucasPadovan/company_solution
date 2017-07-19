@@ -77,17 +77,17 @@
       <div class="columns">
         <div class="form-group column col-4 pad-top-0">
           <%= form.label :subtotal, class: 'from-label' %>
-          <%= form.text_field :subtotal, id: :order_subtotal, class: 'form-input' %>
+          <%= form.text_field :subtotal, id: :order_subtotal, class: 'form-input js-form-subtotal' %>
         </div>
 
         <div class="form-group column col-4 pad-top-0">
           <%= form.label :taxes, class: 'from-label' %>
-          <%= form.text_field :taxes, id: :order_taxes, class: 'form-input' %>
+          <%= form.text_field :taxes, id: :order_taxes, class: 'form-input js-form-tax' %>
         </div>
 
         <div class="form-group column col-4 pad-top-0">
           <%= form.label :total, class: 'from-label' %>
-          <%= form.text_field :total, id: :order_total, class: 'form-input' %>
+          <%= form.text_field :total, id: :order_total, class: 'form-input js-form-total' %>
         </div>
       </div>
 
@@ -106,4 +106,5 @@
 
 <% content_for :ready_js do %>
   DynamicForm.handleFetchableSelect('.js-fetchable-select', ['unit', 'unit_price', 'tax_rate']);
+  AutoTotals.init();
 <% end %>
