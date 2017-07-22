@@ -196,6 +196,7 @@
     iva_tot: 'Total IVA'
     other_conc_tot: 'Total otros conceptos'
     total: 'Total'
+    restore: 'Deshacer'
     
   menu:
     actions:

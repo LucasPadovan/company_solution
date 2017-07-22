@@ -1,0 +1,17 @@
+@import "_variables";
+
+.btn.btn--warning {
+  background: $error-color;
+  color: white;
+  border-color: $deep-orange-a400;
+
+  &:hover, &:focus {
+    background: $deep-orange-a400;
+    border-color: $deep-orange-a700;
+  }
+
+  &:active {
+    background: $deep-orange-a700;
+    border-color: $deep-orange-a700;
+  }
+}

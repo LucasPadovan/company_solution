@@ -1,17 +1,26 @@
-<table class="table table-classic table-hover mar-bottom-3">
-  <thead>
+<div class="nested-items">
+  <table class="table table-classic table-hover mar-bottom-3">
+    <thead>
     <tr>
       <% attributes.each do |attribute| %>
         <th><%= model.human_attribute_name(attribute) if attribute.present? %></th>
       <% end %>
       <th></th>
     </tr>
-  </thead>
-  <tbody class="js-<%= association %>-items">
+    </thead>
+    <tbody class="js-<%= association %>-items">
     <%= form.fields_for association do |builder| %>
       <%= render association_folder_path(folder, association), form: builder %>
     <% end %>
-  </tbody>
-</table>
+    </tbody>
+  </table>
+
+  <div class="nested-item-destroyed-alert hidden">
+    <%= button_tag class: 'btn btn-sm btn--warning js-nested-item-destroyed' do %>
+      <i class='icon icon-arrow-left'></i>
+      <%= t('label.restore') %>
+    <% end %>
+  </div>
+</div>
 
 <%= link_to_add_fields t('view.generic.add_item'), form, folder, association %>

@@ -7,6 +7,20 @@ var DynamicForm = {
     });
   },
 
+  handleRestoreFieldset: function() {
+    $('form').on('click', '.js-nested-item-destroyed', function(event) {
+      event.preventDefault();
+
+      var $fieldset = $(this).data('fieldset');
+
+      $(this).data('fieldset', '');
+
+      $fieldset.children('.js-nested-item-destroy').val('0');
+      $fieldset.show();
+      $(this).hide();
+    });
+  },
+
   handleAddFieldset: function() {
     var $form = $('form');
 
@@ -55,7 +69,20 @@ var DynamicForm = {
     var $fieldset = $(context).closest('.js-nested-item-row');
 
     $fieldset.children('.js-nested-item-destroy').val('1');
+    DynamicForm._showRestoreButton($fieldset);
     $fieldset.hide();
+  },
+
+  _showRestoreButton: function($fieldset) {
+    var $restoreButton = $('.js-nested-item-destroyed'),
+        $restoreButtonWrapper = $restoreButton.parent(),
+        newOffsetTop;
+
+    $restoreButton.data('fieldset', $fieldset);
+    $restoreButtonWrapper.show();
+
+    newOffsetTop = $fieldset[0].offsetTop - $restoreButton[0].offsetHeight / 2 ;
+    $restoreButtonWrapper.css('top', newOffsetTop);
   },
 
   _fetchData: function(url, id, target, fields) {
@@ -71,5 +98,6 @@ var DynamicForm = {
   init: function() {
     this.handleAddFieldset();
     this.handleRemoveFieldset();
+    this.handleRestoreFieldset();
   }
 };

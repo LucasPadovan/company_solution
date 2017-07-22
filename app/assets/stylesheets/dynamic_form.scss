@@ -1,0 +1,14 @@
+@import "_variables";
+
+.nested-items {
+  position: relative;
+}
+
+.nested-item-destroyed-alert {
+  position: absolute;
+  right: -80px;
+
+  .btn {
+    display: block;
+  }
+}
