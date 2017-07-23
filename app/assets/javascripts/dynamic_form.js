@@ -8,14 +8,17 @@ var DynamicForm = {
   },
 
   handleRestoreFieldset: function() {
-    $('form').on('click', '.js-nested-item-destroyed', function(event) {
+    $('form').on('click', '.js-nested-item-restore', function(event) {
       event.preventDefault();
 
-      var $fieldset = $(this).data('fieldset');
+      var $fieldset = $(this).data('fieldset'),
+          $markAsDestroyInput =$fieldset.children('.js-nested-item-destroy');
 
       $(this).data('fieldset', '');
 
-      $fieldset.children('.js-nested-item-destroy').val('0');
+      $markAsDestroyInput.val('false');
+      $markAsDestroyInput.trigger('change');
+
       $fieldset.show();
       $(this).parent().hide();
     });
@@ -66,15 +69,18 @@ var DynamicForm = {
   },
 
   _removeFieldset: function(context) {
-    var $fieldset = $(context).closest('.js-nested-item-row');
+    var $fieldset = $(context).closest('.js-nested-item-row'),
+        $markAsDestroyInput = $fieldset.children('.js-nested-item-destroy');
 
-    $fieldset.children('.js-nested-item-destroy').val('1');
+    $markAsDestroyInput.val('1');
+    $markAsDestroyInput.trigger('change');
+
     DynamicForm._showRestoreButton($fieldset);
     $fieldset.hide();
   },
 
   _showRestoreButton: function($fieldset) {
-    var $restoreButton = $('.js-nested-item-destroyed'),
+    var $restoreButton = $('.js-nested-item-restore'),
         $restoreButtonWrapper = $restoreButton.parent(),
         newOffsetTop;
 

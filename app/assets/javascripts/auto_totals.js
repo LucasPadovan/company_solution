@@ -5,7 +5,8 @@ var AutoTotals = {
     var lineFields = [
           '.js-nested-item-amount',
           '.js-nested-item-unit_price',
-          '.js-nested-item-tax_rate'
+          '.js-nested-item-tax_rate',
+          '.js-nested-item-destroy'
         ];
 
     $.each(lineFields, function(index, lineField) {
@@ -36,8 +37,6 @@ var AutoTotals = {
 
   /* DOM handling */
   _setFormSubtotal: function() {
-    //trigger this when removing lines
-
     $('.js-form-subtotal').val(AutoTotals._calculateFormSubtotals().toFixed(2));
   },
 
@@ -50,15 +49,15 @@ var AutoTotals = {
   },
 
   _setLineSubtotal: function(context) {
-    var lineValues = AutoTotals._calculateLineSubtotal(context);
+    var lineValues = AutoTotals._calculateLineSubtotal(context),
+        $fieldset = $(context).parents('.js-nested-item-row'),
+        $taxField = $fieldset.find('.js-nested-item-tax'),
+        $subtotalField = $fieldset.find('.js-nested-item-subtotal');
 
-    $(context).parents('.js-nested-item-row').find('.js-nested-item-tax').val(lineValues['tax'].toFixed(2));
-    $(context).parents('.js-nested-item-row').find('.js-nested-item-subtotal').val(lineValues['subtotal'].toFixed(2));
+    $taxField.val(lineValues['tax'].toFixed(2));
+    $subtotalField.val(lineValues['subtotal'].toFixed(2));
 
-    // For some reason this set doesn't trigger onchange on listenFormChanges
-    AutoTotals._setFormTax();
-    AutoTotals._setFormSubtotal();
-    AutoTotals._setFormTotal();
+    $subtotalField.trigger('change');
   },
   /* DOM handling */
 
@@ -104,16 +103,24 @@ var AutoTotals = {
   },
 
   _calculateLineSubtotal: function(context) {
-    var amount = parseFloat($(context).parents('.js-nested-item-row').find('.js-nested-item-amount').val()) || 0,
-        unitPrice = parseFloat($(context).parents('.js-nested-item-row').find('.js-nested-item-unit_price').val()) || 0,
-        taxRate = parseFloat($(context).parents('.js-nested-item-row').find('.js-nested-item-tax_rate').val()) || 0,
-        tax,
+    var $fieldset = $(context).parents('.js-nested-item-row'),
+        isFieldsetValid = $fieldset.find('.js-nested-item-destroy').val() !== '1',
+        amount,
+        unitPrice,
+        taxRate,
+        tax = 0,
         netValue,
-        subtotal;
+        subtotal = 0;
 
-    netValue = amount * unitPrice;
-    tax = netValue * taxRate / 100;
-    subtotal = netValue + tax;
+    if (isFieldsetValid) {
+      amount = parseFloat($fieldset.find('.js-nested-item-amount').val()) || 0;
+      unitPrice = parseFloat($fieldset.find('.js-nested-item-unit_price').val()) || 0;
+      taxRate = parseFloat($fieldset.find('.js-nested-item-tax_rate').val()) || 0;
+
+      netValue = amount * unitPrice;
+      tax = netValue * taxRate / 100;
+      subtotal = netValue + tax;
+    }
 
     return {
       tax: tax,
