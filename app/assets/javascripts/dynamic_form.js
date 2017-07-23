@@ -17,7 +17,7 @@ var DynamicForm = {
 
       $fieldset.children('.js-nested-item-destroy').val('0');
       $fieldset.show();
-      $(this).hide();
+      $(this).parent().hide();
     });
   },
 
