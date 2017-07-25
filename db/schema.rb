@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170715022233) do
+ActiveRecord::Schema.define(version: 20170725061835) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -111,12 +111,12 @@ ActiveRecord::Schema.define(version: 20170715022233) do
 
   create_table "trades", force: :cascade do |t|
     t.bigint "product_id"
-    t.decimal "sold_by"
-    t.decimal "sold_to"
     t.datetime "from"
     t.datetime "to"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "sold_by"
+    t.integer "sold_to"
     t.index ["product_id"], name: "index_trades_on_product_id"
   end
 

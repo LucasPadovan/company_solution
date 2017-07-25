@@ -1,4 +1,4 @@
-<% sold_key = trade_type == 'sells' ? :sold_by : :sold_to %>
+<% sold_key = trade_type == 'sells' ? :seller : :buyer %>
 
 <table class="table table-striped table-hover mar-bottom-3">
   <thead>
@@ -12,16 +12,21 @@
 
   <tbody>
     <% trades.each do |trade| %>
-      <tr>
-        <td><%= trade[sold_key] %></td>
-        <td><%= trade.from %></td>
-        <td><%= trade.to %></td>
-        <td>
-          <%= link_to '', product_trade_path(@product, trade), class: 'fa fa-2x fa-info-circle'  %>
-          <%= link_to '', edit_product_trade_path(@product, trade), class: 'fa fa-2x fa-pencil-square' %>
-          <%= link_to '', product_trade_path(@product, trade), method: :delete, data: { confirm: t('messages.confirmation') }, class: 'fa fa-2x fa-trash' %>
-        </td>
-      </tr>
+    <!--todo: this, ugh! -->
+      <% trader = trade.public_send(sold_key) %>
+      <% if trader %>
+        <tr>
+          <td><%= trader.name %></td>
+          <td><%= trade.from %></td>
+          <td><%= trade.to %></td>
+          <td>
+            <!--lista de precios-->
+            <%= link_to '', product_trade_path(@product, trade), class: 'fa fa-2x fa-info-circle'  %>
+            <%= link_to '', edit_product_trade_path(@product, trade), class: 'fa fa-2x fa-pencil-square' %>
+            <%= link_to '', product_trade_path(@product, trade), method: :delete, data: { confirm: t('messages.confirmation') }, class: 'fa fa-2x fa-trash' %>
+          </td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
