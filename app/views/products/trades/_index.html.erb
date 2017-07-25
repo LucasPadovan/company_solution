@@ -33,4 +33,20 @@
   </tbody>
 </table>
 
+<!--New form for prices here-->
+<div class="modal" data-modal="contact-<%= contact.id %>">
+  <div class="modal-overlay"></div>
+  <div class="modal-container">
+    <div class="modal-header">
+      <button class="btn btn-clear float-right" data-modal-close="true"></button>
+      <div class="modal-title"><%= t('view.contacts.show_title', contact: contact.name, firm: @firm.name) %></div>
+    </div>
+    <div class="modal-body">
+      <div class="content">
+        <%= render 'contacts/show', contact: contact %>
+      </div>
+    </div>
+  </div>
+</div>
+
 <%= link_to t('label.new'), new_product_trade_path(@product, trade_type: trade_type), class: 'btn btn-primary'  %>

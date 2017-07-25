@@ -11,7 +11,7 @@
   <tbody>
     <% trades.each do |trade| %>
       <tr>
-        <td><%= trade.product %></td>
+        <td><%= trade.product.name %></td>
         <td><%= trade.from %></td>
         <td><%= trade.to %></td>
         <td>
