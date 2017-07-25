@@ -6,4 +6,10 @@ class Trade < ApplicationRecord
   has_many :prices
 
   validates_presence_of :product_id
+
+  scope :available_prices, -> { joins(:prices).where('prices.available = ?', true) }
+
+  def available_price
+    prices.available.last
+  end
 end

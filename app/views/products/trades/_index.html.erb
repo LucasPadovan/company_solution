@@ -6,6 +6,7 @@
       <th><%= Trade.human_attribute_name sold_key %></th>
       <th><%= Trade.human_attribute_name :from %></th>
       <th><%= Trade.human_attribute_name :to %></th>
+      <th><%= Price.human_attribute_name :price %></th>
       <th></th>
     </tr>
   </thead>
@@ -19,7 +20,9 @@
           <td><%= trader.name %></td>
           <td><%= trade.from %></td>
           <td><%= trade.to %></td>
+          <td><%= trade.available_price.try(:price) %></td>
           <td>
+            <%= link_to t('view.trades.new_price'), new_trade_price_path(trade), class: 'btn btn-sm btn-table' %>
             <%= link_to '', trade_prices_path(trade), class: 'fa fa-2x fa-info-circle'  %>
             <%= link_to '', edit_product_trade_path(@product, trade), class: 'fa fa-2x fa-pencil-square' %>
             <%= link_to '', product_trade_path(@product, trade), method: :delete, data: { confirm: t('messages.confirmation') }, class: 'fa fa-2x fa-trash' %>

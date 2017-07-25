@@ -1,7 +1,9 @@
 class PricesController < ApplicationController
   before_action :set_price, only: [:edit, :update, :destroy]
-  before_action :set_trade, only: [:index, :new, :create]
+  before_action :set_trade
   before_action :set_information
+
+  after_action :update_trade, only: [:create, :update]
 
   # GET /prices
   def index
@@ -26,7 +28,7 @@ class PricesController < ApplicationController
 
     if @price.save
       flash[:type] = 'success'
-      redirect_to @price, notice: t('view.prices.correctly_created')
+      redirect_to product_path(@trade.product), notice: t('view.prices.correctly_created')
     else
       render :new
     end
@@ -37,7 +39,7 @@ class PricesController < ApplicationController
     @information[:subtitle] = t('view.prices.edit_title')
     if @price.update(price_params)
       flash[:type] = 'primary'
-      redirect_to @price, notice: t('view.prices.correctly_updated')
+      redirect_to product_path(@trade.product), notice: t('view.prices.correctly_updated')
     else
       render :edit
     end
@@ -47,7 +49,7 @@ class PricesController < ApplicationController
   def destroy
     @price.destroy
     flash[:type] = 'error'
-    redirect_to prices_url, notice: t('view.prices.correctly_destroyed')
+    redirect_to product_path(@trade.product), notice: t('view.prices.correctly_destroyed')
   end
 
   private
@@ -58,6 +60,13 @@ class PricesController < ApplicationController
 
     def set_trade
       @trade = Trade.find(params[:trade_id])
+    end
+
+    def update_trade
+      @trade.from ||= @price.valid_from
+      @trade.to ||= @price.valid_to
+
+      @trade.save
     end
 
     # Only allow a trusted parameter "white list" through.

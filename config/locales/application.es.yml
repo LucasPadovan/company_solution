@@ -159,7 +159,9 @@
       trade:
         product_id: 'Producto'
         sold_by: 'Vendedor'
+        seller: 'Vendedor'
         sold_to: 'Comprador'
+        buyer: 'Comprador'
         from: 'Desde'
         to: 'Hasta'
       user:
@@ -367,6 +369,7 @@
       correctly_destroyed: 'Intercambio correctamente eliminado'
       new_trade_sold_by_firm_title: '%{firm} vende'
       new_trade_sold_to_firm_title: '%{firm} compra'
+      new_price: 'Nuevo precio'
       new_product_traded_by_title: 'Vendedor de %{product}'
       new_product_traded_to_title: 'Comprador de %{product}'
     users:

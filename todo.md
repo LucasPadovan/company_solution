@@ -1,6 +1,7 @@
 # TODO list
 
 * Add prices to trades, add an historic price list accessible from each trader.
+    * Make prices accessible from products and firms.
 * Retrieve unit price for each product sold to each firm.
 * New items sold to/from a company should create the proper relation.
 * New prices on items sold to/from a company should update the price with the proper relation.

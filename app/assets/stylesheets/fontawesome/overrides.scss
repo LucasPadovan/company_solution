@@ -9,4 +9,8 @@ a.fa {
     color: $grey-900;
     text-decoration: none;
   }
+
+  &.fa-trash {
+    font-size: 18px;
+  }
 }
