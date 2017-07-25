@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  trade: one
+  price: 
+  min_quantity: 
+  valid_from: 2017-07-25 17:51:30
+  valid_to: 2017-07-25 17:51:30
+  currency: MyString
+  available: false
+
+two:
+  trade: two
+  price: 
+  min_quantity: 
+  valid_from: 2017-07-25 17:51:30
+  valid_to: 2017-07-25 17:51:30
+  currency: MyString
+  available: false

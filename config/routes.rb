@@ -16,5 +16,9 @@ Rails.application.routes.draw do
     resources :order_statuses
   end
 
+  resources :trades, only: :show do
+    resources :prices, except: :show
+  end
+
   root to: 'firms#index'
 end

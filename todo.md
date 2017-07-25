@@ -1,5 +1,6 @@
 # TODO list
 
+* Add prices to trades, add an historic price list accessible from each trader.
 * Retrieve unit price for each product sold to each firm.
 * New items sold to/from a company should create the proper relation.
 * New prices on items sold to/from a company should update the price with the proper relation.
@@ -7,7 +8,8 @@
 * Models and everything for delivers. A new deliver should be bound to an order and should discount from the amount of each order_line.
 * Models and everything for invoices, divide them in purchase/sale types.
 * Add indexes to all relations on tables.
+* Daily cron to change valid prices.
 
 Price
 
-trade:references price:numeric min_quantity:numeric valid_to:datetime currency:string 
+trade:references price:numeric min_quantity:numeric valid_from:datetime valid_to:datetime currency:string available:boolean ~~~~

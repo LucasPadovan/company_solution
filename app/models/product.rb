@@ -4,6 +4,8 @@ class Product < ApplicationRecord
   has_many :recipes
   has_many :trades
 
+  has_many :prices, through: :trades
+
   def initial_stock_with_unit
     initial_stock.to_s + unit
   end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170725061835) do
+ActiveRecord::Schema.define(version: 20170725205130) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,6 +86,19 @@ ActiveRecord::Schema.define(version: 20170725061835) do
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
+  create_table "prices", force: :cascade do |t|
+    t.bigint "trade_id"
+    t.decimal "price"
+    t.decimal "min_quantity"
+    t.datetime "valid_from"
+    t.datetime "valid_to"
+    t.string "currency"
+    t.boolean "available"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["trade_id"], name: "index_prices_on_trade_id"
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -144,6 +157,7 @@ ActiveRecord::Schema.define(version: 20170725061835) do
   add_foreign_key "order_lines", "products"
   add_foreign_key "order_statuses", "orders"
   add_foreign_key "orders", "users"
+  add_foreign_key "prices", "trades"
   add_foreign_key "products", "users"
   add_foreign_key "recipes", "products"
   add_foreign_key "trades", "products"

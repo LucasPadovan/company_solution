@@ -20,8 +20,7 @@
           <td><%= trade.from %></td>
           <td><%= trade.to %></td>
           <td>
-            <!--lista de precios-->
-            <%= link_to '', product_trade_path(@product, trade), class: 'fa fa-2x fa-info-circle'  %>
+            <%= link_to '', trade_prices_path(trade), class: 'fa fa-2x fa-info-circle'  %>
             <%= link_to '', edit_product_trade_path(@product, trade), class: 'fa fa-2x fa-pencil-square' %>
             <%= link_to '', product_trade_path(@product, trade), method: :delete, data: { confirm: t('messages.confirmation') }, class: 'fa fa-2x fa-trash' %>
           </td>
