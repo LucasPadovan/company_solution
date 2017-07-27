@@ -29,6 +29,9 @@
       order:
         one: 'Orden'
         other: 'Ordenes'
+      price:
+        one: 'Precio'
+        other: 'Precios'
       product:
         one: 'Producto'
         other: 'Productos'
@@ -118,9 +121,12 @@
         tax_rate: 'Imp %'
         unit_price: 'Precio unitario'
       price:
-        purchase_price: Precio de compra
-        sale_price: Precio de venta
-        firm_id: "Empresa"
+        price: 'Precio'
+        currency: 'Moneda'
+        min_quantity: 'Mínima cantidad'
+        valid_from: 'Válido desde'
+        valid_to: 'Válido hasta'
+        available: 'Disponible'
       product:
         area: 'Rubro'
         current_stock: 'Stock actual'
@@ -293,6 +299,8 @@
       add_purchase_invoice: 'Nueva factura de compra'
       edit_purchase_invoice: 'Editar factura de compra'
       save_purchase_invoice: 'Guardar factura de compra'
+    prices:
+      save: 'Guardar precio'
     products:
       index_title: 'Lista de productos'
       show_title: 'Detalle de %{product}'
