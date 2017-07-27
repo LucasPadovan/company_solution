@@ -1,4 +1,4 @@
-<%= form_with(url: new_trade_price_path(trade), model: price, local: true) do |form| %>
+<%= form_with(url: trade_prices_path(trade), model: price, local: true) do |form| %>
   <% if price.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(price.errors.count, 'error') %> prohibited this price from being saved:</h2>
@@ -11,40 +11,45 @@
     </div>
   <% end %>
 
-  <div class="form-group">
-    <%#= form.label :trade_id, class: 'from-label' %>
-    <%#= form.text_field :trade_id, id: :price_trade_id, class: 'form-input' %>
+  <div class="columns">
+    <div class="column col-3">
+      <div class="form-group">
+        <%= form.label :currency, class: 'from-label' %>
+        <%= form.select :currency, Order.currencies_for_select, {}, { id: :price_currency, class: 'form-select' } %>
+      </div>
+    </div>
+    <div class="column col-9">
+      <div class="form-group">
+        <%= form.label :price, class: 'from-label' %>
+        <%= form.text_field :price, id: :price_price, class: 'form-input' %>
+      </div>
+    </div>
+    <div class="column col-12">
+      <div class="form-group">
+        <%= form.label :min_quantity, class: 'from-label' %>
+        <%= form.text_field :min_quantity, id: :price_min_quantity, class: 'form-input' %>
+      </div>
+    </div>
+    <div class="column col-6">
+      <div class="form-group">
+        <%= form.label :valid_from, class: 'from-label' %>
+        <%= form.text_field :valid_from, id: :price_valid_from, class: 'form-input', type: :date %>
+      </div>
+    </div>
+    <div class="column col-6">
+      <div class="form-group">
+        <%= form.label :valid_to, class: 'from-label' %>
+        <%= form.text_field :valid_to, id: :price_valid_to, class: 'form-input', type: :date %>
+      </div>
+    </div>
+    <div class="column col-12">
+      <div class="form-group">
+        <%= form.label :available, class: 'from-label' %>
+        <%= form.check_box :available, id: :price_available, class: 'form-input' %>
+      </div>
+    </div>
   </div>
 
-  <div class="form-group">
-    <%= form.label :price, class: 'from-label' %>
-    <%= form.text_field :price, id: :price_price, class: 'form-input' %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :min_quantity, class: 'from-label' %>
-    <%= form.text_field :min_quantity, id: :price_min_quantity, class: 'form-input' %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :valid_from, class: 'from-label' %>
-    <%= form.datetime_select :valid_from, id: :price_valid_from, class: 'form-input' %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :valid_to, class: 'from-label' %>
-    <%= form.datetime_select :valid_to, id: :price_valid_to, class: 'form-input' %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :currency, class: 'from-label' %>
-    <%= form.text_field :currency, id: :price_currency, class: 'form-input' %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :available, class: 'from-label' %>
-    <%= form.check_box :available, id: :price_available, class: 'form-input' %>
-  </div>
 
   <div class="actions">
     <%= form.submit t('view.prices.save'), class: 'btn btn-primary'  %>
