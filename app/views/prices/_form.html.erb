@@ -1,4 +1,4 @@
-<%= form_with(model: price, local: true) do |form| %>
+<%= form_with(url: new_trade_price_path(trade), model: price, local: true) do |form| %>
   <% if price.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(price.errors.count, 'error') %> prohibited this price from being saved:</h2>
@@ -12,8 +12,8 @@
   <% end %>
 
   <div class="form-group">
-    <%= form.label :trade_id, class: 'from-label' %>
-    <%= form.text_field :trade_id, id: :price_trade_id, class: 'form-input' %>
+    <%#= form.label :trade_id, class: 'from-label' %>
+    <%#= form.text_field :trade_id, id: :price_trade_id, class: 'form-input' %>
   </div>
 
   <div class="form-group">

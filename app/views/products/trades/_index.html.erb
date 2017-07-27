@@ -22,31 +22,31 @@
           <td><%= trade.to %></td>
           <td><%= trade.available_price.try(:price) %></td>
           <td>
-            <%= link_to t('view.trades.new_price'), new_trade_price_path(trade), class: 'btn btn-sm btn-table' %>
+            <%= link_to t('view.trades.new_price'), '#', class: 'btn btn-sm btn-table', data: { modal_open: "trade-price-#{trade.id}" } %>
             <%= link_to '', trade_prices_path(trade), class: 'fa fa-2x fa-info-circle'  %>
             <%= link_to '', edit_product_trade_path(@product, trade), class: 'fa fa-2x fa-pencil-square' %>
             <%= link_to '', product_trade_path(@product, trade), method: :delete, data: { confirm: t('messages.confirmation') }, class: 'fa fa-2x fa-trash' %>
           </td>
         </tr>
       <% end %>
+
+      <!--New form for prices here-->
+      <div class="modal" data-modal="trade-price-<%= trade.id %>">
+        <div class="modal-overlay"></div>
+        <div class="modal-container">
+          <div class="modal-header">
+            <button class="btn btn-clear float-right" data-modal-close="true"></button>
+            <div class="modal-title"><%= t('view.trades.new_price') %></div>
+          </div>
+          <div class="modal-body">
+            <div class="content">
+              <%= render 'prices/new', trade: trade, price: trade.prices.new %>
+            </div>
+          </div>
+        </div>
+      </div>
     <% end %>
   </tbody>
 </table>
-
-<!--New form for prices here-->
-<div class="modal" data-modal="contact-<%= contact.id %>">
-  <div class="modal-overlay"></div>
-  <div class="modal-container">
-    <div class="modal-header">
-      <button class="btn btn-clear float-right" data-modal-close="true"></button>
-      <div class="modal-title"><%= t('view.contacts.show_title', contact: contact.name, firm: @firm.name) %></div>
-    </div>
-    <div class="modal-body">
-      <div class="content">
-        <%= render 'contacts/show', contact: contact %>
-      </div>
-    </div>
-  </div>
-</div>
 
 <%= link_to t('label.new'), new_product_trade_path(@product, trade_type: trade_type), class: 'btn btn-primary'  %>
