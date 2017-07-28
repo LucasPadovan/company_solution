@@ -4,6 +4,7 @@
       <th><%= Trade.human_attribute_name :product_id %></th>
       <th><%= Trade.human_attribute_name :from %></th>
       <th><%= Trade.human_attribute_name :to %></th>
+      <th><%= Price.human_attribute_name :price %></th>
       <th></th>
     </tr>
   </thead>
@@ -14,12 +15,16 @@
         <td><%= trade.product.name %></td>
         <td><%= trade.from %></td>
         <td><%= trade.to %></td>
+        <td><%= trade.available_price.try(:price) %></td>
         <td>
+          <%= link_to t('view.trades.new_price'), '#', class: 'btn btn-sm btn-table', data: { modal_open: "trade-price-#{trade.id}" } %>
           <%= link_to '', firm_trade_path(@firm, trade), class: 'fa fa-2x fa-info-circle'  %>
           <%= link_to '', edit_firm_trade_path(@firm, trade), class: 'fa fa-2x fa-pencil-square' %>
           <%= link_to '', firm_trade_path(@firm, trade), method: :delete, data: { confirm: t('messages.confirmation') }, class: 'fa fa-2x fa-trash' %>
         </td>
       </tr>
+
+      <%= render 'prices/new_modal', trade: trade, origin: 'firm' %>
     <% end %>
   </tbody>
 </table>

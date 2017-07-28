@@ -1,7 +1,6 @@
 # TODO list
 
-* Add prices to trades, add an historic price list accessible from each trader.
-    * Make prices accessible from products and firms.
+* Make prices accessible from products and firms.
 * Format dates all across the platform
 * Retrieve unit price for each product sold to each firm.
 * New items sold to/from a company should create the proper relation.
@@ -11,7 +10,5 @@
 * Models and everything for invoices, divide them in purchase/sale types.
 * Add indexes to all relations on tables.
 * Daily cron to change valid prices.
-
-Price
-
-trade:references price:numeric min_quantity:numeric valid_from:datetime valid_to:datetime currency:string available:boolean ~~~~
+* Paginado.
+* Bind js models from the application.html.erb.

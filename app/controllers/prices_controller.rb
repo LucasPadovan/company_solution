@@ -28,7 +28,7 @@ class PricesController < ApplicationController
 
     if @price.save
       flash[:type] = 'success'
-      redirect_to product_path(@trade.product), notice: t('view.prices.correctly_created')
+      redirect_to return_path(params[:origin]), notice: t('view.prices.correctly_created')
     else
       render :new
     end
@@ -39,7 +39,7 @@ class PricesController < ApplicationController
     @information[:subtitle] = t('view.prices.edit_title')
     if @price.update(price_params)
       flash[:type] = 'primary'
-      redirect_to product_path(@trade.product), notice: t('view.prices.correctly_updated')
+      redirect_to return_path(params[:origin]), notice: t('view.prices.correctly_updated')
     else
       render :edit
     end
@@ -67,6 +67,14 @@ class PricesController < ApplicationController
       @trade.to ||= @price.valid_to
 
       @trade.save
+    end
+
+    def return_path(origin)
+      if origin === 'product'
+        product_path(@trade.product)
+      elsif origin === 'firm'
+        firm_path(@trade.sold_to || @trade.sold_by)
+      end
     end
 
     # Only allow a trusted parameter "white list" through.
