@@ -16,7 +16,7 @@ back: orders_path, edit: edit_order_path(@order)
 
   <div class="column col-5">
     <label class="info-label"><%= Order.human_attribute_name 'date' %></label>
-    <div class="info-content"><%= @order.date %></div>
+    <div class="info-content"><%= @order.formatted_date %></div>
   </div>
 
   <div class="column col-5">
@@ -47,12 +47,12 @@ back: orders_path, edit: edit_order_path(@order)
 
     <div class="pad-bottom-2">
       <label class="info-label"><%= Order.human_attribute_name 'expected_deliver_from' %></label>
-      <div class="info-content"><%= @order.expected_deliver_from %></div>
+      <div class="info-content"><%= @order.formatted_deliver_from %></div>
     </div>
 
     <div class="pad-bottom-2">
       <label class="info-label"><%= Order.human_attribute_name 'expected_deliver_to' %></label>
-      <div class="info-content"><%= @order.expected_deliver_to %></div>
+      <div class="info-content"><%= @order.formatted_deliver_to %></div>
     </div>
 
     <div class="pad-bottom-2">
