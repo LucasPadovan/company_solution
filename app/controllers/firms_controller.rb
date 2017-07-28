@@ -78,6 +78,6 @@ class FirmsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def firm_params
-      params.require(:firm).permit(:name, :cuit, :afip_condition)
+      params.require(:firm).permit(:name, :cuit, :afip_condition, :opens_at, :closes_at)
     end
 end

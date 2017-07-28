@@ -1,6 +1,5 @@
 # TODO list
 
-* Make prices accessible from products and firms.
 * Format dates all across the platform
 * Retrieve unit price for each product sold to each firm.
 * New items sold to/from a company should create the proper relation.
