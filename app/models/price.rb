@@ -10,4 +10,10 @@ class Price < ApplicationRecord
   def formatted_valid_to
     valid_to.strftime(I18n.t('date.formats.default')) if valid_to
   end
+
+  def available_value
+    label = available ? 'label.yes' : 'label.no'
+
+    I18n.t(label)
+  end
 end
