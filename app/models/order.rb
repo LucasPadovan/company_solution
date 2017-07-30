@@ -11,7 +11,7 @@ class Order < ApplicationRecord
   validates :contact_name, presence: :true
 
   def formatted_date
-    date.strftime(I18n.t('time.formats.long')) if date
+    date.strftime(I18n.t('date.formats.long')) if date
   end
 
   def formatted_deliver_from
