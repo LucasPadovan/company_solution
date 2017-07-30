@@ -17,7 +17,7 @@
         <td><%= firm.cuit %></td>
         <td><%= firm.afip_condition %></td>
         <td><%= firm.address %></td>
-        <td><%= firm.open_time%> - <%= firm.close_time %></td>
+        <td><%= firm.formatted_opens_at%> - <%= firm.formatted_closes_at %></td>
         <td>
           <%= link_to '', firm, class: 'fa fa-2x fa-info-circle' %>
           <%= link_to '', edit_firm_path(firm), class: 'fa fa-2x fa-pencil-square' %>

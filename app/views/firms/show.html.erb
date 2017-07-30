@@ -26,12 +26,12 @@
 
     <p>
       <b><%= Firm.human_attribute_name :opens_at %>:</b>
-      <%= @firm.open_time %>
+      <%= @firm.formatted_opens_at %>
     </p>
 
     <p>
       <b><%= Firm.human_attribute_name :closes_at %>:</b>
-      <%= @firm.close_time %>
+      <%= @firm.formatted_closes_at %>
     </p>
   </div>
 

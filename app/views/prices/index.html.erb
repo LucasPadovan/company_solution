@@ -16,17 +16,14 @@
       <tr>
         <td><%= price.price %></td>
         <td><%= price.min_quantity %></td>
-        <td><%= price.valid_from %></td>
-        <td><%= price.valid_to %></td>
+        <td><%= price.formatted_valid_from %></td>
+        <td><%= price.formatted_valid_to %></td>
         <td><%= price.currency %></td>
         <td><%= price.available %></td>
         <td>
-          <%= link_to '', edit_trade_price_path(@trade, price), class: 'fa fa-2x fa-pencil-square' %>
           <%= link_to '', trade_price_path(@trade, price), method: :delete, data: { confirm: t('messages.confirmation') }, class: 'fa fa-2x fa-trash' %>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<%= link_to t('view.prices.new_title'), new_trade_price_path(@trade), class: 'btn btn-primary'  %>

@@ -61,6 +61,7 @@
       short: "%d de %b %H:%M"
       time: "%H:%MHs"
       long: "%d de %B de %Y %H:%M"
+      standard: "%d/%m/%Y %H:%MHs"
     am: "am"
     pm: "pm"
 
