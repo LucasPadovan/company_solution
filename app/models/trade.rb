@@ -12,4 +12,12 @@ class Trade < ApplicationRecord
   def available_price
     prices.available.last
   end
+
+  def formatted_from
+    from.strftime(I18n.t('date.formats.default')) if from
+  end
+
+  def formatted_to
+    to.strftime(I18n.t('date.formats.default')) if to
+  end
 end
