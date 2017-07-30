@@ -13,6 +13,12 @@ class Trade < ApplicationRecord
     prices.available.last
   end
 
+  def available_price_value
+    if price = available_price
+      "#{price.currency} #{price.price}"
+    end
+  end
+
   def formatted_from
     from.strftime(I18n.t('date.formats.default')) if from
   end

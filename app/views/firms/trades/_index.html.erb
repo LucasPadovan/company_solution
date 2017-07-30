@@ -15,7 +15,7 @@
         <td><%= trade.product.name %></td>
         <td><%= trade.formatted_from %></td>
         <td><%= trade.formatted_to %></td>
-        <td><%= trade.available_price.try(:price) %></td>
+        <td><%= trade.available_price_value %></td>
         <td>
           <%= link_to t('view.trades.new_price'), '#', class: 'btn btn-sm btn-table', data: { modal_open: "trade-price-#{trade.id}" } %>
           <%= link_to '', firm_trade_path(@firm, trade), class: 'fa fa-2x fa-info-circle'  %>

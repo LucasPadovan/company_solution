@@ -1,6 +1,5 @@
 # TODO list
 
-* Format dates all across the platform
 * Translate months and dates
 * Retrieve unit price for each product sold to each firm.
 * New items sold to/from a company should create the proper relation.
@@ -12,3 +11,4 @@
 * Daily cron to change valid prices.
 * Paginado.
 * Bind js models from the application.html.erb.
+* Currency convertion 
