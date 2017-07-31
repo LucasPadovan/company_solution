@@ -1,7 +1,7 @@
 class Price < ApplicationRecord
   belongs_to :trade
 
-  scope :available, -> { where('available = ?', true) }
+  scope :availables, -> { where('available = ?', true) }
 
   def formatted_valid_from
     valid_from.strftime(I18n.t('date.formats.default')) if valid_from
@@ -15,5 +15,10 @@ class Price < ApplicationRecord
     label = available ? 'label.yes' : 'label.no'
 
     I18n.t(label)
+  end
+
+  # TODO: this will be an attribute
+  def tax_rate
+    '21'
   end
 end

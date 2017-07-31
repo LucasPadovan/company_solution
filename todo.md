@@ -1,7 +1,8 @@
 # TODO list
 
-* Retrieve unit price for each product sold to each firm.
-    * Show error on dynamic_form error
+* Add tax_rate to price
+* Translations for new prices created
+* Show error on dynamic_form error
 * Translate months and dates
 * New items sold to/from a company should create the proper relation.
 * New prices on items sold to/from a company should update the price with the proper relation.

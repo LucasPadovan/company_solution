@@ -60,9 +60,14 @@ var DynamicForm = {
     var $row = $(target).closest('tr');
 
     for(var i = 0, field; field = fields[i]; i++) {
-      var unitSelector = '.js-nested-item-' + field;
+      var unitSelector = '.js-nested-item-' + field,
+          $field = $row.find(unitSelector);
 
-      $row.find(unitSelector).val(dataset[field]);
+      $field.val(dataset[field]);
+
+      if (!fields[i + 1]) {
+        $field.trigger('change');
+      }
     }
   },
 

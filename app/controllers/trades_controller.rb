@@ -1,6 +1,6 @@
 class TradesController < ApplicationController
   before_action :set_trade, only: [:edit, :update, :destroy]
-  before_action :set_parent, except: [:find_trade]
+  before_action :set_parent, except: [:find_product]
   before_action :set_information
 
   # GET /trades/new
@@ -55,8 +55,32 @@ class TradesController < ApplicationController
     redirect_to return_url, notice: t('view.trades.correctly_destroyed')
   end
 
-  def find_trade
-    # Should find the correct trade, its available price, and return the unit, unit price and imp%
+  def find_product
+    # Differenciate between sold_to and sold_by depending on which order type we are doing.
+    # trades = Trade.where(sold_to: params[:firm]).or(Trade.where(sold_by: params[:firm])).where(product_id: params[:product])
+    trades = Trade.where sold_to: params[:firm], product_id: params[:product]
+    trade = trades.first
+
+    if trade
+      if available_price = trade.available_price
+        tax_rate = available_price.tax_rate
+        unit_price = available_price.price
+      end
+
+      if product = trade.product
+        unit = product.unit
+      end
+    end
+
+    product_detail = {
+        tax_rate: tax_rate || '21',
+        unit: unit || 'kg',
+        unit_price: unit_price || '00',
+    }
+
+    respond_to do |format|
+      format.json { render json: product_detail.to_json }
+    end
   end
 
   private
