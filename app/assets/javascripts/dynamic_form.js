@@ -42,9 +42,16 @@ var DynamicForm = {
 
   handleFetchableSelect: function(target, fields) {
     $(document).on('change', target, function() {
-      var id = this.options[this.options.selectedIndex].value;
+      var params = {},
+          selectExtras = document.getElementsByClassName('js-fetcheable-select-extra');
 
-      DynamicForm._fetchData(this.dataset.fetchUrl, id, this, fields);
+      params[this.dataset.model] = this.options[this.options.selectedIndex].value;
+
+      for(var i = 0, selectExtra; selectExtra = selectExtras[i]; i++) {
+          params[selectExtra.dataset.model] = selectExtra.options[selectExtra.options.selectedIndex].value;
+      }
+
+      DynamicForm._fetchData(this.dataset.fetchUrl, params, this, fields);
     });
   },
 
@@ -91,14 +98,39 @@ var DynamicForm = {
     $restoreButtonWrapper.css('top', newOffsetTop);
   },
 
-  _fetchData: function(url, id, target, fields) {
+  _fetchData: function(url, params, target, fields) {
+    var queryParams = DynamicForm._buildQueryParams(params);
+
     $.ajax({
-      url: url + '/' + id,
+      url: url + queryParams,
       contentType: 'application/json',
       dataType: 'json'
     }).done(function(response) {
-      DynamicForm.populateForm(response, target, fields);
+      if (response) {
+        DynamicForm.populateForm(response, target, fields);
+      } else {
+        // Show error
+      }
     });
+  },
+
+  _buildQueryParams: function(params) {
+    var queryParams,
+        keys = Object.keys(params);
+
+    if (keys.length > 0) {
+      queryParams = "?";
+
+      for(var i = 0, key; key = keys[i]; i++) {
+        queryParams += key + "=" + params[key];
+
+        if (keys[i + 1]) {
+          queryParams += "&";
+        }
+      }
+    }
+
+    return queryParams;
   },
 
   init: function() {

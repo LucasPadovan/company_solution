@@ -13,7 +13,11 @@
   <div class="columns">
     <div class="form-group column col-5">
       <%= form.label :firm_id, class: 'from-label' %>
-      <%= form.select :firm_id, Firm.firms_for_select, {}, { id: :order_firm_id, class: 'form-select' } %>
+      <%= form.select :firm_id, Firm.firms_for_select, {}, {
+            id: :order_firm_id,
+            class: 'form-select js-fetcheable-select-extra',
+            data: { model: 'firm' }
+      } %>
     </div>
 
     <div class="form-group column col-2">

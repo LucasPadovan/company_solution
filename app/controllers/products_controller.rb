@@ -10,13 +10,15 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
-    @user = @product.user
-    @recipes = @product.recipes
-    @trades = @product.trades
-    @information[:subtitle] = @product.name
-
     respond_to do |format|
-      format.html { render 'products/show' }
+      format.html do
+        @user = @product.user
+        @trades = @product.trades
+        @recipes = @product.recipes
+
+        @information[:subtitle] = @product.name
+        render 'products/show'
+      end
       format.json { @product.to_json }
     end
   end

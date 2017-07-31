@@ -1,6 +1,6 @@
 class TradesController < ApplicationController
   before_action :set_trade, only: [:edit, :update, :destroy]
-  before_action :set_parent
+  before_action :set_parent, except: [:find_trade]
   before_action :set_information
 
   # GET /trades/new
@@ -53,6 +53,10 @@ class TradesController < ApplicationController
     @trade.destroy
     flash[:type] = 'error'
     redirect_to return_url, notice: t('view.trades.correctly_destroyed')
+  end
+
+  def find_trade
+    # Should find the correct trade, its available price, and return the unit, unit price and imp%
   end
 
   private

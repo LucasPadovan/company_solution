@@ -18,6 +18,10 @@ Rails.application.routes.draw do
 
   resources :trades, only: :show do
     resources :prices, except: :show
+
+    collection do
+      get :find_trade, as: :find
+    end
   end
 
   root to: 'firms#index'

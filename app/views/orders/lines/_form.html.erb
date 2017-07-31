@@ -6,12 +6,13 @@
     <%= form.text_field :unit, id: :line_unit, class: 'form-input js-nested-item-unit' %>
   </td>
   <td>
+    <!--also should take care of knowing if it's a sale or a pruchase to get the correct price-->
     <%= form.select :product_id,
                     Product.products_for_select,
                     { prompt: t('view.products.select_prompt') },
                     { id: :line_product_id,
                       class: 'form-select js-fetchable-select',
-                      data: { fetch_url: products_url }
+                      data: { model: 'product', fetch_url: find_trades_url }
                     }
     %>
   </td>

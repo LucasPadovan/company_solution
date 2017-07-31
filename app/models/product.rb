@@ -6,6 +6,21 @@ class Product < ApplicationRecord
 
   has_many :prices, through: :trades
 
+  # API helpers
+  def unit_price
+    price = _best_price
+
+    price.price if price
+  end
+
+  def tax_rate
+    price = _best_price
+
+    # price.tax_rate if price
+    21
+  end
+
+  # VIEW helpers
   def initial_stock_with_unit
     initial_stock.to_s + unit
   end
@@ -22,6 +37,7 @@ class Product < ApplicationRecord
     self.class == ComposedProduct
   end
 
+  # CLASS methods
   def self.available_types
     {
         defaultType: 'Producto general',
@@ -36,5 +52,11 @@ class Product < ApplicationRecord
 
   def self.products_for_select
     Product.all.map{ |product| [product.name, product.id] }
+  end
+
+  # Temporary methods
+  # Will be replaced by a better proper price strategy
+  def _best_price
+    prices.last
   end
 end
