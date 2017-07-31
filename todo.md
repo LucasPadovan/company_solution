@@ -14,3 +14,4 @@
 * Bind js models from the application.html.erb.
 * Currency convertion
 * Retrieve prices while building an order should differenciate sale from purchase orders
+* Javascript helper files documentation and literal strings reorder
