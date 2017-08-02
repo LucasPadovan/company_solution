@@ -14,7 +14,7 @@
   <% unless @trade.product_id %>
     <div class="form-group">
       <%= form.label :product_id, class: 'from-label' %>
-      <%= form.text_field :product_id, id: :trade_product_id, class: 'form-input' %>
+      <%= form.select :product_id, Product.products_for_select, {}, { id: :trade_product_id, class: 'form-select' } %>
     </div>
   <% end %>
 

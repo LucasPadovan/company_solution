@@ -1,7 +1,6 @@
 # TODO list
 
 * Return url when a price is deleted / back actions on prices/index view.
-* New trade for firm should have a dropdown for the products
 * Changing the firm in the order form should recalculate each value (new requests for each product)
 * Alert for new products sold/bought in an order for a firm
 * Taxes are not added properly when a quantity is set after choosing the product.
