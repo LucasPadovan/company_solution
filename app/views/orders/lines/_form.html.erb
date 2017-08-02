@@ -23,14 +23,13 @@
     <%= form.text_field :unit_price, id: :line_unit_price, class: 'form-input  js-nested-item-unit_price' %>
   </td>
   <td>
-    <!--disabled, autocompleted with info about the product on the date this was created-->
+    <%= form.text_field :subtotal, id: :line_subtotal, class: 'form-input js-nested-item-subtotal' %>
+  </td>
+  <td>
     <%= form.text_field :tax_rate, id: :line_tax_rate, class: 'form-input  js-nested-item-tax_rate' %>
   </td>
   <td>
-    <%= form.text_field :tax, id: :line_tax, class: 'form-input js-nested-item-tax' %>
-  </td>
-  <td>
-    <%= form.text_field :subtotal, id: :line_subtotal, class: 'form-input js-nested-item-subtotal js-add-fieldset-input' %>
+    <%= form.text_field :tax, id: :line_tax, class: 'form-input js-nested-item-tax js-add-fieldset-input' %>
   </td>
   <td>
     <button class="button js-remove-fieldset">X</button>

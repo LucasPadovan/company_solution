@@ -57,6 +57,8 @@ var AutoTotals = {
     $taxField.val(lineValues['tax'].toFixed(2));
     $subtotalField.val(lineValues['subtotal'].toFixed(2));
 
+    // Probably will have to merge these two.
+    $taxField.trigger('change');
     $subtotalField.trigger('change');
   },
   /* DOM handling */
@@ -109,7 +111,6 @@ var AutoTotals = {
         unitPrice,
         taxRate,
         tax = 0,
-        netValue,
         subtotal = 0;
 
     if (isFieldsetValid) {
@@ -117,9 +118,8 @@ var AutoTotals = {
       unitPrice = parseFloat($fieldset.find('.js-nested-item-unit_price').val()) || 0;
       taxRate = parseFloat($fieldset.find('.js-nested-item-tax_rate').val()) || 0;
 
-      netValue = amount * unitPrice;
-      tax = netValue * taxRate / 100;
-      subtotal = netValue + tax;
+      subtotal = amount * unitPrice;
+      tax = subtotal * taxRate / 100;
     }
 
     return {

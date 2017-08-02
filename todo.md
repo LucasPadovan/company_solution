@@ -3,7 +3,6 @@
 * Return url when a price is deleted / back actions on prices/index view.
 * Changing the firm in the order form should recalculate each value (new requests for each product)
 * Alert for new products sold/bought in an order for a firm
-* Taxes are not added properly when a quantity is set after choosing the product.
 * Translations for new prices created
 * Show error on dynamic_form error
 * Translate months and dates
@@ -20,3 +19,4 @@
 * Retrieve prices while building an order should differenciate sale from purchase orders
 * Javascript helper files documentation and literal strings reorder
 * Add placeholders
+* Show effect on changing fields (autototals, dynamicform)
