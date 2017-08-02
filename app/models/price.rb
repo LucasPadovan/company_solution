@@ -16,9 +16,4 @@ class Price < ApplicationRecord
 
     I18n.t(label)
   end
-
-  # TODO: this will be an attribute
-  def tax_rate
-    '21'
-  end
 end

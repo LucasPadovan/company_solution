@@ -18,7 +18,7 @@
         <td><%= trade.available_price_value %></td>
         <td>
           <%= link_to t('view.trades.new_price'), '#', class: 'btn btn-sm btn-table', data: { modal_open: "trade-price-#{trade.id}" } %>
-          <%= link_to '', firm_trade_path(@firm, trade), class: 'fa fa-2x fa-info-circle'  %>
+          <%= link_to '', trade_prices_path(trade), class: 'fa fa-2x fa-info-circle'  %>
           <%= link_to '', edit_firm_trade_path(@firm, trade), class: 'fa fa-2x fa-pencil-square' %>
           <%= link_to '', firm_trade_path(@firm, trade), method: :delete, data: { confirm: t('messages.confirmation') }, class: 'fa fa-2x fa-trash' %>
         </td>

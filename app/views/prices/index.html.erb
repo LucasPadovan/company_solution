@@ -3,6 +3,7 @@
     <tr>
       <th><%= Price.human_attribute_name 'currency' %></th>
       <th><%= Price.human_attribute_name 'price' %></th>
+      <th><%= Price.human_attribute_name 'tax_rate' %></th>
       <th><%= Price.human_attribute_name 'min_quantity' %></th>
       <th><%= Price.human_attribute_name 'valid_from' %></th>
       <th><%= Price.human_attribute_name 'valid_to' %></th>
@@ -16,6 +17,7 @@
       <tr>
         <td><%= price.currency %></td>
         <td><%= price.price %></td>
+        <td><%= price.tax_rate %></td>
         <td><%= price.min_quantity %></td>
         <td><%= price.formatted_valid_from %></td>
         <td><%= price.formatted_valid_to %></td>

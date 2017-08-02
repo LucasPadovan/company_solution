@@ -79,7 +79,7 @@ class PricesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def price_params
-      params.require(:price).permit(:trade_id, :price, :min_quantity, :valid_from, :valid_to, :currency, :available)
+      params.require(:price).permit(:trade_id, :price, :min_quantity, :valid_from, :valid_to, :currency, :available, :tax_rate)
     end
 
     def set_information

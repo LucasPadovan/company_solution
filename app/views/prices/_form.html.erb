@@ -18,10 +18,16 @@
         <%= form.select :currency, Order.currencies_for_select, {}, { id: :price_currency, class: 'form-select' } %>
       </div>
     </div>
-    <div class="column col-9">
+    <div class="column col-6">
       <div class="form-group">
         <%= form.label :price, class: 'from-label' %>
         <%= form.text_field :price, id: :price_price, class: 'form-input' %>
+      </div>
+    </div>
+    <div class="column col-3">
+      <div class="form-group">
+        <%= form.label :tax_rate, class: 'from-label' %>
+        <%= form.text_field :tax_rate, id: :price_tax_rate, class: 'form-input' %>
       </div>
     </div>
     <div class="column col-12">

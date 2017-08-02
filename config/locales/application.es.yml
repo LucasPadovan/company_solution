@@ -127,6 +127,7 @@
         valid_from: 'Válido desde'
         valid_to: 'Válido hasta'
         available: 'Disponible'
+        tax_rate: 'Impuesto %'
       product:
         area: 'Rubro'
         current_stock: 'Stock actual'
