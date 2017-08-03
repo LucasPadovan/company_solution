@@ -1,6 +1,8 @@
 class Price < ApplicationRecord
   belongs_to :trade
 
+  validates :price, presence: true
+
   scope :availables, -> { where('available = ?', true) }
 
   def formatted_valid_from

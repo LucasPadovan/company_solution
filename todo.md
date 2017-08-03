@@ -1,7 +1,5 @@
 # TODO list
 
-* Return url when a price is deleted / back actions on prices/index view.
-* Changing the firm in the order form should recalculate each value (new requests for each product)
 * Alert for new products sold/bought in an order for a firm
 * Translations for new prices created
 * Show error on dynamic_form error

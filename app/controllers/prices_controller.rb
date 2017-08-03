@@ -1,5 +1,5 @@
 class PricesController < ApplicationController
-  before_action :set_price, only: [:edit, :update, :destroy]
+  before_action :set_price, only: [:destroy]
   before_action :set_trade
   before_action :set_information
 
@@ -8,17 +8,22 @@ class PricesController < ApplicationController
   # GET /prices
   def index
     @prices = @trade.prices.all
+
+    if params[:origin] === 'product'
+      @information[:return_path] = product_path(@trade.product)
+      @information[:origin] = 'product'
+    end
+
+    if params[:origin] === 'firm'
+      @information[:return_path] = firm_path(@trade.seller || @trade.buyer)
+      @information[:origin] = 'firm'
+    end
   end
 
   # GET /prices/new
   def new
     @price = @trade.prices.new
     @information[:subtitle] = t('view.prices.new_title')
-  end
-
-  # GET /prices/1/edit
-  def edit
-    @information[:subtitle] = t('view.prices.edit_title')
   end
 
   # POST /prices
@@ -30,18 +35,7 @@ class PricesController < ApplicationController
       flash[:type] = 'success'
       redirect_to return_path(params[:origin]), notice: t('view.prices.correctly_created')
     else
-      render :new
-    end
-  end
-
-  # PATCH/PUT /prices/1
-  def update
-    @information[:subtitle] = t('view.prices.edit_title')
-    if @price.update(price_params)
-      flash[:type] = 'primary'
-      redirect_to return_path(params[:origin]), notice: t('view.prices.correctly_updated')
-    else
-      render :edit
+      # render :new  js alert error that shows form errors.
     end
   end
 
@@ -49,7 +43,7 @@ class PricesController < ApplicationController
   def destroy
     @price.destroy
     flash[:type] = 'error'
-    redirect_to product_path(@trade.product), notice: t('view.prices.correctly_destroyed')
+    redirect_to trade_prices_path(@trade), notice: t('view.prices.correctly_destroyed')
   end
 
   private

@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   end
 
   resources :trades, only: :show do
-    resources :prices, except: :show
+    resources :prices, except: [:show, :edit, :update]
 
     collection do
       get :find_product

@@ -302,6 +302,9 @@
       save_purchase_invoice: 'Guardar factura de compra'
     prices:
       save: 'Guardar precio'
+      new_title: 'Nuevo precio'
+      correctly_created: 'Precio agregado correctamente'
+      correctly_destroyed: 'Precio destruido correctamente'
     products:
       index_title: 'Lista de productos'
       show_title: 'Detalle de %{product}'
