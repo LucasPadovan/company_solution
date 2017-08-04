@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
 
   # GET /orders
   def index
-    @orders = Order.all
+    @orders = filtered_orders
   end
 
   # GET /orders/1
@@ -65,6 +65,22 @@ class OrdersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_order
       @order = Order.find(params[:id])
+    end
+
+    def filtered_orders
+      query = ''
+
+      query += 'firm_id = :firm_id' if params[:firm_id].present?
+      query += ' AND date = :date' if params[:date].present?
+
+
+      Order.where(
+          query,
+          {
+              firm_id: params[:firm_id],
+              date: params[:date]
+          }
+      )
     end
 
     # Only allow a trusted parameter "white list" through.

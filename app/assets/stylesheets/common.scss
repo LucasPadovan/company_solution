@@ -123,3 +123,19 @@
   height: 3.2rem;
   padding: .5rem .8rem;
 }
+
+.section.section-filters {
+  background-color: $grey-200;
+  border-radius: .2rem;
+
+  transition: box-shadow 0.3s ease;
+
+  &:hover,
+  &:focus-within {
+    box-shadow: 0 0 10px rgba(183, 28, 28, 0.5);
+  }
+  
+  .section-filters__search-btn {
+    margin: auto;
+  }
+}

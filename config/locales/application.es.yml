@@ -187,6 +187,7 @@
     access_denied: 'No tiene permisos para acceder al contenido'
 
   label:
+    all: 'Todas'
     'yes': 'Si'
     'no': 'No'
     close: 'Cerrar'
