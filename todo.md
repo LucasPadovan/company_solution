@@ -1,5 +1,7 @@
 # TODO list
 
+* Scope pending for Order is not working
+* Orders filter add params value to selector.
 * Filtering orders 
 * Status for orders
 * Alert for new products sold/bought in an order for a firm

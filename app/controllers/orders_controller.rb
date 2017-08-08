@@ -33,6 +33,9 @@ class OrdersController < ApplicationController
 
     @order.date = Date.today
     @order.user = current_user
+    @order.statuses.build({
+      status: OrderStatus.statuses[:open]
+    })
 
     if @order.save
       flash[:type] = 'success'
@@ -68,19 +71,27 @@ class OrdersController < ApplicationController
     end
 
     def filtered_orders
-      query = ''
+      query = []
 
-      query += 'firm_id = :firm_id' if params[:firm_id].present?
-      query += ' AND date = :date' if params[:date].present?
+      query << ['firm_id = :firm_id'] if params[:firm_id].present?
+      query << ['date = :date'] if params[:date].present?
+      query << ['order_statuses.status = :status_id'] if params[:status_id].present?
 
+      if query.length
+        query = query.join(' AND ')
 
-      Order.where(
-          query,
-          {
-              firm_id: params[:firm_id],
-              date: params[:date]
-          }
-      )
+        Order.joins(:statuses).where(
+            query,
+            {
+                firm_id: params[:firm_id],
+                date: params[:date],
+                status_id: params[:status_id]
+            }
+        )
+      else
+        Order.pending
+      end
+
     end
 
     # Only allow a trusted parameter "white list" through.

@@ -10,6 +10,7 @@
       <th><%= Order.human_attribute_name 'subtotal' %></th>
       <th><%= Order.human_attribute_name 'total' %></th>
       <th><%= Order.human_attribute_name 'contact_name' %></th>
+      <th><%= OrderStatus.human_attribute_name 'status' %></th>
       <th></th>
     </tr>
   </thead>
@@ -24,6 +25,7 @@
         <td><%= order.subtotal %></td>
         <td><%= order.total %></td>
         <td><%= order.contact_name %></td>
+        <td><%= order.statuses.last.try(:status_name) %></td>
         <td>
           <%= link_to '', order, class: 'fa fa-2x fa-info-circle'  %>
           <%= link_to '', edit_order_path(order), class: 'fa fa-2x fa-pencil-square' %>

@@ -120,6 +120,8 @@
         tax: 'Impuestos'
         tax_rate: 'Imp %'
         unit_price: 'Precio unitario'
+      order_status:
+        status: 'Estado'
       price:
         price: 'Precio'
         currency: 'Moneda'
@@ -410,6 +412,16 @@
       correctly_created: 'Orden argregada correctamente'
       correctly_updated:  'Orden actualizada correctamente'
       correctly_destroyed: 'Orden eliminada correctamente'
+    order_statuses:
+      status:
+        open: 'Abierto'
+        ongoing: 'Iniciado'
+        shipped: 'Enviado'
+        completed: 'Completado'
+        canceled: 'Cancelado'
+        delayed: 'Demorado'
+        paid: 'Pagado'
+        returned: 'Devuelto'
     items:
       add_item: "Agregar item"
       index_title: "Detalle pedido"
