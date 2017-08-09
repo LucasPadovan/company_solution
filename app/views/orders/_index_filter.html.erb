@@ -4,8 +4,10 @@
       <div class="column col-3">
         <%= label_tag :firm_id, t('activerecord.attributes.order.firm_id'), class: 'from-label' %>
         <%= select_tag :firm_id,
-                       options_for_select([[t('label.all'), nil]] + Firm.firms_for_select),
-                       { class: 'form-select' } %>
+                       options_for_select(
+                           [[t('label.all'), nil]] + Firm.firms_for_select,
+                           params[:firm_id]
+                       ), { class: 'form-select' } %>
       </div>
       <div class="column col-3">
         <%= label_tag :date, t('activerecord.attributes.order.date'), class: 'from-label' %>
@@ -17,8 +19,10 @@
       <div class="column col-3">
         <%= label_tag :status_id, t('activerecord.attributes.order_status.status'), class: 'from-label' %>
         <%= select_tag :status_id,
-                       options_for_select([[t('label.all'), nil]] + OrderStatus.statuses_for_filter_select),
-                       { class: 'form-select' } %>
+                       options_for_select(
+                           [[t('view.order_statuses.default_filter'), nil]] + OrderStatus.statuses_for_filter_select,
+                           params[:status_id]
+                       ), { class: 'form-select'} %>
       </div>
       <div class="column col-3 section-filters__search-btn">
         <%= button_tag(type: 'submit', class: 'btn') do %>

@@ -416,13 +416,14 @@
       status:
         budget: 'Presupuesto'
         open: 'Abierto'
-        ongoing: 'Iniciado'
+        ongoing: 'En progreso'
         shipped: 'Enviado'
         completed: 'Completado'
         canceled: 'Cancelado'
         delayed: 'Demorado'
         paid: 'Pagado'
         returned: 'Devuelto'
+      default_filter: 'En proceso'
     items:
       add_item: "Agregar item"
       index_title: "Detalle pedido"

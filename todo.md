@@ -1,9 +1,11 @@
 # TODO list
 
-* Orders filter add params value to selector.
-* Filtering orders 
 * Create a separated section for "budgets" presupuestos. Create a button to convert budgets in actual orders.
-* Status for orders
+* Status change for orders. Effects on items after status changes.
+    Completed/delivered should verify that all items were removed/added from stock
+    Shipped should generate an invoice
+    Delay should trigger an advice for clients/workers
+    Paid should add payment (check, cash, future account)
 * Alert for new products sold/bought in an order for a firm
 * Translations for new prices created
 * Show error on dynamic_form error
@@ -24,3 +26,6 @@
 * Dashboard con ordernes abiertas, ordenes que se esperen entregar hoy y los proximos 5 dias, ordenes sin facturar, ordenes sin cobrar
 * Differenciate purchase from sale orders
 * Reports and graphics
+* Menu indicator of the current section
+* Trigger emails
+* Welcome message breaks the orders filter
