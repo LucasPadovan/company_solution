@@ -1,8 +1,8 @@
 # TODO list
 
-* Scope pending for Order is not working
 * Orders filter add params value to selector.
 * Filtering orders 
+* Create a separated section for "budgets" presupuestos. Create a button to convert budgets in actual orders.
 * Status for orders
 * Alert for new products sold/bought in an order for a firm
 * Translations for new prices created

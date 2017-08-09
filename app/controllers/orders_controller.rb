@@ -77,21 +77,22 @@ class OrdersController < ApplicationController
       query << ['date = :date'] if params[:date].present?
       query << ['order_statuses.status = :status_id'] if params[:status_id].present?
 
-      if query.length
-        query = query.join(' AND ')
+      orders =  if query.length > 0
+                  query = query.join(' AND ')
 
-        Order.joins(:statuses).where(
-            query,
-            {
-                firm_id: params[:firm_id],
-                date: params[:date],
-                status_id: params[:status_id]
-            }
-        )
-      else
-        Order.pending
-      end
+                  Order.joins(:statuses).where(
+                      query,
+                      {
+                          firm_id: params[:firm_id],
+                          date: params[:date],
+                          status_id: params[:status_id]
+                      }
+                  )
+                else
+                  Order.pending
+                end
 
+      orders.date_asc
     end
 
     # Only allow a trusted parameter "white list" through.

@@ -7,6 +7,7 @@ class OrderStatus < ApplicationRecord
 
   def self.statuses
     {
+        budget: 0,
         open: 1,
         ongoing: 2,
         shipped: 3,
@@ -19,6 +20,10 @@ class OrderStatus < ApplicationRecord
   end
 
   def self.statuses_for_select
-    OrderStatus.statuses.map { |key, value| [I18n.t("view.order_statuses.status.#{key}"), value]}
+    OrderStatus.statuses.map { |key, value| [I18n.t("view.order_statuses.status.#{key}"), value] }
+  end
+
+  def self.statuses_for_filter_select
+    self.statuses_for_select.reject { |status| status[1] === 0 }
   end
 end

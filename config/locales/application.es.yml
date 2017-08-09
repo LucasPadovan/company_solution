@@ -414,6 +414,7 @@
       correctly_destroyed: 'Orden eliminada correctamente'
     order_statuses:
       status:
+        budget: 'Presupuesto'
         open: 'Abierto'
         ongoing: 'Iniciado'
         shipped: 'Enviado'
