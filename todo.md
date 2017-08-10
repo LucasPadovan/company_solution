@@ -1,6 +1,8 @@
 # TODO list
 
-* Create a separated section for "budgets" presupuestos. Create a button to convert budgets in actual orders.
+* Add type to orders to switch between "budget", "purchases" or none of them
+    * Create a separated section for "budgets" presupuestos. Create a button to convert budgets in actual orders.
+    * Create a separated section for "purchases". There should not be a way to convert purchases in common orders that are meant to be sell orders. 
 * Status change for orders. Effects on items after status changes.
     Completed/delivered should verify that all items were removed/added from stock
     Shipped should generate an invoice
@@ -28,4 +30,5 @@
 * Reports and graphics
 * Menu indicator of the current section
 * Trigger emails
-* Welcome message breaks the orders filter
+* Search should bring Orders, firms, products or invoices. Probably add a way to select one of them.
+* Link to create an order directly from the product show page with the product as first order_line.
