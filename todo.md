@@ -9,7 +9,6 @@
     Delay should trigger an advice for clients/workers
     Paid should add payment (check, cash, future account)
 * Alert for new products sold/bought in an order for a firm
-* Translations for new prices created
 * Show error on dynamic_form error
 * Translate months and dates
 * New items sold to/from a company should create the proper relation.
@@ -32,3 +31,4 @@
 * Trigger emails
 * Search should bring Orders, firms, products or invoices. Probably add a way to select one of them.
 * Link to create an order directly from the product show page with the product as first order_line.
+* Sometimes new price modal wont do anything when you hit save.
