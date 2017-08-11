@@ -36,4 +36,4 @@
   </tbody>
 </table>
 
-<%= link_to t('view.orders.new_title'), new_order_path, class: 'btn btn-primary'  %>
+<%= link_to @information[:new_title], new_order_path(order_type: params[:order_type]), class: 'btn btn-primary'  %>

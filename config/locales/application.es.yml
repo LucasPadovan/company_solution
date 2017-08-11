@@ -217,7 +217,9 @@
       register: 'Registrarse'
     firms: 'Empresas'
     monthly_movements: 'Facturación mensual'
+    budgets: 'Presupuestos'
     products: 'Productos'
+    purchases: 'Compras'
     orders: 'Ordenes'
     users: 'Usuarios'
 
@@ -412,9 +414,13 @@
       correctly_created: 'Orden argregada correctamente'
       correctly_updated:  'Orden actualizada correctamente'
       correctly_destroyed: 'Orden eliminada correctamente'
+      types:
+        budgets: 'Presupuestos'
+        new_budget: 'Nuevo presupuesto'
+        purchases: 'Compras'
+        new_purchase: 'Nueva compra'
     order_statuses:
       status:
-        budget: 'Presupuesto'
         open: 'Abierto'
         ongoing: 'En progreso'
         shipped: 'Enviado'

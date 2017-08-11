@@ -1,8 +1,11 @@
 # TODO list
 
-* Add type to orders to switch between "budget", "purchases" or none of them
-    * Create a separated section for "budgets" presupuestos. Create a button to convert budgets in actual orders.
-    * Create a separated section for "purchases". There should not be a way to convert purchases in common orders that are meant to be sell orders. 
+* Translation and titles for new, edit, create, update, destroy and index views for the 3 order types.
+    Return url should also match.
+    Find a way to return to the correct window after hit edit on one of the 3 order types.
+* Create a button to convert budgets in actual orders.
+* There should not be a way to convert purchases in common orders that are meant to be sell orders. 
+* Budgets should have a subset of the states of an order.
 * Status change for orders. Effects on items after status changes.
     Completed/delivered should verify that all items were removed/added from stock
     Shipped should generate an invoice

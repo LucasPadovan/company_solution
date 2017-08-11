@@ -11,9 +11,9 @@ class Order < ApplicationRecord
 
   validates :contact_name, presence: :true
 
-  scope :sales, -> { where('orders.type = ?', SaleOrder) }
-  scope :purchases, -> { where('orders.type = ?', PurchaseOrder) }
-  scope :budgets, -> { where('orders.type = ?', BudgetOrder) }
+  scope :sales, -> { where('orders.type = ?', 'SaleOrder') }
+  scope :purchases, -> { where('orders.type = ?', 'PurchaseOrder') }
+  scope :budgets, -> { where('orders.type = ?', 'BudgetOrder') }
   scope :pending, -> { joins(:statuses).where('order_statuses.status = :status_one OR order_statuses.status = :status_two', status_one: 1, status_two: 2) }
   scope :date_asc, -> { order('orders.date ASC') }
   scope :date_desc, -> { order('orders.date DESC') }

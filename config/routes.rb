@@ -24,5 +24,8 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'budgets', to: 'orders#index', defaults: { order_type: 'budget' }
+  get 'purchases', to: 'orders#index', defaults: { order_type: 'purchase' }
+
   root to: 'orders#index'
 end

@@ -6,11 +6,24 @@ class OrdersController < ApplicationController
   # GET /orders
   def index
     @orders = filtered_orders
+
+    translation_key = case params[:order_type]
+                        when 'purchase'  then 'view.orders.types.new_purchase'
+                        when 'budget'    then 'view.orders.types.new_budget'
+                        else                  'view.orders.new_title'
+                      end
+
+    @information[:new_title] = t(translation_key)
   end
 
   # GET /orders/1
   def show
     @information[:subtitle] = t('view.orders.show_title', order_number: @order.number)
+    @information[:back_url] = case params[:order_type]
+                                when 'purchase'  then purchases_path
+                                when 'budget'    then budgets_path
+                                else                  orders_path
+                              end
   end
 
   # GET /orders/new
@@ -41,7 +54,7 @@ class OrdersController < ApplicationController
 
     if @order.save
       flash[:type] = 'success'
-      redirect_to order_path(@order), notice: t('view.orders.correctly_created')
+      redirect_to order_path(@order, order_type: params[:order_type]), notice: t('view.orders.correctly_created')
     else
       new_form_information
       render :new
@@ -54,7 +67,7 @@ class OrdersController < ApplicationController
 
     if @order.update(order_params)
       flash[:type] = 'primary'
-      redirect_to order_path(@order), notice: t('view.orders.correctly_updated')
+      redirect_to order_path(@order, order_type: params[:order_type]), notice: t('view.orders.correctly_updated')
     else
       edit_form_information
       render :edit
@@ -77,8 +90,8 @@ class OrdersController < ApplicationController
     def set_order_type
       @order_type = case params[:order_type]
                       when 'purchase' then PurchaseOrder
-                      when 'budget' then BudgetOrder
-                      else SaleOrder
+                      when 'budget'   then BudgetOrder
+                      else                 SaleOrder
                     end
     end
 
@@ -103,6 +116,13 @@ class OrdersController < ApplicationController
                 else
                   Order.pending
                 end
+
+      # If this changes, check the routes.rb file.
+      orders = case params[:order_type]
+                 when 'purchase'  then orders.purchases
+                 when 'budget'    then orders.budgets
+                 else                  orders.sales
+               end
 
       orders.date_asc
     end
@@ -146,18 +166,34 @@ class OrdersController < ApplicationController
     end
 
     def set_information
-      @information = { title: t('activerecord.models.order.other') }
+      translation_key = case params[:order_type]
+                          when 'purchase'  then 'view.orders.types.purchases'
+                          when 'budget'    then 'view.orders.types.budgets'
+                          else                  'activerecord.models.order.other'
+                        end
+
+      @information = { title: t(translation_key) }
     end
 
     # Form url for new/create methods.
     def new_form_information
       @information[:subtitle] = t('view.orders.new_title')
       @information[:form_url] = orders_path(@order)
+      @information[:back_url] = case params[:order_type]
+                                  when 'purchase'  then purchases_path
+                                  when 'budget'    then budgets_path
+                                  else                  orders_path
+                                end
     end
 
     # Form url for edit/update methods.
     def edit_form_information
       @information[:subtitle] = t('view.orders.edit_title', order_number: @order.number)
       @information[:form_url] = order_path(@order)
+      @information[:back_url] = case params[:order_type]
+                                  when 'purchase'  then purchases_path
+                                  when 'budget'    then budgets_path
+                                  else                  orders_path
+                                end
     end
 end
