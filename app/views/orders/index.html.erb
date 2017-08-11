@@ -27,9 +27,9 @@
         <td><%= order.contact_name %></td>
         <td><%= order.statuses.last.try(:status_name) %></td>
         <td>
-          <%= link_to '', order, class: 'fa fa-2x fa-info-circle'  %>
+          <%= link_to '', order_path(order), class: 'fa fa-2x fa-info-circle'  %>
           <%= link_to '', edit_order_path(order), class: 'fa fa-2x fa-pencil-square' %>
-          <%= link_to '', order, method: :delete, data: { confirm: t('messages.confirmation') }, class: 'fa fa-2x fa-trash' %>
+          <%= link_to '', order_path(order), method: :delete, data: { confirm: t('messages.confirmation') }, class: 'fa fa-2x fa-trash' %>
         </td>
       </tr>
     <% end %>

@@ -1,0 +1,2 @@
+class BudgetOrder < Order
+end

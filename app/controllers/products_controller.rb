@@ -26,14 +26,13 @@ class ProductsController < ApplicationController
   # GET /products/new
   def new
     @product = Product.new
-    @information[:subtitle] = t('view.products.new_title')
-    @information[:form_url] = products_path
+
+    new_form_information
   end
 
   # GET /products/1/edit
   def edit
-    @information[:subtitle] = t('view.products.edit_title', product: @product.name)
-    @information[:form_url] = product_path(@product)
+    edit_form_information
   end
 
   # POST /products
@@ -48,7 +47,11 @@ class ProductsController < ApplicationController
         format.html { redirect_to product_path(@product), notice: 'Product was successfully created.' }
         format.json { render :show, status: :created, location: @product }
       else
-        format.html { render :new }
+        format.html do
+          new_form_information
+
+          render :new
+        end
         format.json { render json: @product.errors, status: :unprocessable_entity }
       end
     end
@@ -63,7 +66,11 @@ class ProductsController < ApplicationController
         format.html { redirect_to product_path(@product), notice: 'Product was successfully updated.' }
         format.json { render :show, status: :ok, location: @product }
       else
-        format.html { render :edit }
+        format.html do
+          edit_form_information
+
+          render :edit
+        end
         format.json { render json: @product.errors, status: :unprocessable_entity }
       end
     end
@@ -90,5 +97,17 @@ class ProductsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
       params.require(:product).permit(:name, :description, :area, :type, :unit, :initial_stock, :current_stock)
+    end
+
+    # Form url for new/create methods.
+    def new_form_information
+      @information[:subtitle] = t('view.products.new_title')
+      @information[:form_url] = products_path
+    end
+
+    # Form url for edit/update methods.
+    def edit_form_information
+      @information[:subtitle] = t('view.products.edit_title', product: @product.name)
+      @information[:form_url] = product_path(@product)
     end
 end

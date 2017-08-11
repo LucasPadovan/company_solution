@@ -20,7 +20,7 @@
         <%= label_tag :status_id, t('activerecord.attributes.order_status.status'), class: 'from-label' %>
         <%= select_tag :status_id,
                        options_for_select(
-                           [[t('view.order_statuses.default_filter'), nil]] + OrderStatus.statuses_for_filter_select,
+                           [[t('view.order_statuses.default_filter'), nil]] + OrderStatus.statuses_for_select,
                            params[:status_id]
                        ), { class: 'form-select'} %>
       </div>

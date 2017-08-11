@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
+  before_action :set_order_type, only: [:new, :create]
   before_action :set_information
 
   # GET /orders
@@ -14,22 +15,23 @@ class OrdersController < ApplicationController
 
   # GET /orders/new
   def new
-    @order = Order.new
-    @information[:subtitle] = t('view.orders.new_title')
+    @order = @order_type.new
 
-    @order.number = (Order.last.try(:number) || 0) + 1
+    new_form_information
+
+    @order.number = (@order_type.last.try(:number) || 0) + 1
     @order.date = Date.today
   end
 
   # GET /orders/1/edit
   def edit
-    @information[:subtitle] = t('view.orders.edit_title', order_number: @order.number)
+    edit_form_information
   end
 
   # POST /orders
   def create
     @information[:subtitle] = t('view.orders.new_title')
-    @order = Order.new(order_params)
+    @order = @order_type.new(order_params)
 
     @order.date = Date.today
     @order.user = current_user
@@ -39,8 +41,9 @@ class OrdersController < ApplicationController
 
     if @order.save
       flash[:type] = 'success'
-      redirect_to @order, notice: t('view.orders.correctly_created')
+      redirect_to order_path(@order), notice: t('view.orders.correctly_created')
     else
+      new_form_information
       render :new
     end
   end
@@ -51,8 +54,9 @@ class OrdersController < ApplicationController
 
     if @order.update(order_params)
       flash[:type] = 'primary'
-      redirect_to @order, notice: t('view.orders.correctly_updated')
+      redirect_to order_path(@order), notice: t('view.orders.correctly_updated')
     else
+      edit_form_information
       render :edit
     end
   end
@@ -68,6 +72,14 @@ class OrdersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_order
       @order = Order.find(params[:id])
+    end
+
+    def set_order_type
+      @order_type = case params[:order_type]
+                      when 'purchase' then PurchaseOrder
+                      when 'budget' then BudgetOrder
+                      else SaleOrder
+                    end
     end
 
     def filtered_orders
@@ -98,6 +110,7 @@ class OrdersController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def order_params
       params.require(:order).permit(
+          :id,
           :firm_id,
           :number,
           :date,
@@ -134,5 +147,17 @@ class OrdersController < ApplicationController
 
     def set_information
       @information = { title: t('activerecord.models.order.other') }
+    end
+
+    # Form url for new/create methods.
+    def new_form_information
+      @information[:subtitle] = t('view.orders.new_title')
+      @information[:form_url] = orders_path(@order)
+    end
+
+    # Form url for edit/update methods.
+    def edit_form_information
+      @information[:subtitle] = t('view.orders.edit_title', order_number: @order.number)
+      @information[:form_url] = order_path(@order)
     end
 end

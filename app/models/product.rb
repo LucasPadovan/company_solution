@@ -3,8 +3,9 @@ class Product < ApplicationRecord
 
   has_many :recipes
   has_many :trades
-
   has_many :prices, through: :trades
+
+  validates :name, presence: true
 
   # API helpers
   def unit_price

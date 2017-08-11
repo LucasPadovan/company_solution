@@ -32,3 +32,4 @@
 * Search should bring Orders, firms, products or invoices. Probably add a way to select one of them.
 * Link to create an order directly from the product show page with the product as first order_line.
 * Sometimes new price modal wont do anything when you hit save.
+* Translate "1 error prohibited this ??? from being saved" and similar.
