@@ -1,7 +1,8 @@
 # TODO list
 
 * Order types
-    Translations when destroying/creating/updating
+    show on index should match order type
+    Translations when destroying/creating/updating should match order types
 * Create a button to convert budgets in actual orders.
 * There should not be a way to convert purchases in common orders that are meant to be sell orders. 
 * Budgets should have a subset of the states of an order.
