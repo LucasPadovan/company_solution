@@ -21,4 +21,8 @@ class OrderStatus < ApplicationRecord
   def self.statuses_for_select
     OrderStatus.statuses.map { |key, value| [I18n.t("view.order_statuses.status.#{key}"), value] }
   end
+
+  def self.statuses_for_filter
+    [[I18n.t('view.order_statuses.default_filter'), nil], [I18n.t('label.all'), 0]] + OrderStatus.statuses_for_select
+  end
 end

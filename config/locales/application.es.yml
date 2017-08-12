@@ -417,8 +417,13 @@
       types:
         budgets: 'Presupuestos'
         new_budget: 'Nuevo presupuesto'
+        edit_budget: "Editando presupuesto %{order_number}"
+        sales: ''
+        new_sales: ''
+        edit_sales: ''
         purchases: 'Compras'
         new_purchase: 'Nueva compra'
+        edit_purchase: "Editando la compra %{order_number}"
     order_statuses:
       status:
         open: 'Abierto'

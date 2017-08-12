@@ -16,14 +16,16 @@
                            { id: :date, class: 'form-input', type: :date }
         %>
       </div>
-      <div class="column col-3">
-        <%= label_tag :status_id, t('activerecord.attributes.order_status.status'), class: 'from-label' %>
-        <%= select_tag :status_id,
-                       options_for_select(
-                           [[t('view.order_statuses.default_filter'), nil]] + OrderStatus.statuses_for_select,
-                           params[:status_id]
-                       ), { class: 'form-select'} %>
-      </div>
+      <% unless params[:order_type] === 'budget' %>
+        <div class="column col-3">
+          <%= label_tag :status_id, t('activerecord.attributes.order_status.status'), class: 'from-label' %>
+          <%= select_tag :status_id,
+                         options_for_select(
+                             OrderStatus.statuses_for_filter,
+                             params[:status_id]
+                         ), { class: 'form-select'} %>
+        </div>
+      <% end %>
       <div class="column col-3 section-filters__search-btn">
         <%= button_tag(type: 'submit', class: 'btn') do %>
           <i class="icon icon-search"></i>

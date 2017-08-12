@@ -96,33 +96,45 @@ class OrdersController < ApplicationController
     end
 
     def filtered_orders
-      query = []
-
-      query << ['firm_id = :firm_id'] if params[:firm_id].present?
-      query << ['date = :date'] if params[:date].present?
-      query << ['order_statuses.status = :status_id'] if params[:status_id].present?
-
-      orders =  if query.length > 0
-                  query = query.join(' AND ')
-
-                  Order.joins(:statuses).where(
-                      query,
-                      {
-                          firm_id: params[:firm_id],
-                          date: params[:date],
-                          status_id: params[:status_id]
-                      }
-                  )
-                else
-                  Order.pending
-                end
-
       # If this changes, check the routes.rb file.
-      orders = case params[:order_type]
-                 when 'purchase'  then orders.purchases
-                 when 'budget'    then orders.budgets
-                 else                  orders.sales
-               end
+      case params[:order_type]
+        when 'purchase'  then apply_filters(PurchaseOrder)
+        when 'budget'    then BudgetOrder.date_asc
+        else                  apply_filters(SaleOrder)
+      end
+    end
+
+    def apply_filters(_orders)
+      should_filter_by_status = params[:status_id].present? && params[:status_id] != '0'
+      should_get_pending_orders = params[:status_id].blank?
+      query = []
+      query_params = {}
+      orders = _orders
+
+      if params[:firm_id].present?
+        query << ['firm_id = :firm_id']
+        query_params[:firm_id] = params[:firm_id]
+      end
+
+      if params[:date].present?
+        query << ['date = :date']
+        query_params[:date] = params[:date]
+      end
+
+      if should_filter_by_status
+        query << ['order_statuses.status = :status_id']
+        query_params[:status_id] = params[:status_id]
+      end
+
+      if query.length > 0
+        query = query.join(' AND ')
+
+        orders = orders.joins(:statuses).where(query, query_params)
+      end
+
+      if should_get_pending_orders
+        orders = orders.pending
+      end
 
       orders.date_asc
     end
@@ -177,23 +189,35 @@ class OrdersController < ApplicationController
 
     # Form url for new/create methods.
     def new_form_information
-      @information[:subtitle] = t('view.orders.new_title')
       @information[:form_url] = orders_path(@order)
-      @information[:back_url] = case params[:order_type]
-                                  when 'purchase'  then purchases_path
-                                  when 'budget'    then budgets_path
-                                  else                  orders_path
-                                end
+
+      case params[:order_type]
+        when 'purchase'
+          @information[:subtitle] = t('view.orders.types.new_purchase')
+          @information[:back_url] = purchases_path
+        when 'budget'
+          @information[:subtitle] = t('view.orders.types.new_budget')
+          @information[:back_url] = budgets_path
+        else
+          @information[:subtitle] = t('view.orders.new_title')
+          @information[:back_url] = orders_path
+      end
     end
 
     # Form url for edit/update methods.
     def edit_form_information
-      @information[:subtitle] = t('view.orders.edit_title', order_number: @order.number)
       @information[:form_url] = order_path(@order)
-      @information[:back_url] = case params[:order_type]
-                                  when 'purchase'  then purchases_path
-                                  when 'budget'    then budgets_path
-                                  else                  orders_path
-                                end
+
+      case params[:order_type]
+        when 'purchase'
+          @information[:subtitle] = t('view.orders.types.edit_purchase', order_number: @order.number)
+          @information[:back_url] = purchases_path
+        when 'budget'
+          @information[:subtitle] = t('view.orders.types.edit_budget', order_number: @order.number)
+          @information[:back_url] = budgets_path
+        else
+          @information[:subtitle] = t('view.orders.edit_title', order_number: @order.number)
+          @information[:back_url] = orders_path
+      end
     end
 end
