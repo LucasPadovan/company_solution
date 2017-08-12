@@ -1,6 +1,6 @@
 # TODO list
 
-* Translation and titles for new, edit, create, update, destroy and index views for the 3 order types.
+* Order types
     Return url should also match.
     Find a way to return to the correct window after hit edit on one of the 3 order types.
 * Create a button to convert budgets in actual orders.

@@ -10,7 +10,7 @@ class OrdersController < ApplicationController
     translation_key = case params[:order_type]
                         when 'purchase'  then 'view.orders.types.new_purchase'
                         when 'budget'    then 'view.orders.types.new_budget'
-                        else                  'view.orders.new_title'
+                        else                  'view.orders.types.new_sale'
                       end
 
     @information[:new_title] = t(translation_key)
@@ -43,7 +43,7 @@ class OrdersController < ApplicationController
 
   # POST /orders
   def create
-    @information[:subtitle] = t('view.orders.new_title')
+    new_form_information
     @order = @order_type.new(order_params)
 
     @order.date = Date.today
@@ -56,20 +56,18 @@ class OrdersController < ApplicationController
       flash[:type] = 'success'
       redirect_to order_path(@order, order_type: params[:order_type]), notice: t('view.orders.correctly_created')
     else
-      new_form_information
       render :new
     end
   end
 
   # PATCH/PUT /orders/1
   def update
-    @information[:subtitle] = t('view.orders.edit_title', order_number: @order.number)
+    edit_form_information
 
     if @order.update(order_params)
       flash[:type] = 'primary'
       redirect_to order_path(@order, order_type: params[:order_type]), notice: t('view.orders.correctly_updated')
     else
-      edit_form_information
       render :edit
     end
   end
@@ -194,12 +192,15 @@ class OrdersController < ApplicationController
       case params[:order_type]
         when 'purchase'
           @information[:subtitle] = t('view.orders.types.new_purchase')
+          @information[:button_text] = t('view.orders.types.save_purchase')
           @information[:back_url] = purchases_path
         when 'budget'
           @information[:subtitle] = t('view.orders.types.new_budget')
+          @information[:button_text] = t('view.orders.types.save_budget')
           @information[:back_url] = budgets_path
         else
-          @information[:subtitle] = t('view.orders.new_title')
+          @information[:subtitle] = t('view.orders.types.new_sale')
+          @information[:button_text] = t('view.orders.types.save_sale')
           @information[:back_url] = orders_path
       end
     end
@@ -211,12 +212,15 @@ class OrdersController < ApplicationController
       case params[:order_type]
         when 'purchase'
           @information[:subtitle] = t('view.orders.types.edit_purchase', order_number: @order.number)
+          @information[:button_text] = t('view.orders.types.save_purchase')
           @information[:back_url] = purchases_path
         when 'budget'
           @information[:subtitle] = t('view.orders.types.edit_budget', order_number: @order.number)
+          @information[:button_text] = t('view.orders.types.save_budget')
           @information[:back_url] = budgets_path
         else
-          @information[:subtitle] = t('view.orders.edit_title', order_number: @order.number)
+          @information[:subtitle] = t('view.orders.types.edit_sale', order_number: @order.number)
+          @information[:button_text] = t('view.orders.types.save_sale')
           @information[:back_url] = orders_path
       end
     end

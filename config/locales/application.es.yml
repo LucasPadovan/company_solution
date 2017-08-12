@@ -410,7 +410,6 @@
       show_title: "Nº %{order_number}"
       new_title: "Nueva orden"
       edit_title: "Editando la orden %{order_number}"
-      save: "Guardar orden"
       correctly_created: 'Orden argregada correctamente'
       correctly_updated:  'Orden actualizada correctamente'
       correctly_destroyed: 'Orden eliminada correctamente'
@@ -418,12 +417,15 @@
         budgets: 'Presupuestos'
         new_budget: 'Nuevo presupuesto'
         edit_budget: "Editando presupuesto %{order_number}"
-        sales: ''
-        new_sales: ''
-        edit_sales: ''
+        save_budget: 'Guardar presupuesto'
+        sales: 'Ordenes'
+        new_sale: 'Nueva orden'
+        edit_sale: "Editando la orden %{order_number}"
+        save_sale: 'Guardar orden'
         purchases: 'Compras'
         new_purchase: 'Nueva compra'
         edit_purchase: "Editando la compra %{order_number}"
+        save_purchase: 'Guardar compra'
     order_statuses:
       status:
         open: 'Abierto'
