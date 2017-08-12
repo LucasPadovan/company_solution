@@ -1,8 +1,7 @@
 # TODO list
 
 * Order types
-    Return url should also match.
-    Find a way to return to the correct window after hit edit on one of the 3 order types.
+    Translations when destroying/creating/updating
 * Create a button to convert budgets in actual orders.
 * There should not be a way to convert purchases in common orders that are meant to be sell orders. 
 * Budgets should have a subset of the states of an order.
