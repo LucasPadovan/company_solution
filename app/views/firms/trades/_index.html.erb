@@ -12,7 +12,7 @@
   <tbody>
     <% trades.each do |trade| %>
       <tr>
-        <td><%= trade.product.name %></td>
+        <td><%= link_to trade.product.name, product_path(trade.product) %></td>
         <td><%= trade.formatted_from %></td>
         <td><%= trade.formatted_to %></td>
         <td><%= trade.available_price_value %></td>

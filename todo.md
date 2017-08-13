@@ -1,9 +1,9 @@
 # TODO list
 
+* Print prices list or show c&p view of all prices
 * New items sold to/from a company should create the trade + price relation
 * New prices on items sold to/from a company should update the price with the proper relation.
 * I would like to know if I'm selling something below the purchase price as soon as I save the sale order or budget order 
-* Print prices list or show c&p view of all prices
 * Changing the firm on an order should retrieve all prices again for each line item.
 * Investigate retrieving all prices on order (new/edit) load and use that information instead of a single fetch each time.
 

@@ -17,7 +17,7 @@
       <% trader = trade.public_send(sold_key) %>
       <% if trader %>
         <tr>
-          <td><%= trader.name %></td>
+          <td><%= link_to trader.name, trader %></td>
           <td><%= trade.formatted_from %></td>
           <td><%= trade.formatted_to %></td>
           <td><%= trade.available_price_value %></td>
