@@ -4,6 +4,8 @@
 * New prices on items sold to/from a company should update the price with the proper relation.
 * I would like to know if I'm selling something below the purchase price as soon as I save the sale order or budget order 
 * Print prices list or show c&p view of all prices
+* Changing the firm on an order should retrieve all prices again for each line item.
+* Investigate retrieving all prices on order (new/edit) load and use that information instead of a single fetch each time.
 
 * Create a button to convert budgets in actual orders.
 * There should not be a way to convert purchases in common orders that are meant to be sell orders. 
