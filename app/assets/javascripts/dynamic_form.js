@@ -51,7 +51,7 @@ var DynamicForm = {
           params[selectExtra.dataset.model] = selectExtra.options[selectExtra.options.selectedIndex].value;
       }
 
-      DynamicForm._fetchData(this.dataset.fetchUrl, params, this, fields);
+      DynamicForm._fetchData(this.dataset.fetchUrl, params, this, fields, this.dataset.urlHasParams);
     });
   },
 
@@ -103,8 +103,8 @@ var DynamicForm = {
     $restoreButtonWrapper.css('top', newOffsetTop);
   },
 
-  _fetchData: function(url, params, target, fields) {
-    var queryParams = DynamicForm._buildQueryParams(params);
+  _fetchData: function(url, params, target, fields, urlHasParams) {
+    var queryParams = DynamicForm._buildQueryParams(params, urlHasParams);
 
     $.ajax({
       url: url + queryParams,
@@ -119,18 +119,18 @@ var DynamicForm = {
     });
   },
 
-  _buildQueryParams: function(params) {
+  _buildQueryParams: function(params, urlHasParams) {
     var queryParams,
         keys = Object.keys(params);
 
     if (keys.length > 0) {
-      queryParams = "?";
+      queryParams = urlHasParams ? '&' : '?';
 
       for(var i = 0, key; key = keys[i]; i++) {
-        queryParams += key + "=" + params[key];
+        queryParams += key + '=' + params[key];
 
         if (keys[i + 1]) {
-          queryParams += "&";
+          queryParams += '&';
         }
       }
     }

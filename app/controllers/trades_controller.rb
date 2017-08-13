@@ -56,9 +56,11 @@ class TradesController < ApplicationController
   end
 
   def find_product
-    # Differenciate between sold_to and sold_by depending on which order type we are doing.
-    # trades = Trade.where(sold_to: params[:firm]).or(Trade.where(sold_by: params[:firm])).where(product_id: params[:product])
-    trades = Trade.where sold_to: params[:firm], product_id: params[:product]
+    trades = if params[:order_type] === 'purchases'
+               Trade.where sold_by: params[:firm], product_id: params[:product]
+             else
+               Trade.where sold_to: params[:firm], product_id: params[:product]
+             end
     trade = trades.first
 
     if trade
