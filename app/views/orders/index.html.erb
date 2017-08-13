@@ -28,12 +28,12 @@
         <td><%= order.statuses.last.try(:status_name) %></td>
         <td>
           <%= link_to '', "#{@information[:show_path]}/#{order.id}", class: 'fa fa-2x fa-info-circle'  %>
-          <%= link_to '', edit_order_path(order), class: 'fa fa-2x fa-pencil-square' %>
-          <%= link_to '', order_path(order), method: :delete, data: { confirm: t('messages.confirmation') }, class: 'fa fa-2x fa-trash' %>
+          <%= link_to '',  "#{@information[:show_path]}/#{order.id}/edit", class: 'fa fa-2x fa-pencil-square' %>
+          <%= link_to '', "#{@information[:show_path]}/#{order.id}", method: :delete, data: { confirm: t('messages.confirmation') }, class: 'fa fa-2x fa-trash' %>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<%= link_to @information[:new_title], new_order_path(order_type: params[:order_type]), class: 'btn btn-primary'  %>
+<%= link_to @information[:new_title], @information[:new_path], class: 'btn btn-primary'  %>

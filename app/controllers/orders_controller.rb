@@ -1,4 +1,10 @@
 class OrdersController < ApplicationController
+  @@notices = {
+      correctly_created: 'view.orders.correctly_created',
+      correctly_updated: 'view.orders.correctly_updated',
+      correctly_destroyed: 'view.orders.correctly_destroyed'
+  }
+
   before_action :set_order, only: [:show, :edit, :update, :destroy]
   before_action :set_order_type, only: [:new, :create]
   before_action :set_information
@@ -7,37 +13,19 @@ class OrdersController < ApplicationController
   def index
     @orders = filtered_orders
 
-    case params[:order_type]
-      when 'purchase'
-        translation_key = 'view.orders.types.new_purchase'
-        show_path = purchases_path
-      when 'budget'
-        translation_key = 'view.orders.types.new_budget'
-        show_path = budgets_path
-      else
-        translation_key = 'view.orders.types.new_sale'
-        show_path = orders_path
-    end
-
-    @information[:new_title] = t(translation_key)
-    @information[:show_path] = show_path
+    set_index_information
   end
 
   # GET /orders/1
   def show
-    @information[:subtitle] = t('view.orders.show_title', order_number: @order.number)
-    @information[:back_url] = case params[:order_type]
-                                when 'purchase'  then purchases_path
-                                when 'budget'    then budgets_path
-                                else                  orders_path
-                              end
+    set_show_information
   end
 
   # GET /orders/new
   def new
     @order = @order_type.new
 
-    new_form_information
+    set_new_form_information
 
     @order.number = (@order_type.last.try(:number) || 0) + 1
     @order.date = Date.today
@@ -45,12 +33,12 @@ class OrdersController < ApplicationController
 
   # GET /orders/1/edit
   def edit
-    edit_form_information
+    set_edit_form_information
   end
 
   # POST /orders
   def create
-    new_form_information
+    set_new_form_information
     @order = @order_type.new(order_params)
 
     @order.date = Date.today
@@ -61,7 +49,7 @@ class OrdersController < ApplicationController
 
     if @order.save
       flash[:type] = 'success'
-      redirect_to redirect_path(@order), notice: t('view.orders.correctly_created')
+      redirect_to redirect_path(@order), notice: t(@@notices[:correctly_created])
     else
       render :new
     end
@@ -69,11 +57,11 @@ class OrdersController < ApplicationController
 
   # PATCH/PUT /orders/1
   def update
-    edit_form_information
+    set_edit_form_information
 
     if @order.update(order_params)
       flash[:type] = 'primary'
-      redirect_to redirect_path(@order), notice: t('view.orders.correctly_updated')
+      redirect_to redirect_path(@order), notice: t(@@notices[:correctly_updated])
     else
       render :edit
     end
@@ -83,7 +71,7 @@ class OrdersController < ApplicationController
   def destroy
     @order.destroy
     flash[:type] = 'error'
-    redirect_to back_path(@order), notice: t('view.orders.correctly_destroyed')
+    redirect_to back_path, notice: t(@@notices[:correctly_destroyed])
   end
 
   private
@@ -93,28 +81,15 @@ class OrdersController < ApplicationController
     end
 
     def set_order_type
-      @order_type = case params[:order_type]
-                      when 'purchase' then PurchaseOrder
-                      when 'budget'   then BudgetOrder
-                      else                 SaleOrder
-                    end
+      @order_type = SaleOrder
     end
 
     def redirect_path(order)
-      case order
-        when PurchaseOrder then purchase_path(order)
-        when BudgetOrder   then budget_path(order)
-        else                    order_path(order)
-      end
+      order_path(order)
     end
 
     def filtered_orders
-      # If this changes, check the routes.rb file.
-      case params[:order_type]
-        when 'purchase'  then apply_filters(PurchaseOrder)
-        when 'budget'    then BudgetOrder.date_asc
-        else                  apply_filters(SaleOrder)
-      end
+      apply_filters(SaleOrder)
     end
 
     def apply_filters(_orders)
@@ -191,58 +166,40 @@ class OrdersController < ApplicationController
     end
 
     def set_information
-      translation_key = case params[:order_type]
-                          when 'purchase'  then 'view.orders.types.purchases'
-                          when 'budget'    then 'view.orders.types.budgets'
-                          else                  'activerecord.models.order.other'
-                        end
-
-      @information = { title: t(translation_key) }
+      @information = { title: t('activerecord.models.order.other') }
     end
 
-    # Form url for new/create methods.
-    def new_form_information
+    # Information for index method
+    def set_index_information
+      @information[:new_title] = t('view.orders.types.new_sale')
+      @information[:show_path] = orders_path
+      @information[:new_path] = new_order_path
+    end
+
+    # Information for show method
+    def set_show_information
+      @information[:subtitle] = t('view.orders.show_title', order_number: @order.number)
+      @information[:edit_path] = edit_order_path(@order)
+      @information[:back_path] = back_path
+    end
+
+    # Information for new/create methods.
+    def set_new_form_information
       @information[:form_url] = orders_path(@order, order_type: params[:order_type])
-
-      case params[:order_type]
-        when 'purchase'
-          @information[:subtitle] = t('view.orders.types.new_purchase')
-          @information[:button_text] = t('view.orders.types.save_purchase')
-        when 'budget'
-          @information[:subtitle] = t('view.orders.types.new_budget')
-          @information[:button_text] = t('view.orders.types.save_budget')
-        else
-          @information[:subtitle] = t('view.orders.types.new_sale')
-          @information[:button_text] = t('view.orders.types.save_sale')
-      end
-
-      @information[:back_url] = back_path(@order)
+      @information[:subtitle] = t('view.orders.types.new_sale')
+      @information[:button_text] = t('view.orders.types.save_sale')
+      @information[:back_path] = back_path
     end
 
-    # Form url for edit/update methods.
-    def edit_form_information
+    # Information for edit/update methods.
+    def set_edit_form_information
       @information[:form_url] = order_path(@order, order_type: params[:order_type])
-
-      case params[:order_type]
-        when 'purchase'
-          @information[:subtitle] = t('view.orders.types.edit_purchase', order_number: @order.number)
-          @information[:button_text] = t('view.orders.types.save_purchase')
-        when 'budget'
-          @information[:subtitle] = t('view.orders.types.edit_budget', order_number: @order.number)
-          @information[:button_text] = t('view.orders.types.save_budget')
-        else
-          @information[:subtitle] = t('view.orders.types.edit_sale', order_number: @order.number)
-          @information[:button_text] = t('view.orders.types.save_sale')
-      end
-
-      @information[:back_url] = back_path(@order)
+      @information[:subtitle] = t('view.orders.types.edit_sale', order_number: @order.number)
+      @information[:button_text] = t('view.orders.types.save_sale')
+      @information[:back_path] = orders_path
     end
 
-    def back_path(order)
-      case order
-        when PurchaseOrder then purchases_path
-        when BudgetOrder   then budgets_path
-        else                    orders_path
-      end
+    def back_path
+      orders_path
     end
 end

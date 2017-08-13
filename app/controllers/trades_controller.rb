@@ -128,7 +128,7 @@ class TradesController < ApplicationController
     def new_form_url
       if params[:firm_id]
         @information[:form_url] = firm_trades_path(@parent, trade_type: params[:trade_type])
-        @information[:back_url] = firm_path(@parent)
+        @information[:back_path] = firm_path(@parent)
         @information[:subtitle] = if params[:trade_type] == 'sells'
                                     t('view.trades.new_trade_sold_by_firm_title', firm: @parent.name)
                                   elsif params[:trade_type] == 'buys'
@@ -136,7 +136,7 @@ class TradesController < ApplicationController
                                   end
       elsif params[:product_id]
         @information[:form_url] = product_trades_path(@parent, trade_type: params[:trade_type])
-        @information[:back_url] = product_path(@parent)
+        @information[:back_path] = product_path(@parent)
         @information[:subtitle] = if params[:trade_type] == 'sells'
                                     t('view.trades.new_product_traded_by_title', product: @parent.name)
                                   elsif params[:trade_type] == 'buys'
@@ -149,10 +149,10 @@ class TradesController < ApplicationController
     def edit_form_url
       if params[:firm_id]
         @information[:form_url] = firm_trade_path(@parent, @trade)
-        @information[:back_url] = firm_path(@parent)
+        @information[:back_path] = firm_path(@parent)
       elsif params[:product_id]
         @information[:form_url] = product_trade_path(@parent, @trade)
-        @information[:back_url] = product_path(@parent)
+        @information[:back_path] = product_path(@parent)
       end
     end
 
