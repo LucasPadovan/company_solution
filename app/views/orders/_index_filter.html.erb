@@ -1,5 +1,5 @@
 <section class="section section-filters pad-left-2 pad-right-2">
-  <%= form_tag orders_path, method: 'get' do %>
+  <%= form_tag @information[:show_path], method: 'get' do %>
     <div class="columns">
       <div class="column col-3">
         <%= label_tag :firm_id, t('activerecord.attributes.order.firm_id'), class: 'from-label' %>
@@ -16,7 +16,7 @@
                            { id: :date, class: 'form-input', type: :date }
         %>
       </div>
-      <% unless params[:order_type] === 'budget' %>
+      <% unless params[:controller] === 'budgets' %>
         <div class="column col-3">
           <%= label_tag :status_id, t('activerecord.attributes.order_status.status'), class: 'from-label' %>
           <%= select_tag :status_id,

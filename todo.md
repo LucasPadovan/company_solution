@@ -1,10 +1,7 @@
 # TODO list
 
-* Order types
-    Filter redirects to order instead of matching order_types
 * Create a button to convert budgets in actual orders.
 * There should not be a way to convert purchases in common orders that are meant to be sell orders. 
-* Budgets should have a subset of the states of an order.
 * Status change for orders. Effects on items after status changes.
     Completed/delivered should verify that all items were removed/added from stock
     Shipped should generate an invoice
