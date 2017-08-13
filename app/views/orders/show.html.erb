@@ -6,7 +6,7 @@
 <div class="columns">
   <div class="column col-5">
     <label class="info-label"><%= Order.human_attribute_name 'firm_id' %></label>
-    <div class="info-content"><%= @order.firm.name %></div>
+    <div class="info-content"><%= link_to @order.firm.name, @order.firm %></div>
   </div>
 
   <div class="column col-2">
@@ -91,9 +91,9 @@
         <th><%= OrderLine.human_attribute_name 'product_id' %></th>
         <th><%= OrderLine.human_attribute_name 'detail' %></th>
         <th><%= OrderLine.human_attribute_name 'unit_price' %></th>
+        <th><%= OrderLine.human_attribute_name 'subtotal' %></th>
         <th><%= OrderLine.human_attribute_name 'tax_rate' %></th>
         <th><%= OrderLine.human_attribute_name 'tax' %></th>
-        <th><%= OrderLine.human_attribute_name 'subtotal' %></th>
         <th><%= OrderLine.human_attribute_name 'remaining_amount' %></th>
       </tr>
       </thead>
@@ -101,12 +101,12 @@
       <% @order.lines.each do |line| %>
         <tr>
           <td><%= line.amount %> <%= line.unit %></td>
-          <td><%= line.product.name %></td>
+          <td><%= link_to line.product.name, product_path(line.product) %></td>
           <td><%= line.detail %></td>
           <td><%= line.unit_price %></td>
+          <td><%= line.subtotal %></td>
           <td><%= line.tax_rate %></td>
           <td><%= line.tax %></td>
-          <td><%= line.subtotal %></td>
           <td><%= line.remaining_amount %> <%= line.unit %></td>
         </tr>
       <% end %>
