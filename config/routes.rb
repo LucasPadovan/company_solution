@@ -25,9 +25,9 @@ Rails.application.routes.draw do
   end
 
   get 'budgets', to: 'orders#index', as: :budgets, defaults: { order_type: 'budget' }
-  get 'budget/:id', to: 'orders#show', as: :budget, defaults: { order_type: 'budget' }
+  get 'budgets/:id', to: 'orders#show', as: :budget, defaults: { order_type: 'budget' }
   get 'purchases', to: 'orders#index', as: :purchases, defaults: { order_type: 'purchase' }
-  get 'purchase/:id', to: 'orders#show', as: :purchase, defaults: { order_type: 'purchase' }
+  get 'purchases/:id', to: 'orders#show', as: :purchase, defaults: { order_type: 'purchase' }
 
   root to: 'orders#index'
 end

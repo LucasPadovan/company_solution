@@ -7,13 +7,20 @@ class OrdersController < ApplicationController
   def index
     @orders = filtered_orders
 
-    translation_key = case params[:order_type]
-                        when 'purchase'  then 'view.orders.types.new_purchase'
-                        when 'budget'    then 'view.orders.types.new_budget'
-                        else                  'view.orders.types.new_sale'
-                      end
+    case params[:order_type]
+      when 'purchase'
+        translation_key = 'view.orders.types.new_purchase'
+        show_path = purchases_path
+      when 'budget'
+        translation_key = 'view.orders.types.new_budget'
+        show_path = budgets_path
+      else
+        translation_key = 'view.orders.types.new_sale'
+        show_path = orders_path
+    end
 
     @information[:new_title] = t(translation_key)
+    @information[:show_path] = show_path
   end
 
   # GET /orders/1

@@ -1,7 +1,8 @@
 # TODO list
 
 * Order types
-    show on index should match order type
+    Filter redirects to order instead of matching order_types
+    Edit on show redirects to order instead of matching order_types
     Translations when destroying/creating/updating should match order types
 * Create a button to convert budgets in actual orders.
 * There should not be a way to convert purchases in common orders that are meant to be sell orders. 
