@@ -406,26 +406,30 @@
         admin: 'Administrador'
         regular: 'Normal'
     orders:
-      index_title: "Listado de ordenes"
+      title: 'Ordenes'
       show_title: "Nº %{order_number}"
       new_title: "Nueva orden"
       edit_title: "Editando la orden %{order_number}"
-      correctly_created: 'Orden argregada correctamente'
+      save: 'Guardar orden'
+      correctly_created: 'Orden agregada correctamente'
       correctly_updated:  'Orden actualizada correctamente'
       correctly_destroyed: 'Orden eliminada correctamente'
-      types:
-        budgets: 'Presupuestos'
-        new_budget: 'Nuevo presupuesto'
-        edit_budget: "Editando presupuesto %{order_number}"
-        save_budget: 'Guardar presupuesto'
-        sales: 'Ordenes'
-        new_sale: 'Nueva orden'
-        edit_sale: "Editando la orden %{order_number}"
-        save_sale: 'Guardar orden'
-        purchases: 'Compras'
-        new_purchase: 'Nueva compra'
-        edit_purchase: "Editando la compra %{order_number}"
-        save_purchase: 'Guardar compra'
+    budgets:
+      title: 'Presupuestos'
+      new_title: "Nuevo presupuesto"
+      edit_title: "Editando presupuesto %{order_number}"
+      save: 'Guardar presupuesto'
+      correctly_created: 'Presupuesto agregado correctamente'
+      correctly_updated:  'Presupuesto actualizado correctamente'
+      correctly_destroyed: 'Presupuesto eliminado correctamente'
+    purchases:
+      title: 'Compras'
+      new_title: "Nueva compra"
+      edit_title: "Editando compra %{order_number}"
+      save: 'Guardar compra'
+      correctly_created: 'Compra agregada correctamente'
+      correctly_updated:  'Compra actualizada correctamente'
+      correctly_destroyed: 'Compra eliminada correctamente'
     order_statuses:
       status:
         open: 'Abierto'

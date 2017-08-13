@@ -1,8 +1,8 @@
 class BudgetsController < OrdersController
   @@notices = {
-      correctly_created: 'view.orders.correctly_created',
-      correctly_updated: 'view.orders.correctly_updated',
-      correctly_destroyed: 'view.orders.correctly_destroyed'
+      correctly_created: 'view.budgets.correctly_created',
+      correctly_updated: 'view.budgets.correctly_updated',
+      correctly_destroyed: 'view.budgets.correctly_destroyed'
   }
 
   private
@@ -19,12 +19,12 @@ class BudgetsController < OrdersController
   end
 
   def set_information
-    @information = { title: t('view.orders.types.budgets') }
+    @information = { title: t('view.budgets.title') }
   end
 
   # Information for index method
   def set_index_information
-    @information[:new_title] = t('view.orders.types.new_budget')
+    @information[:new_title] = t('view.budgets.new_title')
     @information[:show_path] = budgets_path
     @information[:new_path] = new_budget_path
   end
@@ -39,16 +39,16 @@ class BudgetsController < OrdersController
   # Information for new/create methods.
   def set_new_form_information
     @information[:form_url] = budgets_path(@order)
-    @information[:subtitle] = t('view.orders.types.new_budget')
-    @information[:button_text] = t('view.orders.types.save_budget')
+    @information[:subtitle] = t('view.budgets.new_title')
+    @information[:button_text] = t('view.budgets.save')
     @information[:back_path] = back_path
   end
 
   # Information for edit/update methods.
   def set_edit_form_information
     @information[:form_url] = budget_path(@order)
-    @information[:subtitle] = t('view.orders.types.edit_budget', order_number: @order.number)
-    @information[:button_text] = t('view.orders.types.save_budget')
+    @information[:subtitle] = t('view.budgets.edit_title', order_number: @order.number)
+    @information[:button_text] = t('view.budgets.save')
     @information[:back_path] = back_path
   end
 

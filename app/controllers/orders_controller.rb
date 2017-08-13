@@ -166,12 +166,12 @@ class OrdersController < ApplicationController
     end
 
     def set_information
-      @information = { title: t('activerecord.models.order.other') }
+      @information = { title: t('view.orders.title') }
     end
 
     # Information for index method
     def set_index_information
-      @information[:new_title] = t('view.orders.types.new_sale')
+      @information[:new_title] = t('view.orders.new_title')
       @information[:show_path] = orders_path
       @information[:new_path] = new_order_path
     end
@@ -186,16 +186,16 @@ class OrdersController < ApplicationController
     # Information for new/create methods.
     def set_new_form_information
       @information[:form_url] = orders_path(@order, order_type: params[:order_type])
-      @information[:subtitle] = t('view.orders.types.new_sale')
-      @information[:button_text] = t('view.orders.types.save_sale')
+      @information[:subtitle] = t('view.orders.new_title')
+      @information[:button_text] = t('view.orders.save')
       @information[:back_path] = back_path
     end
 
     # Information for edit/update methods.
     def set_edit_form_information
       @information[:form_url] = order_path(@order, order_type: params[:order_type])
-      @information[:subtitle] = t('view.orders.types.edit_sale', order_number: @order.number)
-      @information[:button_text] = t('view.orders.types.save_sale')
+      @information[:subtitle] = t('view.orders.edit_title', order_number: @order.number)
+      @information[:button_text] = t('view.orders.save')
       @information[:back_path] = orders_path
     end
 
