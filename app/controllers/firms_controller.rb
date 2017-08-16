@@ -1,5 +1,5 @@
 class FirmsController < ApplicationController
-  before_action :set_firm, only: [:show, :edit, :update, :destroy]
+  before_action :set_firm, only: [:show, :edit, :update, :destroy, :products_list]
 
   # GET /firms
   # GET /firms.json
@@ -67,6 +67,20 @@ class FirmsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to firms_url, notice: 'Firm was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+
+  def products_list
+    @information[:subtitle] = t("view.firms.#{params[:trade_type]}.products_list", firm: @firm.name)
+    @trades = if params[:trade_type] === 'sells'
+                Trade.where sold_by: @firm
+              else
+                Trade.where sold_to: @firm
+              end
+
+    respond_to do |format|
+      format.html { render 'firms/products_list' }
     end
   end
 

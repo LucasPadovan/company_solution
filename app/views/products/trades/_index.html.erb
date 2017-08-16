@@ -20,7 +20,7 @@
           <td><%= link_to trader.name, trader %></td>
           <td><%= trade.formatted_from %></td>
           <td><%= trade.formatted_to %></td>
-          <td><%= trade.available_price_value %></td>
+          <td><%= trade.available_price_with_currency %></td>
           <td>
             <%= link_to t('view.prices.new_title'), '#', class: 'btn btn-sm btn-table', data: { modal_open: "trade-price-#{trade.id}" } %>
             <%= link_to '', trade_prices_path(trade, origin: 'product'), class: 'fa fa-2x fa-info-circle'  %>

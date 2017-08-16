@@ -14,9 +14,15 @@ class Trade < ApplicationRecord
     prices.availables.last
   end
 
-  def available_price_value
+  def available_price_with_currency
     if price = available_price
       "#{price.currency} #{price.price}"
+    end
+  end
+
+  def price_with_taxes
+    if price = available_price
+      price.price * (1 + price.tax_rate / 100)
     end
   end
 

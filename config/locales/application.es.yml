@@ -261,6 +261,10 @@
       add_firm: 'Agregar empresa'
       edit_firm: 'Editar empresa'
       save_firm: 'Guardar empresa'
+      sells:
+        products_list: '%{firm} vende'
+      buys:
+        products_list: '%{firm} compra'
     interests:
       new:
         sale_firm_title: 'Vender otro producto'
@@ -389,6 +393,8 @@
       new_price: 'Nuevo precio'
       new_product_traded_by_title: 'Vendedor de %{product}'
       new_product_traded_to_title: 'Comprador de %{product}'
+      price_without_taxes: 'Precio sin impuestos'
+      price_with_taxes: 'Precio con impuestos'
     users:
       index_title: 'Listado de usuarios'
       show_title: 'Detalle de %{user}'

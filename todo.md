@@ -1,11 +1,12 @@
 # TODO list
 
-* Print prices list or show c&p view of all prices
 * New items sold to/from a company should create the trade + price relation
 * New prices on items sold to/from a company should update the price with the proper relation.
 * I would like to know if I'm selling something below the purchase price as soon as I save the sale order or budget order 
 * Changing the firm on an order should retrieve all prices again for each line item.
 * Investigate retrieving all prices on order (new/edit) load and use that information instead of a single fetch each time.
+* Button to "make available" in prices list that removes the available price from other prices
+* Prices index: should have title = Firm/product, subtitle = Product/firm and add 'prices' at the end
 
 * Create a button to convert budgets in actual orders.
 * There should not be a way to convert purchases in common orders that are meant to be sell orders. 
@@ -35,3 +36,4 @@
 * Link to create an order directly from the product show page with the product as first order_line.
 * Sometimes new price modal wont do anything when you hit save.
 * Translate "1 error prohibited this ??? from being saved" and similar.
+* Allow print view using all the headers and stuff from the company.
