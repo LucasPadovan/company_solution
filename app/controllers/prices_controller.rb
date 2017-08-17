@@ -1,9 +1,9 @@
 class PricesController < ApplicationController
-  before_action :set_price, only: [:destroy]
+  before_action :set_price, only: [:destroy, :set_as_available]
   before_action :set_trade
   before_action :set_information
 
-  after_action :update_trade, only: [:create, :update]
+  after_action :update_trade, only: [:create]
 
   # GET /prices
   def index
@@ -31,6 +31,8 @@ class PricesController < ApplicationController
     @information[:subtitle] = t('view.prices.new_title')
     @price = @trade.prices.new(price_params)
 
+    clean_availables
+
     if @price.save
       flash[:type] = 'success'
       redirect_to return_path(params[:origin]), notice: t('view.prices.correctly_created')
@@ -42,8 +44,24 @@ class PricesController < ApplicationController
   # DELETE /prices/1
   def destroy
     @price.destroy
+
+    notice = if @trade.prices.availables.empty?
+               t('view.prices.correctly_destroyed_and_no_availables')
+             else
+               t('view.prices.correctly_destroyed')
+             end
+
     flash[:type] = 'error'
-    redirect_to trade_prices_path(@trade), notice: t('view.prices.correctly_destroyed')
+    redirect_to trade_prices_path(@trade, origin: params[:origin]), notice: notice
+  end
+
+  def set_as_available
+    if clean_availables
+      if @price.update_attribute(:available, true)
+        flash[:type] = 'success'
+        redirect_to trade_prices_path(@trade, origin: params[:origin]), notice: t('view.prices.correctly_updated')
+      end
+    end
   end
 
   private
@@ -61,6 +79,10 @@ class PricesController < ApplicationController
       @trade.to ||= @price.valid_to
 
       @trade.save
+    end
+
+    def clean_availables
+      @trade.prices.availables.update_all(available: false)
     end
 
     def return_path(origin)

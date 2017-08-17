@@ -23,7 +23,11 @@ Rails.application.routes.draw do
   resources :budgets
 
   resources :trades, only: :show do
-    resources :prices, except: [:show, :edit, :update]
+    resources :prices, except: [:show, :edit, :update] do
+      member do
+        put :set_as_available
+      end
+    end
 
     collection do
       get :find_product
