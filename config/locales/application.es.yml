@@ -311,6 +311,10 @@
       save_purchase_invoice: 'Guardar factura de compra'
     prices:
       save: 'Guardar precio'
+      buyer_firm_index_title: '%{firm} - precios de compra para %{product}'
+      seller_firm_index_title: '%{firm} - precios de venta para %{product}'
+      buyer_product_index_title: '%{product} - precios de compra de %{firm}'
+      seller_product_index_title: '%{product} - precios de venta de %{firm}'
       new_title: 'Nuevo precio'
       set_as_available: 'Marcar como disponible'
       correctly_created: 'Precio agregado correctamente'

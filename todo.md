@@ -1,6 +1,5 @@
 # TODO list
 
-* Prices index: should have title = Firm/product, subtitle = Product/firm and add 'prices' at the end
 * New items sold to/from a company should create the trade + price relation
 * New prices on items sold to/from a company on an order should update the price with the proper relation.
 * I would like to know if I'm selling something below the purchase price as soon as I save the sale order or budget order 

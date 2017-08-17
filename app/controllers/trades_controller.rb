@@ -116,9 +116,9 @@ class TradesController < ApplicationController
     # For new/create methods it is mandatory to set who is selling/buying what product.
     def bind_parent
       if params[:firm_id]
-        if params[:trade_type] == 'sells'
+        if params[:trade_type] === 'sells'
           @trade.sold_by = @parent.id
-        elsif params[:trade_type] == 'buys'
+        elsif params[:trade_type] === 'buys'
           @trade.sold_to = @parent.id
         end
       elsif params[:product_id]

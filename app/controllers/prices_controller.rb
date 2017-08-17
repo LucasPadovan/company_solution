@@ -1,7 +1,7 @@
 class PricesController < ApplicationController
   before_action :set_price, only: [:destroy, :set_as_available]
   before_action :set_trade
-  before_action :set_information
+  before_action :set_information, except: :index
 
   after_action :update_trade, only: [:create]
 
@@ -10,11 +10,31 @@ class PricesController < ApplicationController
     @prices = @trade.prices.all
 
     if params[:origin] === 'product'
+      @information = { title: t('activerecord.models.product.other') }
+
+      firm = @trade.buyer || @trade.seller
+      subtitle = if @trade.buyer
+                   'view.prices.buyer_product_index_title'
+                 else
+                   'view.prices.seller_product_index_title'
+                 end
+
+      @information[:subtitle] = t(subtitle, firm: firm.name, product: @trade.product.name)
       @information[:return_path] = product_path(@trade.product)
       @information[:origin] = 'product'
     end
 
     if params[:origin] === 'firm'
+      @information = { title: t('activerecord.models.firm.other') }
+
+      firm = @trade.buyer || @trade.seller
+      subtitle = if @trade.buyer
+                   'view.prices.buyer_firm_index_title'
+                 else
+                   'view.prices.seller_firm_index_title'
+                 end
+
+      @information[:subtitle] = t(subtitle, firm: firm.name, product: @trade.product.name)
       @information[:return_path] = firm_path(@trade.seller || @trade.buyer)
       @information[:origin] = 'firm'
     end
