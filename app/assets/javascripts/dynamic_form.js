@@ -71,6 +71,11 @@ var DynamicForm = {
     }
   },
 
+  createFirstLine: function() {
+    $('.js-add-fieldset').click();
+  },
+
+
   _addFieldset: function() {
     var $addFieldsetButton = $('.js-add-fieldset'),
         sequence = document.getElementsByClassName('js-nested-item-row').length,

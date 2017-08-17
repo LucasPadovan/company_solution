@@ -110,5 +110,6 @@
 
 <% content_for :ready_js do %>
   DynamicForm.handleFetchableSelect('.js-fetchable-select', ['unit', 'unit_price', 'tax_rate']);
+  DynamicForm.createFirstLine();
   AutoTotals.init();
 <% end %>
