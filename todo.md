@@ -1,6 +1,8 @@
 # TODO list
 
-* New items sold to/from a company should create the trade + price relation
+* New items sold to/from a company creates trade + price relation > check next items
+    * Prices updates should remove the latest available.
+    * Move logic to model or helper
 * New prices on items sold to/from a company on an order should update the price with the proper relation.
 * I would like to know if I'm selling something below the purchase price as soon as I save the sale order or budget order 
 * - Changing the firm on an order should retrieve all prices again for each line item.

@@ -4,7 +4,7 @@ class Trade < ApplicationRecord
   belongs_to :seller, class_name: 'Firm', foreign_key: :sold_by, optional: true
   belongs_to :product
 
-  has_many :prices
+  has_many :prices, dependent: :destroy
 
   validates_presence_of :product_id
 

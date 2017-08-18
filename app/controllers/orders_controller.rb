@@ -187,7 +187,7 @@ class OrdersController < ApplicationController
 
     # Information for new/create methods.
     def set_new_form_information
-      @information[:form_url] = orders_path(@order, order_type: params[:order_type])
+      @information[:form_url] = orders_path(@order)
       @information[:subtitle] = t('view.orders.new_title')
       @information[:button_text] = t('view.orders.save')
       @information[:back_path] = back_path
@@ -195,7 +195,7 @@ class OrdersController < ApplicationController
 
     # Information for edit/update methods.
     def set_edit_form_information
-      @information[:form_url] = order_path(@order, order_type: params[:order_type])
+      @information[:form_url] = order_path(@order)
       @information[:subtitle] = t('view.orders.edit_title', order_number: @order.number)
       @information[:button_text] = t('view.orders.save')
       @information[:back_path] = orders_path
@@ -206,19 +206,42 @@ class OrdersController < ApplicationController
     end
 
     def update_prices
-      # lines = @order.order_lines
-      # trades = Trade.where(sold_to: @order.firm.id) # for saleOrder or budgetOrder
-      # trades = Trade.where(sold_by: @order.firm.id) # for purchaseOrder
-      #
-      # trades.each do |trade|
-      #   if trade.product.in? lines.map(&:product)
-      #     line_price = line_matching_trade_product.price
-      #     line_tax_rate = line_matching_trade_product.tax_rate
-      #
-      #     if trade.product.available_price.price != line_price || trade.product.available_price.tax_rate
-      #       create_new_price
-      #     end
-      #   end
-      # end
+      order_lines = @order.lines
+      trades = Trade.where(sold_to: @order.firm.id)
+
+      order_lines.each do |order_line|
+        product       = order_line.product
+        line_price    = order_line.unit_price
+        line_tax_rate = order_line.tax_rate
+
+        if trade = trades.where(product_id: product.id).first
+
+          trade_price = trade.available_price.price
+          trade_tax_rate = trade.available_price.tax_rate
+
+          if line_price != trade_price || line_tax_rate != trade_tax_rate
+            trade.prices.create({
+              price: line_price,
+              available: true,
+              tax_rate: line_tax_rate,
+              currency: @order.currency
+            })
+          end
+        else
+          trade = Trade.new({
+            sold_to: @order.firm.id,
+            product_id: product.id
+          })
+
+          trade.prices.build({
+            price: line_price,
+            available: true,
+            tax_rate: line_tax_rate,
+            currency: @order.currency
+          })
+
+          trade.save
+        end
+      end
     end
 end
