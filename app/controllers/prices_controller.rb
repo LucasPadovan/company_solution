@@ -51,8 +51,6 @@ class PricesController < ApplicationController
     @information[:subtitle] = t('view.prices.new_title')
     @price = @trade.prices.new(price_params)
 
-    clean_availables
-
     if @price.save
       flash[:type] = 'success'
       redirect_to return_path(params[:origin]), notice: t('view.prices.correctly_created')
@@ -76,11 +74,9 @@ class PricesController < ApplicationController
   end
 
   def set_as_available
-    if clean_availables
-      if @price.update_attribute(:available, true)
-        flash[:type] = 'success'
-        redirect_to trade_prices_path(@trade, origin: params[:origin]), notice: t('view.prices.correctly_updated')
-      end
+    if @price.set_as_available
+      flash[:type] = 'success'
+      redirect_to trade_prices_path(@trade, origin: params[:origin]), notice: t('view.prices.correctly_updated')
     end
   end
 
@@ -99,10 +95,6 @@ class PricesController < ApplicationController
       @trade.to ||= @price.valid_to
 
       @trade.save
-    end
-
-    def clean_availables
-      @trade.prices.availables.update_all(available: false)
     end
 
     def return_path(origin)

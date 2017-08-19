@@ -5,6 +5,8 @@ class Price < ApplicationRecord
 
   scope :availables, -> { where('available = ?', true) }
 
+  before_create :ensure_availability_uniqueness, if: Proc.new { |price| price.available }
+
   def formatted_valid_from
     valid_from.strftime(I18n.t('date.formats.default')) if valid_from
   end
@@ -18,4 +20,15 @@ class Price < ApplicationRecord
 
     I18n.t(label)
   end
+
+  def set_as_available
+    ensure_availability_uniqueness
+    update_attribute(:available, true)
+  end
+
+  private
+    def ensure_availability_uniqueness
+      prices = Price.where(trade_id: trade_id)
+      prices.update_all(available: false)
+    end
 end
