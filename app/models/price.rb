@@ -3,6 +3,7 @@ class Price < ApplicationRecord
 
   validates :price, presence: true
 
+  default_scope { order(created_at: :desc) }
   scope :availables, -> { where('available = ?', true) }
 
   before_create :ensure_availability_uniqueness, if: Proc.new { |price| price.available }

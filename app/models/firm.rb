@@ -3,6 +3,8 @@ class Firm < ApplicationRecord
   has_many :orders
   has_many :trades
 
+  default_scope { order(name: :asc) }
+
   def formatted_opens_at
     opens_at.strftime(I18n.t('time.formats.time')) if opens_at
   end

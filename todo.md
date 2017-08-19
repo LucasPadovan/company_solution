@@ -1,5 +1,6 @@
 # TODO list
 
+* products_controler/show seller and buyer trades separated.
 * New items sold to/from a company creates trade + price relation > check next items
     * Move logic to model or helper
     * Advice that you will be creating new prices for that firm+product in the order form.
