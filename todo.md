@@ -1,10 +1,11 @@
 # TODO list
 
 * products_controler/show seller and buyer trades separated.
+* replicate products_list format
 * New items sold to/from a company creates trade + price relation > check next items
     * Advice that you will be creating new prices for that firm+product in the order form.
 * New prices on items sold to/from a company on an order should update the price with the proper relation.
-* I would like to know if I'm selling something below the purchase price as soon as I save the sale order or budget order 
+* I would like to know if I'm selling something below the purchase price as soon as I save the sale order or budget order
 * - Changing the firm on an order should retrieve all prices again for each line item.
 * - Investigate retrieving all prices on order (new/edit) load and use that information instead of a single fetch each time.
 
