@@ -33,4 +33,28 @@ class Trade < ApplicationRecord
   def formatted_to
     to.strftime(I18n.t('date.formats.default')) if to
   end
+
+  def add_new_price(order_line, currency)
+    line_price    = order_line.unit_price
+    line_tax_rate = order_line.tax_rate
+
+    price_attrs = {
+        price:     line_price,
+        tax_rate:  line_tax_rate,
+        currency:  currency,
+        available: true
+    }
+
+    if persisted?
+      trade_price         = available_price.price
+      trade_tax_rate      = available_price.tax_rate
+      should_create_price = line_price != trade_price || line_tax_rate != trade_tax_rate
+
+      prices.create(price_attrs) if should_create_price
+    else
+      prices.build(price_attrs)
+
+      save
+    end
+  end
 end

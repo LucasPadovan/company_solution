@@ -2,7 +2,6 @@
 
 * products_controler/show seller and buyer trades separated.
 * New items sold to/from a company creates trade + price relation > check next items
-    * Move logic to model or helper
     * Advice that you will be creating new prices for that firm+product in the order form.
 * New prices on items sold to/from a company on an order should update the price with the proper relation.
 * I would like to know if I'm selling something below the purchase price as soon as I save the sale order or budget order 
