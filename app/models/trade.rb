@@ -22,7 +22,10 @@ class Trade < ApplicationRecord
 
   def price_with_taxes
     if price = available_price
-      price.price * (1 + price.tax_rate / 100)
+      tax_rate   = price.tax_rate || 0
+      unit_price = price.price || 0
+
+      unit_price * (1 + tax_rate / 100)
     end
   end
 

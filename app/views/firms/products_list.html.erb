@@ -2,6 +2,16 @@
     back: firm_path(@firm)
 } %>
 
+<% if params[:trade_type] === 'buys' %>
+  <section>
+    <div class="columns">
+      <div class="column col-4 margin-auto">
+        <%= image_tag image_path('logo_full.jpg'), { class: 'image-fill' } %>
+      </div>
+    </div>
+  </section>
+<% end %>
+
 <section>
   <table class="table table-striped table-hover mar-bottom-3">
     <thead>
