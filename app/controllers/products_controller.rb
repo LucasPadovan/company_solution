@@ -13,7 +13,8 @@ class ProductsController < ApplicationController
     respond_to do |format|
       format.html do
         @user = @product.user
-        @trades = @product.trades
+        @buyers = @product.trades.only_buyers
+        @sellers = @product.trades.only_sellers
         @recipes = @product.recipes
 
         @information[:subtitle] = @product.name

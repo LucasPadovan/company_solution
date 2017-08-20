@@ -257,6 +257,7 @@
       edit_title: 'Editando %{firm}'
       correctly_created: 'Empresa agregada correctamente.'
       correctly_updated: 'Empresa actualizada correctamente.'
+      correctly_destroyed: 'Empresa destruida correctamente'
       stale_object_error: 'La empresa no pudo ser actualizada, intente nuevamente.'
       add_firm: 'Agregar empresa'
       edit_firm: 'Editar empresa'

@@ -11,8 +11,8 @@ class FirmsController < ApplicationController
   # GET /firms/1.json
   def show
     @information[:subtitle] = @firm.name
-    @sells = Trade.where(sold_by: @firm.id)
-    @buys = Trade.where(sold_to: @firm.id)
+    @sells    = @firm.sells
+    @buys     = @firm.buys
     @contacts = @firm.contacts
   end
 
@@ -35,7 +35,7 @@ class FirmsController < ApplicationController
     respond_to do |format|
       if @firm.save
         flash[:type] = 'success'
-        format.html { redirect_to @firm, notice: 'Firm was successfully created.' }
+        format.html { redirect_to @firm, notice: t('view.firms.correctly_created') }
         format.json { render :show, status: :created, location: @firm }
       else
         format.html { render :new }
@@ -50,7 +50,7 @@ class FirmsController < ApplicationController
     respond_to do |format|
       if @firm.update(firm_params)
         flash[:type] = 'primary'
-        format.html { redirect_to @firm, notice: 'Firm was successfully updated.' }
+        format.html { redirect_to @firm, notice: t('view.firms.correctly_updated') }
         format.json { render :show, status: :ok, location: @firm }
       else
         format.html { render :edit }
@@ -65,7 +65,7 @@ class FirmsController < ApplicationController
     @firm.destroy
     flash[:type] = 'error'
     respond_to do |format|
-      format.html { redirect_to firms_url, notice: 'Firm was successfully destroyed.' }
+      format.html { redirect_to firms_url, notice: t('view.firms.correctly_destroyed') }
       format.json { head :no_content }
     end
   end

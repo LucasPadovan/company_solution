@@ -9,6 +9,9 @@ class Trade < ApplicationRecord
   validates_presence_of :product_id
 
   scope :available_prices, -> { joins(:prices).where('prices.available = ?', true) }
+  # Mostly used by Product
+  scope :only_buyers,      -> { where.not(sold_to: nil) }
+  scope :only_sellers,     -> { where.not(sold_by: nil) }
 
   def available_price
     prices.availables.last

@@ -48,14 +48,14 @@
     <section>
       <h3><%= t('view.products.show.sold_by') %></h3>
 
-      <%= render 'products/trades/index', trades: @trades, trade_type: 'sells' %>
+      <%= render 'products/trades/index', trades: @sellers, trade_type: 'sells' %>
     </section>
   </div>
   <div class="column col-6">
     <section>
       <h3><%= t('view.products.show.sold_to') %></h3>
 
-      <%= render 'products/trades/index', trades: @trades, trade_type: 'buys' %>
+      <%= render 'products/trades/index', trades: @buyers, trade_type: 'buys' %>
     </section>
   </div>
 </div>
