@@ -9,8 +9,6 @@ class OrdersController < ApplicationController
   before_action :set_order_type, only: [:new, :create]
   before_action :set_information
 
-  after_action :update_prices, only: [:create, :update]
-
   # GET /orders
   def index
     @orders = filtered_orders
@@ -203,45 +201,5 @@ class OrdersController < ApplicationController
 
     def back_path
       orders_path
-    end
-
-    def update_prices
-      order_lines = @order.lines
-      trades = Trade.where(sold_to: @order.firm.id)
-
-      order_lines.each do |order_line|
-        product       = order_line.product
-        line_price    = order_line.unit_price
-        line_tax_rate = order_line.tax_rate
-
-        if trade = trades.where(product_id: product.id).first
-
-          trade_price = trade.available_price.price
-          trade_tax_rate = trade.available_price.tax_rate
-
-          if line_price != trade_price || line_tax_rate != trade_tax_rate
-            trade.prices.create({
-              price: line_price,
-              available: true,
-              tax_rate: line_tax_rate,
-              currency: @order.currency
-            })
-          end
-        else
-          trade = Trade.new({
-            sold_to: @order.firm.id,
-            product_id: product.id
-          })
-
-          trade.prices.build({
-            price: line_price,
-            available: true,
-            tax_rate: line_tax_rate,
-            currency: @order.currency
-          })
-
-          trade.save
-        end
-      end
     end
 end
