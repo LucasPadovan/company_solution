@@ -40,9 +40,11 @@
     font-weight: 700;
     transition: $transition-200;
   }
-  .btn.btn-link:hover {
-    border: 1px solid white;
-    color: $red-400;
+  .btn.btn-link {
+    &:hover, &:active, &:focus {
+      border: 1px solid white;
+      color: $red-400;
+    }
   }
 
   .navbar {
@@ -52,9 +54,17 @@
       font-stretch: semi-expanded;
       font-weight: 700;
       transition: $transition-200;
+      border: 1px solid transparent;
+      border-radius: 2px;
 
-      &:hover, &:active {
+      &:hover, &:active, &:focus {
         color: $red-100;
+        border: 1px solid white;
+      }
+
+      .navbar-brand__image {
+        max-width: 72px;
+        vertical-align: middle;
       }
     }
 
