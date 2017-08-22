@@ -9,11 +9,11 @@ class Product < ApplicationRecord
 
   # VIEW helpers
   def initial_stock_with_unit
-    initial_stock.to_s + unit
+    initial_stock.to_s + unit if initial_stock
   end
 
   def current_stock_with_unit
-    current_stock.to_s + unit
+    current_stock.to_s + unit if current_stock
   end
 
   def type_to_show

@@ -72,6 +72,8 @@ class TradesController < ApplicationController
       if product = trade.product
         unit = product.unit
       end
+    else
+      unit = Product.find(params[:product]).unit
     end
 
     product_detail = {
