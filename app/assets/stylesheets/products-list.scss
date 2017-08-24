@@ -1,0 +1,9 @@
+@import "_variables";
+
+.products-list__list {
+  border-top: 2px solid $grey-600;
+}
+
+.products-list__list__price {
+  text-align: right;
+}
