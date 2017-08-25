@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+  <head>
+    <title><%= t 'app_name' %></title>
+    <!--<title><%= @information[:file_title] %></title>-->
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+
+    <%= csrf_meta_tags %>
+
+    <%= wicked_pdf_stylesheet_link_tag 'application', media: 'all' %>
+    <%#= javascript_include_tag 'jquery.min.js' %>
+    <%#= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <section class="section section-content">
+      <div class="container grid-1280">
+        <div class="pad-top-3">
+          <%= yield %>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

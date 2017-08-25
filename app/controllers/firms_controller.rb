@@ -82,6 +82,7 @@ class FirmsController < ApplicationController
 
     respond_to do |format|
       format.html { render 'firms/products_list' }
+      format.pdf  { render pdf: 'firms/products_list' }
     end
   end
 
