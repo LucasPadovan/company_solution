@@ -1,9 +1,13 @@
+<div class="watermark-container">
+  <div class="watermark-container__image"></div>
+</div>
+
 <div class="products-list">
   <% if params[:trade_type] === 'buys' %>
       <section class="products-list__banner">
         <div class="columns">
           <div class="column col-4 margin-auto">
-            <%= wicked_pdf_image_tag image_path('logo_full.jpg'), { class: 'image-fill' } %>
+            <%= wicked_pdf_image_tag image_url('logo_full.jpg'), { class: 'image-fill' } %>
           </div>
         </div>
       </section>
@@ -16,14 +20,14 @@
 <% end %>
 
   <section class="products-list__list pad-top-5">
-    <table class="table table-hover mar-bottom-3">
+    <table class="table">
       <tbody>
-      <% @trades.each do |trade| %>
-          <tr>
-            <td><%= trade.product.name %></td>
-            <td class="products-list__list__price">$<%= trade.available_price.try(:price) %> + I.V.A. por <%= trade.product.unit %>.</td>
-          </tr>
-      <% end %>
+        <% @trades.each do |trade| %>
+            <tr>
+              <td><%= trade.product.name %></td>
+              <td class="products-list__list__price">$<%= trade.available_price.try(:price) %> + I.V.A. por <%= trade.product.unit %>.</td>
+            </tr>
+        <% end %>
       </tbody>
     </table>
   </section>

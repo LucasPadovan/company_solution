@@ -14,12 +14,10 @@
     <%#= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body style="height: <%= (@information['number_of_pages'] || 1) * 27 %>cm;">
     <section class="section section-content">
       <div class="container grid-1280">
-        <div class="pad-top-3">
-          <%= yield %>
-        </div>
+        <%= yield %>
       </div>
     </section>
   </body>
