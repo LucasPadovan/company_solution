@@ -266,6 +266,7 @@
         products_list: '%{firm} vende'
       buys:
         products_list: '%{firm} compra'
+        header_contact: 'Atención %{contact}'
     interests:
       new:
         sale_firm_title: 'Vender otro producto'

@@ -72,7 +72,8 @@ class FirmsController < ApplicationController
 
 
   def products_list
-    @information[:subtitle] = t("view.firms.#{params[:trade_type]}.products_list", firm: @firm.name)
+    products_list_information
+
     @trades = if params[:trade_type] === 'sells'
                 Trade.where sold_by: @firm
               else
@@ -93,5 +94,20 @@ class FirmsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def firm_params
       params.require(:firm).permit(:name, :cuit, :afip_condition, :opens_at, :closes_at)
+    end
+
+    def products_list_information
+      if params[:trade_type] === 'buys'
+        date = params[:header_date] ? Date.parse(params[:header_date]) : Date.today
+        header_firm = params[:header_firm] || @firm.name
+        contact = @firm.contacts.first.try(:name) || ''
+        header_contact = params[:header_contact] || t('view.firms.buys.header_contact', contact: contact)
+
+        @information[:header_date] = date.strftime(t('date.formats.extended', place: 'Mendoza'))
+        @information[:header_firm] = header_firm
+        @information[:header_contact] = header_contact
+      end
+
+      @information[:subtitle] = t("view.firms.#{params[:trade_type]}.products_list", firm: @firm.name)
     end
 end

@@ -1,7 +1,21 @@
 @import "_variables";
 
-.products-list__list {
+.products-list__header {
   border-top: 2px solid $grey-600;
+
+  input {
+    width: 50%;
+    border: none;
+  }
+}
+
+.products-list__header__date {
+  text-align: right;
+  width: 100%;
+
+  input {
+    text-align: right;
+  }
 }
 
 .products-list__list__price {

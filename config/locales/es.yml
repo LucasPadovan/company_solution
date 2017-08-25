@@ -4,6 +4,7 @@
       default: "%d/%m/%Y"
       short: "%d de %b"
       long: "%d de %B de %Y"
+      extended: "%{place}, %d de %B de %Y"
 
     day_names:
       - domingo
