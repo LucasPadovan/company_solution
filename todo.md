@@ -1,11 +1,8 @@
 # TODO list
 
 * replicate products_list format
-    * 30 products per page tops.
-    * text decorations for titles on the pdf.
     * page numbers
     * add a form to the products_list that adds the custom stuff to the params
-    * less spacing between elements in the list.
     * Special color for some elements, special prices for some elements in the list
 * focus in the first fields of each form when loading the page.
 * New items sold to/from a company creates trade + price relation > check next items

@@ -1,31 +1,5 @@
 @import "_variables";
 
-.pdf {
-  .products-list {
-    position: relative;
-    overflow: visible;
-    background-image: asset_data_url('logo_background_pdf.jpg');
-    background-repeat: repeat-y;
-    background-position: left top;
-    background-attachment: fixed;
-    background-size: 100%;
-  }
-
-  .products-list__banner {
-    width: 100%;
-    height: 4px;
-    text-align: center;
-    margin: 0;
-
-    img {
-      display: block;
-      width: 40%;
-      height: auto;
-      margin: auto;
-    }
-  }
-}
-
 .products-list__header {
   border-top: 2px solid $grey-600;
 

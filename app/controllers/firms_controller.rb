@@ -80,6 +80,8 @@ class FirmsController < ApplicationController
                 Trade.where sold_to: @firm
               end
 
+    products_list_utils
+
     respond_to do |format|
       format.html { render 'firms/products_list' }
       format.pdf do
@@ -130,9 +132,33 @@ class FirmsController < ApplicationController
         @information[:header_firm] = header_firm
         @information[:header_contact] = header_contact
         @information[:header_title] = params[:header_title] || t('view.firms.buys.products_list_title', date: Date.today.strftime(t('date.formats.long')))
+
         @information[:file_title] = t('view.firms.buys.products_list_pdf_title', firm: @firm.name)
       end
 
       @information[:subtitle] = t("view.firms.#{params[:trade_type]}.products_list", firm: @firm.name)
+    end
+
+    def products_list_utils(fix_padding_enabled = false)
+      number_of_trades      = @trades.size
+      number_of_pages       = 1
+      padding               = 8
+      max_elements_per_page = 30
+
+      difference_in_elements = number_of_trades % max_elements_per_page
+
+      if number_of_trades > max_elements_per_page
+        number_of_pages = number_of_trades / max_elements_per_page
+        number_of_pages += 1 if difference_in_elements > 0
+      end
+
+      if fix_padding_enabled
+        extra_padding = max_elements_per_page / difference_in_elements if difference_in_elements > 0
+
+        padding += extra_padding
+      end
+
+      @information[:number_of_pages] = number_of_pages
+      @information[:list_padding]    = "#{padding}px"
     end
 end

@@ -1,4 +1,4 @@
-<div class="products-list" style="height: <%= (@information['number_of_pages'] || 2) * 27 %>cm;">
+<div class="products-list" style="height: <%= (@information[:number_of_pages]) * 27 %>cm;">
   <% if params[:trade_type] === 'buys' %>
     <section class="products-list__header mar-top-6 pad-top-3">
       <p class="products-list__header__date"><%= @information[:header_date] %></p>
@@ -8,14 +8,15 @@
     </section>
   <% end %>
 
-  <section class="products-list__list pad-top-3">
-    <p class="products-list__list__title"><%= @information[:list_title] %></p>
+  <section class="products-list__list pad-top-1">
     <table class="table">
       <tbody>
         <% @trades.each do |trade| %>
             <tr>
-              <td><%= trade.product.name %></td>
-              <td class="products-list__list__price">
+              <td style="padding-bottom: <%= @information[:list_padding] %>;">
+                <%= trade.product.name %>
+              </td>
+              <td class="products-list__list__price" style="padding-bottom: <%= @information[:list_padding] %>;">
                 <%= t('view.firms.buys.products_list_price', price: trade.available_price.try(:price), unit:trade.product.unit) %>
               </td>
             </tr>
