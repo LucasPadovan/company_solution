@@ -1,5 +1,22 @@
 @import "_variables";
 
+.products-list__banner {
+  width: 100%;
+  height: 15px;
+  text-align: center;
+  box-sizing: border-box;
+  //overflow: hidden;
+  position: relative;
+  margin: 0;
+
+  img {
+    display: block;
+    width: 40%;
+    height: auto;
+    margin: auto;
+  }
+}
+
 .products-list__header {
   border-top: 2px solid $grey-600;
 

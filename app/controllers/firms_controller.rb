@@ -82,7 +82,24 @@ class FirmsController < ApplicationController
 
     respond_to do |format|
       format.html { render 'firms/products_list' }
-      format.pdf  { render pdf: 'firms/products_list' }
+      format.pdf do
+        render  pdf: 'products list pdf name',
+                template: 'firms/products_list',
+                margin: {
+                  top: 60,
+                  # bottom: 60,
+                },
+                header: {
+                  spacing: 50,
+                  # center: "render_to_string(template: 'shared/pdf/_company_logo.html.erb')",
+                  html: { template: 'shared/pdf/_company_logo.html.erb' },
+                },
+                footer: {
+                  right: 'Pagina',
+                  font_size: 9
+                },
+                encoding: 'UTF-8'
+      end
     end
   end
 
