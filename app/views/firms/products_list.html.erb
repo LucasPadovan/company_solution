@@ -12,15 +12,16 @@
         </div>
       </section>
 
-      <section class="products-list__header pad-top-3 mar-bottom-2">
+      <section class="products-list__header pad-top-3">
         <div class="products-list__header__date"><%= text_field_tag :header_date, @information[:header_date] %></div>
         <div class="products-list__header__firm pad-top-3"><%= text_field_tag :header_firm, @information[:header_firm] %></div>
         <div class="products-list__header__contact pad-top-1"><%= text_field_tag :header_contact, @information[:header_contact] %></div>
+        <div class="products-list__header__title pad-top-6"><%= text_field_tag :header_title, @information[:header_title] %></div>
       </section>
 <% end %>
 
-  <section class="products-list__list pad-top-5">
-    <table class="table table-hover mar-bottom-3">
+  <section class="products-list__list pad-top-3">
+    <table class="table table-hover">
       <tbody>
       <% @trades.each do |trade| %>
           <tr>

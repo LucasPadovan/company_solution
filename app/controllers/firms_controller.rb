@@ -93,11 +93,11 @@ class FirmsController < ApplicationController
                 template: 'firms/products_list',
                 margin: {
                   top: 60,
-                  # bottom: 60,
+                  bottom: 20,
                 },
                 header: {
                   spacing: 50,
-                  html: { template: 'shared/pdf/_company_logo.html.erb' },
+                  html: { template: 'shared/pdf/company_logo.html.erb' },
                 },
                 footer: {
                   right: 'Pagina',
@@ -129,6 +129,7 @@ class FirmsController < ApplicationController
         @information[:header_date] = @date.strftime(t('date.formats.extended', place: 'Mendoza'))
         @information[:header_firm] = header_firm
         @information[:header_contact] = header_contact
+        @information[:header_title] = params[:header_title] || t('view.firms.buys.products_list_title', date: Date.today.strftime(t('date.formats.long')))
         @information[:file_title] = t('view.firms.buys.products_list_pdf_title', firm: @firm.name)
       end
 

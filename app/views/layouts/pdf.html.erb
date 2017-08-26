@@ -8,7 +8,6 @@
     <%= wicked_pdf_stylesheet_link_tag 'application', media: 'all' %>
   </head>
 
-  <!--<body style="height: <%= (@information['number_of_pages'] || 1) * 27 %>cm;">-->
   <body class="pdf">
     <%= yield %>
   </body>
