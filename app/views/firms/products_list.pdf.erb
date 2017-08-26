@@ -1,15 +1,15 @@
-<div class="watermark-container">
-  <div class="watermark-container__image"></div>
-</div>
-
 <div class="products-list">
   <% if params[:trade_type] === 'buys' %>
-      <section class="products-list__header pad-top-3 mar-bottom-2">
-        <div class="products-list__header__date"><%= text_field_tag :header_date, @information[:header_date] %></div>
-        <div class="products-list__header__firm pad-top-3"><%= text_field_tag :header_firm, @information[:header_firm] %></div>
-        <div class="products-list__header__contact pad-top-1"><%= text_field_tag :header_contact, @information[:header_contact] %></div>
-      </section>
-<% end %>
+    <div class="watermark-container">
+      <div class="watermark-container__image"></div>
+    </div>
+
+    <section class="products-list__header pad-top-3 mar-bottom-2">
+      <div class="products-list__header__date"><%= text_field_tag :header_date, @information[:header_date] %></div>
+      <div class="products-list__header__firm pad-top-3"><%= text_field_tag :header_firm, @information[:header_firm] %></div>
+      <div class="products-list__header__contact pad-top-1"><%= text_field_tag :header_contact, @information[:header_contact] %></div>
+    </section>
+  <% end %>
 
   <section class="products-list__list pad-top-5">
     <table class="table">

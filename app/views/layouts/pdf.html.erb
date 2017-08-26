@@ -1,22 +1,15 @@
 <!doctype html>
 <html>
   <head>
-    <title><%= t 'app_name' %></title>
-    <!--<title><%= @information[:file_title] %></title>-->
+    <title><%= @information[:file_title] || t('app_name') %></title>
 
     <meta charset="utf-8" />
 
     <%= wicked_pdf_stylesheet_link_tag 'application', media: 'all' %>
-    <%#= javascript_include_tag 'jquery.min.js' %>
-    <%#= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <!--<body style="height: <%= (@information['number_of_pages'] || 1) * 27 %>cm;">-->
-  <body>
-    <section class="section section-content">
-      <div class="container grid-1280">
-        <%= yield %>
-      </div>
-    </section>
+  <body class="pdf">
+    <%= yield %>
   </body>
 </html>

@@ -265,8 +265,10 @@
       sells:
         products_list: '%{firm} vende'
       buys:
-        products_list: '%{firm} compra'
         header_contact: 'Atención %{contact}'
+        products_list: '%{firm} compra'
+        products_list_pdf_title: 'Lista de productos - %{firm}'
+        products_list_pdf_filename: '%{seller}_lista_productos_%{buyer}_%{date}_%{time}'
     interests:
       new:
         sale_firm_title: 'Vender otro producto'

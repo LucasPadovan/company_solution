@@ -83,7 +83,13 @@ class FirmsController < ApplicationController
     respond_to do |format|
       format.html { render 'firms/products_list' }
       format.pdf do
-        render  pdf: 'products list pdf name',
+        render  pdf: t(
+                  'view.firms.buys.products_list_pdf_filename',
+                  seller: t('app_name'),
+                  buyer: @firm.name,
+                  date: @date.strftime('%d%m%Y'),
+                  time: Time.now.strftime('%H%M%S')
+                ),
                 template: 'firms/products_list',
                 margin: {
                   top: 60,
@@ -91,7 +97,6 @@ class FirmsController < ApplicationController
                 },
                 header: {
                   spacing: 50,
-                  # center: "render_to_string(template: 'shared/pdf/_company_logo.html.erb')",
                   html: { template: 'shared/pdf/_company_logo.html.erb' },
                 },
                 footer: {
@@ -116,14 +121,15 @@ class FirmsController < ApplicationController
 
     def products_list_information
       if params[:trade_type] === 'buys'
-        date = params[:header_date] ? Date.parse(params[:header_date]) : Date.today
+        @date = params[:header_date] ? Date.parse(params[:header_date]) : Date.today
         header_firm = params[:header_firm] || @firm.name
         contact = @firm.contacts.first.try(:name) || ''
         header_contact = params[:header_contact] || t('view.firms.buys.header_contact', contact: contact)
 
-        @information[:header_date] = date.strftime(t('date.formats.extended', place: 'Mendoza'))
+        @information[:header_date] = @date.strftime(t('date.formats.extended', place: 'Mendoza'))
         @information[:header_firm] = header_firm
         @information[:header_contact] = header_contact
+        @information[:file_title] = t('view.firms.buys.products_list_pdf_title', firm: @firm.name)
       end
 
       @information[:subtitle] = t("view.firms.#{params[:trade_type]}.products_list", firm: @firm.name)
