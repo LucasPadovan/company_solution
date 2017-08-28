@@ -21,15 +21,15 @@ class Order < ApplicationRecord
   before_validation :update_prices, on: [:create, :update]
 
   def formatted_date
-    date.strftime(I18n.t('date.formats.long')) if date
+    I18n.l(date, format: I18n.t('date.formats.long')) if date
   end
 
   def formatted_deliver_from
-    expected_deliver_from.strftime(I18n.t('date.formats.long')) if expected_deliver_from
+    I18n.l(expected_deliver_from, format: I18n.t('date.formats.long')) if expected_deliver_from
   end
 
   def formatted_deliver_to
-    expected_deliver_to.strftime(I18n.t('date.formats.long')) if expected_deliver_to
+    I18n.l(expected_deliver_to, format: I18n.t('date.formats.long')) if expected_deliver_to
   end
 
   def update_prices

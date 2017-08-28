@@ -123,7 +123,7 @@ class FirmsController < ApplicationController
 
     def products_list_information
       if params[:trade_type] === 'buys'
-        @date = params[:header_date] || Date.today.strftime(t('date.formats.extended', place: 'Mendoza'))
+        @date = params[:header_date] || l(Date.today, format: t('date.formats.extended', place: 'Mendoza'))
         header_firm = params[:header_firm] || @firm.name
         contact = @firm.contacts.first.try(:name) || ''
         header_contact = params[:header_contact] || t('view.firms.buys.header_contact', contact: contact)

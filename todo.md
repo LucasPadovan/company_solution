@@ -21,7 +21,6 @@
     Paid should add payment (check, cash, future account)
 * Alert for new products sold/bought in an order for a firm
 * Show error on dynamic_form error
-* Translate months and dates
 * Models and everything for delivers. A new deliver should be bound to an order and should discount from the amount of each order_line.
 * Models and everything for invoices, divide them in purchase/sale types.
 * Add indexes to all relations on tables.
