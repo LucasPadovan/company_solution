@@ -2,9 +2,9 @@
 
 * replicate products_list format
     * page numbers
-    * add a form to the products_list that adds the custom stuff to the params
     * Special color for some elements, special prices for some elements in the list
 * focus in the first fields of each form when loading the page.
+* Trade+Firm+Product should be a uniq relation
 * New items sold to/from a company creates trade + price relation > check next items
     * Advice that you will be creating new prices for that firm+product in the order form.
 * New prices on items sold to/from a company on an order should update the price with the proper relation.

@@ -265,6 +265,7 @@
       sells:
         products_list: '%{firm} vende'
       buys:
+        generate_pdf: 'Generar PDF'
         header_contact: 'Atención %{contact}'
         products_list: '%{firm} compra'
         products_list_title: 'Lista de precios vigentes a partir del %{date}'

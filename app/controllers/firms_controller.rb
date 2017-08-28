@@ -89,7 +89,7 @@ class FirmsController < ApplicationController
                   'view.firms.buys.products_list_pdf_filename',
                   seller: t('app_name'),
                   buyer: @firm.name,
-                  date: @date.strftime('%d%m%Y'),
+                  date: Date.parse(@date).strftime('%d%m%Y'),
                   time: Time.now.strftime('%H%M%S')
                 ),
                 template: 'firms/products_list',
@@ -123,12 +123,12 @@ class FirmsController < ApplicationController
 
     def products_list_information
       if params[:trade_type] === 'buys'
-        @date = params[:header_date] ? Date.parse(params[:header_date]) : Date.today
+        @date = params[:header_date] || Date.today.strftime(t('date.formats.extended', place: 'Mendoza'))
         header_firm = params[:header_firm] || @firm.name
         contact = @firm.contacts.first.try(:name) || ''
         header_contact = params[:header_contact] || t('view.firms.buys.header_contact', contact: contact)
 
-        @information[:header_date] = @date.strftime(t('date.formats.extended', place: 'Mendoza'))
+        @information[:header_date] = @date
         @information[:header_firm] = header_firm
         @information[:header_contact] = header_contact
         @information[:header_title] = params[:header_title] || t('view.firms.buys.products_list_title', date: Date.today.strftime(t('date.formats.long')))
