@@ -272,6 +272,8 @@
         products_list_pdf_title: 'Lista de productos - %{firm}'
         products_list_pdf_filename: '%{seller}_lista_productos_%{buyer}_%{date}_%{time}'
         products_list_price: '$%{price} + I.V.A. por %{unit}.'
+        valid_from: 'Precios desde'
+        update_list: 'Actualizar precios'
     interests:
       new:
         sale_firm_title: 'Vender otro producto'

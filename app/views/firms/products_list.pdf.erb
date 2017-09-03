@@ -17,7 +17,10 @@
                 <%= trade.product.name %>
               </td>
               <td class="products-list__list__price" style="padding-bottom: <%= @information[:list_padding] %>;">
-                <%= t('view.firms.buys.products_list_price', price: trade.available_price.try(:price), unit:trade.product.unit) %>
+                <%= t('view.firms.buys.products_list_price',
+                      price: trade.price_valid_from(@valid_from).try(:price),
+                      unit: trade.product.unit)
+                %>
               </td>
             </tr>
         <% end %>

@@ -1,6 +1,22 @@
 <%= render 'shared/basic_navigation', navigation: {
     back: firm_path(@firm)
 } %>
+<%= form_tag products_list_firm_path, { method: :get, params: params, class: 'form-horizontal' } do %>
+    <div class="form-group">
+      <div class="col-1">
+        <%= label_tag :valid_from, t('view.firms.buys.valid_from'), class: 'from-label' %>
+      </div>
+      <div class="col-2 mar-right-2">
+        <%= text_field_tag :valid_from, @valid_from, class: 'form-input', type: :date %>
+      </div>
+      <div class="col-4">
+        <%= button_tag t('view.firms.buys.update_list'), class: 'btn' %>
+      </div>
+
+      <%= hidden_field_tag :trade_type, params[:trade_type] %>
+    </div>
+
+<% end %>
 
 <div class="products-list">
   <% if params[:trade_type] === 'buys' %>
@@ -13,7 +29,7 @@
     </section>
 
     <%= form_tag products_list_firm_path, { method: :get, target: '_blank' } do %>
-      <div class="align-center">
+      <div class="text-center">
         <%= button_tag t('view.firms.buys.generate_pdf'), class: 'btn' %>
       </div>
 
@@ -25,6 +41,7 @@
       </section>
 
       <%= hidden_field_tag :trade_type, params[:trade_type] %>
+      <%= hidden_field_tag :valid_from, params[:valid_from] %>
       <%= hidden_field_tag :format, :pdf %>
     <% end %>
   <% end %>
@@ -35,7 +52,12 @@
       <% @trades.each do |trade| %>
           <tr>
             <td><%= trade.product.name %></td>
-            <td class="products-list__list__price">$<%= trade.available_price.try(:price) %> + I.V.A. por <%= trade.product.unit %>.</td>
+            <td class="products-list__list__price">
+              <%= t('view.firms.buys.products_list_price',
+                    price: trade.price_valid_from(@valid_from).try(:price),
+                    unit: trade.product.unit)
+              %>
+            </td>
           </tr>
       <% end %>
       </tbody>

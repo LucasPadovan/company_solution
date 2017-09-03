@@ -8,6 +8,7 @@ class Trade < ApplicationRecord
 
   validates_presence_of :product_id
 
+  default_scope { order(created_at: :asc) }
   scope :available_prices, -> { joins(:prices).where('prices.available = ?', true) }
   # Mostly used by Product
   scope :only_buyers,      -> { where.not(sold_to: nil) }
@@ -15,6 +16,10 @@ class Trade < ApplicationRecord
 
   def available_price
     prices.availables.last
+  end
+
+  def price_valid_from(valid_from)
+    prices.where('valid_from <= ?', valid_from).sort_by(&:valid_from).last || available_price
   end
 
   def available_price_with_currency

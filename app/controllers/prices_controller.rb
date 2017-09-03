@@ -91,8 +91,11 @@ class PricesController < ApplicationController
     end
 
     def update_trade
-      @trade.from ||= @price.valid_from
-      @trade.to ||= @price.valid_to
+      should_update_from = @price.valid_from && (@trade.from && @trade.from > @price.valid_from) || !@trade.from
+      should_update_to   = @price.valid_to   && (@trade.to && @trade.to > @price.valid_to)       || !@trade.to
+
+      @trade.from = @price.valid_from if should_update_from
+      @trade.to   = @price.valid_to   if should_update_to
 
       @trade.save
     end

@@ -89,7 +89,7 @@ class FirmsController < ApplicationController
                   'view.firms.buys.products_list_pdf_filename',
                   seller: t('app_name'),
                   buyer: @firm.name,
-                  date: Date.parse(@date).strftime('%d%m%Y'),
+                  date: @valid_from.strftime('%d%m%Y'),
                   time: Time.now.strftime('%H%M%S')
                 ),
                 template: 'firms/products_list',
@@ -100,10 +100,6 @@ class FirmsController < ApplicationController
                 header: {
                   spacing: 50,
                   html: { template: 'shared/pdf/company_logo.html.erb' },
-                },
-                footer: {
-                  right: 'Pagina',
-                  font_size: 9
                 },
                 encoding: 'UTF-8'
       end
@@ -123,15 +119,16 @@ class FirmsController < ApplicationController
 
     def products_list_information
       if params[:trade_type] === 'buys'
-        @date = params[:header_date] || l(Date.today, format: t('date.formats.extended', place: 'Mendoza'))
+        @valid_from = params[:valid_from] ? (Date.parse(params[:valid_from])) : Date.today
+        date = params[:header_date] || l(Date.today, format: t('date.formats.extended', place: 'Mendoza'))
         header_firm = params[:header_firm] || @firm.name
         contact = @firm.contacts.first.try(:name) || ''
         header_contact = params[:header_contact] || t('view.firms.buys.header_contact', contact: contact)
 
-        @information[:header_date] = @date
+        @information[:header_date] = date
         @information[:header_firm] = header_firm
         @information[:header_contact] = header_contact
-        @information[:header_title] = params[:header_title] || t('view.firms.buys.products_list_title', date: Date.today.strftime(t('date.formats.long')))
+        @information[:header_title] = params[:header_title] || t('view.firms.buys.products_list_title', date: l(@valid_from, format: t('date.formats.long')))
 
         @information[:file_title] = t('view.firms.buys.products_list_pdf_title', firm: @firm.name)
       end

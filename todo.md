@@ -1,7 +1,7 @@
 # TODO list
 
+* default values for new prices
 * replicate products_list format
-    * page numbers
     * Special color for some elements, special prices for some elements in the list
 * focus in the first fields of each form when loading the page.
 * Trade+Firm+Product should be a uniq relation
