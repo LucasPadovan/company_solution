@@ -3,8 +3,6 @@ class PricesController < ApplicationController
   before_action :set_trade
   before_action :set_information, except: :index
 
-  after_action :update_trade, only: [:create]
-
   # GET /prices
   def index
     @prices = @trade.prices.all
@@ -88,16 +86,6 @@ class PricesController < ApplicationController
 
     def set_trade
       @trade = Trade.find(params[:trade_id])
-    end
-
-    def update_trade
-      should_update_from = @price.valid_from && (@trade.from && @trade.from > @price.valid_from) || !@trade.from
-      should_update_to   = @price.valid_to   && (@trade.to && @trade.to > @price.valid_to)       || !@trade.to
-
-      @trade.from = @price.valid_from if should_update_from
-      @trade.to   = @price.valid_to   if should_update_to
-
-      @trade.save
     end
 
     def return_path(origin)

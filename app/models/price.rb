@@ -8,6 +8,8 @@ class Price < ApplicationRecord
 
   before_create :ensure_availability_uniqueness, if: Proc.new { |price| price.available }
 
+  after_create :update_trade
+
   def formatted_valid_from
     valid_from.strftime(I18n.t('date.formats.default')) if valid_from
   end
@@ -31,5 +33,15 @@ class Price < ApplicationRecord
     def ensure_availability_uniqueness
       prices = Price.where(trade_id: trade_id)
       prices.update_all(available: false)
+    end
+
+    def update_trade
+      should_update_from = valid_from && (trade.from && trade.from > valid_from) || !trade.from
+      should_update_to   = valid_to   && (trade.to && trade.to > valid_to)       || !trade.to
+
+      trade.from = valid_from if should_update_from
+      trade.to   = valid_to   if should_update_to
+
+      trade.save
     end
 end
