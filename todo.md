@@ -10,6 +10,7 @@
 * I would like to know if I'm selling something below the purchase price as soon as I save the sale order or budget order
 * - Changing the firm on an order should retrieve all prices again for each line item.
 * - Investigate retrieving all prices on order (new/edit) load and use that information instead of a single fetch each time.
+* Show modal errors (for prices for example)
 
 * Create a button to convert budgets in actual orders.
 * There should not be a way to convert purchases in common orders that are meant to be sell orders. 
