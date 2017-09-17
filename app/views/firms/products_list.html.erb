@@ -4,7 +4,7 @@
 <%= form_tag products_list_firm_path, { method: :get, params: params, class: 'form-horizontal' } do %>
     <div class="form-group">
       <div class="col-1">
-        <%= label_tag :valid_from, t('view.firms.buys.valid_from'), class: 'from-label' %>
+        <%= label_tag :valid_from, t('view.firms.buys.valid_from'), class: 'from-label js-focus-this' %>
       </div>
       <div class="col-2 mar-right-2">
         <%= text_field_tag :valid_from, @valid_from, class: 'form-input', type: :date %>
@@ -64,3 +64,7 @@
     </table>
   </section>
 </div>
+
+<% content_for :ready_js do %>
+  Utils.focusField(document);
+<% end %>

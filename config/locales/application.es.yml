@@ -262,6 +262,7 @@
       add_firm: 'Agregar empresa'
       edit_firm: 'Editar empresa'
       save_firm: 'Guardar empresa'
+      products_list: 'Listado de productos'
       sells:
         products_list: '%{firm} vende'
       buys:

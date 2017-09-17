@@ -10,6 +10,8 @@ var JsModals = {
         modal = document.querySelector('[data-modal=' + target + ']');
 
     modal.className = JsModals.openClasses;
+
+    Utils.focusField(modal);
   },
 
   handleClose: function(e) {

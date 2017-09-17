@@ -13,7 +13,7 @@
 
   <div class="form-group">
     <%= form.label :name, class: 'from-label' %>
-    <%= form.text_field :name, id: :recipe_name, class: 'form-input' %>
+    <%= form.text_field :name, id: :recipe_name, class: 'form-input js-focus-this' %>
   </div>
 
   <div class="form-group">
@@ -24,4 +24,8 @@
   <div class="actions">
     <%= form.submit t('view.recipes.save'), class: 'btn btn-primary'  %>
   </div>
+<% end %>
+
+<% content_for :ready_js do %>
+  Utils.focusField(document);
 <% end %>

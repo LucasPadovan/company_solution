@@ -15,7 +15,7 @@
       <%= form.label :firm_id, class: 'from-label' %>
       <%= form.select :firm_id, Firm.firms_for_select, {}, {
             id: :order_firm_id,
-            class: 'form-select js-fetcheable-select-extra',
+            class: 'form-select js-fetcheable-select-extra js-focus-this',
             data: { model: 'firm' }
       } %>
     </div>
@@ -112,4 +112,6 @@
   DynamicForm.handleFetchableSelect('.js-fetchable-select', ['unit', 'unit_price', 'tax_rate']);
   DynamicForm.createFirstLine();
   AutoTotals.init();
+
+  Utils.focusField(document);
 <% end %>
