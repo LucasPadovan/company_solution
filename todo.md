@@ -1,8 +1,7 @@
 # TODO list
 
-* default values for new prices
 * replicate products_list format
-    * Special color for some elements, special prices for some elements in the list
+    * Special color for some elements (mark those with price differences of 2%, 4%, 6%, and 10%+, special prices for some elements in the list
 * focus in the first fields of each form when loading the page.
 * Trade+Firm+Product should be a uniq relation
 * New items sold to/from a company creates trade + price relation > check next items
@@ -40,3 +39,5 @@
 * Sometimes new price modal wont do anything when you hit save.
 * Translate "1 error prohibited this ??? from being saved" and similar.
 * Allow print view using all the headers and stuff from the company.
+* Add contact could be a modal
+* New system for modals to load them using javascript and not having them always live.
