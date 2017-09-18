@@ -17,6 +17,8 @@ class ProductsController < ApplicationController
         @sellers = @product.trades.only_sellers
         @recipes = @product.recipes
 
+        @modal_errors = JSON.parse(params[:modal_errors]) if params[:modal_errors]
+
         @information[:subtitle] = @product.name
         render 'products/show'
       end

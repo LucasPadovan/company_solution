@@ -1,7 +1,7 @@
 <%= form_with(url: trade_prices_path(trade, origin: origin), model: price, local: true) do |form| %>
   <% if price.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(price.errors.count, 'error') %> prohibited this price from being saved:</h2>
+      <h3><%= pluralize(price.errors.count, 'error') %> prohibited this price from being saved:</h3>
 
       <ul>
       <% price.errors.full_messages.each do |message| %>
@@ -60,6 +60,6 @@
 
 
   <div class="actions">
-    <%= form.submit t('view.prices.save'), class: 'btn btn-primary'  %>
+    <%= form.button t('view.prices.save'), class: 'btn btn-primary'  %>
   </div>
 <% end %>

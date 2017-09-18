@@ -53,7 +53,10 @@ class PricesController < ApplicationController
       flash[:type] = 'success'
       redirect_to return_path(params[:origin]), notice: t('view.prices.correctly_created')
     else
-      # render :new  js alert error that shows form errors.
+      errors ||= {}
+      errors["trade_id_#{@trade.id}"] = @price.errors.messages
+
+      redirect_to return_path(params[:origin], errors.to_json) + "#trade-price-#{@trade.id}"
     end
   end
 
@@ -88,11 +91,11 @@ class PricesController < ApplicationController
       @trade = Trade.find(params[:trade_id])
     end
 
-    def return_path(origin)
+    def return_path(origin, errors = nil)
       if origin === 'product'
-        product_path(@trade.product)
+        product_path(@trade.product, modal_errors: errors)
       elsif origin === 'firm'
-        firm_path(@trade.sold_to || @trade.sold_by)
+        firm_path(@trade.sold_to || @trade.sold_by, modal_errors: errors)
       end
     end
 

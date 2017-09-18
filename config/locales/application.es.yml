@@ -331,6 +331,8 @@
       correctly_updated: 'Precio actualizado correctamente'
       correctly_destroyed: 'Precio destruido correctamente'
       correctly_destroyed_and_no_availables: 'Precio destruido correctamente. No hay ningun precio marcado como disponible.'
+      modal:
+        new_title: 'Nuevo precio para %{product}'
     products:
       index_title: 'Lista de productos'
       show_title: 'Detalle de %{product}'

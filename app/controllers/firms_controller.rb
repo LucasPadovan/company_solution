@@ -14,6 +14,8 @@ class FirmsController < ApplicationController
     @sells    = @firm.sells
     @buys     = @firm.buys
     @contacts = @firm.contacts
+
+    @modal_errors = JSON.parse(params[:modal_errors]) if params[:modal_errors]
   end
 
   # GET /firms/new

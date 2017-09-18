@@ -3,13 +3,28 @@ var JsModals = {
 
   closedClasses: 'modal',
 
+  handleAutoOpen: function() {
+    var target = location.hash.split('#')[1];
+
+    if (target) {
+      JsModals.openModal(target);
+    }
+  },
+
   handleOpen: function(e) {
     e.preventDefault();
 
-    var target = this.dataset.modalOpen,
-        modal = document.querySelector('[data-modal=' + target + ']');
+    var target = this.dataset.modalOpen;
 
-    modal.className = JsModals.openClasses;
+    JsModals.openModal(target);
+  },
+
+  openModal: function(target) {
+    var modal = document.querySelector('[data-modal=' + target + ']');
+
+    if (modal) {
+      modal.className = JsModals.openClasses;
+    }
 
     Utils.focusField(modal);
   },
@@ -48,5 +63,7 @@ var JsModals = {
         JsModals.closeModal();
       }
     });
+
+    JsModals.handleAutoOpen();
   }
 };
