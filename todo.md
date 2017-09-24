@@ -2,7 +2,6 @@
 
 * replicate products_list format
     * Special color for some elements (mark those with price differences of 2%, 4%, 6%, and 10%+, special prices for some elements in the list
-* Trade+Firm+Product should be a uniq relation
 * New items sold to/from a company creates trade + price relation > check next items
     * Advice that you will be creating new prices for that firm+product in the order form.
 * New prices on items sold to/from a company on an order should update the price with the proper relation.

@@ -8,6 +8,8 @@ class Trade < ApplicationRecord
 
   validates_presence_of :product_id
 
+  before_validation :ensure_uniqueness_of_pair
+
   default_scope { order(created_at: :asc) }
   scope :available_prices, -> { joins(:prices).where('prices.available = ?', true) }
   # Mostly used by Product
@@ -68,4 +70,16 @@ class Trade < ApplicationRecord
       save
     end
   end
+
+  private
+    def ensure_uniqueness_of_pair
+      trades = Trade.where(product_id: self.product_id)
+      trader = if sold_by
+                 ['trades.sold_by = ?', sold_by]
+               elsif sold_to
+                 ['trades.sold_to = ?', sold_to]
+               end
+
+      errors.add(:base, I18n.t('view.trades.duplicated_trade_error')) if trades.where(trader).any?
+    end
 end

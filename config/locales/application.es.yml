@@ -416,6 +416,7 @@
       new_product_traded_to_title: 'Comprador de %{product}'
       price_without_taxes: 'Precio sin impuestos'
       price_with_taxes: 'Precio con impuestos'
+      duplicated_trade_error: 'Este producto ya esta en esta lista'
     users:
       index_title: 'Listado de usuarios'
       show_title: 'Detalle de %{user}'
