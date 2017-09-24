@@ -1,7 +1,6 @@
 # TODO list
 
 * replicate products_list format
-    * Hide/Show elements in the list that are maintained in the pdf view also 
     * Special color for some elements (mark those with price differences of 2%, 4%, 6%, and 10%+, special prices for some elements in the list
 * Trade+Firm+Product should be a uniq relation
 * New items sold to/from a company creates trade + price relation > check next items

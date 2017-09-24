@@ -82,6 +82,11 @@ class FirmsController < ApplicationController
                 Trade.where sold_to: @firm
               end
 
+    if params[:hidden_trades]
+      hidden_trades = params[:hidden_trades].split(',')
+      @trades = @trades.where.not(id: hidden_trades)
+    end
+
     products_list_utils
 
     respond_to do |format|
@@ -121,18 +126,18 @@ class FirmsController < ApplicationController
 
     def products_list_information
       if params[:trade_type] === 'buys'
-        @valid_from = params[:valid_from] ? (Date.parse(params[:valid_from])) : Date.today
-        date = params[:header_date] || l(Date.today, format: t('date.formats.extended', place: 'Mendoza'))
-        header_firm = params[:header_firm] || @firm.name
-        contact = @firm.contacts.first.try(:name) || ''
+        @valid_from    = params[:valid_from].present? ? (Date.parse(params[:valid_from])) : Date.today
+        date           = params[:header_date] || l(Date.today, format: t('date.formats.extended', place: 'Mendoza'))
+        header_firm    = params[:header_firm] || @firm.name
+        contact        = @firm.contacts.first.try(:name) || ''
         header_contact = params[:header_contact] || t('view.firms.buys.header_contact', contact: contact)
 
-        @information[:header_date] = date
-        @information[:header_firm] = header_firm
+        @information[:header_date]    = date
+        @information[:header_firm]    = header_firm
         @information[:header_contact] = header_contact
-        @information[:header_title] = params[:header_title] || t('view.firms.buys.products_list_title', date: l(@valid_from, format: t('date.formats.long')))
+        @information[:header_title]   = params[:header_title] || t('view.firms.buys.products_list_title', date: l(@valid_from, format: t('date.formats.long')))
 
-        @information[:file_title] = t('view.firms.buys.products_list_pdf_title', firm: @firm.name)
+        @information[:file_title]     = t('view.firms.buys.products_list_pdf_title', firm: @firm.name)
       end
 
       @information[:subtitle] = t("view.firms.#{params[:trade_type]}.products_list", firm: @firm.name)

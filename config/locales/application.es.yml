@@ -209,6 +209,7 @@
     other_conc_tot: 'Total otros conceptos'
     total: 'Total'
     restore: 'Deshacer'
+    hide: 'Ocultar'
     
   menu:
     actions:
@@ -273,6 +274,7 @@
         products_list_pdf_title: 'Lista de productos - %{firm}'
         products_list_pdf_filename: '%{seller}_lista_productos_%{buyer}_%{date}_%{time}'
         products_list_price: '$%{price} + I.V.A. por %{unit}.'
+        restore_product: 'Volver a mostrar producto'
         valid_from: 'Precios desde'
         update_list: 'Actualizar precios'
     interests:

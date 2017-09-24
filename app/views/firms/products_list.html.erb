@@ -31,6 +31,7 @@
     <%= form_tag products_list_firm_path, { method: :get, target: '_blank' } do %>
       <div class="text-center">
         <%= button_tag t('view.firms.buys.generate_pdf'), class: 'btn' %>
+        <%= button_tag t('view.firms.buys.restore_product'), class: 'btn btn-sm hidden js-trades-list__show-trade' %>
       </div>
 
       <section class="products-list__header pad-top-3 mar-top-1">
@@ -42,6 +43,7 @@
 
       <%= hidden_field_tag :trade_type, params[:trade_type] %>
       <%= hidden_field_tag :valid_from, params[:valid_from] %>
+      <%= hidden_field_tag :hidden_trades, params[:hidden_trades], class: 'js-trades-list__array' %>
       <%= hidden_field_tag :format, :pdf %>
     <% end %>
   <% end %>
@@ -50,13 +52,16 @@
     <table class="table table-hover">
       <tbody>
       <% @trades.each do |trade| %>
-          <tr>
+          <tr data-trade-id="<%= trade.id %>">
             <td><%= trade.product.name %></td>
             <td class="products-list__list__price">
               <%= t('view.firms.buys.products_list_price',
                     price: trade.price_valid_from(@valid_from).try(:price),
                     unit: trade.product.unit)
               %>
+            </td>
+            <td>
+              <%= button_tag t('label.hide'), class: 'btn btn-sm js-trades-list__hide-trade' %>
             </td>
           </tr>
       <% end %>
@@ -67,4 +72,6 @@
 
 <% content_for :ready_js do %>
   Utils.focusField(document);
+
+  TradesList.init();
 <% end %>

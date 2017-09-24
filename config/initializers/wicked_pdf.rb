@@ -10,6 +10,6 @@
 
 WickedPdf.config = {
   layout: 'pdf.html',
-  # exe_path: '/home/lockon/.rvm/gems/ruby-2.4.1/bin/wkhtmltopdf'
-  exe_path: '/usr/bin/wkhtmltopdf'
+  exe_path: '/home/lockon/.rvm/gems/ruby-2.4.1/bin/wkhtmltopdf'
+  # exe_path: '/usr/bin/wkhtmltopdf'
 }
