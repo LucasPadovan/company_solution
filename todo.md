@@ -1,5 +1,28 @@
 # TODO list
 
+* Certificates and permissions (for firms and the company).
+    * Certificate
+        Name
+        Description
+        Website
+        email
+        wait_time
+        certifications -> model linking certificate and product
+            product_id
+            certificate_id
+            note
+    * Permission
+        From date
+        To date
+        certifications -> model linking the firm or the same company and the certificate certifications
+        contact_person -> someone in charge of this
+    * Certificates in menu, permissions in each firm
+    * Dashboard should alert close to finishing certificates
+    * Generating an order with a product that needs certification should alert:
+        * Everything ok, firm has the certificate
+        * Something off, firm has the cert but it is outdated
+        * NO GO, firm doesn't have the certificate
+        
 * replicate products_list format
     * Special color for some elements (mark those with price differences of 2%, 4%, 6%, and 10%+, special prices for some elements in the list
 * New items sold to/from a company creates trade + price relation > check next items
