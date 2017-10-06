@@ -1,21 +1,6 @@
 # TODO list
 
 * Certificates and permissions (for firms and the company).
-    * Certificate
-        Name
-        Description
-        Website
-        email
-        wait_time
-        certifications -> model linking certificate and product
-            product_id
-            certificate_id
-            note
-    * Permission
-        From date
-        To date
-        certifications -> model linking the firm or the same company and the certificate certifications
-        contact_person -> someone in charge of this
     * Certificates in menu, permissions in each firm
     * Dashboard should alert close to finishing certificates
     * Generating an order with a product that needs certification should alert:

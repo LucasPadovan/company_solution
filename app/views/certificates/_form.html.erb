@@ -1,0 +1,47 @@
+<%= form_with(model: certificate, local: true) do |form| %>
+  <% if certificate.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(certificate.errors.count, 'error') %> prohibited this certificate from being saved:</h2>
+
+      <ul>
+      <% certificate.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :name, class: 'from-label' %>
+    <%= form.text_field :name, id: :certificate_name, class: 'form-input' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :description, class: 'from-label' %>
+    <%= form.text_area :description, id: :certificate_description, class: 'form-input' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :website, class: 'from-label' %>
+    <%= form.text_field :website, id: :certificate_website, class: 'form-input' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :email, class: 'from-label' %>
+    <%= form.text_field :email, id: :certificate_email, class: 'form-input' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :wait_time, class: 'from-label' %>
+    <%= form.text_field :wait_time, id: :certificate_wait_time, class: 'form-input' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :notes, class: 'from-label' %>
+    <%= form.text_area :notes, id: :certificate_notes, class: 'form-input' %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit t('view.certificates.save'), class: 'btn btn-primary'  %>
+  </div>
+<% end %>

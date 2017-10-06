@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  from_date: 2017-10-06
+  to_date: 2017-10-06
+  certificate: one
+  firm: one
+  contact: MyText
+
+two:
+  from_date: 2017-10-06
+  to_date: 2017-10-06
+  certificate: two
+  firm: two
+  contact: MyText

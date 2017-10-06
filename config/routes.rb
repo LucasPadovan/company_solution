@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :permissions
+  resources :certificate_details
+  resources :certificates
   devise_for :users
 
   resources :products do

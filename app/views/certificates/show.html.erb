@@ -1,0 +1,34 @@
+<%= render 'shared/basic_navigation', navigation: {
+  back: certificates_path, edit: edit_certificate_path(@certificate)
+} %>
+
+<p>
+  <b><%= Certificate.human_attribute_name 'name' %>:</b>
+  <%= @certificate.name %>
+</p>
+
+<p>
+  <b><%= Certificate.human_attribute_name 'description' %>:</b>
+  <%= @certificate.description %>
+</p>
+
+<p>
+  <b><%= Certificate.human_attribute_name 'website' %>:</b>
+  <%= @certificate.website %>
+</p>
+
+<p>
+  <b><%= Certificate.human_attribute_name 'email' %>:</b>
+  <%= @certificate.email %>
+</p>
+
+<p>
+  <b><%= Certificate.human_attribute_name 'wait_time' %>:</b>
+  <%= @certificate.wait_time %>
+</p>
+
+<p>
+  <b><%= Certificate.human_attribute_name 'notes' %>:</b>
+  <%= @certificate.notes %>
+</p>
+

@@ -1,0 +1,33 @@
+<table class="table table-striped table-hover mar-bottom-3">
+  <thead>
+    <tr>
+      <th><%= Certificate.human_attribute_name 'name' %></th>
+      <th><%= Certificate.human_attribute_name 'description' %></th>
+      <th><%= Certificate.human_attribute_name 'website' %></th>
+      <th><%= Certificate.human_attribute_name 'email' %></th>
+      <th><%= Certificate.human_attribute_name 'wait_time' %></th>
+      <th><%= Certificate.human_attribute_name 'notes' %></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @certificates.each do |certificate| %>
+      <tr>
+        <td><%= certificate.name %></td>
+        <td><%= certificate.description %></td>
+        <td><%= certificate.website %></td>
+        <td><%= certificate.email %></td>
+        <td><%= certificate.wait_time %></td>
+        <td><%= certificate.notes %></td>
+        <td>
+          <%= link_to '', certificate, class: 'fa fa-2x fa-info-circle'  %>
+          <%= link_to '', edit_certificate_path(certificate), class: 'fa fa-2x fa-pencil-square' %>
+          <%= link_to '', certificate, method: :delete, data: { confirm: t('messages.confirmation') }, class: 'fa fa-2x fa-trash' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('view.certificates.new_title'), new_certificate_path, class: 'btn btn-primary'  %>
