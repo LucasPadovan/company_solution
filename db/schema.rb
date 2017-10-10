@@ -10,10 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170802030757) do
+ActiveRecord::Schema.define(version: 20171006043729) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "certificate_details", force: :cascade do |t|
+    t.bigint "product_id"
+    t.bigint "certificate_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["certificate_id"], name: "index_certificate_details_on_certificate_id"
+    t.index ["product_id"], name: "index_certificate_details_on_product_id"
+  end
+
+  create_table "certificates", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.string "website"
+    t.string "email"
+    t.string "wait_time"
+    t.text "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "contacts", force: :cascade do |t|
     t.string "name"
@@ -86,6 +106,18 @@ ActiveRecord::Schema.define(version: 20170802030757) do
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
+  create_table "permissions", force: :cascade do |t|
+    t.date "from_date"
+    t.date "to_date"
+    t.bigint "certificate_id"
+    t.bigint "firm_id"
+    t.text "contact"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["certificate_id"], name: "index_permissions_on_certificate_id"
+    t.index ["firm_id"], name: "index_permissions_on_firm_id"
+  end
+
   create_table "prices", force: :cascade do |t|
     t.bigint "trade_id"
     t.decimal "price"
@@ -153,11 +185,15 @@ ActiveRecord::Schema.define(version: 20170802030757) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "certificate_details", "certificates"
+  add_foreign_key "certificate_details", "products"
   add_foreign_key "contacts", "firms"
   add_foreign_key "order_lines", "orders"
   add_foreign_key "order_lines", "products"
   add_foreign_key "order_statuses", "orders"
   add_foreign_key "orders", "users"
+  add_foreign_key "permissions", "certificates"
+  add_foreign_key "permissions", "firms"
   add_foreign_key "prices", "trades"
   add_foreign_key "products", "users"
   add_foreign_key "recipes", "products"

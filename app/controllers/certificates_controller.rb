@@ -9,7 +9,7 @@ class CertificatesController < ApplicationController
 
   # GET /certificates/1
   def show
-    @information[:subtitle] = @certificate.to_s
+    @information[:subtitle] = @certificate.name
   end
 
   # GET /certificates/new
