@@ -4,6 +4,8 @@ class Product < ApplicationRecord
   has_many :recipes
   has_many :trades
   has_many :prices, through: :trades
+  has_many :certificate_details
+  has_many :certificates, through: :certificate_details
 
   validates :name, presence: true
 

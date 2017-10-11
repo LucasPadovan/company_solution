@@ -38,6 +38,13 @@
       <b><%= Product.human_attribute_name :current_stock %>:</b>
       <%= @product.current_stock_with_unit %>
     </p>
+
+    <p>
+      <b><%= t('activerecord.models.certificate.other') %>:</b>
+      <% @product.certificates.each do |certificate| %>
+        <%= link_to certificate.name, certificate, class: 'btn btn-sm' %>
+      <% end %>
+    </p>
   </div>
 
   <div class="column col-9">
