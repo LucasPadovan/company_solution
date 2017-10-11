@@ -64,6 +64,8 @@
         website: 'Página'
         wait_time: 'Tiempo de espera'
         notes: 'Notas'
+      certificate_detail:
+        product_id: 'Productos afectados'
       contact:
         name: 'Nombre del encargado'
         area: 'Área'

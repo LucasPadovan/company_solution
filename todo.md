@@ -1,7 +1,7 @@
 # TODO list
 
 * Certificates and permissions (for firms and the company).
-    * Certificates in menu, permissions in each firm
+    * Permissions in each firm
     * Dashboard should alert close to finishing certificates
     * Generating an order with a product that needs certification should alert:
         * Everything ok, firm has the certificate

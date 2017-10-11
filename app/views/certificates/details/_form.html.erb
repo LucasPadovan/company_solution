@@ -1,0 +1,16 @@
+<tr class="js-nested-item-row">
+  <td>
+    <%= form.select :product_id,
+                    Product.products_for_select,
+                    { prompt: t('view.products.select_prompt') },
+                    { id: :detail_product_id,
+                      class: 'form-select js-add-fieldset-input'
+                    }
+    %>
+  </td>
+  <td>
+    <button class="button js-remove-fieldset">X</button>
+  </td>
+
+  <%= form.hidden_field :_destroy, class: 'js-nested-item-destroy' %>
+</tr>

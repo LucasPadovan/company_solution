@@ -14,7 +14,7 @@
   <div class="columns">
     <div class="column col-5">
       <div class="form-group">
-        <%= form.label :name, class: 'from-label' %>
+        <%= form.label :name, class: 'from-label js-focus-this' %>
         <%= form.text_field :name, id: :certificate_name, class: 'form-input' %>
       </div>
 
@@ -42,14 +42,28 @@
         <%= form.label :notes, class: 'from-label' %>
         <%= form.text_area :notes, id: :certificate_notes, class: 'form-input' %>
       </div>
+
+      <div class="actions">
+        <%= form.submit t('view.certificates.save'), class: 'btn btn-primary'  %>
+      </div>
     </div>
 
     <div class="column col-7">
-      <h2><%= t('view.certificates.affected_products') %></h2>
+      <div class="mar-top-2">
+        <%= render 'shared/dynamic_form',
+                   form: form,
+                   folder: 'certificates',
+                   association: :details,
+                   attributes: ['product_id'],
+                   model: CertificateDetail
+        %>
+      </div>
     </div>
   </div>
+<% end %>
 
-  <div class="actions">
-    <%= form.submit t('view.certificates.save'), class: 'btn btn-primary'  %>
-  </div>
+<% content_for :ready_js do %>
+  DynamicForm.createFirstLine();
+
+  Utils.focusField(document);
 <% end %>

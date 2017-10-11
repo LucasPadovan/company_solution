@@ -2,33 +2,43 @@
   back: certificates_path, edit: edit_certificate_path(@certificate)
 } %>
 
-<p>
-  <b><%= Certificate.human_attribute_name 'name' %>:</b>
-  <%= @certificate.name %>
-</p>
+<div class="columns">
+  <div class="column col-5">
+    <p>
+      <b><%= Certificate.human_attribute_name 'name' %>:</b>
+      <%= @certificate.name %>
+    </p>
 
-<p>
-  <b><%= Certificate.human_attribute_name 'description' %>:</b>
-  <%= @certificate.description %>
-</p>
+    <p>
+      <b><%= Certificate.human_attribute_name 'description' %>:</b>
+      <%= @certificate.description %>
+    </p>
 
-<p>
-  <b><%= Certificate.human_attribute_name 'website' %>:</b>
-  <%= @certificate.website %>
-</p>
+    <p>
+      <b><%= Certificate.human_attribute_name 'website' %>:</b>
+      <%= @certificate.website %>
+    </p>
 
-<p>
-  <b><%= Certificate.human_attribute_name 'email' %>:</b>
-  <%= @certificate.email %>
-</p>
+    <p>
+      <b><%= Certificate.human_attribute_name 'email' %>:</b>
+      <%= @certificate.email %>
+    </p>
 
-<p>
-  <b><%= Certificate.human_attribute_name 'wait_time' %>:</b>
-  <%= @certificate.wait_time %>
-</p>
+    <p>
+      <b><%= Certificate.human_attribute_name 'wait_time' %>:</b>
+      <%= @certificate.wait_time %>
+    </p>
 
-<p>
-  <b><%= Certificate.human_attribute_name 'notes' %>:</b>
-  <%= @certificate.notes %>
-</p>
+    <p>
+      <b><%= Certificate.human_attribute_name 'notes' %>:</b>
+      <%= @certificate.notes %>
+    </p>
+  </div>
+
+  <div class="column col-5">
+    <h2><%= t('view.certificates.affected_products') %></h2>
+
+    <%= render partial: 'certificates/details/detail', collection: @certificate.details %>
+  </div>
+</div>
 
