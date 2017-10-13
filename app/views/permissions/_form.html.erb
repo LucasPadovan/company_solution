@@ -1,4 +1,4 @@
-<%= form_with(model: permission, local: true) do |form| %>
+<%= form_with(url: @information[:form_url], model: permission, local: true) do |form| %>
   <% if permission.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(permission.errors.count, 'error') %> prohibited this permission from being saved:</h2>
@@ -14,14 +14,20 @@
   <% if @firm %>
     <div class="form-group">
       <%= form.label :certificate_id, class: 'from-label' %>
-      <%= form.text_field :certificate_id, id: :permission_certificate_id, class: 'form-input' %>
+      <%= form.select :firm_id, Certificate.certificates_for_select, {}, {
+          id: :permission_certificate_id,
+          class: 'form-select js-focus-this'
+      } %>
     </div>
   <% end %>
 
   <% if @certificate %>
     <div class="form-group">
       <%= form.label :firm_id, class: 'from-label' %>
-      <%= form.text_field :firm_id, id: :permission_firm_id, class: 'form-input' %>
+      <%= form.select :firm_id, Firm.firms_for_select, {}, {
+          id: :permission_firm_id,
+          class: 'form-select js-focus-this'
+      } %>
     </div>
   <% end %>
 
@@ -43,4 +49,8 @@
   <div class="actions">
     <%= form.submit t('view.permissions.save'), class: 'btn btn-primary'  %>
   </div>
+<% end %>
+
+<% content_for :ready_js do %>
+  Utils.focusField(document);
 <% end %>

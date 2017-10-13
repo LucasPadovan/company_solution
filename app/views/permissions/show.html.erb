@@ -1,6 +1,16 @@
 <%= render 'shared/basic_navigation', navigation: {
-  back: permissions_path, edit: edit_permission_path(@permission)
+  back: @information[:back_path], edit: edit_permission_path(@permission)
 } %>
+
+<p>
+  <b><%= Permission.human_attribute_name 'certificate' %>:</b>
+  <%= @permission.certificate.name %>
+</p>
+
+<p>
+  <b><%= Permission.human_attribute_name 'firm' %>:</b>
+  <%= @permission.firm.name %>
+</p>
 
 <p>
   <b><%= Permission.human_attribute_name 'from_date' %>:</b>
@@ -10,16 +20,6 @@
 <p>
   <b><%= Permission.human_attribute_name 'to_date' %>:</b>
   <%= @permission.to_date %>
-</p>
-
-<p>
-  <b><%= Permission.human_attribute_name 'certificate' %>:</b>
-  <%= @permission.certificate %>
-</p>
-
-<p>
-  <b><%= Permission.human_attribute_name 'firm' %>:</b>
-  <%= @permission.firm %>
 </p>
 
 <p>

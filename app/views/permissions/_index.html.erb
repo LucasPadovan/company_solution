@@ -17,17 +17,17 @@
     <% permissions.each do |permission| %>
       <tr>
         <% if @certificate %>
-          <td><%= permission.firm %></td>
+          <td><%= permission.firm.name %></td>
         <% else %>
-          <td><%= permission.certificate %></td>
+          <td><%= permission.certificate.name %></td>
         <% end %>
         <td><%= permission.from_date %></td>
         <td><%= permission.to_date %></td>
         <td><%= permission.contact %></td>
         <td>
-          <%= link_to '', permission, class: 'fa fa-2x fa-info-circle'  %>
-          <%= link_to '', edit_permission_path(permission), class: 'fa fa-2x fa-pencil-square' %>
-          <%= link_to '', permission, method: :delete, data: { confirm: t('messages.confirmation') }, class: 'fa fa-2x fa-trash' %>
+          <%= link_to '', [parent, permission], class: 'fa fa-2x fa-info-circle'  %>
+          <%= link_to '', ['edit', parent, permission], class: 'fa fa-2x fa-pencil-square' %>
+          <%= link_to '', [parent, permission], method: :delete, data: { confirm: t('messages.confirmation') }, class: 'fa fa-2x fa-trash' %>
         </td>
       </tr>
     <% end %>

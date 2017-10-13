@@ -1,7 +1,10 @@
 # TODO list
 
 * Certificates and permissions (for firms and the company).
+    * Certificates/show -> order permissions from new to old
+    * Certificates/show -> show one of 3 states: okay, next to end, ended.
     * Permissions in each firm
+    * Upload and preview permissions pdf
     * Dashboard should alert close to finishing certificates
     * Generating an order with a product that needs certification should alert:
         * Everything ok, firm has the certificate

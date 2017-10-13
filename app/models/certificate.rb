@@ -5,4 +5,8 @@ class Certificate < ApplicationRecord
   accepts_nested_attributes_for :details,
     allow_destroy: true,
     reject_if: proc { |attributes| attributes[:product_id].blank? }
+
+  def self.certificates_for_select
+    Certificate.all.map{ |certificate| [certificate.name, certificate.id] }
+  end
 end
