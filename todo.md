@@ -2,15 +2,15 @@
 
 * Certificates and permissions (for firms and the company).
     * Certificates/show -> order permissions from new to old
-    * Certificates/show -> show one of 3 states: okay, next to end, ended.
-    * Permissions in each firm
+    * Permissions historical modal for each firm/certificate
+    * Color next to end/ended certificates in permissions/index
     * Upload and preview permissions pdf
     * Dashboard should alert close to finishing certificates
     * Generating an order with a product that needs certification should alert:
         * Everything ok, firm has the certificate
         * Something off, firm has the cert but it is outdated
         * NO GO, firm doesn't have the certificate
-        
+* Tabs system for firms and products.
 * replicate products_list format
     * Special color for some elements (mark those with price differences of 2%, 4%, 6%, and 10%+, special prices for some elements in the list
 * New items sold to/from a company creates trade + price relation > check next items

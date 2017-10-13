@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20171006043729) do
     t.text "description"
     t.string "website"
     t.string "email"
-    t.string "wait_time"
+    t.integer "wait_time"
     t.text "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

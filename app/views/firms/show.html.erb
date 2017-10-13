@@ -41,6 +41,11 @@
 
       <%= render 'contacts/index' %>
     </section>
+
+    <section>
+      <h3><%= t('activerecord.models.certificate.other') %></h3>
+      <%= render 'permissions/index', permissions: @permissions, parent: @firm %>
+    </section>
   </div>
 
   <div class="column col-6">

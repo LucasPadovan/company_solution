@@ -1,6 +1,7 @@
 class Firm < ApplicationRecord
   has_many :contacts
   has_many :orders
+  has_many :permissions
   has_many :sells, class_name: 'Trade', foreign_key: :sold_by
   has_many :buys,  class_name: 'Trade', foreign_key: :sold_to
 

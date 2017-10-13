@@ -10,10 +10,13 @@ class FirmsController < ApplicationController
   # GET /firms/1
   # GET /firms/1.json
   def show
+    today = Date.today
+
     @information[:subtitle] = @firm.name
-    @sells    = @firm.sells
-    @buys     = @firm.buys
-    @contacts = @firm.contacts
+    @sells       = @firm.sells
+    @buys        = @firm.buys
+    @contacts    = @firm.contacts
+    @permissions = @firm.permissions.where('from_date <= :from_date AND to_date > :to_date', from_date: today, to_date: today)
 
     @modal_errors = JSON.parse(params[:modal_errors]) if params[:modal_errors]
   end

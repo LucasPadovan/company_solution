@@ -8,7 +8,7 @@
       <% end %>
       <th><%= Permission.human_attribute_name 'from_date' %></th>
       <th><%= Permission.human_attribute_name 'to_date' %></th>
-      <th><%= Permission.human_attribute_name 'contact' %></th>
+      <th><%= Permission.human_attribute_name 'state' %></th>
       <th></th>
     </tr>
   </thead>
@@ -21,9 +21,9 @@
         <% else %>
           <td><%= permission.certificate.name %></td>
         <% end %>
-        <td><%= permission.from_date %></td>
-        <td><%= permission.to_date %></td>
-        <td><%= permission.contact %></td>
+        <td><%= l(permission.from_date, format: t('date.formats.default')) %></td>
+        <td><%= l(permission.to_date, format: t('date.formats.default')) %></td>
+        <td><%= t("view.permissions.states.#{permission.state}") %></td>
         <td>
           <%= link_to '', [parent, permission], class: 'fa fa-2x fa-info-circle'  %>
           <%= link_to '', ['edit', parent, permission], class: 'fa fa-2x fa-pencil-square' %>

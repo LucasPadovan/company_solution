@@ -65,7 +65,7 @@
         name: 'Nombre'
         description: 'Descripción'
         website: 'Página'
-        wait_time: 'Tiempo de espera'
+        wait_time: 'Tiempo de espera (meses)'
         notes: 'Notas'
       certificate_detail:
         product_id: 'Productos afectados'
@@ -142,6 +142,7 @@
         certificate: 'Certificado'
         firm: 'Empresa'
         contact: 'Contacto'
+        state: 'Estado'
       price:
         price: 'Precio'
         currency: 'Moneda'
@@ -345,6 +346,11 @@
       correctly_updated: 'Permiso actualizado correctamente.'
       correctly_destroyed: 'Permiso destruido correctamente.'
       save: 'Guardar permiso'
+      states:
+        almost_ended: 'Casi vencido'
+        ended: 'Vencido'
+        not_valid_yet: 'No válido aun'
+        valid: 'Válido'
     purchase_invoices:
       index_title: 'Compras de %{month} de %{year}'
       show_title: 'Detalle de factura de compra'

@@ -5,7 +5,7 @@ class CreateCertificates < ActiveRecord::Migration[5.1]
       t.text :description
       t.string :website
       t.string :email
-      t.string :wait_time
+      t.integer :wait_time
       t.text :notes
 
       t.timestamps
