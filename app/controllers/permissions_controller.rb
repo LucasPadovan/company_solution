@@ -1,11 +1,7 @@
 class PermissionsController < ApplicationController
   before_action :set_permission, only: [:show, :edit, :update, :destroy]
+  before_action :set_parent
   before_action :set_information
-
-  # GET /permissions
-  def index
-    @permissions = Permission.all
-  end
 
   # GET /permissions/1
   def show
@@ -14,7 +10,7 @@ class PermissionsController < ApplicationController
 
   # GET /permissions/new
   def new
-    @permission = Permission.new
+    @permission = @parent.permissions.build
     @information[:subtitle] = t('view.permissions.new_title')
   end
 
@@ -26,7 +22,7 @@ class PermissionsController < ApplicationController
   # POST /permissions
   def create
     @information[:subtitle] = t('view.permissions.new_title')
-    @permission = Permission.new(permission_params)
+    @permission = @parent.permissions.new(permission_params)
 
     if @permission.save
       flash[:type] = 'success'
@@ -67,5 +63,12 @@ class PermissionsController < ApplicationController
 
     def set_information
       @information = { title: t('activerecord.models.permission.other') }
+      @information[:back_path] = @parent
+    end
+
+    def set_parent
+      @certificate = params[:certificate_id] ? Certificate.find(params[:certificate_id]) : nil
+      @firm = params[:firm_id] ? Firm.find(params[:firm_id]) : nil
+      @parent = @certificate || @firm
     end
 end

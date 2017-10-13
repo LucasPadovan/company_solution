@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :certificates do
     resources :certificate_details, as: :details
+    resources :permissions, except: [:index]
   end
   devise_for :users
 
@@ -12,7 +13,7 @@ Rails.application.routes.draw do
   resources :firms do
     resources :trades, except: [:index, :show]
     resources :contacts, except: [:index, :show]
-    resources :permissions
+    resources :permissions, except: [:index]
 
     member do
       get :products_list
@@ -38,7 +39,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :permissions
+  resources :permissions, except: [:index]
 
   root to: 'orders#index'
 end

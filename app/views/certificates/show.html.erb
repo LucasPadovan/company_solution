@@ -33,6 +33,10 @@
       <b><%= Certificate.human_attribute_name 'notes' %>:</b>
       <%= @certificate.notes %>
     </p>
+
+    <div class="pad-top-4">
+      <%= render 'permissions/index', permissions: @certificate.permissions %>
+    </div>
   </div>
 
   <div class="column col-5">

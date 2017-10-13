@@ -32,6 +32,9 @@
       order:
         one: 'Orden'
         other: 'Ordenes'
+      permission:
+        one: 'Permiso'
+        other: 'Permisos'
       price:
         one: 'Precio'
         other: 'Precios'
@@ -133,6 +136,12 @@
         unit_price: 'Precio unitario'
       order_status:
         status: 'Estado'
+      permission:
+        from_date: 'Desde'
+        to_date: 'Hasta'
+        certificate: 'Certificado'
+        firm: 'Empresa'
+        contact: 'Contacto'
       price:
         price: 'Precio'
         currency: 'Moneda'
@@ -327,6 +336,15 @@
         purchases: 'Compras'
         sales: 'Ventas'
         generate_report: 'Generar reporte'
+    permissions:
+      index_title: 'Permisos'
+      show_title: 'Detalle de permiso'
+      new_title: 'Nuevo permiso'
+      edit_title: 'Editando permiso'
+      correctly_created: 'Permiso agregado correctamente.'
+      correctly_updated: 'Permiso actualizado correctamente.'
+      correctly_destroyed: 'Permiso destruido correctamente.'
+      save: 'Guardar permiso'
     purchase_invoices:
       index_title: 'Compras de %{month} de %{year}'
       show_title: 'Detalle de factura de compra'
