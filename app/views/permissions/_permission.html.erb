@@ -1,4 +1,6 @@
-<tr>
+<% state = permission.state %>
+
+<tr class="permission__<%= state %>">
   <% if @certificate %>
     <td><%= permission.firm.name %></td>
   <% else %>
@@ -6,7 +8,7 @@
   <% end %>
   <td><%= l(permission.from_date, format: t('date.formats.default')) %></td>
   <td><%= l(permission.to_date, format: t('date.formats.default')) %></td>
-  <td><%= t("view.permissions.states.#{permission.state}") %></td>
+  <td><%= t("view.permissions.states.#{state}") %></td>
   <td>
     <%= link_to '', [parent, permission], class: 'fa fa-2x fa-info-circle'  %>
     <%= link_to '', ['edit', parent, permission], class: 'fa fa-2x fa-pencil-square' %>

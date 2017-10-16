@@ -1,7 +1,6 @@
 # TODO list
 
 * Certificates and permissions (for firms and the company).
-    * Color next to end/ended certificates in permissions/index
     * Upload and preview permissions pdf
     * Dashboard should alert close to finishing certificates
     * Generating an order with a product that needs certification should alert:
