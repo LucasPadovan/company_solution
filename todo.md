@@ -1,8 +1,6 @@
 # TODO list
 
 * Certificates and permissions (for firms and the company).
-    * Certificates/show -> order permissions from new to old
-    * Permissions historical modal for each firm/certificate
     * Color next to end/ended certificates in permissions/index
     * Upload and preview permissions pdf
     * Dashboard should alert close to finishing certificates

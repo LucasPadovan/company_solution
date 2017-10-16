@@ -231,6 +231,7 @@
     total: 'Total'
     restore: 'Deshacer'
     hide: 'Ocultar'
+    show_historic: 'Ver historial'
     
   menu:
     actions:
@@ -394,7 +395,6 @@
         purchase_prices: 'Precios de compra: '
         sold_by: 'Vendedores'
         sold_to: 'Compradores'
-      show_historic: 'Ver historial'
     purchase_interests:
       index_title: 'Historial de precios de %{product} para %{firm}'
       show_title: '%{product}'

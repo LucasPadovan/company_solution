@@ -14,23 +14,7 @@
   </thead>
 
   <tbody>
-    <% permissions.each do |permission| %>
-      <tr>
-        <% if @certificate %>
-          <td><%= permission.firm.name %></td>
-        <% else %>
-          <td><%= permission.certificate.name %></td>
-        <% end %>
-        <td><%= l(permission.from_date, format: t('date.formats.default')) %></td>
-        <td><%= l(permission.to_date, format: t('date.formats.default')) %></td>
-        <td><%= t("view.permissions.states.#{permission.state}") %></td>
-        <td>
-          <%= link_to '', [parent, permission], class: 'fa fa-2x fa-info-circle'  %>
-          <%= link_to '', ['edit', parent, permission], class: 'fa fa-2x fa-pencil-square' %>
-          <%= link_to '', [parent, permission], method: :delete, data: { confirm: t('messages.confirmation') }, class: 'fa fa-2x fa-trash' %>
-        </td>
-      </tr>
-    <% end %>
+    <%= render partial: 'permissions/permission', collection: permissions, locals: { parent: parent } %>
   </tbody>
 </table>
 
@@ -40,3 +24,6 @@
   <%= link_to t('view.permissions.new_title'), new_firm_permission_path(@firm), class: 'btn btn-primary'  %>
 <% end %>
 
+<% unless params[:controller] === 'permissions' %>
+  <%= link_to t('label.show_historic'), [parent, 'permissions'], class: 'btn btn-sm'  %>
+<% end %>

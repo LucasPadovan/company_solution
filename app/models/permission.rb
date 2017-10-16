@@ -2,6 +2,9 @@ class Permission < ApplicationRecord
   belongs_to :certificate
   belongs_to :firm
 
+  default_scope { order(from_date: :desc) }
+  scope :only_valids, -> { where('from_date <= :from_date AND to_date > :to_date', from_date: Date.today, to_date: Date.today) }
+
   STATES = {
       almost_ended: 'almost_ended',
       ended: 'ended',

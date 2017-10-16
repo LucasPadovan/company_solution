@@ -1,0 +1,32 @@
+<section class="section section-filters pad-left-2 pad-right-2">
+  <%= form_tag [@parent, 'permissions'], method: 'get' do %>
+    <div class="columns">
+      <% if @certificate %>
+        <div class="column col-3">
+          <%= label_tag :filter_firm_id, t('activerecord.attributes.permission.firm'), class: 'from-label' %>
+          <%= select_tag :filter_firm_id,
+                         options_for_select(
+                             [[t('label.all'), nil]] + Firm.firms_for_select,
+                             params[:filter_firm_id]
+                         ), { class: 'form-select' } %>
+        </div>
+      <% end %>
+      <% if @firm %>
+        <div class="column col-3">
+          <%= label_tag :filter_certificate_id, t('activerecord.attributes.permission.certificate'), class: 'from-label' %>
+          <%= select_tag :filter_certificate_id,
+                         options_for_select(
+                             [[t('label.all'), nil]] + Certificate.certificates_for_select,
+                             params[:filter_certificate_id]
+                         ), { class: 'form-select' } %>
+        </div>
+      <% end %>
+      <div class="column col-3 section-filters__search-btn">
+        <%= button_tag(type: 'submit', class: 'btn') do %>
+          <i class="icon icon-search"></i>
+          <%= t('label.search') %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</section>

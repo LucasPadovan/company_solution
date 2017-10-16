@@ -3,6 +3,13 @@ class PermissionsController < ApplicationController
   before_action :set_parent
   before_action :set_information
 
+  def index
+    @permissions = @parent.permissions
+
+    @permissions = @permissions.where(firm_id: params[:filter_firm_id]) if params[:filter_firm_id].present?
+    @permissions = @permissions.where(certificate_id: params[:filter_certificate_id]) if params[:filter_certificate_id].present?
+  end
+
   # GET /permissions/1
   def show
     @information[:subtitle] = t('view.permissions.show_title')

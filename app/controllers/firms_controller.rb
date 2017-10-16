@@ -16,7 +16,7 @@ class FirmsController < ApplicationController
     @sells       = @firm.sells
     @buys        = @firm.buys
     @contacts    = @firm.contacts
-    @permissions = @firm.permissions.where('from_date <= :from_date AND to_date > :to_date', from_date: today, to_date: today)
+    @permissions = @firm.permissions.only_valids
 
     @modal_errors = JSON.parse(params[:modal_errors]) if params[:modal_errors]
   end
