@@ -266,6 +266,9 @@
       correctly_created: 'Certificado agregado correctamente.'
       correctly_updated: 'Certificado actualizado correctamente.'
       correctly_destroyed: 'Certificado eliminado correctamente'
+      list:
+        almost_ended: 'Estos certificados están por vencer: %{warning}'
+        ended: 'Estos certificados no están disponibles: %{ended}'
     contacts:
       index_title: 'Contactos'
       show_title: 'Detalle de %{contact} de %{firm}'

@@ -2,8 +2,9 @@
   back: @information[:back_path], edit: @information[:edit_path]
 } %>
 
-
 <div class="columns">
+  <%= render 'orders/status' %>
+
   <div class="column col-5">
     <label class="info-label"><%= Order.human_attribute_name 'firm_id' %></label>
     <div class="info-content"><%= link_to @order.firm.name, @order.firm %></div>

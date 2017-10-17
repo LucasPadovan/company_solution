@@ -15,6 +15,16 @@ class Firm < ApplicationRecord
     closes_at.strftime(I18n.t('time.formats.time')) if closes_at
   end
 
+  def get_certificates_available
+    permissions.only_valids.map { |permission| permission.certificate }.uniq
+  end
+
+  # For now first is the best option, ideally should be one permission per
+  # certificate valid at the same time.
+  def get_valid_permission_for(certificate_id)
+    permissions.only_valids.where(certificate_id: certificate_id).first
+  end
+
   def self.firms_for_select
     Firm.all.map{ |firm| [firm.name, firm.id] }
   end

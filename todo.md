@@ -3,10 +3,6 @@
 * Certificates and permissions (for firms and the company).
     * Upload and preview permissions pdf
     * Dashboard should alert close to finishing certificates
-    * Generating an order with a product that needs certification should alert:
-        * Everything ok, firm has the certificate
-        * Something off, firm has the cert but it is outdated
-        * NO GO, firm doesn't have the certificate
 * Tabs system for firms and products.
 * replicate products_list format
     * Special color for some elements (mark those with price differences of 2%, 4%, 6%, and 10%+, special prices for some elements in the list

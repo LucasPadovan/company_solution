@@ -1,0 +1,10 @@
+<% if @information[:status][:status] != 'proceed' %>
+  <div class="column col-12">
+    <section class="section section-order-status section-order-status--<%= @information[:status][:status] %> pad-left-2 pad-right-2">
+      <div class="column col-12">
+        <p><%= t('view.certificates.list.almost_ended', warning: @information[:status][:warning]) if @information[:status][:warning].present? %></p>
+        <p><%= t('view.certificates.list.ended', ended: @information[:status][:missing]) if @information[:status][:missing].present? %></p>
+      </div>
+    </section>
+  </div>
+<% end %>

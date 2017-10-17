@@ -1,0 +1,25 @@
+@import "_variables";
+
+.section.section-order-status {
+  background-color: $grey-200;
+  border-radius: .2rem;
+
+  transition: box-shadow 0.3s ease;
+
+  &:hover,
+  &:focus-within {
+    box-shadow: 0 0 10px rgba(183, 28, 28, 0.5);
+  }
+
+  &.section-order-status--warning {
+    background-color: $warning-color;
+    color: white;
+    font-weight: bold;
+  }
+
+  &.section-order-status--not_proceed {
+    background-color: $error-color-dark;
+    color: white;
+    font-weight: bold;
+  }
+}

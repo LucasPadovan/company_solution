@@ -181,6 +181,7 @@ class OrdersController < ApplicationController
       @information[:subtitle] = t('view.orders.show_title', order_number: @order.number)
       @information[:edit_path] = edit_order_path(@order)
       @information[:back_path] = back_path
+      @information[:status] = @order.get_permissions_status
     end
 
     # Information for new/create methods.
