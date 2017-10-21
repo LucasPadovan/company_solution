@@ -1,6 +1,8 @@
 <% if !@no_firm %>
   <section class="section section-filters pad-left-2 pad-right-2">
     <%= form_tag [@parent, 'permissions'], method: 'get' do %>
+      <%= hidden_field_tag :no_firm, @no_firm %>
+
       <div class="columns">
         <% if @certificate %>
           <div class="column col-3">

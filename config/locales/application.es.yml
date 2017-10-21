@@ -206,6 +206,12 @@
           one: 'Perfil'
           other: 'Perfiles'
         remember_me: 'Recordarme'
+    errors:
+      models:
+        permission:
+          attributes:
+            firm:
+              required: 'no puede estar en blanco'
 
   errors:
     title: 'Error'

@@ -11,7 +11,7 @@
     </div>
   <% end %>
 
-  <% if @firm %>
+  <% if @firm && !@no_firm%>
     <div class="form-group">
       <%= form.label :certificate_id, class: 'from-label' %>
       <%= form.select :certificate_id, Certificate.certificates_for_select, {}, {
@@ -21,7 +21,7 @@
     </div>
   <% end %>
 
-  <% if @certificate %>
+  <% if @certificate && !@no_firm %>
     <div class="form-group">
       <%= form.label :firm_id, class: 'from-label' %>
       <%= form.select :firm_id, Firm.firms_for_select, {}, {

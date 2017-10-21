@@ -2,6 +2,8 @@ class Permission < ApplicationRecord
   belongs_to :certificate
   belongs_to :firm
 
+  validates :firm_id, presence: true, allow_nil: true
+
   validates :from_date, :to_date, presence: true
 
   default_scope { order(from_date: :desc) }
