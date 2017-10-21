@@ -140,7 +140,9 @@
         from_date: 'Desde'
         to_date: 'Hasta'
         certificate: 'Certificado'
+        certificate_id: 'Certificado'
         firm: 'Empresa'
+        firm_id: 'Empresa'
         contact: 'Contacto'
         state: 'Estado'
       price:
@@ -266,6 +268,7 @@
       correctly_created: 'Certificado agregado correctamente.'
       correctly_updated: 'Certificado actualizado correctamente.'
       correctly_destroyed: 'Certificado eliminado correctamente'
+      your_certificates: 'Tus permisos'
       list:
         almost_ended: 'Estos certificados están por vencer: %{warning}'
         ended: 'Estos certificados no están disponibles: %{ended}'

@@ -1,9 +1,9 @@
 <% state = permission.state %>
 
 <tr class="permission__<%= state %>">
-  <% if @certificate %>
+  <% if @certificate && !no_firm %>
     <td><%= permission.firm.name %></td>
-  <% else %>
+  <% elsif !no_firm %>
     <td><%= permission.certificate.name %></td>
   <% end %>
   <td><%= l(permission.from_date, format: t('date.formats.default')) %></td>

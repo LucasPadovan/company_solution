@@ -4,10 +4,14 @@ class PermissionsController < ApplicationController
   before_action :set_information
 
   def index
-    @permissions = @parent.permissions
+    if params[:no_firm] === 'true'
+      @permissions = Permission.without_firm
+    else
+      @permissions = @parent.permissions
 
-    @permissions = @permissions.where(firm_id: params[:filter_firm_id]) if params[:filter_firm_id].present?
-    @permissions = @permissions.where(certificate_id: params[:filter_certificate_id]) if params[:filter_certificate_id].present?
+      @permissions = @permissions.where(firm_id: params[:filter_firm_id]) if params[:filter_firm_id].present?
+      @permissions = @permissions.where(certificate_id: params[:filter_certificate_id]) if params[:filter_certificate_id].present?
+    end
   end
 
   # GET /permissions/1

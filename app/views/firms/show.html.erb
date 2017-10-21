@@ -44,7 +44,7 @@
 
     <section>
       <h3><%= t('activerecord.models.certificate.other') %></h3>
-      <%= render 'permissions/index', permissions: @permissions, parent: @firm %>
+      <%= render 'permissions/index', permissions: @permissions, parent: @firm, no_firm: false %>
     </section>
   </div>
 

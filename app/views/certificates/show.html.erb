@@ -35,7 +35,12 @@
     </p>
 
     <div class="pad-top-4">
-      <%= render 'permissions/index', permissions: @certificate.permissions.only_valids, parent: @certificate %>
+      <h3><%= t('view.certificates.your_certificates') %></h3>
+      <%= render 'permissions/index', permissions: @certificate.permissions.without_firm.only_valids, parent: @certificate, no_firm: true %>
+    </div>
+
+    <div class="pad-top-4">
+      <%= render 'permissions/index', permissions: @certificate.permissions.with_firm.only_valids, parent: @certificate, no_firm: false %>
     </div>
   </div>
 

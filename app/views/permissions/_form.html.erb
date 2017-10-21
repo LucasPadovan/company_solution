@@ -14,7 +14,7 @@
   <% if @firm %>
     <div class="form-group">
       <%= form.label :certificate_id, class: 'from-label' %>
-      <%= form.select :firm_id, Certificate.certificates_for_select, {}, {
+      <%= form.select :certificate_id, Certificate.certificates_for_select, {}, {
           id: :permission_certificate_id,
           class: 'form-select js-focus-this'
       } %>
