@@ -41,7 +41,7 @@ class PermissionsController < ApplicationController
 
     if @permission.save
       flash[:type] = 'success'
-      redirect_to [@parent, @permission], notice: t('view.permissions.correctly_created')
+      redirect_to [@parent, @permission, no_firm: @no_firm], notice: t('view.permissions.correctly_created')
     else
       render :new
     end
@@ -53,7 +53,7 @@ class PermissionsController < ApplicationController
 
     if @permission.update(permission_params)
       flash[:type] = 'primary'
-      redirect_to [@parent, @permission], notice: t('view.permissions.correctly_updated')
+      redirect_to [@parent, @permission, no_firm: @no_firm], notice: t('view.permissions.correctly_updated')
     else
       render :edit
     end

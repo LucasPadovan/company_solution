@@ -10,8 +10,8 @@
   <td><%= l(permission.to_date, format: t('date.formats.default')) %></td>
   <td><%= t("view.permissions.states.#{state}") %></td>
   <td>
-    <%= link_to '', [parent, permission], class: 'fa fa-2x fa-info-circle'  %>
-    <%= link_to '', ['edit', parent, permission], class: 'fa fa-2x fa-pencil-square' %>
+    <%= link_to '', [parent, permission, no_firm: no_firm], class: 'fa fa-2x fa-info-circle'  %>
+    <%= link_to '', ['edit', parent, permission, no_firm: no_firm], class: 'fa fa-2x fa-pencil-square' %>
     <%= link_to '', [parent, permission], method: :delete, data: { confirm: t('messages.confirmation') }, class: 'fa fa-2x fa-trash' %>
   </td>
 </tr>

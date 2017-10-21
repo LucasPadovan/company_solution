@@ -1,5 +1,5 @@
 <%= render 'shared/basic_navigation', navigation: {
-  back: @information[:back_path], edit: edit_permission_path(@permission)
+  back: @information[:back_path], edit: edit_permission_path(@permission, no_firm: @no_firm)
 } %>
 
 <p>
@@ -7,10 +7,12 @@
   <%= @permission.certificate.name %>
 </p>
 
-<p>
-  <b><%= Permission.human_attribute_name 'firm' %>:</b>
-  <%= @permission.firm.name %>
-</p>
+<% if !@no_firm %>
+  <p>
+    <b><%= Permission.human_attribute_name 'firm' %>:</b>
+    <%= @permission.firm.name %>
+  </p>
+<% end %>
 
 <p>
   <b><%= Permission.human_attribute_name 'from_date' %>:</b>
