@@ -1,5 +1,5 @@
 <%= render 'shared/basic_navigation', navigation: {
-  back: @information[:back_path], edit: edit_permission_path(@permission, no_firm: @no_firm)
+  back: @information[:back_path], edit: ['edit', @parent, @permission, no_firm: @no_firm]
 } %>
 
 <p>
