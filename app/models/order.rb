@@ -55,10 +55,6 @@ class Order < ApplicationRecord
     end
   end
 
-  def get_certificates_needed
-    products.map{ |product| product.certificates }.flatten.uniq
-  end
-
   # TODO: redo this piece of code.
   def get_permissions_status
     permissions_status = {
@@ -68,7 +64,7 @@ class Order < ApplicationRecord
         status:  PERMISSIONS_STATUS[:proceed]
     }
     certificates_needed    = get_certificates_needed
-    certificates_available = firm.get_certificates_available
+    certificates_available = get_certificates_available
 
     certificates_needed.each do |certificate|
       if certificate.in?(certificates_available)
@@ -103,4 +99,13 @@ class Order < ApplicationRecord
   def self.currencies_for_select
     ['$ARS', 'U$D', '$CLP']
   end
+
+  private
+    def get_certificates_needed
+      products.map{ |product| product.certificates }.flatten.uniq
+    end
+
+    def get_certificates_available
+      firm.get_certificates_available
+    end
 end
