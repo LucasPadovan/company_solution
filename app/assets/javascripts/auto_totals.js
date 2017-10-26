@@ -52,10 +52,13 @@ var AutoTotals = {
     var lineValues = AutoTotals._calculateLineSubtotal(context),
         $fieldset = $(context).parents('.js-nested-item-row'),
         $taxField = $fieldset.find('.js-nested-item-tax'),
-        $subtotalField = $fieldset.find('.js-nested-item-subtotal');
+        $subtotalField = $fieldset.find('.js-nested-item-subtotal'),
+        $lineTotalField = $fieldset.find('.js-nested-item-line-total'),
+        lineTotal = lineValues['tax'] + lineValues['subtotal'];
 
     $taxField.val(lineValues['tax'].toFixed(2));
     $subtotalField.val(lineValues['subtotal'].toFixed(2));
+    $lineTotalField.val(lineTotal.toFixed(2));
 
     // Probably will have to merge these two.
     $taxField.trigger('change');

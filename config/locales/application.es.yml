@@ -127,6 +127,7 @@
         amount: 'Cantidad'
         currency: 'Moneda'
         detail: 'Detalle'
+        line_total: 'Total linea'
         position: 'Posicion'
         product_id: 'Producto'
         remaining_amount: 'Restante'
