@@ -55,7 +55,9 @@ class Trade < ApplicationRecord
         price:     line_price,
         tax_rate:  line_tax_rate,
         currency:  currency,
-        available: true
+        valid_from: order_line.order.date,
+        # Only set up an available price if there was an actual order, if not (is a budget only) the price should not be available yet.
+        available: order_line.order.class != BudgetOrder
     }
 
     if persisted?
