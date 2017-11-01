@@ -24,8 +24,12 @@ Rails.application.routes.draw do
     resources :order_lines
     resources :order_statuses
   end
+
   resources :purchases
-  resources :budgets
+
+  resources :budgets do
+    resources :budget_lines
+  end
 
   resources :trades, only: :show do
     resources :prices, except: [:show, :edit, :update] do

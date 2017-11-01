@@ -1,5 +1,8 @@
 # TODO list
 
+* Products list > generate PDF > generate a budget order with all the products and its prices
+* Save in budget description the header of the pdf file to replicate it afterwards.
+
 * Certificates and permissions (for firms and the company).
     * Upload and preview permissions pdf
     * Dashboard should alert close to finishing certificates
@@ -12,9 +15,6 @@
 * I would like to know if I'm selling something below the purchase price as soon as I save the sale order or budget order
 * - Changing the firm on an order should retrieve all prices again for each line item.
 * - Investigate retrieving all prices on order (new/edit) load and use that information instead of a single fetch each time.
-
-* Products list > generate PDF > generate a budget order with all the products and its prices
-* Save in budget description the header of the pdf file to replicate it afterwards.
 
 * Create a button to convert budgets in actual orders.
 * There should not be a way to convert purchases in common orders that are meant to be sell orders. 

@@ -1,0 +1,43 @@
+<table class="table table-striped table-hover mar-bottom-3">
+  <thead>
+    <tr>
+      <th><%= Budget.human_attribute_name 'firm' %></th>
+      <th><%= Budget.human_attribute_name 'number' %></th>
+      <th><%= Budget.human_attribute_name 'date' %></th>
+      <th><%= Budget.human_attribute_name 'from' %></th>
+      <th><%= Budget.human_attribute_name 'to' %></th>
+      <th><%= Budget.human_attribute_name 'destinatary' %></th>
+      <th><%= Budget.human_attribute_name 'contact' %></th>
+      <th><%= Budget.human_attribute_name 'title' %></th>
+      <th><%= Budget.human_attribute_name 'header_image' %></th>
+      <th><%= Budget.human_attribute_name 'body_image' %></th>
+      <th><%= Budget.human_attribute_name 'pdf_file' %></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @budgets.each do |budget| %>
+      <tr>
+        <td><%= budget.firm %></td>
+        <td><%= budget.number %></td>
+        <td><%= budget.date %></td>
+        <td><%= budget.from %></td>
+        <td><%= budget.to %></td>
+        <td><%= budget.destinatary %></td>
+        <td><%= budget.contact %></td>
+        <td><%= budget.title %></td>
+        <td><%= budget.header_image %></td>
+        <td><%= budget.body_image %></td>
+        <td><%= budget.pdf_file %></td>
+        <td>
+          <%= link_to '', budget, class: 'fa fa-2x fa-info-circle'  %>
+          <%= link_to '', edit_budget_path(budget), class: 'fa fa-2x fa-pencil-square' %>
+          <%= link_to '', budget, method: :delete, data: { confirm: t('messages.confirmation') }, class: 'fa fa-2x fa-trash' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('view.budgets.new_title'), new_budget_path, class: 'btn btn-primary'  %>

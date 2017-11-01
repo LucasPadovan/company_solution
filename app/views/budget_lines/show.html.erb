@@ -1,0 +1,44 @@
+<%= render 'shared/basic_navigation', navigation: {
+  back: budget_lines_path, edit: edit_budget_line_path(@budget_line)
+} %>
+
+<p>
+  <b><%= BudgetLine.human_attribute_name 'budget' %>:</b>
+  <%= @budget_line.budget %>
+</p>
+
+<p>
+  <b><%= BudgetLine.human_attribute_name 'product' %>:</b>
+  <%= @budget_line.product %>
+</p>
+
+<p>
+  <b><%= BudgetLine.human_attribute_name 'unit_price' %>:</b>
+  <%= @budget_line.unit_price %>
+</p>
+
+<p>
+  <b><%= BudgetLine.human_attribute_name 'currency' %>:</b>
+  <%= @budget_line.currency %>
+</p>
+
+<p>
+  <b><%= BudgetLine.human_attribute_name 'tax_rate' %>:</b>
+  <%= @budget_line.tax_rate %>
+</p>
+
+<p>
+  <b><%= BudgetLine.human_attribute_name 'unit' %>:</b>
+  <%= @budget_line.unit %>
+</p>
+
+<p>
+  <b><%= BudgetLine.human_attribute_name 'position' %>:</b>
+  <%= @budget_line.position %>
+</p>
+
+<p>
+  <b><%= BudgetLine.human_attribute_name 'price_change' %>:</b>
+  <%= @budget_line.price_change %>
+</p>
+

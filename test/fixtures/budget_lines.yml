@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  budget: one
+  product: one
+  unit_price: 1.5
+  currency: MyString
+  tax_rate: 1.5
+  unit: MyString
+  position: 1
+  price_change: 1.5
+
+two:
+  budget: two
+  product: two
+  unit_price: 1.5
+  currency: MyString
+  tax_rate: 1.5
+  unit: MyString
+  position: 1
+  price_change: 1.5

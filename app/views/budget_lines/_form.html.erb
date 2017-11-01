@@ -1,0 +1,57 @@
+<%= form_with(model: budget_line, local: true) do |form| %>
+  <% if budget_line.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(budget_line.errors.count, 'error') %> prohibited this budget_line from being saved:</h2>
+
+      <ul>
+      <% budget_line.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :budget_id, class: 'from-label' %>
+    <%= form.text_field :budget_id, id: :budget_line_budget_id, class: 'form-input' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :product_id, class: 'from-label' %>
+    <%= form.text_field :product_id, id: :budget_line_product_id, class: 'form-input' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :unit_price, class: 'from-label' %>
+    <%= form.text_field :unit_price, id: :budget_line_unit_price, class: 'form-input' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :currency, class: 'from-label' %>
+    <%= form.text_field :currency, id: :budget_line_currency, class: 'form-input' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :tax_rate, class: 'from-label' %>
+    <%= form.text_field :tax_rate, id: :budget_line_tax_rate, class: 'form-input' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :unit, class: 'from-label' %>
+    <%= form.text_field :unit, id: :budget_line_unit, class: 'form-input' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :position, class: 'from-label' %>
+    <%= form.number_field :position, id: :budget_line_position, class: 'form-input' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :price_change, class: 'from-label' %>
+    <%= form.text_field :price_change, id: :budget_line_price_change, class: 'form-input' %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit t('view.budget_lines.save'), class: 'btn btn-primary'  %>
+  </div>
+<% end %>
