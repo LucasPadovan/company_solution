@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   resources :certificates do
-    resources :certificate_details, as: :details
     resources :permissions
   end
   devise_for :users
@@ -27,9 +26,7 @@ Rails.application.routes.draw do
 
   resources :purchases
 
-  resources :budgets do
-    resources :budget_lines
-  end
+  resources :budgets
 
   resources :trades, only: :show do
     resources :prices, except: [:show, :edit, :update] do
