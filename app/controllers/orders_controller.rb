@@ -92,12 +92,12 @@ class OrdersController < ApplicationController
       apply_filters(SaleOrder)
     end
 
-    def apply_filters(_orders)
+    def apply_filters(order_type)
       should_filter_by_status = params[:status_id].present? && params[:status_id] != '0'
       should_get_pending_orders = params[:status_id].blank?
       query = []
       query_params = {}
-      orders = _orders
+      orders = order_type
 
       if params[:firm_id].present?
         query << ['firm_id = :firm_id']
