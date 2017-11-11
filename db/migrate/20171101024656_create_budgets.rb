@@ -2,6 +2,7 @@ class CreateBudgets < ActiveRecord::Migration[5.1]
   def change
     create_table :budgets do |t|
       t.references :firm, foreign_key: true
+      t.references :user, foreign_key: true
       t.string :number
       t.date :date
       t.date :from

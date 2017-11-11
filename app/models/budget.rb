@@ -3,6 +3,9 @@ class Budget < ApplicationRecord
 
   has_many :lines, class_name: 'BudgetLine', dependent: :destroy
 
+  scope :date_asc,  -> { order('budgets.date ASC') }
+  scope :date_desc, -> { order('budgets.date DESC') }
+
   before_validation :update_prices, on: [:create, :update]
 
   private

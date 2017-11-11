@@ -10,10 +10,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171006043729) do
+ActiveRecord::Schema.define(version: 20171101024940) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "budget_lines", force: :cascade do |t|
+    t.bigint "budget_id"
+    t.bigint "product_id"
+    t.float "unit_price"
+    t.string "currency"
+    t.float "tax_rate"
+    t.string "unit"
+    t.integer "position"
+    t.float "price_change"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["budget_id"], name: "index_budget_lines_on_budget_id"
+    t.index ["product_id"], name: "index_budget_lines_on_product_id"
+  end
+
+  create_table "budgets", force: :cascade do |t|
+    t.bigint "firm_id"
+    t.bigint "user_id"
+    t.string "number"
+    t.date "date"
+    t.date "from"
+    t.date "to"
+    t.string "destinatary"
+    t.string "contact"
+    t.string "title"
+    t.string "header_image"
+    t.string "body_image"
+    t.string "pdf_file"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["firm_id"], name: "index_budgets_on_firm_id"
+    t.index ["user_id"], name: "index_budgets_on_user_id"
+  end
 
   create_table "certificate_details", force: :cascade do |t|
     t.bigint "product_id"
@@ -185,6 +219,10 @@ ActiveRecord::Schema.define(version: 20171006043729) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "budget_lines", "budgets"
+  add_foreign_key "budget_lines", "products"
+  add_foreign_key "budgets", "firms"
+  add_foreign_key "budgets", "users"
   add_foreign_key "certificate_details", "certificates"
   add_foreign_key "certificate_details", "products"
   add_foreign_key "contacts", "firms"
