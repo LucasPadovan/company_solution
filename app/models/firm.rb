@@ -1,4 +1,5 @@
 class Firm < ApplicationRecord
+  has_many :budgets
   has_many :contacts
   has_many :orders
   has_many :permissions

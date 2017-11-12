@@ -16,17 +16,39 @@ class BudgetsController < ApplicationController
 
   # GET /budgets/new
   def new
-    @budget = Budget.new
+    @budget = if params[:firm_id]
+                firm = Firm.find(params[:firm_id])
+                @trades = Trade.where sold_to: firm
+
+                if params[:hidden_trades]
+                  hidden_trades = params[:hidden_trades].split(',')
+                  @trades = @trades.where.not(id: hidden_trades)
+                end
+
+                firm.budgets.new
+              else
+                @trades = []
+
+                Budget.new
+              end
+
+    @valid_from = params[:valid_from].present? ? (Date.parse(params[:valid_from])) : Date.today
 
     set_new_form_information
 
-    @budget.number = (Budget.last.try(:number) || 0) + 1
-    @budget.date = Date.today
+    @budget.title = t('view.firms.buys.products_list_title', date: l(@valid_from, format: t('date.formats.long')))
   end
 
   # GET /budgets/1/edit
   def edit
     set_edit_form_information
+
+    @trades = Trade.where sold_to: @budget.firm
+
+    if params[:hidden_trades]
+      hidden_trades = params[:hidden_trades].split(',')
+      @trades = @trades.where.not(id: hidden_trades)
+    end
   end
 
   # POST /budgets
@@ -41,6 +63,18 @@ class BudgetsController < ApplicationController
       flash[:type] = 'success'
       redirect_to budgets_path, notice: t('view.budgets.correctly_created')
     else
+      if params[:firm_id]
+        firm = Firm.find(params[:firm_id])
+        @trades = Trade.where sold_to: firm
+
+        if params[:hidden_trades]
+          hidden_trades = params[:hidden_trades].split(',')
+          @trades = @trades.where.not(id: hidden_trades)
+        end
+      else
+        @trades = []
+      end
+
       render :new
     end
   end
@@ -88,7 +122,6 @@ class BudgetsController < ApplicationController
     @information[:subtitle] = t('view.budgets.show_title', budget_number: @budget.number)
     @information[:edit_path] = edit_budget_path(@budget)
     @information[:back_path] = back_path
-    @information[:status] = @budget.get_permissions_status
   end
 
   # Information for new/create methods.

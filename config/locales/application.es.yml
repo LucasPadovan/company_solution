@@ -2,12 +2,26 @@
   app_name: 'Macsel'
 
   attributes:
-    created_at: 'Creación'
-    updated_at: 'Actualización'
+    created_at: 'Creado'
+    updated_at: 'Actualizado'
+    contact: 'Contacto'
     date: 'Fecha'
+    number: 'Número'
+    from: 'Desde'
+    to: 'Hasta'
+
+    firm: 'Empresa'
+    firm_id: 'Empresa'
+    product: 'Producto'
+    product_id: 'Producto'
+    certificate: 'Certificado'
+    certificate_id: 'Certificado'
 
   activerecord:
     models:
+      budget:
+        one: 'Presupuesto'
+        other: 'Presupuestos'
       certificate:
         one: 'Certificado'
         other: 'Certificados'
@@ -61,6 +75,12 @@
         other: 'Usuarios'
 
     attributes:
+      budget:
+        body_image: 'Imagen principal'
+        destinatary: 'Destinatario'
+        header_image: 'Imagen de cabecera'
+        pdf_file: 'PDF'
+        title: 'Título'
       certificate:
         name: 'Nombre'
         description: 'Descripción'
@@ -84,11 +104,6 @@
         closes_at: 'Cierra'
         name: 'Nombre'
         opens_at: 'Abre'
-      interest:
-        product_id: 'Producto'
-        firm_id: 'Empresa'
-        price: 'Precio'
-        sale_price: 'Precio de venta'
       item:
         completition: 'Entregado'
         product_id: 'Producto'
@@ -140,11 +155,6 @@
       permission:
         from_date: 'Desde'
         to_date: 'Hasta'
-        certificate: 'Certificado'
-        certificate_id: 'Certificado'
-        firm: 'Empresa'
-        firm_id: 'Empresa'
-        contact: 'Contacto'
         state: 'Estado'
       price:
         price: 'Precio'
@@ -502,7 +512,8 @@
     budgets:
       title: 'Presupuestos'
       new_title: "Nuevo presupuesto"
-      edit_title: "Editando presupuesto %{order_number}"
+      edit_title: "Editando presupuesto %{budget_number}"
+      show_title: "Presupuesto %{budget_number}"
       save: 'Guardar presupuesto'
       correctly_created: 'Presupuesto agregado correctamente'
       correctly_updated:  'Presupuesto actualizado correctamente'

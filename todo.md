@@ -1,5 +1,9 @@
 # TODO list
 
+* move translations to budgets
+* is possible to save a budget without a firm! should not happen and should check validations before try to update prices. #fixed with before_commit, check other uses of the same thing.
+* check after_initialize when values are present in the props
+
 * Products list > generate PDF > generate a budget order with all the products and its prices
 * Save in budget description the header of the pdf file to replicate it afterwards.
 
@@ -47,3 +51,7 @@
 * Add contact could be a modal
 * New system for modals to load them using javascript and not having them always live.
 * Update spectre
+
+* Budgets: use header and body image, check usage of 'to' attribute.
+
+* Number: check that manual editing a number doesn't generates conflict of duplicity 

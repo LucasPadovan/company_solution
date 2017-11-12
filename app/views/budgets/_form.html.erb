@@ -1,72 +1,102 @@
-<%= form_with(model: budget, local: true) do |form| %>
-  <% if budget.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(budget.errors.count, 'error') %> prohibited this budget from being saved:</h2>
-
-      <ul>
-      <% budget.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<% unless params[:action] === 'edit' %>
+  <%= form_tag new_budget_path, { method: :get, params: params, class: 'form-horizontal' } do %>
+    <div class="form-group">
+      <div class="col-1">
+        <%= label_tag :firm_id, t('activerecord.models.firm.one'), class: 'from-label js-focus-this' %>
+      </div>
+      <div class="col-2 mar-right-2">
+        <%= select_tag :firm_id,
+                       options_for_select(
+                           [['', nil]] + Firm.firms_for_select,
+                           params[:firm_id]
+                       ), { class: 'form-select' } %>
+      </div>
+      <div class="col-1">
+        <%= label_tag :valid_from, t('view.firms.buys.valid_from'), class: 'from-label' %>
+      </div>
+      <div class="col-2 mar-right-2">
+        <%= text_field_tag :valid_from, @valid_from, class: 'form-input', type: :date %>
+      </div>
+      <div class="col-4">
+        <%= button_tag t('view.firms.buys.update_list'), class: 'btn' %>
+      </div>
     </div>
   <% end %>
-
-  <div class="form-group">
-    <%= form.label :firm_id, class: 'from-label' %>
-    <%= form.text_field :firm_id, id: :budget_firm_id, class: 'form-input' %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :number, class: 'from-label' %>
-    <%= form.text_field :number, id: :budget_number, class: 'form-input' %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :date, class: 'from-label' %>
-    <%= form.date_select :date, id: :budget_date, class: 'form-input' %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :from, class: 'from-label' %>
-    <%= form.date_select :from, id: :budget_from, class: 'form-input' %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :to, class: 'from-label' %>
-    <%= form.date_select :to, id: :budget_to, class: 'form-input' %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :destinatary, class: 'from-label' %>
-    <%= form.text_field :destinatary, id: :budget_destinatary, class: 'form-input' %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :contact, class: 'from-label' %>
-    <%= form.text_field :contact, id: :budget_contact, class: 'form-input' %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :title, class: 'from-label' %>
-    <%= form.text_field :title, id: :budget_title, class: 'form-input' %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :header_image, class: 'from-label' %>
-    <%= form.text_field :header_image, id: :budget_header_image, class: 'form-input' %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :body_image, class: 'from-label' %>
-    <%= form.text_field :body_image, id: :budget_body_image, class: 'form-input' %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :pdf_file, class: 'from-label' %>
-    <%= form.text_field :pdf_file, id: :budget_pdf_file, class: 'form-input' %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit t('view.budgets.save'), class: 'btn btn-primary'  %>
-  </div>
 <% end %>
+
+<div class="products-list">
+  <%= form_with(url: budgets_path, model: budget, local: true) do |form| %>
+    <% if budget.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(budget.errors.count, 'error') %> prohibited this budget from being saved:</h2>
+
+        <ul>
+          <% budget.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= form.label :number, class: 'from-label' %>
+      <%= form.number_field :number, id: :budget_number, class: 'form-input' %>
+    </div>
+
+    <section class="products-list__banner">
+      <div class="columns">
+        <div class="column col-4 margin-auto">
+          <%= image_tag image_path('logo_full.jpg'), { class: 'image-fill' } %>
+        </div>
+      </div>
+    </section>
+
+    <div class="text-center">
+      <%= button_tag t('view.firms.buys.restore_product'), class: 'btn btn-sm hidden js-trades-list__show-trade' %>
+      <%= form.submit t('view.budgets.save'), class: 'btn btn-primary'  %>
+    </div>
+
+    <section class="products-list__header pad-top-3 mar-top-1">
+      <div class="products-list__header__date"><%= form.text_field :date %></div>
+      <div class="products-list__header__firm pad-top-3"><%= form.text_field :destinatary %></div>
+      <div class="products-list__header__contact pad-top-1"><%= form.text_field :contact %></div>
+      <div class="products-list__header__title pad-top-6"><%= form.text_field :title %></div>
+    </section>
+
+    <section class="products-list__list pad-top-3">
+      <table class="table table-hover">
+        <tbody>
+        <% @trades.each do |trade| %>
+          <tr data-trade-id="<%= trade.id %>">
+            <td><%= trade.product.name %></td>
+            <td class="products-list__list__price">
+              <%= t('view.firms.buys.products_list_price',
+                    price: trade.price_valid_from(@valid_from).try(:price),
+                    unit: trade.product.unit)
+              %>
+            </td>
+            <td>
+              <%= button_tag t('label.hide'), class: 'btn btn-sm js-trades-list__hide-trade' %>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </section>
+
+    <div class="actions">
+      <%= form.submit t('view.budgets.save'), class: 'btn btn-primary'  %>
+    </div>
+
+    <%= form.hidden_field :firm_id, value: params[:firm_id] %>
+    <%= hidden_field_tag :valid_from, params[:valid_from] %>
+    <%= hidden_field_tag :hidden_trades, params[:hidden_trades], class: 'js-trades-list__array' %>
+  <% end %>
+</div>
+
+<% content_for :ready_js do %>
+  Utils.focusField(document);
+
+  TradesList.init();
+<% end %>
+

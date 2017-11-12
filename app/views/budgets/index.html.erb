@@ -8,11 +8,6 @@
       <th><%= Budget.human_attribute_name 'date' %></th>
       <th><%= Budget.human_attribute_name 'from' %></th>
       <th><%= Budget.human_attribute_name 'to' %></th>
-      <th><%= Budget.human_attribute_name 'destinatary' %></th>
-      <th><%= Budget.human_attribute_name 'contact' %></th>
-      <th><%= Budget.human_attribute_name 'title' %></th>
-      <th><%= Budget.human_attribute_name 'header_image' %></th>
-      <th><%= Budget.human_attribute_name 'body_image' %></th>
       <th><%= Budget.human_attribute_name 'pdf_file' %></th>
       <th></th>
     </tr>
@@ -21,16 +16,11 @@
   <tbody>
     <% @budgets.each do |budget| %>
       <tr>
-        <td><%= budget.firm %></td>
+        <td><%= budget.firm.try(:name) %></td>
         <td><%= budget.number %></td>
-        <td><%= budget.date %></td>
+        <td><%= l(budget.date, format: t('date.formats.default')) %></td>
         <td><%= budget.from %></td>
         <td><%= budget.to %></td>
-        <td><%= budget.destinatary %></td>
-        <td><%= budget.contact %></td>
-        <td><%= budget.title %></td>
-        <td><%= budget.header_image %></td>
-        <td><%= budget.body_image %></td>
         <td><%= budget.pdf_file %></td>
         <td>
           <%= link_to '', budget, class: 'fa fa-2x fa-info-circle'  %>

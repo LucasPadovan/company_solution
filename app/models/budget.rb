@@ -1,12 +1,15 @@
 class Budget < ApplicationRecord
   belongs_to :firm
+  belongs_to :user
 
   has_many :lines, class_name: 'BudgetLine', dependent: :destroy
 
   scope :date_asc,  -> { order('budgets.date ASC') }
   scope :date_desc, -> { order('budgets.date DESC') }
 
-  before_validation :update_prices, on: [:create, :update]
+  before_commit :update_prices, on: [:create, :update]
+
+  after_initialize :set_defaults
 
   private
     def update_prices
@@ -23,5 +26,14 @@ class Budget < ApplicationRecord
 
         trade.add_new_price(order_line, currency)
       end
+    end
+
+    def set_defaults
+      contact_name = (firm && firm.contacts.any?) ? firm.contacts.first.try(:name) : ''
+
+      self.number = (Budget.last.try(:number).to_i || 0) + 1 unless number
+      self.date = I18n.l(Date.today, format: I18n.t('date.formats.long')) unless date
+      self.destinatary = firm.name if firm && !destinatary
+      self.contact = I18n.t('view.firms.buys.header_contact', contact: contact_name) unless contact
     end
 end
