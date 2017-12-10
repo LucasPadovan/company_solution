@@ -1,8 +1,11 @@
 # TODO list
 
+* Budget_lines should be the created using the same mechanism as the order_lines.
+* Create a button to add all trades at the same time.
 * move translations to budgets
 * is possible to save a budget without a firm! should not happen and should check validations before try to update prices. #fixed with before_commit, check other uses of the same thing.
 * check after_initialize when values are present in the props
+* add route like: firm/:firm_id/budgets
 
 * Products list > generate PDF > generate a budget order with all the products and its prices
 * Save in budget description the header of the pdf file to replicate it afterwards.

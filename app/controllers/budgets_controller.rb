@@ -16,24 +16,17 @@ class BudgetsController < ApplicationController
 
   # GET /budgets/new
   def new
-    @budget = if params[:firm_id]
+    @budget = if params[:firm_id].present?
                 firm = Firm.find(params[:firm_id])
-                @trades = Trade.where sold_to: firm
-
-                if params[:hidden_trades]
-                  hidden_trades = params[:hidden_trades].split(',')
-                  @trades = @trades.where.not(id: hidden_trades)
-                end
 
                 firm.budgets.new
               else
-                @trades = []
-
-                Budget.new
+                 Budget.new
               end
 
     @valid_from = params[:valid_from].present? ? (Date.parse(params[:valid_from])) : Date.today
 
+    set_trades
     set_new_form_information
 
     @budget.title = t('view.firms.buys.products_list_title', date: l(@valid_from, format: t('date.formats.long')))
@@ -61,19 +54,9 @@ class BudgetsController < ApplicationController
 
     if @budget.save
       flash[:type] = 'success'
-      redirect_to budgets_path, notice: t('view.budgets.correctly_created')
+      redirect_to @budget, notice: t('view.budgets.correctly_created')
     else
-      if params[:firm_id]
-        firm = Firm.find(params[:firm_id])
-        @trades = Trade.where sold_to: firm
-
-        if params[:hidden_trades]
-          hidden_trades = params[:hidden_trades].split(',')
-          @trades = @trades.where.not(id: hidden_trades)
-        end
-      else
-        @trades = []
-      end
+      set_trades
 
       render :new
     end
@@ -85,8 +68,10 @@ class BudgetsController < ApplicationController
 
     if @budget.update(budget_params)
       flash[:type] = 'primary'
-      redirect_to redirect_path(@budget), notice: t('view.budgets.correctly_updated')
+      redirect_to @budget, notice: t('view.budgets.correctly_updated')
     else
+      set_trades
+
       render :edit
     end
   end
@@ -101,10 +86,6 @@ class BudgetsController < ApplicationController
   private
   def set_budget
     @budget = Budget.find(params[:id])
-  end
-
-  def redirect_path(budget)
-    budget_path(budget)
   end
 
   def set_information
@@ -166,6 +147,20 @@ class BudgetsController < ApplicationController
     end
 
     budgets.date_asc
+  end
+
+  def set_trades
+    if params[:firm_id].present?
+      firm = Firm.find(params[:firm_id])
+      @trades = Trade.where sold_to: firm
+
+      if params[:hidden_trades]
+        hidden_trades = params[:hidden_trades].split(',')
+        @trades = @trades.where.not(id: hidden_trades)
+      end
+    else
+      @trades = []
+    end
   end
 
   # Only allow a trusted parameter "white list" through.
