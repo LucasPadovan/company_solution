@@ -1,5 +1,9 @@
 # TODO list
 
+* Budget index view should not have from_date in the list
+* Budget show view should have all information and look more close to the pdf
+* Budget pdf generation.
+* Analyze changing date/formatted date to facilitate everything
 * verify budget lines using the correct valid_from date
 * Create a button to add all trades at the same time.
 * move translations to budgets
