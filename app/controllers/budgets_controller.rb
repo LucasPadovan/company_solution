@@ -24,9 +24,9 @@ class BudgetsController < ApplicationController
                  Budget.new
               end
 
+    @created_date = format_date(@budget.date)
     @valid_from = params[:valid_from].present? ? (Date.parse(params[:valid_from])) : Date.today
 
-    set_trades
     set_new_form_information
 
     @budget.title = t('view.firms.buys.products_list_title', date: l(@valid_from, format: t('date.formats.long')))
@@ -36,27 +36,23 @@ class BudgetsController < ApplicationController
   def edit
     set_edit_form_information
 
-    @trades = Trade.where sold_to: @budget.firm
-
-    if params[:hidden_trades]
-      hidden_trades = params[:hidden_trades].split(',')
-      @trades = @trades.where.not(id: hidden_trades)
-    end
+    @created_date = I18n.l(@budget.date, format: I18n.t('date.formats.long'))
   end
 
   # POST /budgets
   def create
-    set_new_form_information
     @budget = Budget.new(budget_params)
 
-    @budget.date = Date.today
     @budget.user = current_user
+    @budget.date = Date.parse(format_date(budget_params['date']))
 
+    set_new_form_information
     if @budget.save
       flash[:type] = 'success'
       redirect_to @budget, notice: t('view.budgets.correctly_created')
     else
-      set_trades
+      @created_date = format_date(budget_params['date'])
+      @valid_from = params[:valid_from].present? ? (Date.parse(params[:valid_from])) : Date.today
 
       render :new
     end
@@ -66,11 +62,14 @@ class BudgetsController < ApplicationController
   def update
     set_edit_form_information
 
-    if @budget.update(budget_params)
+    budget_params_copy = budget_params
+    budget_params_copy['date'] = parse_date(budget_params['date'])
+
+    if @budget.update(budget_params_copy)
       flash[:type] = 'primary'
       redirect_to @budget, notice: t('view.budgets.correctly_updated')
     else
-      set_trades
+      @created_date = format_date(budget_params['date'])
 
       render :edit
     end
@@ -149,18 +148,19 @@ class BudgetsController < ApplicationController
     budgets.date_asc
   end
 
-  def set_trades
-    if params[:firm_id].present?
-      firm = Firm.find(params[:firm_id])
-      @trades = Trade.where sold_to: firm
-
-      if params[:hidden_trades]
-        hidden_trades = params[:hidden_trades].split(',')
-        @trades = @trades.where.not(id: hidden_trades)
-      end
-    else
-      @trades = []
+  def parse_date(raw_date)
+    begin
+      Date.parse(raw_date)
+    rescue
+      # TODO: add errors
+      Date.today
     end
+  end
+
+  def format_date(raw_date)
+    _date = parse_date(raw_date)
+
+    l(_date, format: I18n.t('date.formats.long'))
   end
 
   # Only allow a trusted parameter "white list" through.
@@ -183,10 +183,9 @@ class BudgetsController < ApplicationController
             :id,
             :product_id,
             :unit_price,
+            :unit,
             :currency,
             :tax_rate,
-            :subtotal,
-            :unit,
             :position,
             :price_change,
             :_destroy

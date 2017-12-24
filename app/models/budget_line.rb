@@ -2,6 +2,8 @@ class BudgetLine < ApplicationRecord
   belongs_to :budget
   belongs_to :product
 
+  validates :product_id, presence: true
+
   INCREASE_COLORS = {
       first_break: 'green',
       second_break: 'yellow',

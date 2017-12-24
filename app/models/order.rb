@@ -51,7 +51,7 @@ class Order < ApplicationRecord
         product_id: product.id
       })
 
-      trade.add_new_price(order_line, currency)
+      trade.add_new_price(order_line, currency, self.class, date)
     end
   end
 

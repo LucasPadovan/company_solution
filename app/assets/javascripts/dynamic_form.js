@@ -59,6 +59,8 @@ var DynamicForm = {
   populateForm: function(dataset, target, fields) {
     var $row = $(target).closest('tr');
 
+    console.log(dataset)
+
     for(var i = 0, field; field = fields[i]; i++) {
       var unitSelector = '.js-nested-item-' + field,
           $field = $row.find(unitSelector);

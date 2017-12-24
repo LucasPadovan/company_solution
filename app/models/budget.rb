@@ -4,6 +4,12 @@ class Budget < ApplicationRecord
 
   has_many :lines, class_name: 'BudgetLine', dependent: :destroy
 
+  accepts_nested_attributes_for :lines,
+    allow_destroy: true,
+    reject_if: proc { |attributes| attributes[:product_id].blank? }
+
+  validates :date, presence: :true
+
   scope :date_asc,  -> { order('budgets.date ASC') }
   scope :date_desc, -> { order('budgets.date DESC') }
 
@@ -24,7 +30,7 @@ class Budget < ApplicationRecord
                                 product_id: product.id
                             })
 
-        trade.add_new_price(order_line, currency)
+        trade.add_new_price(order_line, order_line.currency, self.class, date)
       end
     end
 
@@ -32,7 +38,6 @@ class Budget < ApplicationRecord
       contact_name = (firm && firm.contacts.any?) ? firm.contacts.first.try(:name) : ''
 
       self.number = (Budget.last.try(:number).to_i || 0) + 1 unless number
-      self.date = I18n.l(Date.today, format: I18n.t('date.formats.long')) unless date
       self.destinatary = firm.name if firm && !destinatary
       self.contact = I18n.t('view.firms.buys.header_contact', contact: contact_name) unless contact
     end

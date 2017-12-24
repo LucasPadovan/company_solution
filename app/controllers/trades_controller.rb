@@ -77,6 +77,7 @@ class TradesController < ApplicationController
     end
 
     product_detail = {
+        currency: available_price.currency,
         tax_rate: tax_rate || '21',
         unit: unit || 'kg',
         unit_price: unit_price || '00',

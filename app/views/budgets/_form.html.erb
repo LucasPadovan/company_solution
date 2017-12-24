@@ -1,4 +1,4 @@
-<% unless params[:action] === 'edit' %>
+<% if params[:action] === 'new' || params[:action] === 'create'%>
   <%= form_tag new_budget_path, { method: :get, params: params, class: 'form-horizontal' } do %>
     <div class="form-group">
       <div class="col-1">
@@ -52,51 +52,40 @@
     </section>
 
     <div class="text-center">
-      <%= button_tag t('view.firms.buys.restore_product'), class: 'btn btn-sm hidden js-trades-list__show-trade' %>
       <%= form.submit t('view.budgets.save'), class: 'btn btn-primary'  %>
     </div>
 
     <section class="products-list__header pad-top-3 mar-top-1">
-      <div class="products-list__header__date"><%= form.text_field :date %></div>
+      <div class="products-list__header__date"><%= form.text_field :date, value: @created_date %></div>
       <div class="products-list__header__firm pad-top-3"><%= form.text_field :destinatary %></div>
       <div class="products-list__header__contact pad-top-1"><%= form.text_field :contact %></div>
       <div class="products-list__header__title pad-top-6"><%= form.text_field :title %></div>
     </section>
 
     <section class="products-list__list pad-top-3">
-      <table class="table table-hover">
-        <tbody>
-        <% @trades.each do |trade| %>
-          <tr data-trade-id="<%= trade.id %>">
-            <td><%= trade.product.name %></td>
-            <td class="products-list__list__price">
-              <%= t('view.firms.buys.products_list_price',
-                    price: trade.price_valid_from(@valid_from).try(:price),
-                    unit: trade.product.unit)
-              %>
-            </td>
-            <td>
-              <%= button_tag t('label.hide'), class: 'btn btn-sm js-trades-list__hide-trade' %>
-            </td>
-          </tr>
-        <% end %>
-        </tbody>
-      </table>
+      <div class="mar-top-2">
+        <%= render 'shared/dynamic_form',
+                   form: form,
+                   folder: 'budgets',
+                   association: :lines,
+                   attributes: ['product_id', 'currency', 'unit_price', 'unit', 'tax_rate'],
+                   model: BudgetLine
+        %>
+      </div>
     </section>
 
-    <div class="actions">
+    <div class="actions pad-top-3 pad-bottom-3">
       <%= form.submit t('view.budgets.save'), class: 'btn btn-primary'  %>
     </div>
 
     <%= form.hidden_field :firm_id, value: params[:firm_id] || budget.firm_id %>
     <%= hidden_field_tag :valid_from, params[:valid_from] %>
-    <%= hidden_field_tag :hidden_trades, params[:hidden_trades], class: 'js-trades-list__array' %>
   <% end %>
 </div>
 
 <% content_for :ready_js do %>
   Utils.focusField(document);
-
-  TradesList.init();
+  DynamicForm.handleFetchableSelect('.js-fetchable-select', ['currency', 'unit', 'unit_price', 'tax_rate']);
+  DynamicForm.createFirstLine();
 <% end %>
 

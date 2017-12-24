@@ -47,7 +47,7 @@ class Trade < ApplicationRecord
     to.strftime(I18n.t('date.formats.default')) if to
   end
 
-  def add_new_price(order_line, currency)
+  def add_new_price(order_line, currency, class_type, date)
     line_price    = order_line.unit_price
     line_tax_rate = order_line.tax_rate
 
@@ -55,9 +55,9 @@ class Trade < ApplicationRecord
         price:     line_price,
         tax_rate:  line_tax_rate,
         currency:  currency,
-        valid_from: order_line.order.date,
+        valid_from: date,
         # Only set up an available price if there was an actual order, if not (is a budget only) the price should not be available yet.
-        available: order_line.order.class != BudgetOrder
+        available: class_type != BudgetOrder
     }
 
     if persisted?

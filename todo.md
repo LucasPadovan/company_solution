@@ -1,6 +1,6 @@
 # TODO list
 
-* Budget_lines should be the created using the same mechanism as the order_lines.
+* verify budget lines using the correct valid_from date
 * Create a button to add all trades at the same time.
 * move translations to budgets
 * is possible to save a budget without a firm! should not happen and should check validations before try to update prices. #fixed with before_commit, check other uses of the same thing.
