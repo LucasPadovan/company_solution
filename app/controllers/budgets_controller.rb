@@ -49,7 +49,7 @@ class BudgetsController < ApplicationController
     set_new_form_information
     if @budget.save
       flash[:type] = 'success'
-      redirect_to @budget, notice: t('view.budgets.correctly_created')
+      redirect_to return_path, notice: t('view.budgets.correctly_created')
     else
       @created_date = format_date(budget_params['date'])
       @valid_from = params[:valid_from].present? ? (Date.parse(params[:valid_from])) : Date.today
@@ -67,7 +67,7 @@ class BudgetsController < ApplicationController
 
     if @budget.update(budget_params_copy)
       flash[:type] = 'primary'
-      redirect_to @budget, notice: t('view.budgets.correctly_updated')
+      redirect_to return_path, notice: t('view.budgets.correctly_updated')
     else
       @created_date = format_date(budget_params['date'])
 
@@ -94,19 +94,32 @@ class BudgetsController < ApplicationController
   # Information for index method
   def set_index_information
     @information[:new_title] = t('view.budgets.new_title')
-    @information[:new_path] = new_budget_path
+    @information[:new_path] = if params[:firm_id]
+                                new_firm_budget_path(params[:firm_id])
+                              else
+                                new_budget_path
+                              end
   end
 
   # Information for show method
   def set_show_information
     @information[:subtitle] = t('view.budgets.show_title', budget_number: @budget.number)
-    @information[:edit_path] = edit_budget_path(@budget)
+    @information[:edit_path] = if params[:firm_id]
+                                 edit_firm_budget_path(params[:firm_id], @budget)
+                               else
+                                 edit_budget_path(@budget)
+                               end
+
     @information[:back_path] = back_path
   end
 
   # Information for new/create methods.
   def set_new_form_information
-    @information[:form_url] = budgets_path(@budget)
+    @information[:form_url] = if params[:firm_id]
+                                firm_budgets_path(params[:firm_id], @budget)
+                              else
+                                budgets_path(@budget)
+                              end
     @information[:subtitle] = t('view.budgets.new_title')
     @information[:button_text] = t('view.budgets.save')
     @information[:back_path] = back_path
@@ -114,14 +127,23 @@ class BudgetsController < ApplicationController
 
   # Information for edit/update methods.
   def set_edit_form_information
-    @information[:form_url] = budget_path(@budget)
+    @information[:form_url] = if params[:firm_id]
+                                firm_budget_path(params[:firm_id], @budget)
+                              else
+                                budget_path(@budget)
+                              end
     @information[:subtitle] = t('view.budgets.edit_title', budget_number: @budget.number)
     @information[:button_text] = t('view.budgets.save')
     @information[:back_path] = back_path
   end
 
   def back_path
-    budgets_path
+    params[:firm_id].present? ? firm_budgets_path(params[:firm_id], @budget) : budgets_path
+  end
+
+  def return_path
+    byebug
+    params[:firm_id].present? ? firm_budget_path(params[:firm_id], @budget) : @budget
   end
 
   def filtered_budgets

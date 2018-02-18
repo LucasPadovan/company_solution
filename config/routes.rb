@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     resources :trades, except: [:index, :show]
     resources :contacts, except: [:index, :show]
     resources :permissions
+    resources :budgets
 
     member do
       get :products_list

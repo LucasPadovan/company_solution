@@ -1,59 +1,85 @@
 <%= render 'shared/basic_navigation', navigation: {
-  back: budgets_path, edit: edit_budget_path(@budget)
+  back: @information[:back_path], edit: @information[:edit_path]
 } %>
 
-<p>
-  <b><%= Budget.human_attribute_name 'firm' %>:</b>
-  <%= @budget.firm.try(:name) %>
-</p>
+<div class="columns">
+  <div class="column col-6">
+    <p>
+      <b><%= Budget.human_attribute_name 'firm' %>:</b>
+      <%= @budget.firm.try(:name) %>
+    </p>
 
-<p>
-  <b><%= Budget.human_attribute_name 'number' %>:</b>
-  <%= @budget.number %>
-</p>
+    <p>
+      <b><%= Budget.human_attribute_name 'number' %>:</b>
+      <%= @budget.number %>
+    </p>
 
-<p>
-  <b><%= Budget.human_attribute_name 'date' %>:</b>
-  <%= @budget.date %>
-</p>
+    <p>
+      <b><%= Budget.human_attribute_name 'date' %>:</b>
+      <%= @budget.date %>
+    </p>
 
-<p>
-  <b><%= Budget.human_attribute_name 'from' %>:</b>
-  <%= @budget.from %>
-</p>
+    <p>
+      <b><%= Budget.human_attribute_name 'from' %>:</b>
+      <%= @budget.from %>
+    </p>
 
-<p>
-  <b><%= Budget.human_attribute_name 'to' %>:</b>
-  <%= @budget.to %>
-</p>
+    <p>
+      <b><%= Budget.human_attribute_name 'to' %>:</b>
+      <%= @budget.to %>
+    </p>
 
-<p>
-  <b><%= Budget.human_attribute_name 'destinatary' %>:</b>
-  <%= @budget.destinatary %>
-</p>
+    <p>
+      <b><%= Budget.human_attribute_name 'destinatary' %>:</b>
+      <%= @budget.destinatary %>
+    </p>
 
-<p>
-  <b><%= Budget.human_attribute_name 'contact' %>:</b>
-  <%= @budget.contact %>
-</p>
+    <p>
+      <b><%= Budget.human_attribute_name 'contact' %>:</b>
+      <%= @budget.contact %>
+    </p>
 
-<p>
-  <b><%= Budget.human_attribute_name 'title' %>:</b>
-  <%= @budget.title %>
-</p>
+    <p>
+      <b><%= Budget.human_attribute_name 'title' %>:</b>
+      <%= @budget.title %>
+    </p>
 
-<p>
-  <b><%= Budget.human_attribute_name 'header_image' %>:</b>
-  <%= @budget.header_image %>
-</p>
+    <p>
+      <b><%= Budget.human_attribute_name 'header_image' %>:</b>
+      <%= @budget.header_image %>
+    </p>
 
-<p>
-  <b><%= Budget.human_attribute_name 'body_image' %>:</b>
-  <%= @budget.body_image %>
-</p>
+    <p>
+      <b><%= Budget.human_attribute_name 'body_image' %>:</b>
+      <%= @budget.body_image %>
+    </p>
 
-<p>
-  <b><%= Budget.human_attribute_name 'pdf_file' %>:</b>
-  <%= @budget.pdf_file %>
-</p>
+    <p>
+      <b><%= Budget.human_attribute_name 'pdf_file' %>:</b>
+      <%= @budget.pdf_file %>
+    </p>
+  </div>
 
+  <div class="column col-6">
+    <section class="products-list__list pad-top-3">
+      <table class="table table-hover">
+        <tbody>
+        <% @budget.lines.each do |line| %>
+          <tr data-line-id="<%= line.id %>">
+            <td><%= line.product.name %></td>
+            <td class="products-list__list__price">
+              <%= t('view.firms.buys.products_list_price',
+                    price: line.unit_price,
+                    unit: line.unit)
+              %>
+            </td>
+            <td>
+              <%= button_tag t('label.hide'), class: 'btn btn-sm js-trades-list__hide-trade' %>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </section>
+  </div>
+</div>

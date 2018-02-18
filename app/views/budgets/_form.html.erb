@@ -1,5 +1,5 @@
 <% if params[:action] === 'new' || params[:action] === 'create'%>
-  <%= form_tag new_budget_path, { method: :get, params: params, class: 'form-horizontal' } do %>
+  <%= form_tag @information[:form_url], { method: :get, params: params, class: 'form-horizontal' } do %>
     <div class="form-group">
       <div class="col-1">
         <%= label_tag :firm_id, t('activerecord.models.firm.one'), class: 'from-label js-focus-this' %>
@@ -25,7 +25,7 @@
 <% end %>
 
 <div class="products-list">
-  <%= form_with(model: budget, local: true) do |form| %>
+  <%= form_with(url: @information[:form_url], model: budget, local: true) do |form| %>
     <% if budget.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(budget.errors.count, 'error') %> prohibited this budget from being saved:</h2>
