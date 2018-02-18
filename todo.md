@@ -1,5 +1,7 @@
 # TODO list
 
+* Budget show view should have all information and look more close to the pdf
+* Budget pdf generation.
 * Budget show dates
 * Budget price increase maybe can be stored in the db
 * Products List should be replaced by budgets.
@@ -7,14 +9,15 @@
 * Products should add: internal code, internal name, public name.
 * Budgets forms should not allow to change firm if firm_id is passed in the params.
 * Budget index view should not have from_date in the list
-* Budget show view should have all information and look more close to the pdf
-* Budget pdf generation.
 * Analyze changing date/formatted date to facilitate everything
 * verify budget lines using the correct valid_from date
 * Create a button to add all trades at the same time.
 * move translations to budgets
 * is possible to save a budget without a firm! should not happen and should check validations before try to update prices. #fixed with before_commit, check other uses of the same thing.
 * check after_initialize when values are present in the props
+* Budget prices should create new prices for each trade/firm BUT those prices should not affect orders made prior to the new budget.
+    * If possible, orders should be created with a base budget that fixes the prices
+    * If creating a budget is impossible: the order should take the prices of the day they are ordered as the fix.
 
 * Products list > generate PDF > generate a budget order with all the products and its prices
 * Save in budget description the header of the pdf file to replicate it afterwards.
