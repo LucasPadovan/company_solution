@@ -134,7 +134,7 @@ class BudgetsController < ApplicationController
                               end
     @information[:subtitle] = t('view.budgets.edit_title', budget_number: @budget.number)
     @information[:button_text] = t('view.budgets.save')
-    @information[:back_path] = back_path
+    @information[:back_path] = params[:firm_id].present? ? firm_budget_path(params[:firm_id], @budget) : @budget
   end
 
   def back_path
@@ -142,7 +142,6 @@ class BudgetsController < ApplicationController
   end
 
   def return_path
-    byebug
     params[:firm_id].present? ? firm_budget_path(params[:firm_id], @budget) : @budget
   end
 

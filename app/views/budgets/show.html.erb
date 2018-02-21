@@ -2,84 +2,58 @@
   back: @information[:back_path], edit: @information[:edit_path]
 } %>
 
-<div class="columns">
-  <div class="column col-6">
-    <p>
-      <b><%= Budget.human_attribute_name 'firm' %>:</b>
-      <%= @budget.firm.try(:name) %>
-    </p>
-
-    <p>
+<section class="budget-info__header mar-bottom-3">
+  <div class="columns">
+    <div class="column col-3">
       <b><%= Budget.human_attribute_name 'number' %>:</b>
       <%= @budget.number %>
-    </p>
-
-    <p>
-      <b><%= Budget.human_attribute_name 'date' %>:</b>
-      <%= @budget.date %>
-    </p>
-
-    <p>
+    </div>
+    <div class="column col-3">
       <b><%= Budget.human_attribute_name 'from' %>:</b>
       <%= @budget.from %>
-    </p>
-
-    <p>
+    </div>
+    <div class="column col-3">
       <b><%= Budget.human_attribute_name 'to' %>:</b>
       <%= @budget.to %>
-    </p>
-
-    <p>
-      <b><%= Budget.human_attribute_name 'destinatary' %>:</b>
-      <%= @budget.destinatary %>
-    </p>
-
-    <p>
-      <b><%= Budget.human_attribute_name 'contact' %>:</b>
-      <%= @budget.contact %>
-    </p>
-
-    <p>
-      <b><%= Budget.human_attribute_name 'title' %>:</b>
-      <%= @budget.title %>
-    </p>
-
-    <p>
-      <b><%= Budget.human_attribute_name 'header_image' %>:</b>
-      <%= @budget.header_image %>
-    </p>
-
-    <p>
-      <b><%= Budget.human_attribute_name 'body_image' %>:</b>
-      <%= @budget.body_image %>
-    </p>
-
-    <p>
+    </div>
+    <div class="column col-3">
       <b><%= Budget.human_attribute_name 'pdf_file' %>:</b>
       <%= @budget.pdf_file %>
-    </p>
+    </div>
   </div>
+</section>
 
-  <div class="column col-6">
-    <section class="products-list__list pad-top-3">
-      <table class="table table-hover">
-        <tbody>
-        <% @budget.lines.each do |line| %>
-          <tr data-line-id="<%= line.id %>">
-            <td><%= line.product.name %></td>
-            <td class="products-list__list__price">
-              <%= t('view.firms.buys.products_list_price',
-                    price: line.unit_price,
-                    unit: line.unit)
-              %>
-            </td>
-            <td>
-              <%= button_tag t('label.hide'), class: 'btn btn-sm js-trades-list__hide-trade' %>
-            </td>
-          </tr>
-        <% end %>
-        </tbody>
-      </table>
-    </section>
+<section class="products-list__banner">
+  <div class="columns">
+    <div class="column col-4 margin-auto">
+      <%= image_tag image_path('logo_full.jpg'), { class: 'image-fill' } %>
+    </div>
   </div>
-</div>
+</section>
+
+<section class="products-list__header mar-top-6 pad-top-3">
+  <p class="products-list__header__date"><%= l(@budget.date, format: t('date.formats.extended', place: 'Mendoza')) %></p>
+  <p class="products-list__header__firm"><%= @budget.destinatary %></p>
+  <p class="products-list__header__contact"><%= @budget.contact %></p>
+  <p class="products-list__header__title pad-top-4"><%= @budget.title %></p>
+</section>
+
+<section class="products-list__list mar-bottom-6 pad-top-1">
+  <table class="table">
+    <tbody>
+    <% @budget.lines.each do |line| %>
+      <tr>
+        <td style="padding-bottom: <%= @information[:list_padding] %>;">
+          <%= line.product.name %>
+        </td>
+        <td class="products-list__list__price" style="padding-bottom: <%= @information[:list_padding] %>;">
+          <%= t('view.firms.buys.products_list_price',
+                price: line.unit_price,
+                unit: line.unit)
+          %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</section>

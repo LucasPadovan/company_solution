@@ -3,6 +3,7 @@
 .products-list__header {
   border-top: 2px solid $grey-600;
 
+  p,
   input {
     font-size: 16px;
     width: 50%;
@@ -11,7 +12,8 @@
   }
 }
 
-.products-list__header__date {
+.products-list__header__date,
+p.products-list__header__date {
   text-align: right;
   width: 100%;
 
