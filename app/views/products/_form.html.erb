@@ -11,43 +11,60 @@
     </div>
   <% end %>
 
-  <div class="form-group">
-    <%= form.label :name, class: 'from-label' %>
-    <%= form.text_field :name, id: :product_name, class: 'form-input js-focus-this' %>
-  </div>
+  <div class="columns">
+    <div class="column col-12">
+      <%= form.label :name, class: 'from-label' %>
+      <%= form.text_field :name, id: :product_name, class: 'form-input js-focus-this' %>
+    </div>
 
-  <div class="form-group">
-    <%= form.label :description, class: 'from-label' %>
-    <%= form.text_area :description, id: :product_description, class: 'form-input' %>
-  </div>
+    <div class="column col-12">
+      <%= form.label :internal_name, class: 'from-label' %>
+      <%= form.text_field :internal_name, id: :product_internal_name, class: 'form-input' %>
+    </div>
 
-  <div class="form-group">
-    <%= form.label :area, class: 'from-label' %>
-    <%= form.text_field :area, id: :product_area, class: 'form-input' %>
-  </div>
+    <div class="column col-6">
+      <%= form.label :internal_code, class: 'from-label' %>
+      <%= form.text_field :internal_code, id: :product_internal_code, class: 'form-input' %>
+    </div>
 
-  <div class="form-group">
-    <%= form.label :type, class: 'from-label' %>
-    <%= form.select :type, Product.types_for_select, {}, { id: :product_type, class: 'form-select' } %>
-  </div>
+    <div class="column col-6">
+      <%= form.label :external_code, class: 'from-label' %>
+      <%= form.text_field :external_code, id: :product_external_code, class: 'form-input' %>
+    </div>
 
-  <div class="form-group">
-    <%= form.label :unit, class: 'from-label' %>
-    <%= form.text_field :unit, id: :product_unit, class: 'form-input' %>
-  </div>
+    <div class="column col-12">
+      <%= form.label :description, class: 'from-label' %>
+      <%= form.text_area :description, id: :product_description, class: 'form-input' %>
+    </div>
 
-  <div class="form-group">
-    <%= form.label :initial_stock, class: 'from-label' %>
-    <%= form.text_field :initial_stock, id: :product_initial_stock, class: 'form-input' %>
-  </div>
+    <div class="column col-12">
+      <%= form.label :area, class: 'from-label' %>
+      <%= form.text_field :area, id: :product_area, class: 'form-input' %>
+    </div>
 
-  <div class="form-group">
-    <%= form.label :current_stock, class: 'from-label' %>
-    <%= form.text_field :current_stock, id: :product_current_stock, class: 'form-input' %>
-  </div>
+    <div class="column col-12">
+      <%= form.label :type, class: 'from-label' %>
+      <%= form.select :type, Product.types_for_select, {}, { id: :product_type, class: 'form-select' } %>
+    </div>
 
-  <div class="actions">
-    <%= form.submit t('view.products.save'), class: 'btn btn-primary' %>
+    <div class="column col-12">
+      <%= form.label :unit, class: 'from-label' %>
+      <%= form.text_field :unit, id: :product_unit, class: 'form-input' %>
+    </div>
+
+    <div class="column col-6">
+      <%= form.label :initial_stock, class: 'from-label' %>
+      <%= form.text_field :initial_stock, id: :product_initial_stock, class: 'form-input' %>
+    </div>
+
+    <div class="column col-6">
+      <%= form.label :current_stock, class: 'from-label' %>
+      <%= form.text_field :current_stock, id: :product_current_stock, class: 'form-input' %>
+    </div>
+
+    <div class="column col-12">
+      <%= form.submit t('view.products.save'), class: 'btn btn-primary' %>
+    </div>
   </div>
 <% end %>
 

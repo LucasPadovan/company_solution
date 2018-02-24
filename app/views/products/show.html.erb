@@ -3,10 +3,25 @@
 } %>
 
 <div class="columns">
-  <div class="column col-3">
+  <div class="column col-4">
     <p>
       <b><%= Product.human_attribute_name :name %>:</b>
       <%= @product.name %>
+    </p>
+
+    <p>
+      <b><%= Product.human_attribute_name :internal_name %>:</b>
+      <%= @product.internal_name %>
+    </p>
+
+    <p>
+      <b><%= Product.human_attribute_name :internal_code %>:</b>
+      <%= @product.internal_code %>
+    </p>
+
+    <p>
+      <b><%= Product.human_attribute_name :external_code %>:</b>
+      <%= @product.external_code %>
     </p>
 
     <p>
@@ -47,7 +62,7 @@
     </p>
   </div>
 
-  <div class="column col-9">
+  <div class="column col-8">
     <%= render 'recipes/index' if @product.is_composed %>
   </div>
 

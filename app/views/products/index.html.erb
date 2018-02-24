@@ -2,7 +2,9 @@
   <thead>
     <tr>
       <th><%= Product.human_attribute_name :name %></th>
-      <th><%= Product.human_attribute_name :description %></th>
+      <th><%= Product.human_attribute_name :internal_name %></th>
+      <th><%= Product.human_attribute_name :internal_code %></th>
+      <th><%= Product.human_attribute_name :external_code %></th>
       <th><%= Product.human_attribute_name :area %></th>
       <th><%= Product.human_attribute_name :type %></th>
       <th><%= Product.human_attribute_name :initial_stock %></th>
@@ -15,7 +17,9 @@
     <% @products.each do |product| %>
       <tr>
         <td><%= product.name %></td>
-        <td><%= product.description %></td>
+        <td><%= product.internal_name %></td>
+        <td><%= product.internal_code %></td>
+        <td><%= product.external_code %></td>
         <td><%= product.area %></td>
         <td><%= product.type_to_show %></td>
         <td><%= product.initial_stock_with_unit %></td>

@@ -99,7 +99,18 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :description, :area, :type, :unit, :initial_stock, :current_stock)
+      params.require(:product).permit(
+          :name,
+          :internal_name,
+          :internal_code,
+          :external_code,
+          :description,
+          :area,
+          :type,
+          :unit,
+          :initial_stock,
+          :current_stock
+      )
     end
 
     # Form url for new/create methods.

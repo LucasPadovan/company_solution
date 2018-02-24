@@ -1,12 +1,10 @@
 # TODO list
 
-* Budget show view should have all information and look more close to the pdf
 * Budget pdf generation.
 * Budget show dates
 * Budget price increase maybe can be stored in the db
 * Products List should be replaced by budgets.
 * Option to load a pdf/xls with prices and create the new prices for each product.
-* Products should add: internal code, internal name, public name.
 * Budgets forms should not allow to change firm if firm_id is passed in the params.
 * Budget index view should not have from_date in the list
 * Analyze changing date/formatted date to facilitate everything
@@ -18,6 +16,7 @@
 * Budget prices should create new prices for each trade/firm BUT those prices should not affect orders made prior to the new budget.
     * If possible, orders should be created with a base budget that fixes the prices
     * If creating a budget is impossible: the order should take the prices of the day they are ordered as the fix.
+* Product list should just be a list of all products sold/purchased by a firm with all the information about them.
 
 * Products list > generate PDF > generate a budget order with all the products and its prices
 * Save in budget description the header of the pdf file to replicate it afterwards.
