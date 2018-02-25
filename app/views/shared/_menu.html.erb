@@ -5,21 +5,21 @@
         <%= link_to root_path, class: 'navbar-brand mr-10' do %>
           <%= image_tag image_path('logo_inverted.png'), { alt: t('app_name'), class: 'navbar-brand__image', ariaLabel: t('app_name') } %>
         <% end %>
-        <%= link_to t('menu.firms'), firms_path, class: 'btn btn-link' %>
-        <%= link_to t('menu.orders'), orders_path, class: 'btn btn-link' %>
-        <%= link_to t('menu.budgets'), budgets_path, class: 'btn btn-link' %>
-        <%= link_to t('menu.purchases'), purchases_path, class: 'btn btn-link' %>
-        <!--<%= link_to t('menu.monthly_movements'), firms_path, class: 'btn btn-link' %>-->
-        <%= link_to t('menu.products'), products_path, class: 'btn btn-link' %>
-        <%= link_to t('menu.certificates'), certificates_path, class: 'btn btn-link' %>
-        <%= link_to t('menu.users'), firms_path, class: 'btn btn-link' %>
+        <%= link_to t('menu.firms'), firms_path, class: "btn btn-link #{'menu-btn--active' if params[:controller] == 'firms' || params[:controller] == 'permissions'}" %>
+        <%= link_to t('menu.orders'), orders_path, class: "btn btn-link #{'menu-btn--active' if params[:controller] == 'orders'}" %>
+        <%= link_to t('menu.budgets'), budgets_path, class: "btn btn-link #{'menu-btn--active' if params[:controller] == 'budgets'}" %>
+        <%= link_to t('menu.purchases'), purchases_path, class: "btn btn-link #{'menu-btn--active' if params[:controller] == 'purchases'}" %>
+        <!--<%= link_to t('menu.monthly_movements'), firms_path, class: "btn btn-link #{'menu-btn--active' if params[:controller] == 'movements'}" %>-->
+        <%= link_to t('menu.products'), products_path, class: "btn btn-link #{'menu-btn--active' if params[:controller] == 'products'}" %>
+        <%= link_to t('menu.certificates'), certificates_path, class: "btn btn-link #{'menu-btn--active' if params[:controller] == 'certificates'}" %>
+        <%= link_to t('menu.users'), firms_path, class: "btn btn-link #{'menu-btn--active' if params[:controller] == 'users'}" %>
       </section>
       <section class="navbar-section navbar-section--secondary">
         <% if current_user %>
           <%= link_to t('menu.actions.logout'), destroy_user_session_path, method: :delete, class: 'btn btn-link' %>
         <% else%>
-          <%= link_to t('menu.actions.register'), new_user_registration_path, class: 'btn btn-link' %>
-          <%= link_to t('menu.actions.login'), new_user_session_path, class: 'btn btn-link' %>
+          <%= link_to t('menu.actions.register'), new_user_registration_path, class: "btn btn-link #{'menu-btn--active' if params[:controller] == 'users'}" %>
+          <%= link_to t('menu.actions.login'), new_user_session_path, class: "btn btn-link #{'menu-btn--active' if params[:controller] == 'users'}" %>
         <% end%>
       </section>
     </nav>

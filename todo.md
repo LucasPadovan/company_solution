@@ -55,7 +55,6 @@
 * Show effect on changing fields (autototals, dynamicform)
 * Dashboard con ordernes abiertas, ordenes que se esperen entregar hoy y los proximos 5 dias, ordenes sin facturar, ordenes sin cobrar
 * Reports and graphics
-* Menu indicator of the current section
 * Trigger emails
 * Search should bring Orders, firms, products or invoices. Probably add a way to select one of them.
 * Link to create an order directly from the product show page with the product as first order_line.
