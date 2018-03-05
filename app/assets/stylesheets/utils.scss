@@ -33,3 +33,13 @@ $variations: all top right left bottom;
 .hidden {
   display: none;
 }
+
+@media print {
+  .section-header,
+  .section-title,
+  .section-navigation,
+  .budget-info__header {
+    height: 0;
+    visibility: hidden;
+  }
+}
