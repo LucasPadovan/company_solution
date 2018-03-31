@@ -10,13 +10,13 @@ Rails.application.routes.draw do
   end
 
   resources :firms do
-    resources :trades, except: [:index, :show]
+    resources :trades, except: [:show]
     resources :contacts, except: [:index, :show]
     resources :permissions
     resources :budgets
 
     member do
-      get :products_list
+      get 'products_list', controller: 'trades', action: 'index'
     end
   end
 

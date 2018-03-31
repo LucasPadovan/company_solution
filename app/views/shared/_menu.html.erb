@@ -5,7 +5,10 @@
         <%= link_to root_path, class: 'navbar-brand mr-10' do %>
           <%= image_tag image_path('logo_inverted.png'), { alt: t('app_name'), class: 'navbar-brand__image', ariaLabel: t('app_name') } %>
         <% end %>
-        <%= link_to t('menu.firms'), firms_path, class: "btn btn-link #{'menu-btn--active' if params[:controller] == 'firms' || params[:controller] == 'permissions'}" %>
+        <%= link_to t('menu.firms'),
+                    firms_path,
+                    class: "btn btn-link #{'menu-btn--active' if params[:controller] == 'firms' || params[:controller] == 'permissions' || (params[:controller] == 'trades' && params[:action] == 'index')}"
+        %>
         <%= link_to t('menu.orders'), orders_path, class: "btn btn-link #{'menu-btn--active' if params[:controller] == 'orders'}" %>
         <%= link_to t('menu.budgets'), budgets_path, class: "btn btn-link #{'menu-btn--active' if params[:controller] == 'budgets'}" %>
         <%= link_to t('menu.purchases'), purchases_path, class: "btn btn-link #{'menu-btn--active' if params[:controller] == 'purchases'}" %>

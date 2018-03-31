@@ -47,4 +47,8 @@ $variations: all top right left bottom;
   .products-list__background {
     display: block;
   }
+
+  .products-list__list-item td {
+    border-bottom: none;
+  }
 }

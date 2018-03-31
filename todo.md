@@ -1,8 +1,13 @@
 # TODO list
 
+* Products List should be replaced by firm/#/products_list. < WIP
+    * Remove old products list views.
+    * Add filters for products_list
+    * Check urls for products_list
+* Remove PDF stuff, manage printing pdf with browser.
+
 * Budget show dates
 * Budget price increase maybe can be stored in the db
-* Products List should be replaced by budgets.
 * Option to load a pdf/xls with prices and create the new prices for each product.
 * Budgets forms should not allow to change firm if firm_id is passed in the params.
 * Budget index view should not have from_date in the list
@@ -67,3 +72,5 @@
 * Budgets: use header and body image, check usage of 'to' attribute.
 
 * Number: check that manual editing a number doesn't generates conflict of duplicity 
+
+* Clean css

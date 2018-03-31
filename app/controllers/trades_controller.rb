@@ -3,6 +3,17 @@ class TradesController < ApplicationController
   before_action :set_parent, except: [:find_product]
   before_action :set_information
 
+  def index
+    @firm = @parent
+    @trades = if params[:trade_type] === 'sells'
+                @parent.sells
+              else
+                @parent.buys
+              end
+
+    index_information
+  end
+
   # GET /trades/new
   def new
     @trade = Trade.new
@@ -103,7 +114,7 @@ class TradesController < ApplicationController
       @parent = if params[:product_id]
                   Product.find(params[:product_id])
                 else
-                  Firm.find(params[:firm_id])
+                  Firm.find(params[:firm_id] || params[:id])
                 end
     end
 
@@ -126,6 +137,25 @@ class TradesController < ApplicationController
         end
       elsif params[:product_id]
         @trade.product_id = @parent.id
+      end
+    end
+
+    # Form url for new/create methods.
+    def index_information
+      if params[:product_id]
+        @information[:back_path] = product_path(@parent)
+        @information[:subtitle] = if params[:trade_type] == 'sells'
+                                    t('view.trades.new_product_traded_by_title', product: @parent.name)
+                                  elsif params[:trade_type] == 'buys'
+                                    t('view.trades.new_product_traded_to_title', product: @parent.name)
+                                  end
+      else
+        @information[:back_path] = firm_path(@parent)
+        @information[:subtitle] = if params[:trade_type] == 'sells'
+                                    t('view.trades.new_trade_sold_by_firm_title', firm: @parent.name)
+                                  elsif params[:trade_type] == 'buys'
+                                    t('view.trades.new_trade_sold_to_firm_title', firm: @parent.name)
+                                  end
       end
     end
 

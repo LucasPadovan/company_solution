@@ -46,11 +46,11 @@
   <table class="table">
     <tbody>
     <% @budget.lines.each do |line| %>
-      <tr>
-        <td style="padding-bottom: <%= @information[:list_padding] %>;">
+      <tr class="products-list__list-item">
+        <td>
           <%= line.product.name %>
         </td>
-        <td class="products-list__list__price" style="padding-bottom: <%= @information[:list_padding] %>;">
+        <td class="products-list__list__price">
           <%= t('view.firms.buys.products_list_price',
                 price: line.unit_price,
                 unit: line.unit)
