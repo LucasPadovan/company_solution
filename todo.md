@@ -1,6 +1,5 @@
 # TODO list
 
-* Budget pdf generation. >> WIP
 * Budget show dates
 * Budget price increase maybe can be stored in the db
 * Products List should be replaced by budgets.

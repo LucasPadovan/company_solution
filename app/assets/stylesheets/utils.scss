@@ -35,11 +35,16 @@ $variations: all top right left bottom;
 }
 
 @media print {
+  .no-print,
   .section-header,
   .section-title,
   .section-navigation,
   .budget-info__header {
     height: 0;
     visibility: hidden;
+  }
+
+  .products-list__background {
+    display: block;
   }
 }

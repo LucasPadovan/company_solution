@@ -1,5 +1,5 @@
 <%= render 'shared/basic_navigation', navigation: {
-  back: @information[:back_path], edit: @information[:edit_path]
+  back: @information[:back_path], edit: @information[:edit_path], print: 'true'
 } %>
 
 <section class="budget-info__header mar-bottom-3">
@@ -37,6 +37,10 @@
   <p class="products-list__header__contact"><%= @budget.contact %></p>
   <p class="products-list__header__title pad-top-4"><%= @budget.title %></p>
 </section>
+
+<div class="products-list__background">
+  <%= image_tag image_path('logo_background_pdf.jpg'), { class: 'image-fill' } %>
+</div>
 
 <section class="products-list__list mar-bottom-6 pad-top-1">
   <table class="table">
