@@ -1,4 +1,5 @@
-<%= render 'firms/trades/index', trades: @trades, trade_type: 'buys' %>
+<%= link_to t('view.budgets.title'), firm_budgets_path(@parent), class: 'btn' %>
+<%= render 'firms/trades/index', trades: @trades, trade_type: params[:trade_type] %>
 
 <% content_for :ready_js do %>
   JsModals.bindEvents()
