@@ -1,10 +1,10 @@
 # TODO list
 
 * Products List should be replaced by firm/#/products_list. < WIP
-    * Remove old products list views.
     * Add filters for products_list
-    * Check urls for products_list
-* Remove PDF stuff, manage printing pdf with browser.
+    * Check urls for products_list                        
+    * replicate products_list format
+        * Special color for some elements (mark those with price differences of 2%, 4%, 6%, and 10%+, special prices for some elements in the list
 
 * Budget show dates
 * Budget price increase maybe can be stored in the db
@@ -29,8 +29,6 @@
     * Upload and preview permissions pdf
     * Dashboard should alert close to finishing certificates
 * Tabs system for firms and products.
-* replicate products_list format
-    * Special color for some elements (mark those with price differences of 2%, 4%, 6%, and 10%+, special prices for some elements in the list
 * New items sold to/from a company creates trade + price relation > check next items
     * Advice that you will be creating new prices for that firm+product in the order form.
 * New prices on items sold to/from a company on an order should update the price with the proper relation.
