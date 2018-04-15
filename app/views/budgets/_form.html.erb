@@ -3,16 +3,16 @@
     <%= form_tag @information[:form_url], { method: :get, params: params } do %>
       <div class="columns">
         <div class="column col-2 mar-right-2">
-          <%= label_tag :firm_id, t('activerecord.models.firm.one'), class: 'from-label js-focus-this' %>
-          <%= select_tag :firm_id,
+          <%= label_tag :filter_firm_id, t('activerecord.models.firm.one'), class: 'from-label js-focus-this' %>
+          <%= select_tag :filter_firm_id,
                          options_for_select(
                              [['', nil]] + Firm.firms_for_select,
-                             params[:firm_id]
+                             params[:filter_firm_id]
                          ), { class: 'form-select' } %>
         </div>
         <div class="column col-2 mar-right-2">
-          <%= label_tag :valid_from, t('view.firms.buys.valid_from'), class: 'from-label' %>
-          <%= text_field_tag :valid_from, @valid_from, class: 'form-input', type: :date %>
+          <%= label_tag :filter_valid_from, t('view.firms.buys.valid_from'), class: 'from-label' %>
+          <%= text_field_tag :filter_valid_from, @valid_from, class: 'form-input', type: :date %>
         </div>
         <%= render 'shared/components/filter_button' %>
       </div>

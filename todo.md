@@ -1,5 +1,9 @@
 # TODO list
 
+* Budget filter form is not working / divide the filter in 2:
+    * when on firms/#/budgets/new there should be no Firm selector
+    * when on budgets/new there should be a firm selector but it should not redirect to firms/#/budgets/new
+
 * Products List should be replaced by firm/#/products_list. < WIP
     * Check urls for products_list
     * replicate products_list format

@@ -99,6 +99,10 @@ class BudgetsController < ApplicationController
                               else
                                 new_budget_path
                               end
+
+    if params[:filter_firm_id].present?
+      redirect_to firm_budgets_path(params[:filter_firm_id], @budget)
+    end
   end
 
   # Information for show method
@@ -117,6 +121,8 @@ class BudgetsController < ApplicationController
   def set_new_form_information
     @information[:form_url] = if params[:firm_id]
                                 firm_budgets_path(params[:firm_id], @budget)
+                              elsif params[:filter_firm_id].present?
+                                firm_budgets_path(params[:filter_firm_id], @budget)
                               else
                                 budgets_path(@budget)
                               end
@@ -150,14 +156,14 @@ class BudgetsController < ApplicationController
     query_params = {}
     budgets = Budget
 
-    if params[:firm_id].present?
-      query << ['firm_id = :firm_id']
-      query_params[:firm_id] = params[:firm_id]
+    if params[:filter_firm_id].present?
+      query << ['firm_id = :filter_firm_id']
+      query_params[:filter_firm_id] = params[:filter_firm_id]
     end
 
-    if params[:date].present?
-      query << ['date = :date']
-      query_params[:date] = params[:date]
+    if params[:filter_date].present?
+      query << ['date = :filter_date']
+      query_params[:filter_date] = params[:filter_date]
     end
 
     if query.length > 0
