@@ -5,6 +5,7 @@
     * Check urls for products_list                        
     * replicate products_list format
         * Special color for some elements (mark those with price differences of 2%, 4%, 6%, and 10%+, special prices for some elements in the list
+    * Back on trades/8/prices?origin=firm should lead to /firms/1/products_list?type=buys|sells
 
 * Budget show dates
 * Budget price increase maybe can be stored in the db
