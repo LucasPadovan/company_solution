@@ -1,28 +1,25 @@
 <% if params[:action] === 'new' || params[:action] === 'create'%>
-  <%= form_tag @information[:form_url], { method: :get, params: params, class: 'form-horizontal' } do %>
-    <div class="form-group">
-      <div class="col-1">
-        <%= label_tag :firm_id, t('activerecord.models.firm.one'), class: 'from-label js-focus-this' %>
+  <section class="section section-filters mar-top-2 pad-left-2 pad-right-2">
+    <%= form_tag @information[:form_url], { method: :get, params: params } do %>
+      <div class="columns">
+        <div class="column col-2 mar-right-2">
+          <%= label_tag :firm_id, t('activerecord.models.firm.one'), class: 'from-label js-focus-this' %>
+          <%= select_tag :firm_id,
+                         options_for_select(
+                             [['', nil]] + Firm.firms_for_select,
+                             params[:firm_id]
+                         ), { class: 'form-select' } %>
+        </div>
+        <div class="column col-2 mar-right-2">
+          <%= label_tag :valid_from, t('view.firms.buys.valid_from'), class: 'from-label' %>
+          <%= text_field_tag :valid_from, @valid_from, class: 'form-input', type: :date %>
+        </div>
+        <%= render 'shared/components/filter_button' %>
       </div>
-      <div class="col-2 mar-right-2">
-        <%= select_tag :firm_id,
-                       options_for_select(
-                           [['', nil]] + Firm.firms_for_select,
-                           params[:firm_id]
-                       ), { class: 'form-select' } %>
-      </div>
-      <div class="col-1">
-        <%= label_tag :valid_from, t('view.firms.buys.valid_from'), class: 'from-label' %>
-      </div>
-      <div class="col-2 mar-right-2">
-        <%= text_field_tag :valid_from, @valid_from, class: 'form-input', type: :date %>
-      </div>
-      <div class="col-4">
-        <%= button_tag t('view.firms.buys.update_list'), class: 'btn' %>
-      </div>
-    </div>
-  <% end %>
+    <% end %>
+  </section>
 <% end %>
+
 
 <div class="products-list">
   <%= form_with(url: @information[:form_url], model: budget, local: true) do |form| %>

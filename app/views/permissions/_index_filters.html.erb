@@ -24,12 +24,7 @@
                            ), { class: 'form-select' } %>
           </div>
         <% end %>
-        <div class="column col-3 section-filters__search-btn">
-          <%= button_tag(type: 'submit', class: 'btn') do %>
-            <i class="icon icon-search"></i>
-            <%= t('label.search') %>
-          <% end %>
-        </div>
+        <%= render 'shared/components/filter_button' %>
       </div>
     <% end %>
   </section>

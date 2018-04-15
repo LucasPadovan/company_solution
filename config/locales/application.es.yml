@@ -334,7 +334,6 @@
         products_list_price: '$%{price} + I.V.A. por %{unit}.'
         restore_product: 'Volver a mostrar producto'
         valid_from: 'Precios desde'
-        update_list: 'Actualizar precios'
     interests:
       new:
         sale_firm_title: 'Vender otro producto'

@@ -1,7 +1,5 @@
 # TODO list
 
-* Change button_tag in filter for button_to
-
 * Products List should be replaced by firm/#/products_list. < WIP
     * Check urls for products_list
     * replicate products_list format

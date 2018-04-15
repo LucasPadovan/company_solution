@@ -6,12 +6,7 @@
         <%= text_field_tag :filter_product_name, params[:filter_product_name], { class: 'form-input' } %>
       </div>
       <%= hidden_field_tag :trade_type, params[:trade_type] %>
-      <div class="column col-3 section-filters__search-btn">
-        <%= button_to({}, {class: 'btn'}) do %>
-          <i class="icon icon-search"></i>
-          <%= t('label.search') %>
-        <% end %>
-      </div>
+      <%= render 'shared/components/filter_button' %>
     </div>
   <% end %>
 </section>
