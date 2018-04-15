@@ -11,6 +11,8 @@ class TradesController < ApplicationController
                 @parent.buys
               end
 
+    set_index_filters
+
     index_information
   end
 
@@ -140,23 +142,15 @@ class TradesController < ApplicationController
       end
     end
 
-    # Form url for new/create methods.
+    # Form url for index.
     def index_information
-      if params[:product_id]
-        @information[:back_path] = product_path(@parent)
-        @information[:subtitle] = if params[:trade_type] == 'sells'
-                                    t('view.trades.new_product_traded_by_title', product: @parent.name)
-                                  elsif params[:trade_type] == 'buys'
-                                    t('view.trades.new_product_traded_to_title', product: @parent.name)
-                                  end
-      else
-        @information[:back_path] = firm_path(@parent)
-        @information[:subtitle] = if params[:trade_type] == 'sells'
-                                    t('view.trades.new_trade_sold_by_firm_title', firm: @parent.name)
-                                  elsif params[:trade_type] == 'buys'
-                                    t('view.trades.new_trade_sold_to_firm_title', firm: @parent.name)
-                                  end
-      end
+      @information[:show_path] = firm_trades_path(@parent)
+      @information[:back_path] = firm_path(@parent)
+      @information[:subtitle] = if params[:trade_type] == 'sells'
+                                  t('view.trades.new_trade_sold_by_firm_title', firm: @parent.name)
+                                elsif params[:trade_type] == 'buys'
+                                  t('view.trades.new_trade_sold_to_firm_title', firm: @parent.name)
+                                end
     end
 
     # Form url for new/create methods.
@@ -197,6 +191,13 @@ class TradesController < ApplicationController
         firm_path(@parent)
       elsif params[:product_id]
         product_path(@parent)
+      end
+    end
+
+    def set_index_filters
+      if params[:filter_product_name]
+        @trades = @trades.joins(:product)
+        @trades = @trades.where('lower(products.name) LIKE :name', name: "%#{params[:filter_product_name].downcase}%")
       end
     end
 end

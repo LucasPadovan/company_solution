@@ -1,4 +1,5 @@
 <%= link_to t('view.budgets.title'), firm_budgets_path(@parent), class: 'btn' if params[:trade_type] == 'buys' %>
+<%= render 'trades/index_filter', trade_type: params[:trade_type] %>
 <%= render 'firms/trades/index', trades: @trades, trade_type: params[:trade_type] %>
 
 <% content_for :ready_js do %>

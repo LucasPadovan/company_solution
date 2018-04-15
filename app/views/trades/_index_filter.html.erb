@@ -1,0 +1,17 @@
+<section class="section section-filters mar-top-2 pad-left-2 pad-right-2">
+  <%= form_tag @information[:show_path], method: 'get' do %>
+    <div class="columns">
+      <div class="column col-5">
+        <%= label_tag :filter_product_name, t('attributes.product'), class: 'from-label' %>
+        <%= text_field_tag :filter_product_name, params[:filter_product_name], { class: 'form-input' } %>
+      </div>
+      <%= hidden_field_tag :trade_type, params[:trade_type] %>
+      <div class="column col-3 section-filters__search-btn">
+        <%= button_to({}, {class: 'btn'}) do %>
+          <i class="icon icon-search"></i>
+          <%= t('label.search') %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</section>

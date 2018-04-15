@@ -1,8 +1,9 @@
 # TODO list
 
+* Change button_tag in filter for button_to
+
 * Products List should be replaced by firm/#/products_list. < WIP
-    * Add filters for products_list
-    * Check urls for products_list                        
+    * Check urls for products_list
     * replicate products_list format
         * Special color for some elements (mark those with price differences of 2%, 4%, 6%, and 10%+, special prices for some elements in the list
     * Back on trades/8/prices?origin=firm should lead to /firms/1/products_list?type=buys|sells
@@ -21,7 +22,7 @@
 * Budget prices should create new prices for each trade/firm BUT those prices should not affect orders made prior to the new budget.
     * If possible, orders should be created with a base budget that fixes the prices
     * If creating a budget is impossible: the order should take the prices of the day they are ordered as the fix.
-* Product list should just be a list of all products sold/purchased by a firm with all the information about them.
+* Products could be marked as 'not available'
 
 * Products list > generate PDF > generate a budget order with all the products and its prices
 * Save in budget description the header of the pdf file to replicate it afterwards.
