@@ -1,7 +1,6 @@
 # TODO list
 
 * Budgets
-    * when on budgets/index > new_budget should get the filter_firm_id
     * when on budgets/new > add a button to add all items sold to that firm
     * is possible to save a budget without a firm! should not happen and should check validations before try to update prices. #fixed with before_commit, check other uses of the same thing.
 

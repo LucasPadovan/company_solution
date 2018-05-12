@@ -94,7 +94,7 @@ class BudgetsController < ApplicationController
   # Information for index method
   def set_index_information
     @information[:new_title] = t('view.budgets.new_title')
-    @information[:new_path] = new_budget_path
+    @information[:new_path] = new_budget_path(filter_firm_id: params[:filter_firm_id])
   end
 
   # Information for show method
