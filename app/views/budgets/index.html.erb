@@ -23,9 +23,9 @@
         <td><%= budget.to %></td>
         <td><%= budget.pdf_file %></td>
         <td>
-          <%= link_to '', params[:firm_id].present? ? firm_budget_path(params[:firm_id], budget) : budget, class: 'fa fa-2x fa-info-circle'  %>
-          <%= link_to '', params[:firm_id].present? ? edit_firm_budget_path(params[:firm_id], budget) : edit_budget_path(budget), class: 'fa fa-2x fa-pencil-square' %>
-          <%= link_to '', params[:firm_id].present? ? firm_budget_path(params[:firm_id], budget) : budget, method: :delete, data: { confirm: t('messages.confirmation') }, class: 'fa fa-2x fa-trash' %>
+          <%= link_to '', budget, class: 'fa fa-2x fa-info-circle'  %>
+          <%= link_to '', edit_budget_path(budget), class: 'fa fa-2x fa-pencil-square' %>
+          <%= link_to '', budget, method: :delete, data: { confirm: t('messages.confirmation') }, class: 'fa fa-2x fa-trash' %>
         </td>
       </tr>
     <% end %>

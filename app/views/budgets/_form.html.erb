@@ -1,6 +1,6 @@
 <% if params[:action] === 'new' || params[:action] === 'create'%>
   <section class="section section-filters mar-top-2 pad-left-2 pad-right-2">
-    <%= form_tag @information[:form_url], { method: :get, params: params } do %>
+    <%= form_tag @information[:filter_form_url], { method: :get, params: params } do %>
       <div class="columns">
         <div class="column col-2 mar-right-2">
           <%= label_tag :filter_firm_id, t('activerecord.models.firm.one'), class: 'from-label js-focus-this' %>

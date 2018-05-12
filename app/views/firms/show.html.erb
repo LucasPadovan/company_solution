@@ -62,7 +62,7 @@
       <h3><%= t('view.firms.show.buys') %></h3>
 
       <%= link_to t('view.firms.products_list'), products_list_firm_path(@firm, trade_type: 'buys'), class: 'btn btn-sm' %>
-      <%= link_to t('view.budgets.title'), firm_budgets_path(@firm), class: 'btn btn-sm' %>
+      <%= link_to t('view.budgets.title'), budgets_path(filter_firm_id: @firm), class: 'btn btn-sm' %>
       <%= render 'firms/trades/index', trades: @buys, trade_type: 'buys' %>
     </section>
   </div>

@@ -1,8 +1,9 @@
 # TODO list
 
-* Budget filter form is not working / divide the filter in 2:
-    * when on firms/#/budgets/new there should be no Firm selector
-    * when on budgets/new there should be a firm selector but it should not redirect to firms/#/budgets/new
+* Budgets
+    * when on budgets/index > new_budget should get the filter_firm_id
+    * when on budgets/new > add a button to add all items sold to that firm
+    * is possible to save a budget without a firm! should not happen and should check validations before try to update prices. #fixed with before_commit, check other uses of the same thing.
 
 * Products List should be replaced by firm/#/products_list. < WIP
     * Check urls for products_list
@@ -14,12 +15,12 @@
 * Budget price increase maybe can be stored in the db
 * Option to load a pdf/xls with prices and create the new prices for each product.
 * Budgets forms should not allow to change firm if firm_id is passed in the params.
-* Budget index view should not have from_date in the list
+
 * Analyze changing date/formatted date to facilitate everything
 * verify budget lines using the correct valid_from date
 * Create a button to add all trades at the same time.
 * move translations to budgets
-* is possible to save a budget without a firm! should not happen and should check validations before try to update prices. #fixed with before_commit, check other uses of the same thing.
+
 * check after_initialize when values are present in the props
 * Budget prices should create new prices for each trade/firm BUT those prices should not affect orders made prior to the new budget.
     * If possible, orders should be created with a base budget that fixes the prices

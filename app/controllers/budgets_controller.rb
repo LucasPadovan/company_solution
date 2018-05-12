@@ -94,38 +94,21 @@ class BudgetsController < ApplicationController
   # Information for index method
   def set_index_information
     @information[:new_title] = t('view.budgets.new_title')
-    @information[:new_path] = if params[:firm_id]
-                                new_firm_budget_path(params[:firm_id])
-                              else
-                                new_budget_path
-                              end
-
-    if params[:filter_firm_id].present?
-      redirect_to firm_budgets_path(params[:filter_firm_id], @budget)
-    end
+    @information[:new_path] = new_budget_path
   end
 
   # Information for show method
   def set_show_information
     @information[:subtitle] = t('view.budgets.show_title', budget_number: @budget.number)
-    @information[:edit_path] = if params[:firm_id]
-                                 edit_firm_budget_path(params[:firm_id], @budget)
-                               else
-                                 edit_budget_path(@budget)
-                               end
+    @information[:edit_path] = edit_budget_path(@budget)
 
     @information[:back_path] = back_path
   end
 
   # Information for new/create methods.
   def set_new_form_information
-    @information[:form_url] = if params[:firm_id]
-                                firm_budgets_path(params[:firm_id], @budget)
-                              elsif params[:filter_firm_id].present?
-                                firm_budgets_path(params[:filter_firm_id], @budget)
-                              else
-                                budgets_path(@budget)
-                              end
+    @information[:form_url] = budgets_path(@budget)
+    @information[:filter_form_url] = new_budget_path
     @information[:subtitle] = t('view.budgets.new_title')
     @information[:button_text] = t('view.budgets.save')
     @information[:back_path] = back_path
@@ -133,22 +116,18 @@ class BudgetsController < ApplicationController
 
   # Information for edit/update methods.
   def set_edit_form_information
-    @information[:form_url] = if params[:firm_id]
-                                firm_budget_path(params[:firm_id], @budget)
-                              else
-                                budget_path(@budget)
-                              end
+    @information[:form_url] = budget_path(@budget)
     @information[:subtitle] = t('view.budgets.edit_title', budget_number: @budget.number)
     @information[:button_text] = t('view.budgets.save')
-    @information[:back_path] = params[:firm_id].present? ? firm_budget_path(params[:firm_id], @budget) : @budget
+    @information[:back_path] = @budget
   end
 
   def back_path
-    params[:firm_id].present? ? firm_budgets_path(params[:firm_id], @budget) : budgets_path
+    budgets_path
   end
 
   def return_path
-    params[:firm_id].present? ? firm_budget_path(params[:firm_id], @budget) : @budget
+   @budget
   end
 
   def filtered_budgets
