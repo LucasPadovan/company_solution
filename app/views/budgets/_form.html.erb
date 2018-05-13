@@ -75,7 +75,7 @@
       <%= form.submit t('view.budgets.save'), class: 'btn btn-primary'  %>
     </div>
 
-    <%= form.hidden_field :firm_id, value: params[:firm_id] || budget.firm_id %>
+    <%= form.hidden_field :firm_id, value: budget.try(:firm_id) || params[:filter_firm_id] %>
     <%= hidden_field_tag :valid_from, params[:valid_from] %>
   <% end %>
 </div>

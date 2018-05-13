@@ -1,8 +1,16 @@
 # TODO list
 
+* Option to load a pdf/xls with prices and create the new prices for each product.
+
 * Budgets
     * when on budgets/new > add a button to add all items sold to that firm
-    * is possible to save a budget without a firm! should not happen and should check validations before try to update prices. #fixed with before_commit, check other uses of the same thing.
+    * show dates format?
+    * price increase maybe can be stored in the db
+    * Budget prices should create new prices for each trade/firm BUT those prices should not affect orders made prior to the new budget.
+        * If possible, orders should be created with a base budget that fixes the prices
+        * If creating a budget is impossible: the order should take a fixed price from the day they are ordered
+    * Create a button to convert budgets in actual orders.
+    * use header and body image, check usage of 'to' attribute.
 
 * Products List should be replaced by firm/#/products_list. < WIP
     * Check urls for products_list
@@ -10,20 +18,12 @@
         * Special color for some elements (mark those with price differences of 2%, 4%, 6%, and 10%+, special prices for some elements in the list
     * Back on trades/8/prices?origin=firm should lead to /firms/1/products_list?type=buys|sells
 
-* Budget show dates
-* Budget price increase maybe can be stored in the db
-* Option to load a pdf/xls with prices and create the new prices for each product.
-* Budgets forms should not allow to change firm if firm_id is passed in the params.
-
 * Analyze changing date/formatted date to facilitate everything
 * verify budget lines using the correct valid_from date
 * Create a button to add all trades at the same time.
 * move translations to budgets
 
 * check after_initialize when values are present in the props
-* Budget prices should create new prices for each trade/firm BUT those prices should not affect orders made prior to the new budget.
-    * If possible, orders should be created with a base budget that fixes the prices
-    * If creating a budget is impossible: the order should take the prices of the day they are ordered as the fix.
 * Products could be marked as 'not available'
 
 * Products list > generate PDF > generate a budget order with all the products and its prices
@@ -40,7 +40,6 @@
 * - Changing the firm on an order should retrieve all prices again for each line item.
 * - Investigate retrieving all prices on order (new/edit) load and use that information instead of a single fetch each time.
 
-* Create a button to convert budgets in actual orders.
 * There should not be a way to convert purchases in common orders that are meant to be sell orders. 
 * Status change for orders. Effects on items after status changes.
     Completed/delivered should verify that all items were removed/added from stock
@@ -70,8 +69,6 @@
 * Add contact could be a modal
 * New system for modals to load them using javascript and not having them always live.
 * Update spectre
-
-* Budgets: use header and body image, check usage of 'to' attribute.
 
 * Number: check that manual editing a number doesn't generates conflict of duplicity 
 
