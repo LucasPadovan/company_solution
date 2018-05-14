@@ -1,4 +1,9 @@
-<%= link_to t('view.budgets.title'), budgets_path(@parent), class: 'btn' if params[:trade_type] == 'buys' %>
+<% if params[:trade_type] == 'buys'  %>
+  <%= link_to t('view.budgets.title'), budgets_path(filter_firm_id: @parent), class: 'btn' %>
+<%else%>
+  <%= link_to t('view.firms.update_products_list'), products_list_firm_path(@parent, trade_type: 'sells'), class: 'btn' %>
+<%end%>
+
 <%= render 'trades/index_filter', trade_type: params[:trade_type] %>
 <%= render 'firms/trades/index', trades: @trades, trade_type: params[:trade_type] %>
 

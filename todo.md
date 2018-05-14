@@ -1,9 +1,14 @@
 # TODO list
 
 * Option to load a pdf/xls with prices and create the new prices for each product.
-
+    * use the from_date of the new prices list for the new prices so in the future we know when was that price updated the last time.
+    * before saving show all products with the price change, the diff % per product and the diff % prom, provider_name > public_name for new products.
+    * Add columns for the internal management of the products such as: (provider_code, provider_name, provider_size, trade_batch_id) should be for the trade, (public_name, public_code, public_description) should be for the product
+    * Create a model: trade_batch (filename, date, firm_id) with all the views: index, show, new, create, delete
+    
 * Budgets
     * when on budgets/new > add a button to add all items sold to that firm
+        * Products list > generate PDF > generate a budget order with all the products and its prices
     * show dates format?
     * price increase maybe can be stored in the db
     * Budget prices should create new prices for each trade/firm BUT those prices should not affect orders made prior to the new budget.
@@ -17,6 +22,7 @@
     * replicate products_list format
         * Special color for some elements (mark those with price differences of 2%, 4%, 6%, and 10%+, special prices for some elements in the list
     * Back on trades/8/prices?origin=firm should lead to /firms/1/products_list?type=buys|sells
+    * Alert products that haven't had a price change in a while as it may not be sold anymore.
 
 * Analyze changing date/formatted date to facilitate everything
 * verify budget lines using the correct valid_from date
@@ -26,7 +32,6 @@
 * check after_initialize when values are present in the props
 * Products could be marked as 'not available'
 
-* Products list > generate PDF > generate a budget order with all the products and its prices
 * Save in budget description the header of the pdf file to replicate it afterwards.
 
 * Certificates and permissions (for firms and the company).
@@ -65,7 +70,6 @@
 * Link to create an order directly from the product show page with the product as first order_line.
 * Sometimes new price modal wont do anything when you hit save.
 * Translate "1 error prohibited this ??? from being saved" and similar.
-* Allow print view using all the headers and stuff from the company.
 * Add contact could be a modal
 * New system for modals to load them using javascript and not having them always live.
 * Update spectre
